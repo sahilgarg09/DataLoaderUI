@@ -10,6 +10,7 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
 //Add components
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -26,11 +27,21 @@ const routes: Routes = [
 	{ 
 		path: '', 
 		component: HomeLayoutComponent, 
-		canActivate: [AuthGuard],
+		//canActivate: [AuthGuard],
 		children: [
 			{
 				path: 'dashboard',
 				component: DashboardComponent
+			}
+		]
+	},{ 
+		path: '', 
+		component: HomeLayoutComponent, 
+		//canActivate: [AuthGuard],
+		children: [
+			{
+				path: 'soql-query',
+				component: SoqlQueryComponent
 			}
 		]
 	}

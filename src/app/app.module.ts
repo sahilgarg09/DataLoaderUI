@@ -11,6 +11,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
+import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
     DashboardComponent,
     SidenavbarComponent,
     HomeLayoutComponent,
-    LoginLayoutComponent
+    LoginLayoutComponent,
+    SoqlQueryComponent
   ],
   imports: [
     BrowserModule,
