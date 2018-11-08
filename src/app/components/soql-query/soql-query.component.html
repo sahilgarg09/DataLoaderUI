@@ -1,3 +1,110 @@
-<p>
-  soql-query works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">SOQL Query</h4>
+        <p class="card-category">Choose the object, fields, and criteria to build a SOQL query below:</p>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="bmd-label-floating" for="object">Object</label>
+                <select class="form-control" id="object">
+                  <option *ngFor="let item of objects; let i = index">{{item.viewValue}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="bmd-label-floating" for="fields">Fields</label>
+                <select multiple class="form-control multiple-fields custom-select" id="fields">
+                  <option *ngFor="let item of fields; let i = index">{{item.viewValue}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="sortByFields">Sorts results by</label>
+                    <select class="form-control" id="sortByFields">
+                      <option *ngFor="let item of sortBy; let i = index">{{item.viewValue}}</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="sortOrder">Sort</label>
+                    <select class="form-control" id="sortOrder">
+                      <option>A to Z</option>
+                      <option>Z to A</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">                    
+                    <label class="bmd-label-floating" for="nullPosition">Null</label>
+                    <select class="form-control" id="nullPosition">
+                      <option *ngFor="let item of nulls; let i = index">{{item.viewValue}}</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="" for="maxRecords">Max Records</label>
+                    <input type="text" class="form-control" id="maxRecords">
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="filterByFields">Filter results by</label>
+                    <select class="form-control" id="filterByFields">
+                      <option *ngFor="let item of filterBy; let i = index">{{item.viewValue}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="operator">Operator</label>
+                    <select class="form-control" id="operator">
+                      <option *ngFor="let item of operators; let i = index">{{item.viewValue}}</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="" for="fieldValue">Field Value</label>
+                    <input type="text" class="form-control" id="fieldValue">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="queryEditor">Enter or modify a SOQL query below:</label>
+                <textarea class="form-control" id="queryEditor" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary pull-left">Query</button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
