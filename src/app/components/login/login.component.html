@@ -7,22 +7,26 @@
           </div>
           <h4 class="card-title">Please Login to continue.</h4>
         </div>
+        {{form.value.email}} --
+        {{email}}
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="card-body ">
-          <form method="#" action="#">
+          
             <div class="form-group bmd-form-group">
               <label for="exampleEmail" class="bmd-label-floating">Email Address</label>
-              <input type="email" class="form-control" id="exampleEmail">
+              <input type="email" class="form-control" formControlName="email" required>
             </div>
             <div class="form-group bmd-form-group">
               <label for="examplePass" class="bmd-label-floating">Password</label>
-              <input type="password" class="form-control" id="examplePass">
+              <input type="password" class="form-control"  formControlName="password" required="true">
             </div>
             
-          </form>
+          
         </div>
         <div class="card-footer ">
           <button type="submit" class="btn btn-fill btn-rose">Submit</button>
         </div>
+        </form>
       </div>
     </div>
   </div>

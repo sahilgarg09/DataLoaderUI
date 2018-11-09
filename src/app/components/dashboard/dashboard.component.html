@@ -6,7 +6,7 @@
                   <p class="card-category">Select options</p>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">
