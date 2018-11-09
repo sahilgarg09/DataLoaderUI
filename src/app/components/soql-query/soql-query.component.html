@@ -6,7 +6,7 @@
         <p class="card-category">Choose the object, fields, and criteria to build a SOQL query below:</p>
       </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
