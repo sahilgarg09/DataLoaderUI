@@ -1,0 +1,13 @@
+select.form-control {
+    appearance: menulist;
+}
+select:invalid { color: #AAAAAA; }
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container .submit-login-btn {
+    justify-content: flex-end;
+}

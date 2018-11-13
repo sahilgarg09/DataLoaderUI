@@ -13,6 +13,7 @@ import { AuthService } from './auth/auth.service';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SoqlQueryComponent } from './components/soql-query/soql-query.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

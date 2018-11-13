@@ -1,0 +1,12 @@
+.main-panel {
+    float: none;
+    width: 100%;
+}
+
+.content {
+    margin-top: 0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
