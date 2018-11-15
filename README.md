@@ -3,13 +3,13 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
 
-#Getting started
+## Getting started
 use the Angular CLI tool to accelerate development, while adhering to the Style Guide recommendations that benefit every Angular project.
 
-##Prerequisites
+## Prerequisites
 Before you begin, make sure your development environment includes Node.js® and an npm package manager.
 
-##STEP 1: Install Node.js
+## STEP 1: Install Node.js
 Angular requires Node.js version 8.x or 10.x.
 
 To check your version, run node -v in a terminal/console window.
@@ -17,7 +17,7 @@ To check your version, run node -v in a terminal/console window.
 To get Node.js, go to [nodejs.org] (https://nodejs.org/en/download/). Download the LTS version for your OS.
 
 
-##Step 2: Install the Angular CLI
+## Step 2: Install the Angular CLI
 You use the Angular CLI to create projects, generate application and library code, and perform a variety of ongoing development tasks such as testing, bundling, and deployment.
 
 Install the Angular CLI globally.
