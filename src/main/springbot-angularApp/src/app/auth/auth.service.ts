@@ -22,9 +22,9 @@ export class AuthService {
 
   login(user: User){
     console.log(user);
-    if (user.userName !== '' && user.password !== '' ) { 
+    if (user.email !== '' && user.password !== '' ) { 
       this.loggedIn.next(true);
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     }
   }
 

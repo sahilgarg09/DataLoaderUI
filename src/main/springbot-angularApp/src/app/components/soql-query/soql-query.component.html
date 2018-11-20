@@ -6,7 +6,7 @@
         <p class="card-category">Choose the object, fields, and criteria to build a SOQL query below:</p>
       </div>
       <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
@@ -27,7 +27,7 @@
               </div>
             </div>
             <div class="col-md-9">
-              <div class="row">
+              <div class="row align-items-end">
 
                 <div class="col-md-4">
                   <div class="form-group">
@@ -65,7 +65,7 @@
 
                 </div>
               </div>
-              <div class="row">
+              <div class="row align-items-end">
 
                 <div class="col-md-4">
                   <div class="form-group">
@@ -103,7 +103,7 @@
           </div>
           <button type="submit" class="btn btn-primary pull-left">Query</button>
           <div class="clearfix"></div>
-        </form>
+        <!-- </form> -->
       </div>
     </div>
   </div>

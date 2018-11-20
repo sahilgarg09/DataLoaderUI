@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container login-container">
 <div class="col-md-6">
       <div class="card ">
         <div class="card-header card-header-rose card-header-icon">
@@ -7,10 +7,27 @@
           </div>
           <h4 class="card-title">Please Login to continue.</h4>
         </div>
-        {{form.value.email}} --
-        {{email}}
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="card-body ">
+
+            <div class="form-group bmd-form-group">
+                <!--<label for="exampleEmail" class="bmd-label-floating">Email Address</label>-->
+                <select class="form-control" formControlName="api" data-style="select-with-transition" title="API Version" data-size="7" >
+                    <option disabled selected hidden> Api Version </option>
+                    <option value="44">44 </option>
+                    <option value="43">43</option>
+                    <option value="42">42</option>
+                  </select>
+            </div>
+
+            <div class="form-group bmd-form-group">
+                <!--<label for="exampleEmail" class="bmd-label-floating">Email Address</label>-->
+                <select class="form-control" formControlName="env" data-style="select-with-transition" title="Enviournment" data-size="7" >
+                    <option disabled selected hidden> Enviournment</option>
+                    <option value="production">Production </option>
+                    <option value="sandbox">Sandbox</option>
+                  </select>
+            </div>
           
             <div class="form-group bmd-form-group">
               <label for="exampleEmail" class="bmd-label-floating">Email Address</label>
@@ -23,8 +40,8 @@
             
           
         </div>
-        <div class="card-footer ">
-          <button type="submit" class="btn btn-fill btn-rose">Submit</button>
+        <div class="card-footer submit-login-btn">
+          <button type="submit" class="btn btn-fill btn-rose ">Submit</button>
         </div>
         </form>
       </div>

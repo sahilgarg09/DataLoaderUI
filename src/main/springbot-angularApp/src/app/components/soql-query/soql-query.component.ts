@@ -1,4 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import {MatSelect, MatFormField, MatOption} from '@angular/material';
 export interface Objects {
   value: string;
@@ -38,8 +40,10 @@ export interface FilterBy {
 
 
 export class SoqlQueryComponent implements OnInit {
-
-  constructor() { }
+  form: FormGroup;
+  constructor(
+  	private fb: FormBuilder
+  ) { }
 
   objects: Objects[] = [
     {value: '', viewValue: 'Select an Object'},
@@ -79,6 +83,9 @@ export class SoqlQueryComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.form = this.fb.group({
+      password: ['', Validators.required]
+    });
   }
 
 }

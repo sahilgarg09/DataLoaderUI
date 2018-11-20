@@ -20,14 +20,16 @@ export class LoginComponent implements OnInit {
 	 ngOnInit() {
 	    this.form = this.fb.group({
 	      email: ['', Validators.required],
-	      password: ['', Validators.required]
+        password: ['', Validators.required],
+        env: ['Enviournment', Validators.required],
+        api: ['Api Version', Validators.required]
 	    });
 	  }
 
   onSubmit() {
     //if (this.form.valid) {
       //this.email = this.form.value.email;
-      //this.authService.login(this.form.value);
+      this.authService.login(this.form.value);
       console.log("submitting");
     //}
     this.formSubmitAttempt = true;
