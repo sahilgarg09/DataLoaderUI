@@ -5,8 +5,8 @@
         Tip 2: you can also add an image using data-image tag
              -->
       <div class="logo">
-        <a href="#" class="simple-text logo-normal">
-          Aritrik
+        <a href="javascript: void(0)" class="simple-text logo-normal">
+          Data Load Engine
         </a>
       </div>
       <div class="sidebar-wrapper ps-container ps-theme-default">
@@ -18,7 +18,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/login']">
+            <a class="nav-link" [routerLink]="['/dashboard']">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
@@ -28,12 +28,16 @@
               <i class="material-icons">library_books</i>
               <p>Queries</p>
             </a>
-            <div class="collapse" id="mapsExamples">
+            <div class="collapse show" id="mapsExamples">
               <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['/soql-query']"> 
-                    <span class="sidebar-mini">SQ</span>                   
-                    <span class="sidebar-normal">SOQL Query</span>
+                <li class="nav-item"
+                *ngFor="let query of queries"                
+                (click)="onSelectLink(query)">
+                  <a class="nav-link"
+                  [class.selected]="query === selectedQuery"
+                  href="javascript:void(0)" > 
+                    <span class="sidebar-mini">{{query.shortName}}</span>                   
+                    <span class="sidebar-normal">{{query.name}}</span>
                   </a>
                 </li>
               </ul>
