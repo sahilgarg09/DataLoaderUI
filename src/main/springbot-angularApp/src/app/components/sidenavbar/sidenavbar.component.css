@@ -1,0 +1,8 @@
+.nav-link.selected{
+    background-color: #ab47bc;
+    color: white;
+}
+.sidebar .nav li>a.selected:hover, .sidebar .nav li>a.selected:focus, .sidebar .nav li>a.selected{
+    background-color: #ab47bc;
+    color: white;
+}
