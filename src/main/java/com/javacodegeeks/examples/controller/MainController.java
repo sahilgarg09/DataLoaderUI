@@ -3,24 +3,56 @@ package com.javacodegeeks.examples.controller;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dataloader.connection.Connector;
+import com.dataloader.connection.bulkapi.BulkHandler;
+import com.dataloader.connection.query.QueryHandler;
+
 @Controller
 public class MainController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homepage() {
-		return "index";
+		return "/index.html";
 	}
 
 	@RequestMapping(value = "/login_request", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String,String> sfdcLogin(@RequestHeader String username, @RequestHeader String password,
+	public Map<String, String> sfdcLogin(@RequestHeader String username, @RequestHeader String password,
 			@RequestHeader String version, @RequestHeader String orgtype) {
 		return Connector.loginToSalesforce(username, password, version, orgtype);
+	}
+
+	@RequestMapping(value = "/soql_request", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> sfdcQuery(@RequestHeader String baseURL, @RequestHeader String version,
+			@RequestHeader String sessionId, @RequestHeader String query) {
+		return QueryHandler.exportData(baseURL, version, sessionId, query);
+	}
+
+	@RequestMapping(value = "/query_more_request", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> sfdcQueryMore(@RequestHeader String baseURL, @RequestHeader String sessionId) {
+		return QueryHandler.queryMore(baseURL, sessionId);
+	}
+
+	@RequestMapping(value = "/create_delete_job", method = RequestMethod.POST)
+	@ResponseBody
+	public String sfdcBulkDeleteJob(@RequestHeader String baseURL, @RequestHeader String version,
+			@RequestHeader String sessionId, @RequestHeader String object) {
+		return BulkHandler.createJob(baseURL, version, object, "DELETE", "FILE", sessionId);
+	}
+
+	@RequestMapping(value = "/process_delete_job", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> sfdcBulkDeleteOperation(@RequestHeader String baseURL, @RequestHeader String version,
+			@RequestHeader String sessionId, @RequestBody String payload, @RequestHeader String jobId) {
+		System.out.println(payload);
+		return BulkHandler.uploadDataBatch(baseURL, version, sessionId, jobId, "CSV", payload);
 	}
 }
