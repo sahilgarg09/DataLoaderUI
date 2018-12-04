@@ -6,3 +6,11 @@
     background-color: #ab47bc;
     color: white;
 }
+.textTransform p{
+    text-transform: initial;
+}
+.sidebar .logo .simple-text{
+    font-weight: bold;
+    text-transform: initial;
+    font-size: 30px;
+}

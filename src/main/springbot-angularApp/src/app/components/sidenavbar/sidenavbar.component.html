@@ -6,7 +6,7 @@
              -->
       <div class="logo">
         <a href="javascript: void(0)" class="simple-text logo-normal">
-          Data Load Engine
+          ForceLoader
         </a>
       </div>
       <div class="sidebar-wrapper ps-container ps-theme-default">
@@ -26,7 +26,7 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" [routerLink]="['/soql-query']">
               <i class="material-icons">library_books</i>
-              <p>Queries</p>
+              <p>Data Manipulations</p>
             </a>
             <div class="collapse show" id="mapsExamples">
               <ul class="nav">
@@ -35,13 +35,20 @@
                 (click)="onSelectLink(query)">
                   <a class="nav-link"
                   [class.selected]="query === selectedQuery"
-                  href="javascript:void(0)" > 
+                  [routerLink]="[query.url]"
+                  > 
                     <span class="sidebar-mini">{{query.shortName}}</span>                   
                     <span class="sidebar-normal">{{query.name}}</span>
                   </a>
                 </li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link textTransform" data-toggle="collapse" >
+                <i class="material-icons">arrow_right_alt</i>
+                <p>Org to Org Transfer</p>
+              </a>
           </li>
         </ul>
       </div>
