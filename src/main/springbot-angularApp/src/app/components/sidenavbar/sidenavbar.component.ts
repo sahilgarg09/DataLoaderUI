@@ -11,8 +11,8 @@ export class SidenavbarComponent implements OnInit {
 
   queries: Query[] = [
     { id: 1, name: 'Export', shortName: 'EX', url: '/soql-query', class: 'nav-item' },
-    { id: 2, name: 'Insert', shortName: 'IN', url: '#', class: 'nav-item' },
-    { id: 3, name: 'Upsert', shortName: 'UP', url: '#', class: 'nav-item' },
+    { id: 2, name: 'Insert', shortName: 'IN', url: '/insert', class: 'nav-item' },
+    { id: 3, name: 'Upsert', shortName: 'UP', url: '/upsert', class: 'nav-item' },
     { id: 4, name: 'Delete', shortName: 'DE', url: '/delete-query', class: 'nav-item' }
   ];
   selectedQuery: Query;
