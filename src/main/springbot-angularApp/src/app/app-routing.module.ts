@@ -11,6 +11,7 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
+import { DeleteQueryComponent } from './components/delete-query/delete-query.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -42,6 +43,16 @@ const routes: Routes = [
 			{
 				path: 'soql-query',
 				component: SoqlQueryComponent
+			}
+		]
+	},{ 
+		path: '', 
+		component: HomeLayoutComponent, 
+		//canActivate: [AuthGuard],
+		children: [
+			{
+				path: 'delete-query',
+				component: DeleteQueryComponent
 			}
 		]
 	}

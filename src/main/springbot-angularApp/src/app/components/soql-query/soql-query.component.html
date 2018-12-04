@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label class="" for="maxRecords">Max Records</label>
+                    <label class="bmd-label-floating" for="maxRecords">Max Records</label>
                     <input type="text" class="form-control" id="maxRecords">
                   </div>
 
@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label class="" for="fieldValue">Field Value</label>
+                    <label class="bmd-label-floating" for="fieldValue">Field Value</label>
                     <input type="text" class="form-control" id="fieldValue">
                   </div>
                 </div>
@@ -96,12 +96,17 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="queryEditor">Enter or modify a SOQL query below:</label>
+                <label class="bmd-label-floating" for="queryEditor">Enter or modify a SOQL query below:</label>
                 <textarea class="form-control" id="queryEditor" rows="3"></textarea>
               </div>
             </div>
           </div>
-          <button type="button" (click)="querySOQL()" class="btn btn-primary pull-left">Query</button>
+          <div class="row">
+              <div class="col-md-12">
+                  <button type="button" (click)="querySOQL()" class="btn btn-primary pull-left">Query</button>
+                  <button type="button" class="btn btn-primar pull-right">Export to CSV</button>
+              </div>
+          </div>
           <div class="clearfix"></div>
         <!-- </form> -->
       </div>

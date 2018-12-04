@@ -69,7 +69,12 @@ export class SoqlQueryComponent implements OnInit {
     {value: 'AccountNumber', viewValue: 'AccountNumber'},
     {value: 'AccountSource', viewValue: 'AccountSource'},
     {value: 'AccountType__c', viewValue: 'AccountType__c'},
-    {value: 'Account__ID__c', viewValue: 'Account__ID__c'}
+    {value: 'Account__ID', viewValue: 'ID'},
+    {value: 'Name', viewValue: 'Name'},
+    {value: 'Home Phone', viewValue: 'HomePhone'},
+    {value: 'Cellphone', viewValue: 'Cellphone'},
+    {value: 'City', viewValue: 'City'},
+    
   ];
   sortBy: SortBy[] = [
     {value: 'AccountNumber', viewValue: 'AccountNumber'},

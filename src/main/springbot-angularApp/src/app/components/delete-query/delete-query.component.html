@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Delete Parameters</h4>
+        <p class="card-category"></p>
+      </div>
+      <div class="card-body">
+        <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating" for="object">Select Object Name</label>
+                <select class="form-control" id="object" >
+                  <option *ngFor="let item of objects; let i = index">{{item.viewValue}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label class="bmd-label-floating" for="queryEditor">Where Clause:</label>
+                  <textarea class="form-control" id="queryEditor" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label class="bmd-label-floating" for="orderByClause">ORDER By Clause:</label>
+                          <input type="text" class="form-control" id="orderByClause">
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="form-check">
+                              <label class="form-check-label" for="bulkApi">
+                                  <input type="checkbox" class="form-check-input" id="bulkApi">
+                                Bulk API
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                              </label>                              
+                          </div>                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label" for="hardDelete">
+                                    <input type="checkbox" class="form-check-input" id="hardDelete">
+                                    Hard Delete
+                                  <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                </label>                              
+                            </div>                            
+                          </div> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group serialCode">
+                            <div class="form-check">
+                                <label class="form-check-label" for="serialCode">
+                                    <input type="checkbox" class="form-check-input" id="serialCode">
+                                    Serial Code processing  
+                                  <span class="form-check-sign">
+                                      <span class="check"></span>
+                                    </span>
+                                </label>                              
+                            </div>
+                        </div>
+                    </div>
+                  </div>                
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary pull-left">Ok</button>
+                    <button type="reset" class="btn btn-normal pull-left">Reset</button>
+                </div>
+            </div>
+          
+          
+          <div class="clearfix"></div>
+        <!-- </form> -->
+      </div>
+    </div>
+  </div>
+</div>

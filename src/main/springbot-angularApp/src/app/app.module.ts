@@ -13,6 +13,7 @@ import { AuthService } from './auth/auth.service';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
+import { DeleteQueryComponent } from './components/delete-query/delete-query.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -27,7 +28,8 @@ import { RestService } from './rest/rest.service';
     SidenavbarComponent,
     HomeLayoutComponent,
     LoginLayoutComponent,
-    SoqlQueryComponent
+    SoqlQueryComponent,
+    DeleteQueryComponent
   ],
   imports: [
     BrowserModule,
