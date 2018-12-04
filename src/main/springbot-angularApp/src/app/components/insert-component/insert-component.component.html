@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">Insert</h4>
+          
+        </div>
+        <div class="card-body">
+          <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
+          <!-- Step 1 Starts-->
+          <section [ngClass]="section == 'STEP_1' ? 'show' : 'hide'"> 
+              <p class="card-category">Select an object and a CSV or ZIP file containing records to insert, or choose to insert a single record. Zipped requests must contain a CSV or XML-formatted manifest called request.txt, which may reference included binary files.</p>
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="object">Object Type</label>
+                      <select class="form-control" id="object" >
+                        <option *ngFor="let item of objects; let i = index">{{item.viewValue}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="exampleRadios" value="option2" checked=""> Single Radio
+                        <span class="circle">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+    
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="exampleRadios" value="option2" checked=""> From file
+                        <span class="circle">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+    
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary pull-left" (click)="handleNext()">Next</button>                    
+                    </div>
+                </div>
+              
+                <div class="clearfix"></div>
+              <!-- </form> -->
+          </section>
+           <!-- Step 1 Ends-->
+               <!-- Step 2 Starts-->
+          <section [ngClass]="section == 'STEP_2' ? 'show' : 'hide'">
+              <p class="card-category">
+                  Provide values for the Account fields below:
+              </p>  
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <tr>
+                      <th>Field</th>
+                      <th>Value</th>
+                      <th>Smart Lookup</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of fields; let i = index">
+                        <td>{{item.viewValue}}</td>
+                        <td><input type="text" class="form-control" value="{{item.fieldValue}}"></td>
+                        <td></td>
+                    </tr>                   
+                  </tbody>
+                </table>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <button type="button" class="btn btn-primary pull-left" (click)="handlConfirm()">Next</button>                    
+                  </div>
+              </div>
+          </section>
+                <!-- Step 2 Ends-->
+        </div>
+      </div>
+    </div>
+  </div>

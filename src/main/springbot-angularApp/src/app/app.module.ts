@@ -14,6 +14,8 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
 import { DeleteQueryComponent } from './components/delete-query/delete-query.component';
+import { InsertComponentComponent } from './components/insert-component/insert-component.component';
+import { UpsertComponentComponent } from './components/upsert-component/upsert-component.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -29,7 +31,9 @@ import { RestService } from './rest/rest.service';
     HomeLayoutComponent,
     LoginLayoutComponent,
     SoqlQueryComponent,
-    DeleteQueryComponent
+    DeleteQueryComponent,
+    InsertComponentComponent,
+    UpsertComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
 import { DeleteQueryComponent } from './components/delete-query/delete-query.component';
+import {InsertComponentComponent} from './components/insert-component/insert-component.component';
+import {UpsertComponentComponent} from './components/upsert-component/upsert-component.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -53,6 +55,26 @@ const routes: Routes = [
 			{
 				path: 'delete-query',
 				component: DeleteQueryComponent
+			}
+		]
+	},{ 
+		path: '', 
+		component: HomeLayoutComponent, 
+		//canActivate: [AuthGuard],
+		children: [
+			{
+				path: 'insert',
+				component: InsertComponentComponent
+			}
+		]
+	},{ 
+		path: '', 
+		component: HomeLayoutComponent, 
+		//canActivate: [AuthGuard],
+		children: [
+			{
+				path: 'upsert',
+				component: UpsertComponentComponent
 			}
 		]
 	}
