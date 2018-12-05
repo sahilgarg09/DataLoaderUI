@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { User } from './user';
 
-
+import { RestService } from '../rest/rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +16,29 @@ export class AuthService {
 		return this.loggedIn.asObservable(); 
 	}
 
-  constructor(private router: Router) {
+  constructor(private rest: RestService,private router: Router) {
   	
   }
 
   login(user: User){
     console.log(user);
-    if (user.email !== '' && user.password !== '' ) { 
-      this.loggedIn.next(true);
-      this.router.navigate(['/dashboard']);
+    console.log('----------------------------------------------')
+    if (user.email !== '' && user.password !== '' && user.env !== 'Enviournment' && user.api !== 'Api Version' ) {
+      this.rest.login(user).subscribe((result) => {
+      
+		    var pathArray = result.metadataServerUrl.split('/');
+			var protocol = pathArray[0];
+			var host = pathArray[2];
+			 
+			result.baseURL = protocol + '//' + host;
+			result.version = user.api;
+			sessionStorage.setItem('env1',JSON.stringify(loader));
+		  	sessionStorage.setItem('selected','env1');
+		  
+		  	this.router.navigate(['/dashboard'])
+	    }, (err) => {
+	      console.log(err);
+	    });
     }
   }
 

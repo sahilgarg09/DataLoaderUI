@@ -45,6 +45,8 @@ export class SoqlQueryComponent implements OnInit {
   	private fb: FormBuilder
   ) { }
 
+  soql_query : String = 'SELECT Id FROM Account';
+
   objects: Objects[] = [
     {value: '', viewValue: 'Select an Object'},
     {value: 'AcceptedEventRelation', viewValue: 'AcceptedEventRelation'},

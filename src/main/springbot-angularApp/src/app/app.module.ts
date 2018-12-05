@@ -14,6 +14,10 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { RestService } from './rest/rest.service';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +32,11 @@ import { SoqlQueryComponent } from './components/soql-query/soql-query.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
