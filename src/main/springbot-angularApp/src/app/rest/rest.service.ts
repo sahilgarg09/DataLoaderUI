@@ -37,63 +37,6 @@ login (user: User): Observable<any> {
   );
 }
 
-query (query_string: String): Observable<any> {
-	var selectedEnv = sessionStorage.getItem('selected');
-	var session = JSON.parse(sessionStorage.getItem(selectedEnv));
-	
-	var headerOptions = {
-	  headers: new HttpHeaders({
-					'Content-Type' : 'application/json',
-					'baseURL' : session.baseURL,
-					'version' : session.version,
-					'sessionId' : session.sessionId,
-					'query' : query_string
-				})
-	};
-  return this.http.post(endpoint + soql_endpoint, '' ,headerOptions).pipe(
-    tap((product) => console.log('soql response')),
-    catchError(this.handleError<any>('addProduct'))
-  );
-}
-
-query_more (moreUrl: String): Observable<any> {
-	var headerOptions = {
-	  headers: new HttpHeaders({
-					'Content-Type' : 'application/json',
-					'username' : env.email,
-					'password' : env.password,
-					'version' : env.api+'.0',
-					'orgtype' : env.env.toUpperCase(),
-					"Access-Control-Allow-Credentials" : "true",
-            		"Access-Control-Allow-Origin" : '*'
-				})
-	};  
-	// const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
-  return this.http.post(endpoint + login_endpoint, '' ,headerOptions).pipe(
-    tap((product) => console.log('Don')),
-    catchError(this.handleError<any>('addProduct'))
-  );
-}
-
-insert (jsonRecords: String): Observable<any> {
-	var headerOptions = {
-	  headers: new HttpHeaders({
-					'Content-Type' : 'application/json',
-					'username' : env.email,
-					'password' : env.password,
-					'version' : env.api+'.0',
-					'orgtype' : env.env.toUpperCase(),
-					"Access-Control-Allow-Credentials" : "true",
-            		"Access-Control-Allow-Origin" : '*'
-				})
-	};  
-	// const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
-  return this.http.post(endpoint + login_endpoint, '' ,headerOptions).pipe(
-    tap((product) => console.log('Don')),
-    catchError(this.handleError<any>('addProduct'))
-  );
-}
-
 private handleError<T> (operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
 

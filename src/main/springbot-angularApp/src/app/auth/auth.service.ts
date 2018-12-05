@@ -32,7 +32,7 @@ export class AuthService {
 			 
 			result.baseURL = protocol + '//' + host;
 			result.version = user.api;
-			sessionStorage.setItem('env1',JSON.stringify(loader));
+			sessionStorage.setItem('env1',JSON.stringify(result));
 		  	sessionStorage.setItem('selected','env1');
 		  
 		  	this.router.navigate(['/dashboard'])
