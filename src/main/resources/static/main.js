@@ -43,6 +43,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/delete-query/delete-query.component */ "./src/app/components/delete-query/delete-query.component.ts");
 /* harmony import */ var _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/insert-component/insert-component.component */ "./src/app/components/insert-component/insert-component.component.ts");
 /* harmony import */ var _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/upsert-component/upsert-component.component */ "./src/app/components/upsert-component/upsert-component.component.ts");
+/* harmony import */ var _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/user-profile/user-profile.component */ "./src/app/components/user-profile/user-profile.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,6 +57,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 //Add components
+
 
 
 
@@ -80,6 +82,16 @@ var routes = [
             {
                 path: 'dashboard',
                 component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_5__["DashboardComponent"]
+            }
+        ]
+    }, {
+        path: '',
+        component: _layouts_home_layout_home_layout_component__WEBPACK_IMPORTED_MODULE_3__["HomeLayoutComponent"],
+        //canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'user-profile',
+                component: _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_10__["UserProfileComponent"]
             }
         ]
     }, {
@@ -151,7 +163,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9hcHAuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -228,15 +240,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/delete-query/delete-query.component */ "./src/app/components/delete-query/delete-query.component.ts");
 /* harmony import */ var _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/insert-component/insert-component.component */ "./src/app/components/insert-component/insert-component.component.ts");
 /* harmony import */ var _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/upsert-component/upsert-component.component */ "./src/app/components/upsert-component/upsert-component.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./rest/rest.service */ "./src/app/rest/rest.service.ts");
+/* harmony import */ var _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/user-profile/user-profile.component */ "./src/app/components/user-profile/user-profile.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./rest/rest.service */ "./src/app/rest/rest.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -271,16 +285,17 @@ var AppModule = /** @class */ (function () {
                 _components_soql_query_soql_query_component__WEBPACK_IMPORTED_MODULE_12__["SoqlQueryComponent"],
                 _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_13__["DeleteQueryComponent"],
                 _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_14__["InsertComponentComponent"],
-                _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__["UpsertComponentComponent"]
+                _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__["UpsertComponentComponent"],
+                _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__["UserProfileComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_16__["HttpClientModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_17__["HttpModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_18__["HttpModule"]
             ],
-            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_18__["RestService"]],
+            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_19__["RestService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
@@ -430,7 +445,7 @@ var AuthService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJkYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -441,7 +456,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">Create Quesy</h4>\r\n        <p class=\"card-category\">Select options</p>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <!--<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">-->\r\n          <div class=\"row\">\r\n            <div class=\"col-md-5\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Company (disabled)</label>\r\n                <input type=\"text\" class=\"form-control\" disabled>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Username</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Email address</label>\r\n                <input type=\"email\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Fist Name</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Last Name</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Adress</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">City</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Country</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\">Postal Code</label>\r\n                <input type=\"text\" class=\"form-control\">\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <div class=\"form-group\">\r\n                <label>About Me</label>\r\n                <div class=\"form-group\">\r\n                  <label class=\"bmd-label-floating\"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>\r\n                  <textarea class=\"form-control\" rows=\"5\"></textarea>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <button type=\"submit\" class=\"btn btn-primary pull-right\">Update Profile</button>\r\n          <div class=\"clearfix\"></div>\r\n        <!--</form>-->\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <!--<div class=\"col-md-4\">\r\n<div class=\"card card-profile\">\r\n<div class=\"card-avatar\">\r\n<a href=\"#pablo\">\r\n  <img class=\"img\" src=\"/assets/img/faces/marc.jpg\" />\r\n</a>\r\n</div>\r\n<div class=\"card-body\">\r\n<h6 class=\"card-category text-gray\">CEO / Co-Founder</h6>\r\n<h4 class=\"card-title\">Alec Thompson</h4>\r\n<p class=\"card-description\">\r\n  Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...\r\n</p>\r\n<a href=\"#pablo\" class=\"btn btn-primary btn-round\">Follow</a>\r\n</div>\r\n</div>\r\n</div>-->\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">Dashboard</h4>        \r\n      </div>\r\n      <div class=\"card-body\">\r\n        <!--<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">-->\r\n         <div>Data loading...</div>\r\n        <!--</form>-->\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <!--<div class=\"col-md-4\">\r\n<div class=\"card card-profile\">\r\n<div class=\"card-avatar\">\r\n<a href=\"#pablo\">\r\n  <img class=\"img\" src=\"/assets/img/faces/marc.jpg\" />\r\n</a>\r\n</div>\r\n<div class=\"card-body\">\r\n<h6 class=\"card-category text-gray\">CEO / Co-Founder</h6>\r\n<h4 class=\"card-title\">Alec Thompson</h4>\r\n<p class=\"card-description\">\r\n  Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...\r\n</p>\r\n<a href=\"#pablo\" class=\"btn btn-primary btn-round\">Follow</a>\r\n</div>\r\n</div>\r\n</div>-->\r\n</div>"
 
 /***/ }),
 
@@ -493,7 +508,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card .card-body .form-group.serialCode{\r\n    margin: 0 0 27px 0;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kZWxldGUtcXVlcnkvZGVsZXRlLXF1ZXJ5LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxtQkFBbUI7Q0FDdEIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2RlbGV0ZS1xdWVyeS9kZWxldGUtcXVlcnkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXJkIC5jYXJkLWJvZHkgLmZvcm0tZ3JvdXAuc2VyaWFsQ29kZXtcclxuICAgIG1hcmdpbjogMCAwIDI3cHggMDtcclxufSJdfQ== */"
+module.exports = ".card .card-body .form-group.serialCode{\r\n    margin: 0 0 27px 0;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRlbGV0ZS1xdWVyeS9kZWxldGUtcXVlcnkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG1CQUFtQjtDQUN0QiIsImZpbGUiOiJkZWxldGUtcXVlcnkvZGVsZXRlLXF1ZXJ5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZCAuY2FyZC1ib2R5IC5mb3JtLWdyb3VwLnNlcmlhbENvZGV7XHJcbiAgICBtYXJnaW46IDAgMCAyN3B4IDA7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -563,7 +578,7 @@ var DeleteQueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9pbnNlcnQtY29tcG9uZW50L2luc2VydC1jb21wb25lbnQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7Q0FDakI7QUFDRDtJQUNJLGVBQWU7Q0FDbEI7QUFDRDtJQUNJLFdBQVc7Q0FDZCIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaW5zZXJ0LWNvbXBvbmVudC9pbnNlcnQtY29tcG9uZW50LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGlkZXtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuLnNob3d7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxufVxyXG4ud2lkdGgtMzBwZXJ7XHJcbiAgICB3aWR0aDogMzAlO1xyXG59Il19 */"
+module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluc2VydC1jb21wb25lbnQvaW5zZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksV0FBVztDQUNkIiwiZmlsZSI6Imluc2VydC1jb21wb25lbnQvaW5zZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhpZGV7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbi5zaG93e1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuLndpZHRoLTMwcGVye1xyXG4gICAgd2lkdGg6IDMwJTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -651,7 +666,7 @@ var InsertComponentComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "select.form-control {\r\n    -webkit-appearance: menulist;\r\n       -moz-appearance: menulist;\r\n            appearance: menulist;\r\n}\r\nselect:invalid { color: #AAAAAA; }\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n.login-container .submit-login-btn {\r\n    justify-content: flex-end;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksNkJBQXFCO09BQXJCLDBCQUFxQjtZQUFyQixxQkFBcUI7Q0FDeEI7QUFDRCxpQkFBaUIsZUFBZSxFQUFFO0FBRWxDO0lBQ0ksY0FBYztJQUNkLHdCQUF3QjtDQUMzQjtBQUVEO0lBQ0ksMEJBQTBCO0NBQzdCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsic2VsZWN0LmZvcm0tY29udHJvbCB7XHJcbiAgICBhcHBlYXJhbmNlOiBtZW51bGlzdDtcclxufVxyXG5zZWxlY3Q6aW52YWxpZCB7IGNvbG9yOiAjQUFBQUFBOyB9XHJcblxyXG4uY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG5cclxuLmxvZ2luLWNvbnRhaW5lciAuc3VibWl0LWxvZ2luLWJ0biB7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xyXG59Il19 */"
+module.exports = "select.form-control {\r\n    -webkit-appearance: menulist;\r\n       -moz-appearance: menulist;\r\n            appearance: menulist;\r\n}\r\nselect:invalid { color: #AAAAAA; }\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n.login-container .submit-login-btn {\r\n    justify-content: flex-end;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luL2xvZ2luLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2QkFBcUI7T0FBckIsMEJBQXFCO1lBQXJCLHFCQUFxQjtDQUN4QjtBQUNELGlCQUFpQixlQUFlLEVBQUU7QUFFbEM7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCO0FBRUQ7SUFDSSwwQkFBMEI7Q0FDN0IiLCJmaWxlIjoibG9naW4vbG9naW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInNlbGVjdC5mb3JtLWNvbnRyb2wge1xyXG4gICAgYXBwZWFyYW5jZTogbWVudWxpc3Q7XHJcbn1cclxuc2VsZWN0OmludmFsaWQgeyBjb2xvcjogI0FBQUFBQTsgfVxyXG5cclxuLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuXHJcbi5sb2dpbi1jb250YWluZXIgLnN1Ym1pdC1sb2dpbi1idG4ge1xyXG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -745,7 +760,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.sidebar .nav li>a.selected:hover, .sidebar .nav li>a.selected:focus, .sidebar .nav li>a.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.textTransform p{\r\n    text-transform: initial;\r\n}\r\n.sidebar .logo .simple-text{\r\n    font-weight: bold;\r\n    text-transform: initial;\r\n    font-size: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2YmFyL3NpZGVuYXZiYXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLDBCQUEwQjtJQUMxQixhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSwwQkFBMEI7SUFDMUIsYUFBYTtDQUNoQjtBQUNEO0lBQ0ksd0JBQXdCO0NBQzNCO0FBQ0Q7SUFDSSxrQkFBa0I7SUFDbEIsd0JBQXdCO0lBQ3hCLGdCQUFnQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2lkZW5hdmJhci9zaWRlbmF2YmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubmF2LWxpbmsuc2VsZWN0ZWR7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjYWI0N2JjO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcbi5zaWRlYmFyIC5uYXYgbGk+YS5zZWxlY3RlZDpob3ZlciwgLnNpZGViYXIgLm5hdiBsaT5hLnNlbGVjdGVkOmZvY3VzLCAuc2lkZWJhciAubmF2IGxpPmEuc2VsZWN0ZWR7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjYWI0N2JjO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcbi50ZXh0VHJhbnNmb3JtIHB7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcclxufVxyXG4uc2lkZWJhciAubG9nbyAuc2ltcGxlLXRleHR7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIHRleHQtdHJhbnNmb3JtOiBpbml0aWFsO1xyXG4gICAgZm9udC1zaXplOiAzMHB4O1xyXG59Il19 */"
+module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.sidebar .nav li>a.selected:hover, .sidebar .nav li>a.selected:focus, .sidebar .nav li>a.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.textTransform p{\r\n    text-transform: initial;\r\n}\r\n.sidebar .logo .simple-text{\r\n    font-weight: bold;\r\n    text-transform: initial;\r\n    font-size: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNpZGVuYXZiYXIvc2lkZW5hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMEJBQTBCO0lBQzFCLGFBQWE7Q0FDaEI7QUFDRDtJQUNJLDBCQUEwQjtJQUMxQixhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSx3QkFBd0I7Q0FDM0I7QUFDRDtJQUNJLGtCQUFrQjtJQUNsQix3QkFBd0I7SUFDeEIsZ0JBQWdCO0NBQ25CIiwiZmlsZSI6InNpZGVuYXZiYXIvc2lkZW5hdmJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdi1saW5rLnNlbGVjdGVke1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2FiNDdiYztcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4uc2lkZWJhciAubmF2IGxpPmEuc2VsZWN0ZWQ6aG92ZXIsIC5zaWRlYmFyIC5uYXYgbGk+YS5zZWxlY3RlZDpmb2N1cywgLnNpZGViYXIgLm5hdiBsaT5hLnNlbGVjdGVke1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2FiNDdiYztcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4udGV4dFRyYW5zZm9ybSBwe1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGluaXRpYWw7XHJcbn1cclxuLnNpZGViYXIgLmxvZ28gLnNpbXBsZS10ZXh0e1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcclxuICAgIGZvbnQtc2l6ZTogMzBweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -756,7 +771,7 @@ module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n      <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n      <div class=\"logo\">\r\n        <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n          ForceLoader\r\n        </a>\r\n      </div>\r\n      <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n        <ul class=\"nav\">\r\n          <li class=\"nav-item \">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n              <i class=\"material-icons\">dashboard</i>\r\n              <p>Dashboard</p>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n              <i class=\"material-icons\">person</i>\r\n              <p>User Profile</p>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" data-toggle=\"collapse\" [routerLink]=\"['/soql-query']\">\r\n              <i class=\"material-icons\">library_books</i>\r\n              <p>Data Manipulations</p>\r\n            </a>\r\n            <div class=\"collapse show\" id=\"mapsExamples\">\r\n              <ul class=\"nav\">\r\n                <li class=\"nav-item\"\r\n                *ngFor=\"let query of queries\"                \r\n                (click)=\"onSelectLink(query)\">\r\n                  <a class=\"nav-link\"\r\n                  [class.selected]=\"query === selectedQuery\"\r\n                  [routerLink]=\"[query.url]\"\r\n                  > \r\n                    <span class=\"sidebar-mini\">{{query.shortName}}</span>                   \r\n                    <span class=\"sidebar-normal\">{{query.name}}</span>\r\n                  </a>\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n              <a class=\"nav-link textTransform\" data-toggle=\"collapse\" >\r\n                <i class=\"material-icons\">arrow_right_alt</i>\r\n                <p>Org to Org Transfer</p>\r\n              </a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>"
+module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n      <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n      <div class=\"logo\">\r\n        <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n          ForceLoader\r\n        </a>\r\n      </div>\r\n      <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n        <ul class=\"nav\">\r\n          <li class=\"nav-item \">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n              <i class=\"material-icons\">dashboard</i>\r\n              <p>Dashboard</p>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/user-profile']\">\r\n              <i class=\"material-icons\">person</i>\r\n              <p>User Profile</p>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" data-toggle=\"collapse\" [routerLink]=\"['/soql-query']\">\r\n              <i class=\"material-icons\">library_books</i>\r\n              <p>Data Manipulations</p>\r\n            </a>\r\n            <div class=\"collapse show\" id=\"mapsExamples\">\r\n              <ul class=\"nav\">\r\n                <li class=\"nav-item\"\r\n                *ngFor=\"let query of queries\"                \r\n                (click)=\"onSelectLink(query)\">\r\n                  <a class=\"nav-link\"\r\n                  [class.selected]=\"query === selectedQuery\"\r\n                  [routerLink]=\"[query.url]\"\r\n                  > \r\n                    <span class=\"sidebar-mini\">{{query.shortName}}</span>                   \r\n                    <span class=\"sidebar-normal\">{{query.name}}</span>\r\n                  </a>\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n              <a class=\"nav-link textTransform\" data-toggle=\"collapse\" >\r\n                <i class=\"material-icons\">arrow_right_alt</i>\r\n                <p>Org to Org Transfer</p>\r\n              </a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>"
 
 /***/ }),
 
@@ -824,7 +839,7 @@ var Query = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mar-btm-8{\r\n    margin-bottom: 8px;\r\n}\r\n.multiple-fields{\r\n    min-height: 150px;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zb3FsLXF1ZXJ5L3NvcWwtcXVlcnkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG1CQUFtQjtDQUN0QjtBQUNEO0lBQ0ksa0JBQWtCO0NBQ3JCO0FBQ0Q7SUFDSSw4QkFBOEI7Q0FDakMiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NvcWwtcXVlcnkvc29xbC1xdWVyeS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hci1idG0tOHtcclxuICAgIG1hcmdpbi1ib3R0b206IDhweDtcclxufVxyXG4ubXVsdGlwbGUtZmllbGRze1xyXG4gICAgbWluLWhlaWdodDogMTUwcHg7XHJcbn1cclxuaW5wdXQuZm9ybS1jb250cm9se1xyXG4gICAgaGVpZ2h0OiBjYWxjKDIuNDM3NXJlbSArIDJweCk7XHJcbn0iXX0= */"
+module.exports = ".mar-btm-8{\r\n    margin-bottom: 8px;\r\n}\r\n.multiple-fields{\r\n    min-height: 150px;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.confirmButtonClass{\r\n    color: #fff;\r\n    background-color: #9c27b0;\r\n    border-color: #9c27b0;\r\n    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);\r\n}\r\n.swal2-popup .swal2-styled.swal2-confirm {\r\n    border: 0;\r\n    border-radius: .25em;\r\n    background: initial;\r\n    background-color: #9c27b0;\r\n    color: #fff;\r\n    font-size: 1.0625em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNvcWwtcXVlcnkvc29xbC1xdWVyeS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0NBQ3RCO0FBQ0Q7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLDhCQUE4QjtDQUNqQztBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksWUFBWTtJQUNaLDBCQUEwQjtJQUMxQixzQkFBc0I7SUFDdEIsK0hBQStIO0NBQ2xJO0FBQ0Q7SUFDSSxVQUFVO0lBQ1YscUJBQXFCO0lBQ3JCLG9CQUFvQjtJQUNwQiwwQkFBMEI7SUFDMUIsWUFBWTtJQUNaLG9CQUFvQjtDQUN2QiIsImZpbGUiOiJzb3FsLXF1ZXJ5L3NvcWwtcXVlcnkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXItYnRtLTh7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA4cHg7XHJcbn1cclxuLm11bHRpcGxlLWZpZWxkc3tcclxuICAgIG1pbi1oZWlnaHQ6IDE1MHB4O1xyXG59XHJcbmlucHV0LmZvcm0tY29udHJvbHtcclxuICAgIGhlaWdodDogY2FsYygyLjQzNzVyZW0gKyAycHgpO1xyXG59XHJcbi5oaWRle1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG4uc2hvd3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbi5jb25maXJtQnV0dG9uQ2xhc3N7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM5YzI3YjA7XHJcbiAgICBib3JkZXItY29sb3I6ICM5YzI3YjA7XHJcbiAgICBib3gtc2hhZG93OiAwIDJweCAycHggMCByZ2JhKDE1NiwgMzksIDE3NiwgMC4xNCksIDAgM3B4IDFweCAtMnB4IHJnYmEoMTU2LCAzOSwgMTc2LCAwLjIpLCAwIDFweCA1cHggMCByZ2JhKDE1NiwgMzksIDE3NiwgMC4xMik7XHJcbn1cclxuLnN3YWwyLXBvcHVwIC5zd2FsMi1zdHlsZWQuc3dhbDItY29uZmlybSB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiAuMjVlbTtcclxuICAgIGJhY2tncm91bmQ6IGluaXRpYWw7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOWMyN2IwO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBmb250LXNpemU6IDEuMDYyNWVtO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -835,7 +850,7 @@ module.exports = ".mar-btm-8{\r\n    margin-bottom: 8px;\r\n}\r\n.multiple-field
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">SOQL Query</h4>\r\n        <p class=\"card-category\">Choose the object, fields, and criteria to build a SOQL query below:</p>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <!-- <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\"> -->\r\n          <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"object\">Object</label>\r\n                <select class=\"form-control\" id=\"object\">\r\n                  <option *ngFor=\"let item of objects; let i = index\">{{item.viewValue}}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"fields\">Fields</label>\r\n                <select multiple class=\"form-control multiple-fields custom-select\" id=\"fields\">\r\n                  <option *ngFor=\"let item of fields; let i = index\">{{item.viewValue}}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-9\">\r\n              <div class=\"row align-items-end\">\r\n\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"sortByFields\">Sorts results by</label>\r\n                    <select class=\"form-control\" id=\"sortByFields\">\r\n                      <option *ngFor=\"let item of sortBy; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"sortOrder\">Sort</label>\r\n                    <select class=\"form-control\" id=\"sortOrder\">\r\n                      <option>A to Z</option>\r\n                      <option>Z to A</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">                    \r\n                    <label class=\"bmd-label-floating\" for=\"nullPosition\">Null</label>\r\n                    <select class=\"form-control\" id=\"nullPosition\">\r\n                      <option *ngFor=\"let item of nulls; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"maxRecords\">Max Records</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"maxRecords\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n              <div class=\"row align-items-end\">\r\n\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"filterByFields\">Filter results by</label>\r\n                    <select class=\"form-control\" id=\"filterByFields\">\r\n                      <option *ngFor=\"let item of filterBy; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"operator\">Operator</label>\r\n                    <select class=\"form-control\" id=\"operator\">\r\n                      <option *ngFor=\"let item of operators; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"fieldValue\">Field Value</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"fieldValue\">\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"queryEditor\">Enter or modify a SOQL query below:</label>\r\n                <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\"></textarea>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n              <div class=\"col-md-12\">\r\n                  <button type=\"button\" (click)=\"querySOQL()\" class=\"btn btn-primary pull-left\">Query</button>\r\n                  <button type=\"button\" class=\"btn btn-primar pull-right\">Export to CSV</button>\r\n              </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        <!-- </form> -->\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<section class=\"query-section\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">SOQL Query</h4>\r\n          <p class=\"card-category\">Choose the object, fields, and criteria to build a SOQL query below:</p>\r\n        </div>\r\n        <div class=\"card-body\">\r\n          <!-- <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\"> -->\r\n          <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"object\">Object</label>\r\n                <select class=\"form-control\" id=\"object\" (change)=\"objectChangeHandler($event)\">\r\n                  <option *ngFor=\"let item of objects; let i = index\" [ngValue]=\"item\">{{item.viewValue}}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"fields\">Fields</label>\r\n                <select class=\"form-control multiple-fields custom-select\" id=\"fields\"\r\n                [multiple] = true\r\n                (change)=\"fieldsChangeHandler($event)\">\r\n                  <option *ngFor=\"let item of fields; let i = index\">{{item.viewValue}}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-9\">\r\n              <div class=\"row align-items-end\">\r\n\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"sortByFields\">Sorts results by</label>\r\n                    <select class=\"form-control\" id=\"sortByFields\">\r\n                      <option *ngFor=\"let item of sortBy; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"sortOrder\">Sort</label>\r\n                    <select class=\"form-control\" id=\"sortOrder\">\r\n                      <option>A to Z</option>\r\n                      <option>Z to A</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"nullPosition\">Null</label>\r\n                    <select class=\"form-control\" id=\"nullPosition\">\r\n                      <option *ngFor=\"let item of nulls; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"maxRecords\">Max Records</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"maxRecords\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n              <div class=\"row align-items-end\">\r\n\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"filterByFields\">Filter results by</label>\r\n                    <select class=\"form-control\" id=\"filterByFields\">\r\n                      <option *ngFor=\"let item of filterBy; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"operator\">Operator</label>\r\n                    <select class=\"form-control\" id=\"operator\">\r\n                      <option *ngFor=\"let item of operators; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"fieldValue\">Field Value</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"fieldValue\">\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"queryEditor\">Enter or modify a SOQL query below:</label>\r\n                <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\">{{query_string}}</textarea>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" (click)=\"querySOQL()\" class=\"btn btn-primary pull-left\">Query</button>\r\n              <button type=\"button\" class=\"btn btn-primar pull-right\">Export to CSV</button>\r\n            </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n          <!-- </form> -->\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"query-result-section\" [ngClass]=\"show_result == true ? 'show' : 'hide'\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">Query Result</h4>\r\n        </div>\r\n        <div class=\"card-body\">\r\n          <p class=\"card-category\">\r\n            Returned records 1 - 3 of 3 total records:\r\n          </p>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table\">\r\n                      <thead class=\"text-primary\">\r\n                        <tr>\r\n                          <th *ngFor=\"let item of resultsFields; let i = index\">{{item.viewValue}}</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                              <td>1</td>\r\n                              <td>Aman</td>\r\n                              <td>9876543210</td>\r\n                              <td>Bangalore</td>\r\n                            </tr>\r\n                        <tr>\r\n                          <td>2</td>\r\n                          <td>Ashutosh</td>\r\n                          <td>7795338870</td>\r\n                          <td>Bangalore</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>3</td>\r\n                            <td>Harsh</td>\r\n                            <td>7878656543</td>\r\n                            <td>Bangalore</td>\r\n                          </tr>\r\n                      </tbody>\r\n                    </table>\r\n                  </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n              <div class=\"col-md-12\">\r\n                <button type=\"button\" (click)=\"toggleModal()\" class=\"btn btn-primary pull-right\">View Detailed Report</button>                \r\n              </div>\r\n            </div>\r\n\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n\r\n<!-- <div class=\"swal2-container swal2-center swal2-fade swal2-shown\" style=\"overflow-y: auto;\"\r\n[ngClass]=\"show_DetailModal == true ? 'show' : 'hide'\">\r\n    <div aria-labelledby=\"swal2-title\" aria-describedby=\"swal2-content\" class=\"swal2-popup swal2-modal swal2-show\" tabindex=\"-1\" role=\"dialog\" aria-live=\"assertive\" aria-modal=\"true\" style=\"display: flex;\">\r\n      <div class=\"swal2-header\">\r\n          <h2 class=\"swal2-title\" id=\"swal2-title\">Detail Record</h2>\r\n          </div>\r\n      <div class=\"swal2-content\"></div>\r\n      <div class=\"swal2-actions\" style=\"display: flex;\">\r\n          <button type=\"button\" (click)=\"toggleModal()\" class=\"swal2-confirm btn btn-info\" aria-label=\"\">Close</button>\r\n      </div>\r\n      <div class=\"swal2-footer\">          \r\n      </div>\r\n    </div>\r\n\r\n</div>\r\n-->"
 
 /***/ }),
 
@@ -851,6 +866,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SoqlQueryComponent", function() { return SoqlQueryComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -862,6 +879,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+//import {MatSelect, MatFormField, MatOption} from '@angular/material';
+
 /*@NgModule({
   imports: [MatFormField, MatSelect, MatOption],
   exports: [MatFormField, MatSelect, MatOption],
@@ -870,6 +889,10 @@ var SoqlQueryComponent = /** @class */ (function () {
     function SoqlQueryComponent(fb) {
         this.fb = fb;
         this.soql_query = 'SELECT Id FROM Account';
+        this.show_result = false;
+        this.show_DetailModal = false;
+        this.query_string = '';
+        this.query_object = {};
         this.objects = [
             { value: '', viewValue: 'Select an Object' },
             { value: 'AcceptedEventRelation', viewValue: 'AcceptedEventRelation' },
@@ -908,11 +931,37 @@ var SoqlQueryComponent = /** @class */ (function () {
             { value: 'AccountType__c', viewValue: 'AccountType__c' },
             { value: 'Account__ID__c', viewValue: 'Account__ID__c' }
         ];
+        this.resultsFields = [
+            { value: 'Account__ID', viewValue: 'ID' },
+            { value: 'Name', viewValue: 'Name' },
+            { value: 'Cellphone', viewValue: 'Cellphone' },
+            { value: 'City', viewValue: 'City' },
+        ];
     }
     SoqlQueryComponent.prototype.ngOnInit = function () {
         this.form = this.fb.group({
             password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
         });
+    };
+    SoqlQueryComponent.prototype.querySOQL = function () {
+        this.show_result = true;
+    };
+    SoqlQueryComponent.prototype.toggleModal = function () {
+        //this.show_DetailModal =  !this.show_DetailModal;
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
+            title: 'Detail Report',
+            confirmButtonText: 'Close',
+            confirmButtonClass: 'confirmButtonClass'
+        });
+    };
+    SoqlQueryComponent.prototype.objectChangeHandler = function (event) {
+        this.query_string = 'SELECT * FROM ' + event.target.value;
+        this.query_object['object'] = event.target.value;
+    };
+    SoqlQueryComponent.prototype.fieldsChangeHandler = function (event) {
+        console.log("event.target.value", event.target, event);
+        this.query_string = 'SELECT ' + event.target.value + ' FROM ' + this.query_object['object'];
+        this.query_object['fields'] = event.target.value;
     };
     SoqlQueryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -936,7 +985,7 @@ var SoqlQueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy91cHNlcnQtY29tcG9uZW50L3Vwc2VydC1jb21wb25lbnQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7Q0FDakI7QUFDRDtJQUNJLGVBQWU7Q0FDbEI7QUFDRDtJQUNJLFdBQVc7Q0FDZCIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdXBzZXJ0LWNvbXBvbmVudC91cHNlcnQtY29tcG9uZW50LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGlkZXtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuLnNob3d7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxufVxyXG4ud2lkdGgtMzBwZXJ7XHJcbiAgICB3aWR0aDogMzAlO1xyXG59Il19 */"
+module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVwc2VydC1jb21wb25lbnQvdXBzZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksV0FBVztDQUNkIiwiZmlsZSI6InVwc2VydC1jb21wb25lbnQvdXBzZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhpZGV7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbi5zaG93e1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuLndpZHRoLTMwcGVye1xyXG4gICAgd2lkdGg6IDMwJTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -1017,6 +1066,69 @@ var UpsertComponentComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/user-profile/user-profile.component.css":
+/*!********************************************************************!*\
+  !*** ./src/app/components/user-profile/user-profile.component.css ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLXByb2ZpbGUvdXNlci1wcm9maWxlLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/components/user-profile/user-profile.component.html":
+/*!*********************************************************************!*\
+  !*** ./src/app/components/user-profile/user-profile.component.html ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"card\">\n        <div class=\"card-header card-header-primary\">\n          <h4 class=\"card-title\">User Profile</h4>        \n        </div>\n        <div class=\"card-body\">\n          <!--<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">-->\n           <div>Profile loading...</div>\n          <!--</form>-->\n        </div>\n      </div>\n    </div>"
+
+/***/ }),
+
+/***/ "./src/app/components/user-profile/user-profile.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/user-profile/user-profile.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: UserProfileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserProfileComponent", function() { return UserProfileComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var UserProfileComponent = /** @class */ (function () {
+    function UserProfileComponent() {
+    }
+    UserProfileComponent.prototype.ngOnInit = function () {
+    };
+    UserProfileComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user-profile',
+            template: __webpack_require__(/*! ./user-profile.component.html */ "./src/app/components/user-profile/user-profile.component.html"),
+            styles: [__webpack_require__(/*! ./user-profile.component.css */ "./src/app/components/user-profile/user-profile.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], UserProfileComponent);
+    return UserProfileComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/layouts/home-layout/home-layout.component.css":
 /*!***************************************************************!*\
   !*** ./src/app/layouts/home-layout/home-layout.component.css ***!
@@ -1024,7 +1136,7 @@ var UpsertComponentComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".main-panel>.content{\r\n    margin-top: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0cy9ob21lLWxheW91dC9ob21lLWxheW91dC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksaUJBQWlCO0NBQ3BCIiwiZmlsZSI6InNyYy9hcHAvbGF5b3V0cy9ob21lLWxheW91dC9ob21lLWxheW91dC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW4tcGFuZWw+LmNvbnRlbnR7XHJcbiAgICBtYXJnaW4tdG9wOiAzMHB4O1xyXG59Il19 */"
+module.exports = ".main-panel>.content{\r\n    margin-top: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2xheW91dHMvaG9tZS1sYXlvdXQvaG9tZS1sYXlvdXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlCQUFpQjtDQUNwQiIsImZpbGUiOiIuLi9sYXlvdXRzL2hvbWUtbGF5b3V0L2hvbWUtbGF5b3V0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWFpbi1wYW5lbD4uY29udGVudHtcclxuICAgIG1hcmdpbi10b3A6IDMwcHg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1087,7 +1199,7 @@ var HomeLayoutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".main-panel {\r\n    float: none;\r\n    width: 100%;\r\n}\r\n\r\n.content {\r\n    margin-top: 0;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0cy9sb2dpbi1sYXlvdXQvbG9naW4tbGF5b3V0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osWUFBWTtDQUNmOztBQUVEO0lBQ0ksY0FBYztDQUNqQjs7QUFDRDtJQUNJLGNBQWM7SUFDZCx3QkFBd0I7Q0FDM0IiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXRzL2xvZ2luLWxheW91dC9sb2dpbi1sYXlvdXQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluLXBhbmVsIHtcclxuICAgIGZsb2F0OiBub25lO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5jb250ZW50IHtcclxuICAgIG1hcmdpbi10b3A6IDA7XHJcbn1cclxuLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn0iXX0= */"
+module.exports = ".main-panel {\r\n    float: none;\r\n    width: 100%;\r\n}\r\n\r\n.content {\r\n    margin-top: 0;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2xheW91dHMvbG9naW4tbGF5b3V0L2xvZ2luLWxheW91dC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLGNBQWM7Q0FDakI7O0FBQ0Q7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCIiwiZmlsZSI6Ii4uL2xheW91dHMvbG9naW4tbGF5b3V0L2xvZ2luLWxheW91dC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW4tcGFuZWwge1xyXG4gICAgZmxvYXQ6IG5vbmU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLmNvbnRlbnQge1xyXG4gICAgbWFyZ2luLXRvcDogMDtcclxufVxyXG4uY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufSJdfQ== */"
 
 /***/ }),
 

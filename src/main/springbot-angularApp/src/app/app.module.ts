@@ -16,6 +16,7 @@ import { SoqlQueryComponent } from './components/soql-query/soql-query.component
 import { DeleteQueryComponent } from './components/delete-query/delete-query.component';
 import { InsertComponentComponent } from './components/insert-component/insert-component.component';
 import { UpsertComponentComponent } from './components/upsert-component/upsert-component.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -33,7 +34,8 @@ import { RestService } from './rest/rest.service';
     SoqlQueryComponent,
     DeleteQueryComponent,
     InsertComponentComponent,
-    UpsertComponentComponent
+    UpsertComponentComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

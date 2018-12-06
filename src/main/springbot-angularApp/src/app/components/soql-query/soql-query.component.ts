@@ -2,6 +2,8 @@ import { Component, OnInit, NgModule } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import {MatSelect, MatFormField, MatOption} from '@angular/material';
+import Swal from 'sweetalert2';
+
 export interface Objects {
   value: string;
   viewValue: string;
@@ -26,6 +28,10 @@ export interface FilterBy {
   value: string;
   viewValue: string;
 }
+export interface ResultsFields {
+  value: string;
+  viewValue: string;
+}
 /*@NgModule({
   imports: [MatFormField, MatSelect, MatOption],
   exports: [MatFormField, MatSelect, MatOption],
@@ -46,6 +52,10 @@ export class SoqlQueryComponent implements OnInit {
   ) { }
 
   soql_query : String = 'SELECT Id FROM Account';
+  show_result: Boolean = false;
+  show_DetailModal: Boolean = false;
+  query_string: String = '';
+  query_object: Object = {};
 
   objects: Objects[] = [
     {value: '', viewValue: 'Select an Object'},
@@ -89,10 +99,40 @@ export class SoqlQueryComponent implements OnInit {
     {value: 'Account__ID__c', viewValue: 'Account__ID__c'}
   ];
 
+  resultsFields: Fields[] = [
+    {value: 'Account__ID', viewValue: 'ID'},
+    {value: 'Name', viewValue: 'Name'},    
+    {value: 'Cellphone', viewValue: 'Cellphone'},
+    {value: 'City', viewValue: 'City'},
+    
+  ];
+
   ngOnInit() {
     this.form = this.fb.group({
       password: ['', Validators.required]
     });
+  }
+
+  querySOQL(){
+    this.show_result =  true;
+  }
+
+  toggleModal(){
+    //this.show_DetailModal =  !this.show_DetailModal;
+    Swal({
+      title: 'Detail Report',
+      confirmButtonText: 'Close',
+      confirmButtonClass: 'confirmButtonClass'
+    })
+  }
+  objectChangeHandler(event: any){
+    this.query_string = 'SELECT * FROM ' + event.target.value;
+    this.query_object['object'] =  event.target.value;
+  }
+  fieldsChangeHandler(event: any){
+    console.log("event.target.value", event.target, event);
+    this.query_string = 'SELECT ' + event.target.value + ' FROM ' + this.query_object['object'];
+    this.query_object['fields'] =  event.target.value;
   }
 
 }
