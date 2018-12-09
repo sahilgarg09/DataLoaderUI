@@ -16,7 +16,7 @@ export class SidenavbarComponent implements OnInit {
     { id: 4, name: 'Delete', shortName: 'DE', url: '/delete-query', class: 'nav-item' }
   ];
   selectedQuery: Query;
-
+  isHidden= false;
   constructor() { }
 
   ngOnInit() {

@@ -1,123 +1,175 @@
-<section class="query-section">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header card-header-primary">
-          <h4 class="card-title">SOQL Query</h4>
-          <p class="card-category">Choose the object, fields, and criteria to build a SOQL query below:</p>
-        </div>
-        <div class="card-body">
-          <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <label class="bmd-label-floating" for="object">Object</label>
-                <select class="form-control" id="object" (change)="objectChangeHandler($event)">
-                  <option *ngFor="let item of objects; let i = index" [ngValue]="item">{{item.viewValue}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <label class="bmd-label-floating" for="fields">Fields</label>
-                <select class="form-control multiple-fields custom-select" id="fields"
-                [multiple] = true
-                (change)="fieldsChangeHandler($event)">
-                  <option *ngFor="let item of fields; let i = index">{{item.viewValue}}</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-9">
-              <div class="row align-items-end">
-
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" for="sortByFields">Sorts results by</label>
-                    <select class="form-control" id="sortByFields">
-                      <option *ngFor="let item of sortBy; let i = index">{{item.viewValue}}</option>
-                    </select>
-                  </div>
-
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" for="sortOrder">Sort</label>
-                    <select class="form-control" id="sortOrder">
-                      <option>A to Z</option>
-                      <option>Z to A</option>
-                    </select>
-                  </div>
-
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" for="nullPosition">Null</label>
-                    <select class="form-control" id="nullPosition">
-                      <option *ngFor="let item of nulls; let i = index">{{item.viewValue}}</option>
-                    </select>
-                  </div>
-
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" for="maxRecords">Max Records</label>
-                    <input type="text" class="form-control" id="maxRecords">
-                  </div>
-
-                </div>
-              </div>
-              <div class="row align-items-end">
-
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" for="filterByFields">Filter results by</label>
-                    <select class="form-control" id="filterByFields">
-                      <option *ngFor="let item of filterBy; let i = index">{{item.viewValue}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" for="operator">Operator</label>
-                    <select class="form-control" id="operator">
-                      <option *ngFor="let item of operators; let i = index">{{item.viewValue}}</option>
-                    </select>
-                  </div>
-
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="bmd-label-floating" for="fieldValue">Field Value</label>
-                    <input type="text" class="form-control" id="fieldValue">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label class="bmd-label-floating" for="queryEditor">Enter or modify a SOQL query below:</label>
-                <textarea class="form-control" id="queryEditor" rows="3">{{query_string}}</textarea>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <button type="button" (click)="querySOQL()" class="btn btn-primary pull-left">Query</button>
-              <button type="button" class="btn btn-primar pull-right">Export to CSV</button>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <!-- </form> -->
+<app-accordion
+  [title]="['SOQL Query']"
+  [desc]="[
+    'Choose the object, fields, and criteria to build a SOQL query below:'
+  ]"
+  *ngFor="let query of queryForm.get('queryArr').controls; let i = index;"
+>
+  <div class="cardBody">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="bmd-label-floating" for="object">Object</label>
+          <select
+            class="form-control"
+            id="object"
+            (change)="objectChangeHandler($event)"
+          >
+            <option
+              *ngFor="let item of objects; let iObj = objectIndex"
+              [ngValue]="item"
+              >{{ item.viewValue }}</option
+            >
+          </select>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="bmd-label-floating" for="fields">Fields</label>
+          <select
+            class="form-control multiple-fields custom-select"
+            id="fields"
+            [multiple]="true"
+            (change)="fieldsChangeHandler($event)"
+          >
+            <option *ngFor="let item of fields; let i = index">{{
+              item.viewValue
+            }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row align-items-end">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="sortByFields"
+                >Sorts results by</label
+              >
+              <select class="form-control" id="sortByFields">
+                <option *ngFor="let item of sortBy; let i = index">{{
+                  item.viewValue
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="sortOrder">Sort</label>
+              <select class="form-control" id="sortOrder">
+                <option>A to Z</option>
+                <option>Z to A</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="nullPosition">Null</label>
+              <select class="form-control" id="nullPosition">
+                <option *ngFor="let item of nulls; let i = index">{{
+                  item.viewValue
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="maxRecords"
+                >Max Records</label
+              >
+              <input type="text" class="form-control" id="maxRecords" />
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="filterByFields"
+                >Filter results by</label
+              >
+              <select class="form-control" id="filterByFields">
+                <option *ngFor="let item of filterBy; let i = index">{{
+                  item.viewValue
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="operator">Operator</label>
+              <select class="form-control" id="operator">
+                <option *ngFor="let item of operators; let i = index">{{
+                  item.viewValue
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="fieldValue"
+                >Field Value</label
+              >
+              <input type="text" class="form-control" id="fieldValue" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="bmd-label-floating" for="queryEditor"
+            >Enter or modify a SOQL query below:</label
+          >
+          <textarea class="form-control" id="queryEditor" rows="3">
+            {{ query_string }}</textarea
+          >
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button
+          type="button"
+          (click)="querySOQL()"
+          class="btn btn-primary pull-left"
+        >
+          Query
+        </button>
+        <button type="button" class="btn btn-normal pull-right">
+          Export to CSV
+        </button>
+      </div>
+    </div>
+    <div class="clearfix"></div>
   </div>
-</section>
-<section class="query-result-section" [ngClass]="show_result == true ? 'show' : 'hide'">
+  <div class="cardFooter">
+    <div class="row">
+      <div class="col-md-12">
+        <button
+          type="button"     
+          (click)="addAnotherQuery()"     
+          class="btn btn-primary pull-right"
+        >
+          Add Another Query
+        </button>
+        <button
+          type="button"     
+          (click)="removeQuery(i)"     
+          class="btn btn-normal pull-right"
+        >
+          Remove Query
+        </button>
+      </div>
+    </div>
+  </div>
+</app-accordion>
+
+<section
+  class="query-result-section"
+  [ngClass]="show_result == true ? 'show' : 'hide'"
+>
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -130,64 +182,70 @@
           </p>
           <div class="row">
             <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table">
-                      <thead class="text-primary">
-                        <tr>
-                          <th *ngFor="let item of resultsFields; let i = index">{{item.viewValue}}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>1</td>
-                              <td>Aman</td>
-                              <td>9876543210</td>
-                              <td>Bangalore</td>
-                            </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Ashutosh</td>
-                          <td>7795338870</td>
-                          <td>Bangalore</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Harsh</td>
-                            <td>7878656543</td>
-                            <td>Bangalore</td>
-                          </tr>
-                      </tbody>
-                    </table>
-                  </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <tr>
+                      <th *ngFor="let item of resultsFields; let i = index">
+                        {{ item.viewValue }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Aman</td>
+                      <td>9876543210</td>
+                      <td>Bangalore</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Ashutosh</td>
+                      <td>7795338870</td>
+                      <td>Bangalore</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Harsh</td>
+                      <td>7878656543</td>
+                      <td>Bangalore</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <div class="row">
-              <div class="col-md-12">
-                <button type="button" (click)="toggleModal()" class="btn btn-primary pull-right">View Detailed Report</button>                
-              </div>
+            <div class="col-md-12">
+              <button
+                type="button"
+                (click)="toggleModal()"
+                class="btn btn-primary pull-right"
+              >
+                View Detailed Report
+              </button>
             </div>
-
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- <div class="swal2-container swal2-center swal2-fade swal2-shown" style="overflow-y: auto;"
-[ngClass]="show_DetailModal == true ? 'show' : 'hide'">
-    <div aria-labelledby="swal2-title" aria-describedby="swal2-content" class="swal2-popup swal2-modal swal2-show" tabindex="-1" role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
-      <div class="swal2-header">
-          <h2 class="swal2-title" id="swal2-title">Detail Record</h2>
-          </div>
-      <div class="swal2-content"></div>
-      <div class="swal2-actions" style="display: flex;">
-          <button type="button" (click)="toggleModal()" class="swal2-confirm btn btn-info" aria-label="">Close</button>
+<!--
+  <div class="swal2-container swal2-center swal2-fade swal2-shown" style="overflow-y: auto;"
+  [ngClass]="show_DetailModal == true ? 'show' : 'hide'">
+      <div aria-labelledby="swal2-title" aria-describedby="swal2-content" class="swal2-popup swal2-modal swal2-show" tabindex="-1" role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+        <div class="swal2-header">
+            <h2 class="swal2-title" id="swal2-title">Detail Record</h2>
+            </div>
+        <div class="swal2-content"></div>
+        <div class="swal2-actions" style="display: flex;">
+            <button type="button" (click)="toggleModal()" class="swal2-confirm btn btn-info" aria-label="">Close</button>
+        </div>
+        <div class="swal2-footer">
+        </div>
       </div>
-      <div class="swal2-footer">          
-      </div>
-    </div>
 
-</div>
+  </div>
 -->

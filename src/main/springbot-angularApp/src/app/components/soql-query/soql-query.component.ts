@@ -1,8 +1,8 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule } from "@angular/core";
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 //import {MatSelect, MatFormField, MatOption} from '@angular/material';
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 export interface Objects {
   value: string;
@@ -38,101 +38,116 @@ export interface ResultsFields {
 })*/
 
 @Component({
-  selector: 'app-soql-query',
-  templateUrl: './soql-query.component.html',
-  styleUrls: ['./soql-query.component.css']
+  selector: "app-soql-query",
+  templateUrl: "./soql-query.component.html",
+  styleUrls: ["./soql-query.component.css"]
 })
-
-
-
 export class SoqlQueryComponent implements OnInit {
-  form: FormGroup;
-  constructor(
-  	private fb: FormBuilder
-  ) { }
+  queryForm: FormGroup;
+  queryArr: FormArray;
 
-  soql_query : String = 'SELECT Id FROM Account';
+  constructor(private fb: FormBuilder) {}
+
+  soql_query: String = "SELECT Id FROM Account";
   show_result: Boolean = false;
   show_DetailModal: Boolean = false;
-  query_string: String = '';
+  query_string: String = "";
   query_object: Object = {};
 
   objects: Objects[] = [
-    {value: '', viewValue: 'Select an Object'},
-    {value: 'AcceptedEventRelation', viewValue: 'AcceptedEventRelation'},
-    {value: 'Account', viewValue: 'Account'},
-    {value: 'AccountBrand', viewValue: 'AccountBrand'},
-    {value: 'AccountBrandShare', viewValue: 'AccountBrandShare'}
+    { value: "", viewValue: "Select an Object" },
+    { value: "AcceptedEventRelation", viewValue: "AcceptedEventRelation" },
+    { value: "Account", viewValue: "Account" },
+    { value: "AccountBrand", viewValue: "AccountBrand" },
+    { value: "AccountBrandShare", viewValue: "AccountBrandShare" }
   ];
 
   nulls: Nulls[] = [
-    {value: 'nulls-first', viewValue: 'Nulls First'},
-    {value: 'nulls-last', viewValue: 'Nulls Last'}
+    { value: "nulls-first", viewValue: "Nulls First" },
+    { value: "nulls-last", viewValue: "Nulls Last" }
   ];
 
   operators: Operators[] = [
-    {value: '=', viewValue: '='},
-    {value: '!=', viewValue: '!='}
+    { value: "=", viewValue: "=" },
+    { value: "!=", viewValue: "!=" }
   ];
   fields: Fields[] = [
-    {value: 'count()', viewValue: 'count()'},
-    {value: 'AccountNumber', viewValue: 'AccountNumber'},
-    {value: 'AccountSource', viewValue: 'AccountSource'},
-    {value: 'AccountType__c', viewValue: 'AccountType__c'},
-    {value: 'Account__ID', viewValue: 'ID'},
-    {value: 'Name', viewValue: 'Name'},
-    {value: 'Home Phone', viewValue: 'HomePhone'},
-    {value: 'Cellphone', viewValue: 'Cellphone'},
-    {value: 'City', viewValue: 'City'},
-    
+    { value: "count()", viewValue: "count()" },
+    { value: "AccountNumber", viewValue: "AccountNumber" },
+    { value: "AccountSource", viewValue: "AccountSource" },
+    { value: "AccountType__c", viewValue: "AccountType__c" },
+    { value: "Account__ID", viewValue: "ID" },
+    { value: "Name", viewValue: "Name" },
+    { value: "Home Phone", viewValue: "HomePhone" },
+    { value: "Cellphone", viewValue: "Cellphone" },
+    { value: "City", viewValue: "City" }
   ];
   sortBy: SortBy[] = [
-    {value: 'AccountNumber', viewValue: 'AccountNumber'},
-    {value: 'AccountSource', viewValue: 'AccountSource'},
-    {value: 'AccountType__c', viewValue: 'AccountType__c'},
-    {value: 'Account__ID__c', viewValue: 'Account__ID__c'}
+    { value: "AccountNumber", viewValue: "AccountNumber" },
+    { value: "AccountSource", viewValue: "AccountSource" },
+    { value: "AccountType__c", viewValue: "AccountType__c" },
+    { value: "Account__ID__c", viewValue: "Account__ID__c" }
   ];
   filterBy: FilterBy[] = [
-    {value: 'AccountNumber', viewValue: 'AccountNumber'},
-    {value: 'AccountSource', viewValue: 'AccountSource'},
-    {value: 'AccountType__c', viewValue: 'AccountType__c'},
-    {value: 'Account__ID__c', viewValue: 'Account__ID__c'}
+    { value: "AccountNumber", viewValue: "AccountNumber" },
+    { value: "AccountSource", viewValue: "AccountSource" },
+    { value: "AccountType__c", viewValue: "AccountType__c" },
+    { value: "Account__ID__c", viewValue: "Account__ID__c" }
   ];
 
   resultsFields: Fields[] = [
-    {value: 'Account__ID', viewValue: 'ID'},
-    {value: 'Name', viewValue: 'Name'},    
-    {value: 'Cellphone', viewValue: 'Cellphone'},
-    {value: 'City', viewValue: 'City'},
-    
+    { value: "Account__ID", viewValue: "ID" },
+    { value: "Name", viewValue: "Name" },
+    { value: "Cellphone", viewValue: "Cellphone" },
+    { value: "City", viewValue: "City" }
   ];
 
   ngOnInit() {
-    this.form = this.fb.group({
-      password: ['', Validators.required]
+    this.queryForm = this.fb.group({
+      customerName: "",
+      email: "",
+      queryArr: this.fb.array([this.createQuery()])
     });
   }
 
-  querySOQL(){
-    this.show_result =  true;
+  querySOQL() {
+    this.show_result = true;
   }
 
-  toggleModal(){
+  toggleModal() {
     //this.show_DetailModal =  !this.show_DetailModal;
     Swal({
-      title: 'Detail Report',
-      confirmButtonText: 'Close',
-      confirmButtonClass: 'confirmButtonClass'
-    })
+      title: "Detail Report",
+      confirmButtonText: "Close",
+      confirmButtonClass: "confirmButtonClass"
+    });
   }
-  objectChangeHandler(event: any){
-    this.query_string = 'SELECT * FROM ' + event.target.value;
-    this.query_object['object'] =  event.target.value;
+  objectChangeHandler(event: any) {
+    this.query_string = "SELECT * FROM " + event.target.value;
+    this.query_object["object"] = event.target.value;
   }
-  fieldsChangeHandler(event: any){
+  fieldsChangeHandler(event: any) {
     console.log("event.target.value", event.target, event);
-    this.query_string = 'SELECT ' + event.target.value + ' FROM ' + this.query_object['object'];
-    this.query_object['fields'] =  event.target.value;
+    this.query_string =
+      "SELECT " + event.target.value + " FROM " + this.query_object["object"];
+    this.query_object["fields"] = event.target.value;
   }
 
+  createQuery(): FormGroup {
+    return this.fb.group({
+      name: "",
+      description: "",
+      price: ""
+    });
+  }
+
+  addAnotherQuery() {
+    this.queryArr = this.queryForm.get("queryArr") as FormArray;
+    this.queryArr.push(this.createQuery());
+  }
+  removeQuery(index){
+    this.queryArr = this.queryForm.get("queryArr") as FormArray;
+    if(this.queryArr.length > 1)
+      this.queryArr.removeAt(index);
+  }
 }

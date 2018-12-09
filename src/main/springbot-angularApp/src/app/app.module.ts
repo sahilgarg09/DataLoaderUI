@@ -21,6 +21,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RestService } from './rest/rest.service';
+import { AccordionComponent } from './shared/accordion/accordion.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { RestService } from './rest/rest.service';
     DeleteQueryComponent,
     InsertComponentComponent,
     UpsertComponentComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,

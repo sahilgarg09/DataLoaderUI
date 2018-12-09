@@ -14,3 +14,6 @@
     text-transform: initial;
     font-size: 30px;
 }
+.nav-item{
+    cursor: pointer;
+}

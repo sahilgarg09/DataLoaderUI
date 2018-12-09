@@ -1,55 +1,50 @@
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      <!--
+  <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
              -->
-      <div class="logo">
-        <a href="javascript: void(0)" class="simple-text logo-normal">
-          ForceLoader
+  <div class="logo">
+    <a href="javascript: void(0)" class="simple-text logo-normal">
+      ForceLoader
+    </a>
+  </div>
+  <div class="sidebar-wrapper ps-container ps-theme-default">
+    <ul class="nav">
+      <li class="nav-item " [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/dashboard']">
+          <i class="material-icons">dashboard</i>
+          <p>Dashboard</p>
         </a>
-      </div>
-      <div class="sidebar-wrapper ps-container ps-theme-default">
-        <ul class="nav">
-          <li class="nav-item ">
-            <a class="nav-link" [routerLink]="['/dashboard']">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/user-profile']">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" [routerLink]="['/soql-query']">
-              <i class="material-icons">library_books</i>
-              <p>Data Manipulations</p>
-            </a>
-            <div class="collapse show" id="mapsExamples">
-              <ul class="nav">
-                <li class="nav-item"
-                *ngFor="let query of queries"                
-                (click)="onSelectLink(query)">
-                  <a class="nav-link"
-                  [class.selected]="query === selectedQuery"
-                  [routerLink]="[query.url]"
-                  > 
-                    <span class="sidebar-mini">{{query.shortName}}</span>                   
-                    <span class="sidebar-normal">{{query.name}}</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link textTransform" data-toggle="collapse" >
-                <i class="material-icons">arrow_right_alt</i>
-                <p>Org to Org Transfer</p>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/user-profile']">
+          <i class="material-icons">person</i>
+          <p>User Profile</p>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" (click)="isHidden = !isHidden">
+        <a class="nav-link" data-toggle="collapse">
+          <i class="material-icons">library_books</i>
+          <p>Data Manipulations </p>
+        </a>
+        <div class="collapse show" id="mapsExamples" [hidden]="isHidden">
+          <ul class="nav">
+            <li class="nav-item" *ngFor="let query of queries" (click)="onSelectLink(query)" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+              <a class="nav-link" [routerLink]="[query.url]">
+                <span class="sidebar-mini">{{query.shortName}}</span>
+                <span class="sidebar-normal">{{query.name}}</span>
               </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link textTransform" data-toggle="collapse">
+          <i class="material-icons">arrow_right_alt</i>
+          <p>Org to Org Transfer</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
