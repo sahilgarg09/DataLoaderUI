@@ -163,7 +163,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9hcHAuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -244,12 +244,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
 /* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./rest/rest.service */ "./src/app/rest/rest.service.ts");
+/* harmony import */ var _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./shared/accordion/accordion.component */ "./src/app/shared/accordion/accordion.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -286,7 +288,8 @@ var AppModule = /** @class */ (function () {
                 _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_13__["DeleteQueryComponent"],
                 _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_14__["InsertComponentComponent"],
                 _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__["UpsertComponentComponent"],
-                _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__["UserProfileComponent"]
+                _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__["UserProfileComponent"],
+                _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_20__["AccordionComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -445,7 +448,7 @@ var AuthService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJkYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb21wb25lbnRzL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -508,7 +511,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card .card-body .form-group.serialCode{\r\n    margin: 0 0 27px 0;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRlbGV0ZS1xdWVyeS9kZWxldGUtcXVlcnkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLG1CQUFtQjtDQUN0QiIsImZpbGUiOiJkZWxldGUtcXVlcnkvZGVsZXRlLXF1ZXJ5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZCAuY2FyZC1ib2R5IC5mb3JtLWdyb3VwLnNlcmlhbENvZGV7XHJcbiAgICBtYXJnaW46IDAgMCAyN3B4IDA7XHJcbn0iXX0= */"
+module.exports = ".card .card-body .form-group.serialCode{\r\n    margin: 0 0 27px 0;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvZGVsZXRlLXF1ZXJ5L2RlbGV0ZS1xdWVyeS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0NBQ3RCIiwiZmlsZSI6ImNvbXBvbmVudHMvZGVsZXRlLXF1ZXJ5L2RlbGV0ZS1xdWVyeS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQgLmNhcmQtYm9keSAuZm9ybS1ncm91cC5zZXJpYWxDb2Rle1xyXG4gICAgbWFyZ2luOiAwIDAgMjdweCAwO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -578,7 +581,7 @@ var DeleteQueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluc2VydC1jb21wb25lbnQvaW5zZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksV0FBVztDQUNkIiwiZmlsZSI6Imluc2VydC1jb21wb25lbnQvaW5zZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhpZGV7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbi5zaG93e1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuLndpZHRoLTMwcGVye1xyXG4gICAgd2lkdGg6IDMwJTtcclxufSJdfQ== */"
+module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvaW5zZXJ0LWNvbXBvbmVudC9pbnNlcnQtY29tcG9uZW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0NBQ2pCO0FBQ0Q7SUFDSSxlQUFlO0NBQ2xCO0FBQ0Q7SUFDSSxXQUFXO0NBQ2QiLCJmaWxlIjoiY29tcG9uZW50cy9pbnNlcnQtY29tcG9uZW50L2luc2VydC1jb21wb25lbnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oaWRle1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG4uc2hvd3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbi53aWR0aC0zMHBlcntcclxuICAgIHdpZHRoOiAzMCU7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -666,7 +669,7 @@ var InsertComponentComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "select.form-control {\r\n    -webkit-appearance: menulist;\r\n       -moz-appearance: menulist;\r\n            appearance: menulist;\r\n}\r\nselect:invalid { color: #AAAAAA; }\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n.login-container .submit-login-btn {\r\n    justify-content: flex-end;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luL2xvZ2luLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2QkFBcUI7T0FBckIsMEJBQXFCO1lBQXJCLHFCQUFxQjtDQUN4QjtBQUNELGlCQUFpQixlQUFlLEVBQUU7QUFFbEM7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCO0FBRUQ7SUFDSSwwQkFBMEI7Q0FDN0IiLCJmaWxlIjoibG9naW4vbG9naW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInNlbGVjdC5mb3JtLWNvbnRyb2wge1xyXG4gICAgYXBwZWFyYW5jZTogbWVudWxpc3Q7XHJcbn1cclxuc2VsZWN0OmludmFsaWQgeyBjb2xvcjogI0FBQUFBQTsgfVxyXG5cclxuLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuXHJcbi5sb2dpbi1jb250YWluZXIgLnN1Ym1pdC1sb2dpbi1idG4ge1xyXG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcclxufSJdfQ== */"
+module.exports = "select.form-control {\r\n    -webkit-appearance: menulist;\r\n       -moz-appearance: menulist;\r\n            appearance: menulist;\r\n}\r\nselect:invalid { color: #AAAAAA; }\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n.login-container .submit-login-btn {\r\n    justify-content: flex-end;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLDZCQUFxQjtPQUFyQiwwQkFBcUI7WUFBckIscUJBQXFCO0NBQ3hCO0FBQ0QsaUJBQWlCLGVBQWUsRUFBRTtBQUVsQztJQUNJLGNBQWM7SUFDZCx3QkFBd0I7Q0FDM0I7QUFFRDtJQUNJLDBCQUEwQjtDQUM3QiIsImZpbGUiOiJjb21wb25lbnRzL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzZWxlY3QuZm9ybS1jb250cm9sIHtcclxuICAgIGFwcGVhcmFuY2U6IG1lbnVsaXN0O1xyXG59XHJcbnNlbGVjdDppbnZhbGlkIHsgY29sb3I6ICNBQUFBQUE7IH1cclxuXHJcbi5jb250YWluZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG4ubG9naW4tY29udGFpbmVyIC5zdWJtaXQtbG9naW4tYnRuIHtcclxuICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -760,7 +763,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.sidebar .nav li>a.selected:hover, .sidebar .nav li>a.selected:focus, .sidebar .nav li>a.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.textTransform p{\r\n    text-transform: initial;\r\n}\r\n.sidebar .logo .simple-text{\r\n    font-weight: bold;\r\n    text-transform: initial;\r\n    font-size: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNpZGVuYXZiYXIvc2lkZW5hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMEJBQTBCO0lBQzFCLGFBQWE7Q0FDaEI7QUFDRDtJQUNJLDBCQUEwQjtJQUMxQixhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSx3QkFBd0I7Q0FDM0I7QUFDRDtJQUNJLGtCQUFrQjtJQUNsQix3QkFBd0I7SUFDeEIsZ0JBQWdCO0NBQ25CIiwiZmlsZSI6InNpZGVuYXZiYXIvc2lkZW5hdmJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdi1saW5rLnNlbGVjdGVke1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2FiNDdiYztcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4uc2lkZWJhciAubmF2IGxpPmEuc2VsZWN0ZWQ6aG92ZXIsIC5zaWRlYmFyIC5uYXYgbGk+YS5zZWxlY3RlZDpmb2N1cywgLnNpZGViYXIgLm5hdiBsaT5hLnNlbGVjdGVke1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2FiNDdiYztcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4udGV4dFRyYW5zZm9ybSBwe1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGluaXRpYWw7XHJcbn1cclxuLnNpZGViYXIgLmxvZ28gLnNpbXBsZS10ZXh0e1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcclxuICAgIGZvbnQtc2l6ZTogMzBweDtcclxufSJdfQ== */"
+module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.sidebar .nav li>a.selected:hover, .sidebar .nav li>a.selected:focus, .sidebar .nav li>a.selected{\r\n    background-color: #ab47bc;\r\n    color: white;\r\n}\r\n.textTransform p{\r\n    text-transform: initial;\r\n}\r\n.sidebar .logo .simple-text{\r\n    font-weight: bold;\r\n    text-transform: initial;\r\n    font-size: 30px;\r\n}\r\n.nav-item{\r\n    cursor: pointer;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvc2lkZW5hdmJhci9zaWRlbmF2YmFyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSwwQkFBMEI7SUFDMUIsYUFBYTtDQUNoQjtBQUNEO0lBQ0ksMEJBQTBCO0lBQzFCLGFBQWE7Q0FDaEI7QUFDRDtJQUNJLHdCQUF3QjtDQUMzQjtBQUNEO0lBQ0ksa0JBQWtCO0lBQ2xCLHdCQUF3QjtJQUN4QixnQkFBZ0I7Q0FDbkI7QUFDRDtJQUNJLGdCQUFnQjtDQUNuQiIsImZpbGUiOiJjb21wb25lbnRzL3NpZGVuYXZiYXIvc2lkZW5hdmJhci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdi1saW5rLnNlbGVjdGVke1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2FiNDdiYztcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4uc2lkZWJhciAubmF2IGxpPmEuc2VsZWN0ZWQ6aG92ZXIsIC5zaWRlYmFyIC5uYXYgbGk+YS5zZWxlY3RlZDpmb2N1cywgLnNpZGViYXIgLm5hdiBsaT5hLnNlbGVjdGVke1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2FiNDdiYztcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4udGV4dFRyYW5zZm9ybSBwe1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGluaXRpYWw7XHJcbn1cclxuLnNpZGViYXIgLmxvZ28gLnNpbXBsZS10ZXh0e1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcclxuICAgIGZvbnQtc2l6ZTogMzBweDtcclxufVxyXG4ubmF2LWl0ZW17XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -771,7 +774,7 @@ module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n      <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n      <div class=\"logo\">\r\n        <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n          ForceLoader\r\n        </a>\r\n      </div>\r\n      <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n        <ul class=\"nav\">\r\n          <li class=\"nav-item \">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n              <i class=\"material-icons\">dashboard</i>\r\n              <p>Dashboard</p>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/user-profile']\">\r\n              <i class=\"material-icons\">person</i>\r\n              <p>User Profile</p>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" data-toggle=\"collapse\" [routerLink]=\"['/soql-query']\">\r\n              <i class=\"material-icons\">library_books</i>\r\n              <p>Data Manipulations</p>\r\n            </a>\r\n            <div class=\"collapse show\" id=\"mapsExamples\">\r\n              <ul class=\"nav\">\r\n                <li class=\"nav-item\"\r\n                *ngFor=\"let query of queries\"                \r\n                (click)=\"onSelectLink(query)\">\r\n                  <a class=\"nav-link\"\r\n                  [class.selected]=\"query === selectedQuery\"\r\n                  [routerLink]=\"[query.url]\"\r\n                  > \r\n                    <span class=\"sidebar-mini\">{{query.shortName}}</span>                   \r\n                    <span class=\"sidebar-normal\">{{query.name}}</span>\r\n                  </a>\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n              <a class=\"nav-link textTransform\" data-toggle=\"collapse\" >\r\n                <i class=\"material-icons\">arrow_right_alt</i>\r\n                <p>Org to Org Transfer</p>\r\n              </a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>"
+module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n  <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n  <div class=\"logo\">\r\n    <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n      ForceLoader\r\n    </a>\r\n  </div>\r\n  <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n    <ul class=\"nav\">\r\n      <li class=\"nav-item \" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n          <i class=\"material-icons\">dashboard</i>\r\n          <p>Dashboard</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/user-profile']\">\r\n          <i class=\"material-icons\">person</i>\r\n          <p>User Profile</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" routerLinkActive=\"active\" (click)=\"isHidden = !isHidden\">\r\n        <a class=\"nav-link\" data-toggle=\"collapse\">\r\n          <i class=\"material-icons\">library_books</i>\r\n          <p>Data Manipulations </p>\r\n        </a>\r\n        <div class=\"collapse show\" id=\"mapsExamples\" [hidden]=\"isHidden\">\r\n          <ul class=\"nav\">\r\n            <li class=\"nav-item\" *ngFor=\"let query of queries\" (click)=\"onSelectLink(query)\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n              <a class=\"nav-link\" [routerLink]=\"[query.url]\">\r\n                <span class=\"sidebar-mini\">{{query.shortName}}</span>\r\n                <span class=\"sidebar-normal\">{{query.name}}</span>\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link textTransform\" data-toggle=\"collapse\">\r\n          <i class=\"material-icons\">arrow_right_alt</i>\r\n          <p>Org to Org Transfer</p>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -805,6 +808,7 @@ var SidenavbarComponent = /** @class */ (function () {
             { id: 3, name: 'Upsert', shortName: 'UP', url: '/upsert', class: 'nav-item' },
             { id: 4, name: 'Delete', shortName: 'DE', url: '/delete-query', class: 'nav-item' }
         ];
+        this.isHidden = false;
     }
     SidenavbarComponent.prototype.ngOnInit = function () {
     };
@@ -839,7 +843,7 @@ var Query = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".mar-btm-8{\r\n    margin-bottom: 8px;\r\n}\r\n.multiple-fields{\r\n    min-height: 150px;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.confirmButtonClass{\r\n    color: #fff;\r\n    background-color: #9c27b0;\r\n    border-color: #9c27b0;\r\n    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);\r\n}\r\n.swal2-popup .swal2-styled.swal2-confirm {\r\n    border: 0;\r\n    border-radius: .25em;\r\n    background: initial;\r\n    background-color: #9c27b0;\r\n    color: #fff;\r\n    font-size: 1.0625em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNvcWwtcXVlcnkvc29xbC1xdWVyeS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0NBQ3RCO0FBQ0Q7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLDhCQUE4QjtDQUNqQztBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksWUFBWTtJQUNaLDBCQUEwQjtJQUMxQixzQkFBc0I7SUFDdEIsK0hBQStIO0NBQ2xJO0FBQ0Q7SUFDSSxVQUFVO0lBQ1YscUJBQXFCO0lBQ3JCLG9CQUFvQjtJQUNwQiwwQkFBMEI7SUFDMUIsWUFBWTtJQUNaLG9CQUFvQjtDQUN2QiIsImZpbGUiOiJzb3FsLXF1ZXJ5L3NvcWwtcXVlcnkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXItYnRtLTh7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA4cHg7XHJcbn1cclxuLm11bHRpcGxlLWZpZWxkc3tcclxuICAgIG1pbi1oZWlnaHQ6IDE1MHB4O1xyXG59XHJcbmlucHV0LmZvcm0tY29udHJvbHtcclxuICAgIGhlaWdodDogY2FsYygyLjQzNzVyZW0gKyAycHgpO1xyXG59XHJcbi5oaWRle1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG4uc2hvd3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbi5jb25maXJtQnV0dG9uQ2xhc3N7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM5YzI3YjA7XHJcbiAgICBib3JkZXItY29sb3I6ICM5YzI3YjA7XHJcbiAgICBib3gtc2hhZG93OiAwIDJweCAycHggMCByZ2JhKDE1NiwgMzksIDE3NiwgMC4xNCksIDAgM3B4IDFweCAtMnB4IHJnYmEoMTU2LCAzOSwgMTc2LCAwLjIpLCAwIDFweCA1cHggMCByZ2JhKDE1NiwgMzksIDE3NiwgMC4xMik7XHJcbn1cclxuLnN3YWwyLXBvcHVwIC5zd2FsMi1zdHlsZWQuc3dhbDItY29uZmlybSB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiAuMjVlbTtcclxuICAgIGJhY2tncm91bmQ6IGluaXRpYWw7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOWMyN2IwO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBmb250LXNpemU6IDEuMDYyNWVtO1xyXG59Il19 */"
+module.exports = ".mar-btm-8{\r\n    margin-bottom: 8px;\r\n}\r\n.multiple-fields{\r\n    min-height: 150px;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.confirmButtonClass{\r\n    color: #fff;\r\n    background-color: #9c27b0;\r\n    border-color: #9c27b0;\r\n    box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);\r\n}\r\n.swal2-popup .swal2-styled.swal2-confirm {\r\n    border: 0;\r\n    border-radius: .25em;\r\n    background: initial;\r\n    background-color: #9c27b0;\r\n    color: #fff;\r\n    font-size: 1.0625em;\r\n}\r\n.cardFooter{\r\n    width: 100%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvc29xbC1xdWVyeS9zb3FsLXF1ZXJ5LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxtQkFBbUI7Q0FDdEI7QUFDRDtJQUNJLGtCQUFrQjtDQUNyQjtBQUNEO0lBQ0ksOEJBQThCO0NBQ2pDO0FBQ0Q7SUFDSSxjQUFjO0NBQ2pCO0FBQ0Q7SUFDSSxlQUFlO0NBQ2xCO0FBQ0Q7SUFDSSxZQUFZO0lBQ1osMEJBQTBCO0lBQzFCLHNCQUFzQjtJQUN0QiwrSEFBK0g7Q0FDbEk7QUFDRDtJQUNJLFVBQVU7SUFDVixxQkFBcUI7SUFDckIsb0JBQW9CO0lBQ3BCLDBCQUEwQjtJQUMxQixZQUFZO0lBQ1osb0JBQW9CO0NBQ3ZCO0FBQ0Q7SUFDSSxZQUFZO0NBQ2YiLCJmaWxlIjoiY29tcG9uZW50cy9zb3FsLXF1ZXJ5L3NvcWwtcXVlcnkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXItYnRtLTh7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA4cHg7XHJcbn1cclxuLm11bHRpcGxlLWZpZWxkc3tcclxuICAgIG1pbi1oZWlnaHQ6IDE1MHB4O1xyXG59XHJcbmlucHV0LmZvcm0tY29udHJvbHtcclxuICAgIGhlaWdodDogY2FsYygyLjQzNzVyZW0gKyAycHgpO1xyXG59XHJcbi5oaWRle1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG4uc2hvd3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbi5jb25maXJtQnV0dG9uQ2xhc3N7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM5YzI3YjA7XHJcbiAgICBib3JkZXItY29sb3I6ICM5YzI3YjA7XHJcbiAgICBib3gtc2hhZG93OiAwIDJweCAycHggMCByZ2JhKDE1NiwgMzksIDE3NiwgMC4xNCksIDAgM3B4IDFweCAtMnB4IHJnYmEoMTU2LCAzOSwgMTc2LCAwLjIpLCAwIDFweCA1cHggMCByZ2JhKDE1NiwgMzksIDE3NiwgMC4xMik7XHJcbn1cclxuLnN3YWwyLXBvcHVwIC5zd2FsMi1zdHlsZWQuc3dhbDItY29uZmlybSB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBib3JkZXItcmFkaXVzOiAuMjVlbTtcclxuICAgIGJhY2tncm91bmQ6IGluaXRpYWw7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOWMyN2IwO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICBmb250LXNpemU6IDEuMDYyNWVtO1xyXG59XHJcbi5jYXJkRm9vdGVye1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -850,7 +854,7 @@ module.exports = ".mar-btm-8{\r\n    margin-bottom: 8px;\r\n}\r\n.multiple-field
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"query-section\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">SOQL Query</h4>\r\n          <p class=\"card-category\">Choose the object, fields, and criteria to build a SOQL query below:</p>\r\n        </div>\r\n        <div class=\"card-body\">\r\n          <!-- <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\"> -->\r\n          <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"object\">Object</label>\r\n                <select class=\"form-control\" id=\"object\" (change)=\"objectChangeHandler($event)\">\r\n                  <option *ngFor=\"let item of objects; let i = index\" [ngValue]=\"item\">{{item.viewValue}}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"fields\">Fields</label>\r\n                <select class=\"form-control multiple-fields custom-select\" id=\"fields\"\r\n                [multiple] = true\r\n                (change)=\"fieldsChangeHandler($event)\">\r\n                  <option *ngFor=\"let item of fields; let i = index\">{{item.viewValue}}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-9\">\r\n              <div class=\"row align-items-end\">\r\n\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"sortByFields\">Sorts results by</label>\r\n                    <select class=\"form-control\" id=\"sortByFields\">\r\n                      <option *ngFor=\"let item of sortBy; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"sortOrder\">Sort</label>\r\n                    <select class=\"form-control\" id=\"sortOrder\">\r\n                      <option>A to Z</option>\r\n                      <option>Z to A</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"nullPosition\">Null</label>\r\n                    <select class=\"form-control\" id=\"nullPosition\">\r\n                      <option *ngFor=\"let item of nulls; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"maxRecords\">Max Records</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"maxRecords\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n              <div class=\"row align-items-end\">\r\n\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"filterByFields\">Filter results by</label>\r\n                    <select class=\"form-control\" id=\"filterByFields\">\r\n                      <option *ngFor=\"let item of filterBy; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"operator\">Operator</label>\r\n                    <select class=\"form-control\" id=\"operator\">\r\n                      <option *ngFor=\"let item of operators; let i = index\">{{item.viewValue}}</option>\r\n                    </select>\r\n                  </div>\r\n\r\n                </div>\r\n                <div class=\"col-md-4\">\r\n                  <div class=\"form-group\">\r\n                    <label class=\"bmd-label-floating\" for=\"fieldValue\">Field Value</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"fieldValue\">\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"queryEditor\">Enter or modify a SOQL query below:</label>\r\n                <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\">{{query_string}}</textarea>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" (click)=\"querySOQL()\" class=\"btn btn-primary pull-left\">Query</button>\r\n              <button type=\"button\" class=\"btn btn-primar pull-right\">Export to CSV</button>\r\n            </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n          <!-- </form> -->\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"query-result-section\" [ngClass]=\"show_result == true ? 'show' : 'hide'\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">Query Result</h4>\r\n        </div>\r\n        <div class=\"card-body\">\r\n          <p class=\"card-category\">\r\n            Returned records 1 - 3 of 3 total records:\r\n          </p>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <div class=\"table-responsive\">\r\n                    <table class=\"table\">\r\n                      <thead class=\"text-primary\">\r\n                        <tr>\r\n                          <th *ngFor=\"let item of resultsFields; let i = index\">{{item.viewValue}}</th>\r\n                        </tr>\r\n                      </thead>\r\n                      <tbody>\r\n                          <tr>\r\n                              <td>1</td>\r\n                              <td>Aman</td>\r\n                              <td>9876543210</td>\r\n                              <td>Bangalore</td>\r\n                            </tr>\r\n                        <tr>\r\n                          <td>2</td>\r\n                          <td>Ashutosh</td>\r\n                          <td>7795338870</td>\r\n                          <td>Bangalore</td>\r\n                        </tr>\r\n                        <tr>\r\n                            <td>3</td>\r\n                            <td>Harsh</td>\r\n                            <td>7878656543</td>\r\n                            <td>Bangalore</td>\r\n                          </tr>\r\n                      </tbody>\r\n                    </table>\r\n                  </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n              <div class=\"col-md-12\">\r\n                <button type=\"button\" (click)=\"toggleModal()\" class=\"btn btn-primary pull-right\">View Detailed Report</button>                \r\n              </div>\r\n            </div>\r\n\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n\r\n<!-- <div class=\"swal2-container swal2-center swal2-fade swal2-shown\" style=\"overflow-y: auto;\"\r\n[ngClass]=\"show_DetailModal == true ? 'show' : 'hide'\">\r\n    <div aria-labelledby=\"swal2-title\" aria-describedby=\"swal2-content\" class=\"swal2-popup swal2-modal swal2-show\" tabindex=\"-1\" role=\"dialog\" aria-live=\"assertive\" aria-modal=\"true\" style=\"display: flex;\">\r\n      <div class=\"swal2-header\">\r\n          <h2 class=\"swal2-title\" id=\"swal2-title\">Detail Record</h2>\r\n          </div>\r\n      <div class=\"swal2-content\"></div>\r\n      <div class=\"swal2-actions\" style=\"display: flex;\">\r\n          <button type=\"button\" (click)=\"toggleModal()\" class=\"swal2-confirm btn btn-info\" aria-label=\"\">Close</button>\r\n      </div>\r\n      <div class=\"swal2-footer\">          \r\n      </div>\r\n    </div>\r\n\r\n</div>\r\n-->"
+module.exports = "<app-accordion\r\n  [title]=\"['SOQL Query']\"\r\n  [desc]=\"[\r\n    'Choose the object, fields, and criteria to build a SOQL query below:'\r\n  ]\"\r\n  *ngFor=\"let query of queryForm.get('queryArr').controls; let i = index;\"\r\n>\r\n  <div class=\"cardBody\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-3\">\r\n        <div class=\"form-group\">\r\n          <label class=\"bmd-label-floating\" for=\"object\">Object</label>\r\n          <select\r\n            class=\"form-control\"\r\n            id=\"object\"\r\n            (change)=\"objectChangeHandler($event)\"\r\n          >\r\n            <option\r\n              *ngFor=\"let item of objects; let iObj = objectIndex\"\r\n              [ngValue]=\"item\"\r\n              >{{ item.viewValue }}</option\r\n            >\r\n          </select>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-3\">\r\n        <div class=\"form-group\">\r\n          <label class=\"bmd-label-floating\" for=\"fields\">Fields</label>\r\n          <select\r\n            class=\"form-control multiple-fields custom-select\"\r\n            id=\"fields\"\r\n            [multiple]=\"true\"\r\n            (change)=\"fieldsChangeHandler($event)\"\r\n          >\r\n            <option *ngFor=\"let item of fields; let i = index\">{{\r\n              item.viewValue\r\n            }}</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-md-9\">\r\n        <div class=\"row align-items-end\">\r\n          <div class=\"col-md-4\">\r\n            <div class=\"form-group\">\r\n              <label class=\"bmd-label-floating\" for=\"sortByFields\"\r\n                >Sorts results by</label\r\n              >\r\n              <select class=\"form-control\" id=\"sortByFields\">\r\n                <option *ngFor=\"let item of sortBy; let i = index\">{{\r\n                  item.viewValue\r\n                }}</option>\r\n              </select>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-md-2\">\r\n            <div class=\"form-group\">\r\n              <label class=\"bmd-label-floating\" for=\"sortOrder\">Sort</label>\r\n              <select class=\"form-control\" id=\"sortOrder\">\r\n                <option>A to Z</option>\r\n                <option>Z to A</option>\r\n              </select>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-md-2\">\r\n            <div class=\"form-group\">\r\n              <label class=\"bmd-label-floating\" for=\"nullPosition\">Null</label>\r\n              <select class=\"form-control\" id=\"nullPosition\">\r\n                <option *ngFor=\"let item of nulls; let i = index\">{{\r\n                  item.viewValue\r\n                }}</option>\r\n              </select>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-md-4\">\r\n            <div class=\"form-group\">\r\n              <label class=\"bmd-label-floating\" for=\"maxRecords\"\r\n                >Max Records</label\r\n              >\r\n              <input type=\"text\" class=\"form-control\" id=\"maxRecords\" />\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row align-items-end\">\r\n          <div class=\"col-md-4\">\r\n            <div class=\"form-group\">\r\n              <label class=\"bmd-label-floating\" for=\"filterByFields\"\r\n                >Filter results by</label\r\n              >\r\n              <select class=\"form-control\" id=\"filterByFields\">\r\n                <option *ngFor=\"let item of filterBy; let i = index\">{{\r\n                  item.viewValue\r\n                }}</option>\r\n              </select>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-md-2\">\r\n            <div class=\"form-group\">\r\n              <label class=\"bmd-label-floating\" for=\"operator\">Operator</label>\r\n              <select class=\"form-control\" id=\"operator\">\r\n                <option *ngFor=\"let item of operators; let i = index\">{{\r\n                  item.viewValue\r\n                }}</option>\r\n              </select>\r\n            </div>\r\n          </div>\r\n          <div class=\"col-md-4\">\r\n            <div class=\"form-group\">\r\n              <label class=\"bmd-label-floating\" for=\"fieldValue\"\r\n                >Field Value</label\r\n              >\r\n              <input type=\"text\" class=\"form-control\" id=\"fieldValue\" />\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"form-group\">\r\n          <label class=\"bmd-label-floating\" for=\"queryEditor\"\r\n            >Enter or modify a SOQL query below:</label\r\n          >\r\n          <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\">\r\n            {{ query_string }}</textarea\r\n          >\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <button\r\n          type=\"button\"\r\n          (click)=\"querySOQL()\"\r\n          class=\"btn btn-primary pull-left\"\r\n        >\r\n          Query\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-normal pull-right\">\r\n          Export to CSV\r\n        </button>\r\n      </div>\r\n    </div>\r\n    <div class=\"clearfix\"></div>\r\n  </div>\r\n  <div class=\"cardFooter\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <button\r\n          type=\"button\"     \r\n          (click)=\"addAnotherQuery()\"     \r\n          class=\"btn btn-primary pull-right\"\r\n        >\r\n          Add Another Query\r\n        </button>\r\n        <button\r\n          type=\"button\"     \r\n          (click)=\"removeQuery(i)\"     \r\n          class=\"btn btn-normal pull-right\"\r\n        >\r\n          Remove Query\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</app-accordion>\r\n\r\n<section\r\n  class=\"query-result-section\"\r\n  [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">Query Result</h4>\r\n        </div>\r\n        <div class=\"card-body\">\r\n          <p class=\"card-category\">\r\n            Returned records 1 - 3 of 3 total records:\r\n          </p>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <div class=\"table-responsive\">\r\n                <table class=\"table\">\r\n                  <thead class=\"text-primary\">\r\n                    <tr>\r\n                      <th *ngFor=\"let item of resultsFields; let i = index\">\r\n                        {{ item.viewValue }}\r\n                      </th>\r\n                    </tr>\r\n                  </thead>\r\n                  <tbody>\r\n                    <tr>\r\n                      <td>1</td>\r\n                      <td>Aman</td>\r\n                      <td>9876543210</td>\r\n                      <td>Bangalore</td>\r\n                    </tr>\r\n                    <tr>\r\n                      <td>2</td>\r\n                      <td>Ashutosh</td>\r\n                      <td>7795338870</td>\r\n                      <td>Bangalore</td>\r\n                    </tr>\r\n                    <tr>\r\n                      <td>3</td>\r\n                      <td>Harsh</td>\r\n                      <td>7878656543</td>\r\n                      <td>Bangalore</td>\r\n                    </tr>\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button\r\n                type=\"button\"\r\n                (click)=\"toggleModal()\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Detailed Report\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n<!--\r\n  <div class=\"swal2-container swal2-center swal2-fade swal2-shown\" style=\"overflow-y: auto;\"\r\n  [ngClass]=\"show_DetailModal == true ? 'show' : 'hide'\">\r\n      <div aria-labelledby=\"swal2-title\" aria-describedby=\"swal2-content\" class=\"swal2-popup swal2-modal swal2-show\" tabindex=\"-1\" role=\"dialog\" aria-live=\"assertive\" aria-modal=\"true\" style=\"display: flex;\">\r\n        <div class=\"swal2-header\">\r\n            <h2 class=\"swal2-title\" id=\"swal2-title\">Detail Record</h2>\r\n            </div>\r\n        <div class=\"swal2-content\"></div>\r\n        <div class=\"swal2-actions\" style=\"display: flex;\">\r\n            <button type=\"button\" (click)=\"toggleModal()\" class=\"swal2-confirm btn btn-info\" aria-label=\"\">Close</button>\r\n        </div>\r\n        <div class=\"swal2-footer\">\r\n        </div>\r\n      </div>\r\n\r\n  </div>\r\n-->\r\n"
 
 /***/ }),
 
@@ -888,59 +892,61 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var SoqlQueryComponent = /** @class */ (function () {
     function SoqlQueryComponent(fb) {
         this.fb = fb;
-        this.soql_query = 'SELECT Id FROM Account';
+        this.soql_query = "SELECT Id FROM Account";
         this.show_result = false;
         this.show_DetailModal = false;
-        this.query_string = '';
+        this.query_string = "";
         this.query_object = {};
         this.objects = [
-            { value: '', viewValue: 'Select an Object' },
-            { value: 'AcceptedEventRelation', viewValue: 'AcceptedEventRelation' },
-            { value: 'Account', viewValue: 'Account' },
-            { value: 'AccountBrand', viewValue: 'AccountBrand' },
-            { value: 'AccountBrandShare', viewValue: 'AccountBrandShare' }
+            { value: "", viewValue: "Select an Object" },
+            { value: "AcceptedEventRelation", viewValue: "AcceptedEventRelation" },
+            { value: "Account", viewValue: "Account" },
+            { value: "AccountBrand", viewValue: "AccountBrand" },
+            { value: "AccountBrandShare", viewValue: "AccountBrandShare" }
         ];
         this.nulls = [
-            { value: 'nulls-first', viewValue: 'Nulls First' },
-            { value: 'nulls-last', viewValue: 'Nulls Last' }
+            { value: "nulls-first", viewValue: "Nulls First" },
+            { value: "nulls-last", viewValue: "Nulls Last" }
         ];
         this.operators = [
-            { value: '=', viewValue: '=' },
-            { value: '!=', viewValue: '!=' }
+            { value: "=", viewValue: "=" },
+            { value: "!=", viewValue: "!=" }
         ];
         this.fields = [
-            { value: 'count()', viewValue: 'count()' },
-            { value: 'AccountNumber', viewValue: 'AccountNumber' },
-            { value: 'AccountSource', viewValue: 'AccountSource' },
-            { value: 'AccountType__c', viewValue: 'AccountType__c' },
-            { value: 'Account__ID', viewValue: 'ID' },
-            { value: 'Name', viewValue: 'Name' },
-            { value: 'Home Phone', viewValue: 'HomePhone' },
-            { value: 'Cellphone', viewValue: 'Cellphone' },
-            { value: 'City', viewValue: 'City' },
+            { value: "count()", viewValue: "count()" },
+            { value: "AccountNumber", viewValue: "AccountNumber" },
+            { value: "AccountSource", viewValue: "AccountSource" },
+            { value: "AccountType__c", viewValue: "AccountType__c" },
+            { value: "Account__ID", viewValue: "ID" },
+            { value: "Name", viewValue: "Name" },
+            { value: "Home Phone", viewValue: "HomePhone" },
+            { value: "Cellphone", viewValue: "Cellphone" },
+            { value: "City", viewValue: "City" }
         ];
         this.sortBy = [
-            { value: 'AccountNumber', viewValue: 'AccountNumber' },
-            { value: 'AccountSource', viewValue: 'AccountSource' },
-            { value: 'AccountType__c', viewValue: 'AccountType__c' },
-            { value: 'Account__ID__c', viewValue: 'Account__ID__c' }
+            { value: "AccountNumber", viewValue: "AccountNumber" },
+            { value: "AccountSource", viewValue: "AccountSource" },
+            { value: "AccountType__c", viewValue: "AccountType__c" },
+            { value: "Account__ID__c", viewValue: "Account__ID__c" }
         ];
         this.filterBy = [
-            { value: 'AccountNumber', viewValue: 'AccountNumber' },
-            { value: 'AccountSource', viewValue: 'AccountSource' },
-            { value: 'AccountType__c', viewValue: 'AccountType__c' },
-            { value: 'Account__ID__c', viewValue: 'Account__ID__c' }
+            { value: "AccountNumber", viewValue: "AccountNumber" },
+            { value: "AccountSource", viewValue: "AccountSource" },
+            { value: "AccountType__c", viewValue: "AccountType__c" },
+            { value: "Account__ID__c", viewValue: "Account__ID__c" }
         ];
         this.resultsFields = [
-            { value: 'Account__ID', viewValue: 'ID' },
-            { value: 'Name', viewValue: 'Name' },
-            { value: 'Cellphone', viewValue: 'Cellphone' },
-            { value: 'City', viewValue: 'City' },
+            { value: "Account__ID", viewValue: "ID" },
+            { value: "Name", viewValue: "Name" },
+            { value: "Cellphone", viewValue: "Cellphone" },
+            { value: "City", viewValue: "City" }
         ];
     }
     SoqlQueryComponent.prototype.ngOnInit = function () {
-        this.form = this.fb.group({
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
+        this.queryForm = this.fb.group({
+            customerName: "",
+            email: "",
+            queryArr: this.fb.array([this.createQuery()])
         });
     };
     SoqlQueryComponent.prototype.querySOQL = function () {
@@ -949,23 +955,40 @@ var SoqlQueryComponent = /** @class */ (function () {
     SoqlQueryComponent.prototype.toggleModal = function () {
         //this.show_DetailModal =  !this.show_DetailModal;
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
-            title: 'Detail Report',
-            confirmButtonText: 'Close',
-            confirmButtonClass: 'confirmButtonClass'
+            title: "Detail Report",
+            confirmButtonText: "Close",
+            confirmButtonClass: "confirmButtonClass"
         });
     };
     SoqlQueryComponent.prototype.objectChangeHandler = function (event) {
-        this.query_string = 'SELECT * FROM ' + event.target.value;
-        this.query_object['object'] = event.target.value;
+        this.query_string = "SELECT * FROM " + event.target.value;
+        this.query_object["object"] = event.target.value;
     };
     SoqlQueryComponent.prototype.fieldsChangeHandler = function (event) {
         console.log("event.target.value", event.target, event);
-        this.query_string = 'SELECT ' + event.target.value + ' FROM ' + this.query_object['object'];
-        this.query_object['fields'] = event.target.value;
+        this.query_string =
+            "SELECT " + event.target.value + " FROM " + this.query_object["object"];
+        this.query_object["fields"] = event.target.value;
+    };
+    SoqlQueryComponent.prototype.createQuery = function () {
+        return this.fb.group({
+            name: "",
+            description: "",
+            price: ""
+        });
+    };
+    SoqlQueryComponent.prototype.addAnotherQuery = function () {
+        this.queryArr = this.queryForm.get("queryArr");
+        this.queryArr.push(this.createQuery());
+    };
+    SoqlQueryComponent.prototype.removeQuery = function (index) {
+        this.queryArr = this.queryForm.get("queryArr");
+        if (this.queryArr.length > 1)
+            this.queryArr.removeAt(index);
     };
     SoqlQueryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-soql-query',
+            selector: "app-soql-query",
             template: __webpack_require__(/*! ./soql-query.component.html */ "./src/app/components/soql-query/soql-query.component.html"),
             styles: [__webpack_require__(/*! ./soql-query.component.css */ "./src/app/components/soql-query/soql-query.component.css")]
         }),
@@ -985,7 +1008,7 @@ var SoqlQueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVwc2VydC1jb21wb25lbnQvdXBzZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksV0FBVztDQUNkIiwiZmlsZSI6InVwc2VydC1jb21wb25lbnQvdXBzZXJ0LWNvbXBvbmVudC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhpZGV7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbi5zaG93e1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuLndpZHRoLTMwcGVye1xyXG4gICAgd2lkdGg6IDMwJTtcclxufSJdfQ== */"
+module.exports = ".hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\n.width-30per{\r\n    width: 30%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvdXBzZXJ0LWNvbXBvbmVudC91cHNlcnQtY29tcG9uZW50LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxjQUFjO0NBQ2pCO0FBQ0Q7SUFDSSxlQUFlO0NBQ2xCO0FBQ0Q7SUFDSSxXQUFXO0NBQ2QiLCJmaWxlIjoiY29tcG9uZW50cy91cHNlcnQtY29tcG9uZW50L3Vwc2VydC1jb21wb25lbnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oaWRle1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG4uc2hvd3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbi53aWR0aC0zMHBlcntcclxuICAgIHdpZHRoOiAzMCU7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1073,7 +1096,7 @@ var UpsertComponentComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ1c2VyLXByb2ZpbGUvdXNlci1wcm9maWxlLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjb21wb25lbnRzL3VzZXItcHJvZmlsZS91c2VyLXByb2ZpbGUuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -1136,7 +1159,7 @@ var UserProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".main-panel>.content{\r\n    margin-top: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2xheW91dHMvaG9tZS1sYXlvdXQvaG9tZS1sYXlvdXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlCQUFpQjtDQUNwQiIsImZpbGUiOiIuLi9sYXlvdXRzL2hvbWUtbGF5b3V0L2hvbWUtbGF5b3V0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWFpbi1wYW5lbD4uY29udGVudHtcclxuICAgIG1hcmdpbi10b3A6IDMwcHg7XHJcbn0iXX0= */"
+module.exports = ".main-panel>.content{\r\n    margin-top: 30px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxheW91dHMvaG9tZS1sYXlvdXQvaG9tZS1sYXlvdXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGlCQUFpQjtDQUNwQiIsImZpbGUiOiJsYXlvdXRzL2hvbWUtbGF5b3V0L2hvbWUtbGF5b3V0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWFpbi1wYW5lbD4uY29udGVudHtcclxuICAgIG1hcmdpbi10b3A6IDMwcHg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1147,7 +1170,7 @@ module.exports = ".main-panel>.content{\r\n    margin-top: 30px;\r\n}\r\n/*# sou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-sidenavbar></app-sidenavbar>\r\n\r\n<div class=\"main-panel\">\r\n      <!-- Navbar -->\r\n     <!-- <nav class=\"navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top \">\r\n        <div class=\"container-fluid\">\r\n          <div class=\"navbar-wrapper\">\r\n            <a class=\"navbar-brand\" href=\"#pablo\"></a>\r\n          </div>\r\n          <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" aria-controls=\"navigation-index\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"sr-only\">Toggle navigation</span>\r\n            <span class=\"navbar-toggler-icon icon-bar\"></span>\r\n            <span class=\"navbar-toggler-icon icon-bar\"></span>\r\n            <span class=\"navbar-toggler-icon icon-bar\"></span>\r\n          </button>-->\r\n          <nav class=\"navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top \">\r\n              <div class=\"container-fluid\">\r\n          <div class=\"collapse navbar-collapse justify-content-end\">\r\n           <!-- <form class=\"navbar-form\" [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\r\n              <div class=\"input-group no-border\">\r\n                <input type=\"text\" value=\"\" class=\"form-control\" placeholder=\"Search...\">\r\n                <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n                  <i class=\"material-icons\">search</i>\r\n                  <div class=\"ripple-container\"></div>\r\n                </button>\r\n              </div>\r\n            </form>-->\r\n            <ul class=\"navbar-nav\">\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#pablo\">\r\n                  <i class=\"material-icons\">dashboard</i>\r\n                  <p class=\"d-lg-none d-md-block\">\r\n                    Stats\r\n                  </p>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item dropdown\">\r\n                <a class=\"nav-link\" href=\"http://example.com\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                  <i class=\"material-icons\">notifications</i>\r\n                  <span class=\"notification\">5</span>\r\n                  <p class=\"d-lg-none d-md-block\">\r\n                    Some Actions\r\n                  </p>\r\n                </a>\r\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\r\n                  <a class=\"dropdown-item\" href=\"#\">Mike John responded to your email</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">You have 5 new tasks</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">You're now friend with Andrew</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">Another Notification</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">Another One</a>\r\n                </div>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#pablo\">\r\n                  <i class=\"material-icons\">person</i>\r\n                  <p class=\"d-lg-none d-md-block\">\r\n                    Account\r\n                  </p>\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </nav>\r\n      <!-- End Navbar -->\r\n      <div class=\"content\">\r\n        <div class=\"container-fluid\">\r\n            <router-outlet></router-outlet>\r\n          \r\n        </div>\r\n      </div>\r\n      <footer class=\"footer\">\r\n        <div class=\"container-fluid\">\r\n          <nav class=\"float-left\">\r\n            <ul>\r\n              <li>\r\n                <a href=\"https://www.creative-tim.com\">\r\n                  Creative Tim\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a href=\"https://creative-tim.com/presentation\">\r\n                  About Us\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a href=\"http://blog.creative-tim.com\">\r\n                  Blog\r\n                </a>\r\n              </li>\r\n              <li>\r\n                <a href=\"#\">\r\n                  help\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </nav>\r\n          \r\n        </div>\r\n      </footer>\r\n    </div>\r\n"
+module.exports = "<app-sidenavbar></app-sidenavbar>\r\n\r\n<div class=\"main-panel\">\r\n      <!-- Navbar -->\r\n     <!-- <nav class=\"navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top \">\r\n        <div class=\"container-fluid\">\r\n          <div class=\"navbar-wrapper\">\r\n            <a class=\"navbar-brand\" href=\"#pablo\"></a>\r\n          </div>\r\n          <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" aria-controls=\"navigation-index\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"sr-only\">Toggle navigation</span>\r\n            <span class=\"navbar-toggler-icon icon-bar\"></span>\r\n            <span class=\"navbar-toggler-icon icon-bar\"></span>\r\n            <span class=\"navbar-toggler-icon icon-bar\"></span>\r\n          </button>-->\r\n          <nav class=\"navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top \">\r\n              <div class=\"container-fluid\">\r\n          <div class=\"collapse navbar-collapse justify-content-end\">\r\n           <!-- <form class=\"navbar-form\" [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\r\n              <div class=\"input-group no-border\">\r\n                <input type=\"text\" value=\"\" class=\"form-control\" placeholder=\"Search...\">\r\n                <button type=\"submit\" class=\"btn btn-white btn-round btn-just-icon\">\r\n                  <i class=\"material-icons\">search</i>\r\n                  <div class=\"ripple-container\"></div>\r\n                </button>\r\n              </div>\r\n            </form>-->\r\n            <ul class=\"navbar-nav\">\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"javascript:void(0)\">\r\n                  <i class=\"material-icons\">dashboard</i>\r\n                  <p class=\"d-lg-none d-md-block\">\r\n                    Stats\r\n                  </p>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item dropdown\">\r\n                <a class=\"nav-link\" href=\"javascript:void(0)\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                  <i class=\"material-icons\">notifications</i>\r\n                  <span class=\"notification\">5</span>\r\n                  <p class=\"d-lg-none d-md-block\">\r\n                    Some Actions\r\n                  </p>\r\n                </a>\r\n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\r\n                  <a class=\"dropdown-item\" href=\"#\">Mike John responded to your email</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">You have 5 new tasks</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">You're now friend with Andrew</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">Another Notification</a>\r\n                  <a class=\"dropdown-item\" href=\"#\">Another One</a>\r\n                </div>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#pablo\">\r\n                  <i class=\"material-icons\">person</i>\r\n                  <p class=\"d-lg-none d-md-block\">\r\n                    Account\r\n                  </p>\r\n                </a>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n        </div>\r\n      </nav>\r\n      <!-- End Navbar -->\r\n      <div class=\"content\">\r\n        <div class=\"container-fluid\">\r\n            <router-outlet></router-outlet>\r\n          \r\n        </div>\r\n      </div>\r\n      <footer class=\"footer\">\r\n        <div class=\"container-fluid\">\r\n          <nav class=\"float-left\">\r\n            \r\n          </nav>\r\n          \r\n        </div>\r\n      </footer>\r\n    </div>\r\n"
 
 /***/ }),
 
@@ -1199,7 +1222,7 @@ var HomeLayoutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".main-panel {\r\n    float: none;\r\n    width: 100%;\r\n}\r\n\r\n.content {\r\n    margin-top: 0;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2xheW91dHMvbG9naW4tbGF5b3V0L2xvZ2luLWxheW91dC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLGNBQWM7Q0FDakI7O0FBQ0Q7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCIiwiZmlsZSI6Ii4uL2xheW91dHMvbG9naW4tbGF5b3V0L2xvZ2luLWxheW91dC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW4tcGFuZWwge1xyXG4gICAgZmxvYXQ6IG5vbmU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLmNvbnRlbnQge1xyXG4gICAgbWFyZ2luLXRvcDogMDtcclxufVxyXG4uY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufSJdfQ== */"
+module.exports = ".main-panel {\r\n    float: none;\r\n    width: 100%;\r\n}\r\n\r\n.content {\r\n    margin-top: 0;\r\n}\r\n\r\n.container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxheW91dHMvbG9naW4tbGF5b3V0L2xvZ2luLWxheW91dC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLGNBQWM7Q0FDakI7O0FBQ0Q7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCIiwiZmlsZSI6ImxheW91dHMvbG9naW4tbGF5b3V0L2xvZ2luLWxheW91dC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW4tcGFuZWwge1xyXG4gICAgZmxvYXQ6IG5vbmU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLmNvbnRlbnQge1xyXG4gICAgbWFyZ2luLXRvcDogMDtcclxufVxyXG4uY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -1321,6 +1344,78 @@ var RestService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], RestService);
     return RestService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/accordion/accordion.component.css":
+/*!**********************************************************!*\
+  !*** ./src/app/shared/accordion/accordion.component.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".pointerClass{\r\n    cursor: pointer;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNoYXJlZC9hY2NvcmRpb24vYWNjb3JkaW9uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxnQkFBZ0I7Q0FDbkIiLCJmaWxlIjoic2hhcmVkL2FjY29yZGlvbi9hY2NvcmRpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wb2ludGVyQ2xhc3N7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/shared/accordion/accordion.component.html":
+/*!***********************************************************!*\
+  !*** ./src/app/shared/accordion/accordion.component.html ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"query-section\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <div class=\"card\">\r\n          <div class=\"card-header card-header-primary pointerClass\" (click)=\"isHidden = !isHidden\">\r\n            <h4 class=\"card-title\">{{title}}</h4>\r\n            <p class=\"card-category\">{{desc}}</p>\r\n          </div>\r\n          <div class=\"card-body\" [hidden]=\"isHidden\">\r\n            <ng-content select=\".cardBody\"></ng-content>\r\n          </div>\r\n          <div class=\"card-footer\" [hidden]=\"!isHidden\">\r\n              <ng-content select=\".cardFooter\"></ng-content>\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n  "
+
+/***/ }),
+
+/***/ "./src/app/shared/accordion/accordion.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/shared/accordion/accordion.component.ts ***!
+  \*********************************************************/
+/*! exports provided: AccordionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccordionComponent", function() { return AccordionComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AccordionComponent = /** @class */ (function () {
+    function AccordionComponent() {
+        this.isHidden = false;
+    }
+    AccordionComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], AccordionComponent.prototype, "title", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], AccordionComponent.prototype, "desc", void 0);
+    AccordionComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-accordion',
+            template: __webpack_require__(/*! ./accordion.component.html */ "./src/app/shared/accordion/accordion.component.html"),
+            styles: [__webpack_require__(/*! ./accordion.component.css */ "./src/app/shared/accordion/accordion.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AccordionComponent);
+    return AccordionComponent;
 }());
 
 
