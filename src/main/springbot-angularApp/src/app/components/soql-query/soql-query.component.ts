@@ -1,8 +1,10 @@
 import { Component, OnInit, NgModule } from "@angular/core";
+import {RestService} from "../../rest/rest.service";
 
 import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 //import {MatSelect, MatFormField, MatOption} from '@angular/material';
 import Swal from "sweetalert2";
+import { restoreView } from "@angular/core/src/render3";
 
 export interface Objects {
   value: string;
@@ -46,7 +48,7 @@ export class SoqlQueryComponent implements OnInit {
   queryForm: FormGroup;
   queryArr: FormArray;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private restService: RestService) {}
 
   soql_query: String = "SELECT Id FROM Account";
   show_result: Boolean = false;
@@ -111,7 +113,18 @@ export class SoqlQueryComponent implements OnInit {
   }
 
   querySOQL() {
-    this.show_result = true;
+  var retrievedData;
+    console.log(this.query_string);
+    this.restService.soql_query("select id from account limit 10").subscribe(
+      data => {
+        console.log(data);
+        retrievedData=data.body;
+        console.log('aman'+retrievedData );
+       
+      },
+      error => console.log(error));
+
+
   }
 
   toggleModal() {

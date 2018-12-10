@@ -37,6 +37,28 @@ login (user: User): Observable<any> {
   );
 }
 
+
+soql_query (query: any): Observable<any> {
+  var sessionData = JSON.parse(sessionStorage.getItem('env1'));
+				
+				console.log(sessionData.baseURL);
+	var headerOptions = {
+	  headers: new HttpHeaders({
+          'Content-Type' : 'application/json',
+					'baseURL' : sessionData.baseURL,
+					'version' : sessionData.version+'.0',
+					'sessionId' : sessionData.sessionId,
+					'query' :  query,
+					"Access-Control-Allow-Credentials" : "true",
+            		"Access-Control-Allow-Origin" : '*'
+				})
+  };
+  
+
+  	return this.http.post(endpoint + soql_endpoint, '' ,headerOptions);
+}
+
+
 private handleError<T> (operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
 

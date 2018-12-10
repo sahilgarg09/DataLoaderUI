@@ -23,17 +23,18 @@ export class AuthService {
   login(user: User){
     console.log(user);
     console.log('----------------------------------------------')
-    if (user.email !== '' && user.password !== '' && user.env !== 'Enviournment' && user.api !== 'Api Version' ) {
+    if (user.email !== '' && user.password !== '' && user.env !== 'Environment' && user.api !== 'Api Version' ) {
       this.rest.login(user).subscribe((result) => {
       
-		    var pathArray = result.metadataServerUrl.split('/');
+		  var pathArray = result.metadataServerUrl.split('/');
 			var protocol = pathArray[0];
 			var host = pathArray[2];
 			 
 			result.baseURL = protocol + '//' + host;
 			result.version = user.api;
 			sessionStorage.setItem('env1',JSON.stringify(result));
-		  	sessionStorage.setItem('selected','env1');
+				sessionStorage.setItem('selected','env1');
+
 		  
 		  	this.router.navigate(['/dashboard'])
 	    }, (err) => {
