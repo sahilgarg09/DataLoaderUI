@@ -98,6 +98,7 @@ export class SoqlQueryComponent implements OnInit {
   ];
 
   resultsFields: Fields[] = [
+    { value: "", viewValue: "" },
     { value: "Account__ID", viewValue: "ID" },
     { value: "Name", viewValue: "Name" },
     { value: "Cellphone", viewValue: "Cellphone" },
