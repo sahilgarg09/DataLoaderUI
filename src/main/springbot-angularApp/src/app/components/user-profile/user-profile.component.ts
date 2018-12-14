@@ -8,8 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
 
   constructor() { }
-
+  userData: Object = {};
   ngOnInit() {
+    this.updateProfile();
+  }
+
+  updateProfile(){
+    var envSelectec = sessionStorage.getItem('selected');
+    var session = JSON.parse(sessionStorage.getItem(envSelectec));
+    this.userData = {
+      name: session.userFullName,
+      email: session.userEmail,
+      orgName: session.organizationName,
+      username: session.userName
+    }
+    this.userData['passwordExp'] = (session.passwordExpired == 'true')? 'Yes' : 'No';
+    
   }
 
 }

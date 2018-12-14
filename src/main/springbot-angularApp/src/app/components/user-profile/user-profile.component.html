@@ -6,7 +6,53 @@
         </div>
         <div class="card-body">
           <!--<form [formGroup]="form" (ngSubmit)="onSubmit()">-->
-           <div>Profile loading...</div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="user-avatar">
+                  <img class="img" src="../../assets/img/avatar.png">
+              </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                     <div class="form-group bmd-form-group">
+                       <label class="bmd-label-floating">Name</label>
+                       <input type="text" class="form-control" value="{{userData.name}}" disabled="">
+                     </div>
+                    </div>
+                    <div class="col-md-6">
+                     <div class="form-group bmd-form-group">
+                       <label class="bmd-label-floating">Organization Name</label>
+                       <input type="text" class="form-control" value="{{userData.orgName}}" disabled="">
+                     </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group bmd-form-group">
+                       <label class="bmd-label-floating">Email</label>
+                       <input type="text" class="form-control" value="{{userData.email}}" disabled="">
+                     </div>
+                    </div>
+                    <div class="col-md-6">
+                     <div class="form-group bmd-form-group">
+                       <label class="bmd-label-floating">User Name</label>
+                       <input type="text" class="form-control" value="{{userData.username}}" disabled="">
+                     </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group bmd-form-group">
+                       <label class="bmd-label-floating">Password expired</label>
+                       <input type="text" class="form-control" value="{{userData.passwordExp}}" disabled="">
+                     </div>
+                    </div>             
+                 </div>
+            </div>
+          </div>
+           
+          
           <!--</form>-->
         </div>
       </div>
