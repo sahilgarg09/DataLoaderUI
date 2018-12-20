@@ -213,16 +213,19 @@
         <button
           type="button"
           (click)="addAnotherQuery()"
-          class="btn btn-primary pull-right"
+          class="btn btn-success pull-left"
         >
-          Add Another Query
+        <i class="material-icons">add</i>
         </button>
         <button
           type="button"
           (click)="removeQuery(i)"
-          class="btn btn-normal pull-right"
+          class="btn btn-danger pull-left"
         >
-          Remove Query
+        <i class="material-icons">remove</i>
+        </button>
+        <button type="button" class="btn btn-primary pull-right">
+          Export to CSV
         </button>
       </div>
     </div>
