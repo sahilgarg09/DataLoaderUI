@@ -1,7 +1,7 @@
 import { Component, OnInit, NgModule } from "@angular/core";
 import {RestService} from "../../rest/rest.service";
 
-import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 //import {MatSelect, MatFormField, MatOption} from '@angular/material';
 import Swal from "sweetalert2";
 import { restoreView } from "@angular/core/src/render3";
@@ -30,10 +30,7 @@ export interface FilterBy {
   value: string;
   viewValue: string;
 }
-export interface ResultsFields {
-  value: string;
-  viewValue: string;
-}
+
 /*@NgModule({
   imports: [MatFormField, MatSelect, MatOption],
   exports: [MatFormField, MatSelect, MatOption],
@@ -48,10 +45,16 @@ export class SoqlQueryComponent implements OnInit {
   queryForm: FormGroup;
   queryArr: FormArray;
 
-  constructor(private fb: FormBuilder, private restService: RestService) {}
+  constructor(private fb: FormBuilder, private restService: RestService) {
+    this.queryForm = new FormGroup({
+      fields: new FormControl(null)
+    })
+  }
 
   soql_query: String = "SELECT Id FROM Account";
   show_result: Boolean = false;
+  result=[];
+  resultsFields=[];
   show_DetailModal: Boolean = false;
   query_string: String = "";
   query_object: Object = {};
@@ -78,7 +81,7 @@ export class SoqlQueryComponent implements OnInit {
     { value: "AccountNumber", viewValue: "AccountNumber" },
     { value: "AccountSource", viewValue: "AccountSource" },
     { value: "AccountType__c", viewValue: "AccountType__c" },
-    { value: "Account__ID", viewValue: "ID" },
+    { value: "Account__ID", viewValue: "Id" },
     { value: "Name", viewValue: "Name" },
     { value: "Home Phone", viewValue: "HomePhone" },
     { value: "Cellphone", viewValue: "Cellphone" },
@@ -95,15 +98,7 @@ export class SoqlQueryComponent implements OnInit {
     { value: "AccountSource", viewValue: "AccountSource" },
     { value: "AccountType__c", viewValue: "AccountType__c" },
     { value: "Account__ID__c", viewValue: "Account__ID__c" }
-  ];
-
-  resultsFields: Fields[] = [
-    { value: "", viewValue: "" },
-    { value: "Account__ID", viewValue: "ID" },
-    { value: "Name", viewValue: "Name" },
-    { value: "Cellphone", viewValue: "Cellphone" },
-    { value: "City", viewValue: "City" }
-  ];
+  ]; 
 
   ngOnInit() {
     this.queryForm = this.fb.group({
@@ -114,37 +109,56 @@ export class SoqlQueryComponent implements OnInit {
   }
 
   querySOQL() {
-  var retrievedData;
-    console.log(this.query_string);
-    this.restService.soql_query("select id from account limit 10").subscribe(
+    var retrievedData;
+    var queryString = this.query_string + ' limit 10';
+    console.log("queryString", queryString);
+    this.restService.soql_query("select id, name from account limit 10").subscribe(
       data => {
-        console.log(data);
         retrievedData=data.body;
-        console.log('aman'+retrievedData );
-       
+        console.log('aman', JSON.parse(JSON.stringify(retrievedData)) );
+        this.updateResultsTable(JSON.parse(retrievedData));        
       },
       error => console.log(error));
 
 
   }
+  updateResultsTable(data){
+    this.show_result = true;
+    var columns = this.query_object["fields"].split(", ");
+    var records = data.records;    
+    this.resultsFields = columns;
+    records.forEach(rec => {
+      let availableKeys = Object.keys(rec);      
+      columns.forEach(col => {
+        if(availableKeys.indexOf(col)> -1){
+          console.log("col", col, rec[col]);
+        }
+      });
+    });
+  }
 
   toggleModal() {
     //this.show_DetailModal =  !this.show_DetailModal;
     Swal({
-      title: "Detail Report",
+      title: (this.query_object["object"].length > 0) ? `${this.query_object["object"]} - Related Record` : 'Related Record',
       confirmButtonText: "Close",
       confirmButtonClass: "confirmButtonClass"
     });
   }
   objectChangeHandler(event: any) {
-    this.query_string = "SELECT * FROM " + event.target.value;
-    this.query_object["object"] = event.target.value;
+    this.query_object["object"] = '';
+    if(event.target.value !== 'Select an Object'){
+      this.query_string = "SELECT * FROM " + event.target.value;
+      this.query_object["object"] = event.target.value;
+    }
+    
   }
-  fieldsChangeHandler(event: any) {
-    console.log("event.target.value", event.target, event);
-    this.query_string =
-      "SELECT " + event.target.value + " FROM " + this.query_object["object"];
-    this.query_object["fields"] = event.target.value;
+  fieldsChangeHandler(options) {
+    var selectedOptionsArr = Array.apply(null,options).filter(option => option.selected).map(option => option.value);
+    this.query_object["fields"] = selectedOptionsArr.join(", ")
+    console.log("event.target.value", this.query_object["fields"]);
+    this.query_string = "SELECT " + this.query_object["fields"] + " FROM " + this.query_object["object"];
+    /*this.query_object["fields"] = event.target.value;*/
   }
 
   createQuery(): FormGroup {

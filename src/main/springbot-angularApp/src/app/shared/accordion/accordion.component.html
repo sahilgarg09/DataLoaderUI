@@ -3,8 +3,12 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary pointerClass" (click)="isHidden = !isHidden">
-            <h4 class="card-title">{{title}}</h4>
-            <p class="card-category">{{desc}}</p>
+            <i class="material-icons">{{isHidden ? 'add' : 'remove'}}</i>
+            <div>
+                <h4 class="card-title">{{title}}</h4>
+                <p class="card-category">{{desc}}</p>
+            </div>             
+            
           </div>
           <div class="card-body" [hidden]="isHidden">
             <ng-content select=".cardBody"></ng-content>

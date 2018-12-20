@@ -30,3 +30,16 @@ input.form-control{
 .cardFooter{
     width: 100%;
 }
+
+.res-title{
+    padding: 15px;
+    color: white;
+}
+.result-section{
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+}
+.res-header{
+    background-color: #9c27b0;
+}
