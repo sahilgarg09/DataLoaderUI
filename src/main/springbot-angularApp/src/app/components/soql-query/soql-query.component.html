@@ -16,8 +16,8 @@
             >
               <option
                 *ngFor="let item of objects; index as i"
-                [ngValue]="objects[i].value"
-                >{{ item.viewValue }}</option
+                [ngValue]="objects[i]"
+                >{{item}}</option
               >
             </select>
           </div>
@@ -33,7 +33,7 @@
               multiple
               (change)="fieldsChangeHandler($event.target.options)"
             >
-              <option *ngFor="let item of fields; let i = index" [value]="item.viewValue">{{
+              <option *ngFor="let item of fields; let i = index" [value]="item.value">{{
                 item.viewValue
               }}</option>
             </select>
@@ -159,30 +159,15 @@
                   <table class="table">
                     <thead class="text-primary">
                       <tr>
-                        <th *ngFor="let item of resultsFields; let i = index">
-                          {{ item.viewValue }}
+                        <th *ngFor="let item of columns">
+                          {{item}}
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                         
-                      <tr>                      
-                        <td>1</td>
-                        <td>Aman</td>
-                        <td>9876543210</td>
-                        <td>Bangalore</td>
-                      </tr>
-                      <tr>                      
-                        <td>2</td>
-                        <td>Ashutosh</td>
-                        <td>7795338870</td>
-                        <td>Bangalore</td>
-                      </tr>
-                      <tr>                     
-                        <td>3</td>
-                        <td>Harsh</td>
-                        <td>7878656543</td>
-                        <td>Bangalore</td>
+                      <tr  *ngFor="let result of resultsFields ! async">                      
+                        <td *ngFor="let column of columns">{{result[column]}}</td>
                       </tr>
                     </tbody>
                   </table>

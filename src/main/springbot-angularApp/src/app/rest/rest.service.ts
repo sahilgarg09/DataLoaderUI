@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import { URLSearchParams,Headers, RequestOptions } from '@angular/http';
 
 import { User } from '../auth/user';
 import { Env } from './env';
@@ -9,6 +10,8 @@ import { Env } from './env';
 const endpoint = 'http://localhost:8080/';
 const login_endpoint = 'login_request';
 const soql_endpoint = 'soql_request';
+const getAllObjects_endpoint='describe_all';
+const getFields_endpoint='describe_obj';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +60,48 @@ soql_query (query: any): Observable<any> {
 
   	return this.http.post(endpoint + soql_endpoint, '' ,headerOptions);
 }
+
+
+getAllOrgObjects (): Observable<any> {
+  var sessionData = JSON.parse(sessionStorage.getItem('env1'));
+				
+				console.log(sessionData.baseURL);
+	var headerOptions = {
+	  headers: new HttpHeaders({
+          'Content-Type' : 'application/json',
+					'baseURL' : sessionData.baseURL,
+					'version' : sessionData.version+'.0',
+					'sessionId' : sessionData.sessionId,
+					"Access-Control-Allow-Credentials" : "true",
+            		"Access-Control-Allow-Origin" : '*'
+				})
+	};
+  return this.http.post(endpoint + getAllObjects_endpoint, '' ,headerOptions);
+}
+
+
+//get details of field from Objects 
+
+getFieldsOfObject (objectName: any): Observable<any> {
+  var sessionData = JSON.parse(sessionStorage.getItem('env1'));
+				
+				console.log(sessionData.baseURL);
+	var headerOptions = {
+	  headers: new HttpHeaders({
+          'Content-Type' : 'application/json',
+					'baseURL' : sessionData.baseURL,
+					'version' : sessionData.version+'.0',
+					'sessionId' : sessionData.sessionId,
+					"Access-Control-Allow-Credentials" : "true",
+            		"Access-Control-Allow-Origin" : '*'
+				}),
+				params: {'objectName': objectName}
+	};
+
+	
+  return this.http.post(endpoint + getFields_endpoint,'' ,headerOptions);
+}
+
 
 
 private handleError<T> (operation = 'operation', result?: T) {

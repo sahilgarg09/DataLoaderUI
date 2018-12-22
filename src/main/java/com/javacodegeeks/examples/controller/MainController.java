@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dataloader.connection.Connector;
 import com.dataloader.connection.bulkapi.BulkHandler;
+import com.dataloader.connection.objects.ObjectsHandler;
 import com.dataloader.connection.query.QueryHandler;
 
 @Controller
@@ -54,5 +56,27 @@ public class MainController {
 			@RequestHeader String sessionId, @RequestBody String payload, @RequestHeader String jobId) {
 		System.out.println(payload);
 		return BulkHandler.uploadDataBatch(baseURL, version, sessionId, jobId, "CSV", payload);
+	}
+
+	@RequestMapping(value = "/describe_all", method = RequestMethod.POST)
+	@ResponseBody
+	public String describeAll(@RequestHeader String baseURL, @RequestHeader String version,
+			@RequestHeader String sessionId) {
+		return ObjectsHandler.describeAllObjects(baseURL, version, sessionId);
+	}
+
+	@RequestMapping(value = "/describe_obj", method = RequestMethod.POST)
+	@ResponseBody
+	public String describeObject(@RequestHeader String baseURL, @RequestHeader String version,
+			@RequestHeader String sessionId, @RequestParam String objectName) {
+		return ObjectsHandler.describeObject(baseURL, version, sessionId, objectName);
+	}
+
+	@RequestMapping(value = "/child_records", method = RequestMethod.POST)
+	@ResponseBody
+	public String childRecords(@RequestHeader String baseURL, @RequestHeader String version,
+			@RequestHeader String sessionId, @RequestHeader String objectName, @RequestHeader String recordIds,
+			@RequestHeader String relationShipName) {
+		return ObjectsHandler.describeChildRecords(baseURL, version, sessionId, objectName, recordIds, relationShipName);
 	}
 }

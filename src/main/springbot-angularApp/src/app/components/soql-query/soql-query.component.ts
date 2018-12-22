@@ -49,22 +49,23 @@ export class SoqlQueryComponent implements OnInit {
     this.queryForm = new FormGroup({
       fields: new FormControl(null)
     })
-  }
+   this.getAllObjects();
 
+
+  }
+  
+  listOfAllObjects=[];
   soql_query: String = "SELECT Id FROM Account";
   show_result: Boolean = false;
   result=[];
+  columns=[];
   resultsFields=[];
   show_DetailModal: Boolean = false;
   query_string: String = "";
   query_object: Object = {};
 
-  objects: Objects[] = [
-    { value: "", viewValue: "Select an Object" },
-    { value: "AcceptedEventRelation", viewValue: "AcceptedEventRelation" },
-    { value: "Account", viewValue: "Account" },
-    { value: "AccountBrand", viewValue: "AccountBrand" },
-    { value: "AccountBrandShare", viewValue: "AccountBrandShare" }
+  objects: String[] = [
+    'Select an Object',
   ];
 
   nulls: Nulls[] = [
@@ -76,17 +77,7 @@ export class SoqlQueryComponent implements OnInit {
     { value: "=", viewValue: "=" },
     { value: "!=", viewValue: "!=" }
   ];
-  fields: Fields[] = [
-    { value: "count()", viewValue: "count()" },
-    { value: "AccountNumber", viewValue: "AccountNumber" },
-    { value: "AccountSource", viewValue: "AccountSource" },
-    { value: "AccountType__c", viewValue: "AccountType__c" },
-    { value: "Account__ID", viewValue: "Id" },
-    { value: "Name", viewValue: "Name" },
-    { value: "Home Phone", viewValue: "HomePhone" },
-    { value: "Cellphone", viewValue: "Cellphone" },
-    { value: "City", viewValue: "City" }
-  ];
+  fields: Fields[] = [];
   sortBy: SortBy[] = [
     { value: "AccountNumber", viewValue: "AccountNumber" },
     { value: "AccountSource", viewValue: "AccountSource" },
@@ -112,7 +103,7 @@ export class SoqlQueryComponent implements OnInit {
     var retrievedData;
     var queryString = this.query_string + ' limit 10';
     console.log("queryString", queryString);
-    this.restService.soql_query("select id, name from account limit 10").subscribe(
+    this.restService.soql_query(queryString).subscribe(
       data => {
         retrievedData=data.body;
         console.log('aman', JSON.parse(JSON.stringify(retrievedData)) );
@@ -120,22 +111,60 @@ export class SoqlQueryComponent implements OnInit {
       },
       error => console.log(error));
 
-
   }
   updateResultsTable(data){
+     
+
     this.show_result = true;
     var columns = this.query_object["fields"].split(", ");
     var records = data.records;    
-    this.resultsFields = columns;
+    this.columns = columns;
+    this.resultsFields=records;
+    console.log("columns"+ this.columns);
+    console.log("records"+ JSON.parse(JSON.stringify(records)));
     records.forEach(rec => {
-      let availableKeys = Object.keys(rec);      
-      columns.forEach(col => {
-        if(availableKeys.indexOf(col)> -1){
-          console.log("col", col, rec[col]);
-        }
-      });
+     // console.log("rec"+ rec.Id);   
+      // columns.forEach(col => {
+      //   if(availableKeys.indexOf(col)> -1){
+      //     console.log("col", col, rec[col]);
+      //   }
+      // });
     });
   }
+
+
+  //get the list of all objects to show in dropdown
+
+getAllObjects(){
+  this.restService.getAllOrgObjects().subscribe(
+    data => {
+      data.sobjects.forEach(element => {
+        this.objects.push(element.name)
+      });
+     
+      console.log('aman1', JSON.parse(JSON.stringify(this.objects)) );
+     //this.getFieldsObj();
+          
+    },
+    error => console.log(error));
+
+}
+
+  getFieldsObj(objectName: string){
+    this.restService.getFieldsOfObject(objectName).subscribe(
+      data => {
+       data.fields.forEach(element => {
+         this.fields.push({ value: element.name, viewValue: element.label })
+       });
+         
+        console.log('aman3', JSON.parse(JSON.stringify(data)));
+            
+      },
+      error => console.log(error));
+
+
+  }
+
 
   toggleModal() {
     //this.show_DetailModal =  !this.show_DetailModal;
@@ -146,6 +175,12 @@ export class SoqlQueryComponent implements OnInit {
     });
   }
   objectChangeHandler(event: any) {
+    //added by aman for fetching fields for particular objects
+    if(event.target.value !== 'Select an Object')
+     {
+      this.getFieldsObj(event.target.value);
+     }
+
     this.query_object["object"] = '';
     if(event.target.value !== 'Select an Object'){
       this.query_string = "SELECT * FROM " + event.target.value;
