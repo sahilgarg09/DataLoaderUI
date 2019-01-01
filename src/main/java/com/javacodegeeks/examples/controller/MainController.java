@@ -14,6 +14,7 @@ import com.dataloader.connection.Connector;
 import com.dataloader.connection.bulkapi.BulkHandler;
 import com.dataloader.connection.objects.ObjectsHandler;
 import com.dataloader.connection.query.QueryHandler;
+import com.dataloader.dataupload.RecordsCreation;
 
 @Controller
 public class MainController {
@@ -78,5 +79,12 @@ public class MainController {
 			@RequestHeader String sessionId, @RequestHeader String objectName, @RequestHeader String recordIds,
 			@RequestHeader String relationShipName) {
 		return ObjectsHandler.describeChildRecords(baseURL, version, sessionId, objectName, recordIds, relationShipName);
+	}
+	
+	@RequestMapping(value = "/upload_records", method = RequestMethod.POST)
+	@ResponseBody
+	public String uploadRecords(@RequestHeader String baseURL, @RequestHeader String version,
+			@RequestHeader String sessionId, @RequestHeader String objectName, @RequestHeader String dataBody) {
+		return RecordsCreation.createRecords(baseURL, version, objectName, sessionId, dataBody);
 	}
 }
