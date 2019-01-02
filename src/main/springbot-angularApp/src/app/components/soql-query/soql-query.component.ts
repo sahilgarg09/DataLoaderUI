@@ -78,18 +78,8 @@ export class SoqlQueryComponent implements OnInit {
     { value: "!=", viewValue: "!=" }
   ];
   fields: Fields[] = [];
-  sortBy: SortBy[] = [
-    { value: "AccountNumber", viewValue: "AccountNumber" },
-    { value: "AccountSource", viewValue: "AccountSource" },
-    { value: "AccountType__c", viewValue: "AccountType__c" },
-    { value: "Account__ID__c", viewValue: "Account__ID__c" }
-  ];
-  filterBy: FilterBy[] = [
-    { value: "AccountNumber", viewValue: "AccountNumber" },
-    { value: "AccountSource", viewValue: "AccountSource" },
-    { value: "AccountType__c", viewValue: "AccountType__c" },
-    { value: "Account__ID__c", viewValue: "Account__ID__c" }
-  ]; 
+  sortBy: SortBy[] = [];
+  filterBy: FilterBy[] = []; 
 
   ngOnInit() {
     this.queryForm = this.fb.group({
@@ -121,7 +111,7 @@ export class SoqlQueryComponent implements OnInit {
     this.columns = columns;
     this.resultsFields=records;
     console.log("columns"+ this.columns);
-    console.log("records"+ JSON.parse(JSON.stringify(records)));
+    console.log("records"+ JSON.parse(JSON.stringify(data)));
     records.forEach(rec => {
      // console.log("rec"+ rec.Id);   
       // columns.forEach(col => {
@@ -153,10 +143,12 @@ getAllObjects(){
   getFieldsObj(objectName: string){
     this.restService.getFieldsOfObject(objectName).subscribe(
       data => {
+        this.fields=[];
        data.fields.forEach(element => {
          this.fields.push({ value: element.name, viewValue: element.label })
        });
-         
+         this.filterBy=this.fields;
+         this.sortBy= this.fields;
         console.log('aman3', JSON.parse(JSON.stringify(data)));
             
       },
@@ -213,4 +205,81 @@ getAllObjects(){
     if(this.queryArr.length > 1)
       this.queryArr.removeAt(index);
   }
+
+
+  ////converting to csv 
+
+  downloadButtonPush() {
+    var csvData = this.convertToCSV(this.columns, this.resultsFields);
+    var blob = new Blob([csvData], { type: 'text/csv' });
+    var url = window.URL.createObjectURL(blob);
+  
+    if(navigator.msSaveOrOpenBlob) {
+      navigator.msSaveBlob(blob, "example");
+    } else {
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = 'ETPHoldReview.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    window.URL.revokeObjectURL(url);
+  }
+
+  convertToCSV(columnRecord: any, resultData: any): any {
+    var finalData=[]
+    columnRecord.forEach(j => {
+      finalData.push(j);
+    });
+    resultData.forEach(i => {
+      columnRecord.forEach(j => {
+        finalData.push(i[j]);
+      });
+      
+    });
+    //finalData.push(resultData);
+    console.log("export1 "+ resultData);
+    console.log("export "+ finalData);
+     var array = typeof finalData != 'object' ? JSON.parse(finalData) : finalData;
+    
+     var str = '';
+    // var row = "";
+
+    // for (var index in finalData) {
+    //     //Now convert each value to string and comma-separated
+    //     row += index + ',';
+    // }
+    // row = row.slice(0, -1);
+    // //append Label row with line break
+    // str += row + '\r\n';
+
+    // for (var i = 0; i < array.length; i++) {
+    //     var line = '';
+    //     for (var index in array[i]) {
+    //         if (line != '') line += ','
+
+    //         line += array[i][index];
+    //     }
+    //     str += line + '\r\n';
+    // }
+    console.log("columnRecord"  +columnRecord.length)
+    for (var i=0; i<array.length; i++){
+      if((i+1)%(columnRecord.length)==0)
+        str+='"'+array[i]+'"'+'\r\n';
+      else 
+      str+='"'+array[i]+'"'+',';
+    }
+    console.log(str);
+    return str;
 }
+
+
+
+
+}
+
+
+
+////converting to csv 
+
