@@ -12,6 +12,7 @@ const login_endpoint = 'login_request';
 const soql_endpoint = 'soql_request';
 const getAllObjects_endpoint='describe_all';
 const getFields_endpoint='describe_obj';
+const orgToOrg_endpoint='upload_records';
 
 @Injectable({
   providedIn: 'root'
@@ -119,7 +120,7 @@ orgtoOrgTransfer (nameOfObject: any, data: any): Observable<any> {
             		"Access-Control-Allow-Origin" : '*'
 				})
 	};
-  return this.http.post(endpoint + getAllObjects_endpoint, '' ,headerOptions);
+  return this.http.post(endpoint + orgToOrg_endpoint, '' ,headerOptions);
 }
 
 
