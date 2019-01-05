@@ -15,6 +15,7 @@ import { DeleteQueryComponent } from './components/delete-query/delete-query.com
 import {InsertComponentComponent} from './components/insert-component/insert-component.component';
 import {UpsertComponentComponent} from './components/upsert-component/upsert-component.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
+import {OrgToOrgComponent} from './components/org-to-org/org-to-org.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -86,6 +87,16 @@ const routes: Routes = [
 			{
 				path: 'upsert',
 				component: UpsertComponentComponent
+			}
+		]
+	}, { 
+		path: '', 
+		component: HomeLayoutComponent, 
+		//canActivate: [AuthGuard],
+		children: [
+			{
+				path: 'org-to-org',
+				component: OrgToOrgComponent
 			}
 		]
 	}

@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Org To Org Transfer</h4>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="loginToOrg()">
+      <div class="card-body">
+        <!--<form [formGroup]="form" (ngSubmit)="onSubmit()">-->
+        <div class="row">
+          <div class="col-md-4">
+              <div class="row">
+                  <div class="col-md-12">
+                    <h3>Source:</h3>
+                  </div>
+                <div class="col-md-12">
+                  <div class="form-group bmd-form-group">
+                    <label class="">URL</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      [value]="[this.source.srcBaseUrl]"
+                      disabled="true"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group bmd-form-group">
+                    <label class="">Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      [value]="[this.source.srcUsername]"
+                      disabled="true"
+                    />
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-2 big-icon">
+            <span ><i class="material-icons">arrow_right_alt</i></span>
+          </div>
+          <div class="col-md-6">
+            
+            <div class="row">
+              <div class="col-md-12">
+                  <h3>Destination:</h3>
+                </div>
+              <div class="col-md-8">
+                <div class="form-group bmd-form-group">
+                    <label class="">Environment</label>
+                    <select class="form-control" formControlName="env" data-style="select-with-transition" title="Environment" data-size="7" >                        
+                        <option value="production">Production </option>
+                        <option value="sandbox">Sandbox</option>
+                      </select>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="form-group bmd-form-group">
+                  <label class="">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="email"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group bmd-form-group">
+                  <label class="">Password</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="password"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 center">
+                    <button type="submit" class="btn btn-primary ">Login</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!--</form>-->
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade " id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <span>Records:</span>
+                <span>{{source.record}}</span>
+              </div>
+              <div class="col-md-12 center confirmText">
+                <span>Do you want to procced?</span>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>          
+        </div>
+      </div>
+    </div>
+  </div>

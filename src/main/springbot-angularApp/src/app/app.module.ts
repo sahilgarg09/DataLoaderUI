@@ -17,6 +17,7 @@ import { DeleteQueryComponent } from './components/delete-query/delete-query.com
 import { InsertComponentComponent } from './components/insert-component/insert-component.component';
 import { UpsertComponentComponent } from './components/upsert-component/upsert-component.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { OrgToOrgComponent } from './components/org-to-org/org-to-org.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -37,7 +38,8 @@ import { AccordionComponent } from './shared/accordion/accordion.component';
     InsertComponentComponent,
     UpsertComponentComponent,
     UserProfileComponent,
-    AccordionComponent
+    AccordionComponent,
+    OrgToOrgComponent,    
   ],
   imports: [
     BrowserModule,
