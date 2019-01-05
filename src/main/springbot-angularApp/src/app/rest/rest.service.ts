@@ -102,6 +102,27 @@ getFieldsOfObject (objectName: any): Observable<any> {
   return this.http.post(endpoint + getFields_endpoint,'' ,headerOptions);
 }
 
+// upload or org to org objects.
+orgtoOrgTransfer (nameOfObject: any, data: any): Observable<any> {
+  var sessionData = JSON.parse(sessionStorage.getItem('env2'));
+				
+				console.log(sessionData.baseURL);
+	var headerOptions = {
+	  headers: new HttpHeaders({
+          'Content-Type' : 'application/json',
+					'baseURL' : sessionData.baseURL,
+					'version' : sessionData.version+'.0',
+					'sessionId' : sessionData.sessionId,
+					'objectName': nameOfObject,
+					 'dataBody' : data,
+					"Access-Control-Allow-Credentials" : "true",
+            		"Access-Control-Allow-Origin" : '*'
+				})
+	};
+  return this.http.post(endpoint + getAllObjects_endpoint, '' ,headerOptions);
+}
+
+
 
 
 private handleError<T> (operation = 'operation', result?: T) {
