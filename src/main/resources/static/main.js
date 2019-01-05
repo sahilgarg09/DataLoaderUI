@@ -44,6 +44,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/insert-component/insert-component.component */ "./src/app/components/insert-component/insert-component.component.ts");
 /* harmony import */ var _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/upsert-component/upsert-component.component */ "./src/app/components/upsert-component/upsert-component.component.ts");
 /* harmony import */ var _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/user-profile/user-profile.component */ "./src/app/components/user-profile/user-profile.component.ts");
+/* harmony import */ var _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/org-to-org/org-to-org.component */ "./src/app/components/org-to-org/org-to-org.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,6 +58,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 //Add components
+
 
 
 
@@ -132,6 +134,16 @@ var routes = [
             {
                 path: 'upsert',
                 component: _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_9__["UpsertComponentComponent"]
+            }
+        ]
+    }, {
+        path: '',
+        component: _layouts_home_layout_home_layout_component__WEBPACK_IMPORTED_MODULE_3__["HomeLayoutComponent"],
+        //canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'org-to-org',
+                component: _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_11__["OrgToOrgComponent"]
             }
         ]
     }
@@ -241,16 +253,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/insert-component/insert-component.component */ "./src/app/components/insert-component/insert-component.component.ts");
 /* harmony import */ var _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/upsert-component/upsert-component.component */ "./src/app/components/upsert-component/upsert-component.component.ts");
 /* harmony import */ var _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/user-profile/user-profile.component */ "./src/app/components/user-profile/user-profile.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./rest/rest.service */ "./src/app/rest/rest.service.ts");
-/* harmony import */ var _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./shared/accordion/accordion.component */ "./src/app/shared/accordion/accordion.component.ts");
+/* harmony import */ var _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/org-to-org/org-to-org.component */ "./src/app/components/org-to-org/org-to-org.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./rest/rest.service */ "./src/app/rest/rest.service.ts");
+/* harmony import */ var _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./shared/accordion/accordion.component */ "./src/app/shared/accordion/accordion.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -289,16 +303,17 @@ var AppModule = /** @class */ (function () {
                 _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_14__["InsertComponentComponent"],
                 _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__["UpsertComponentComponent"],
                 _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__["UserProfileComponent"],
-                _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_20__["AccordionComponent"]
+                _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_21__["AccordionComponent"],
+                _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_17__["OrgToOrgComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_18__["HttpModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_18__["HttpClientModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_19__["HttpModule"]
             ],
-            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_19__["RestService"]],
+            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_20__["RestService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
@@ -756,6 +771,107 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/org-to-org/org-to-org.component.css":
+/*!****************************************************************!*\
+  !*** ./src/app/components/org-to-org/org-to-org.component.css ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".big-icon{\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.big-icon i{\r\n    font-size: 100px;\r\n}\r\n\r\n.center{\r\n    text-align: center;\r\n}\r\n\r\n.confirmText{\r\n    margin-top: 10px;\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9vcmctdG8tb3JnL29yZy10by1vcmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCx3QkFBd0I7SUFDeEIsb0JBQW9CO0NBQ3ZCOztBQUVEO0lBQ0ksaUJBQWlCO0NBQ3BCOztBQUNEO0lBQ0ksbUJBQW1CO0NBQ3RCOztBQUNEO0lBQ0ksaUJBQWlCO0lBQ2pCLGdCQUFnQjtJQUNoQixrQkFBa0I7Q0FDckIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL29yZy10by1vcmcvb3JnLXRvLW9yZy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJpZy1pY29ue1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLmJpZy1pY29uIGl7XHJcbiAgICBmb250LXNpemU6IDEwMHB4O1xyXG59XHJcbi5jZW50ZXJ7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuLmNvbmZpcm1UZXh0e1xyXG4gICAgbWFyZ2luLXRvcDogMTBweDtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/components/org-to-org/org-to-org.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/org-to-org/org-to-org.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-12\">\n    <div class=\"card\">\n      <div class=\"card-header card-header-primary\">\n        <h4 class=\"card-title\">Org To Org Transfer</h4>\n      </div>\n      <form [formGroup]=\"form\" (ngSubmit)=\"loginToOrg()\">\n      <div class=\"card-body\">\n        <!--<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">-->\n        <div class=\"row\">\n          <div class=\"col-md-4\">\n              <div class=\"row\">\n                  <div class=\"col-md-12\">\n                    <h3>Source:</h3>\n                  </div>\n                <div class=\"col-md-12\">\n                  <div class=\"form-group bmd-form-group\">\n                    <label class=\"\">URL</label>\n                    <input\n                      type=\"text\"\n                      class=\"form-control\"\n                      [value]=\"[this.source.srcBaseUrl]\"\n                      disabled=\"true\"\n                    />\n                  </div>\n                </div>\n                <div class=\"col-md-12\">\n                  <div class=\"form-group bmd-form-group\">\n                    <label class=\"\">Username</label>\n                    <input\n                      type=\"text\"\n                      class=\"form-control\"\n                      [value]=\"[this.source.srcUsername]\"\n                      disabled=\"true\"\n                    />\n                  </div>\n                </div>\n              </div>\n          </div>\n          <div class=\"col-md-2 big-icon\">\n            <span ><i class=\"material-icons\">arrow_right_alt</i></span>\n          </div>\n          <div class=\"col-md-6\">\n            \n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                  <h3>Destination:</h3>\n                </div>\n              <div class=\"col-md-8\">\n                <div class=\"form-group bmd-form-group\">\n                    <label class=\"\">Environment</label>\n                    <select class=\"form-control\" formControlName=\"env\" data-style=\"select-with-transition\" title=\"Environment\" data-size=\"7\" >                        \n                        <option value=\"production\">Production </option>\n                        <option value=\"sandbox\">Sandbox</option>\n                      </select>\n                </div>\n              </div>\n              <div class=\"col-md-8\">\n                <div class=\"form-group bmd-form-group\">\n                  <label class=\"\">Username</label>\n                  <input\n                    type=\"text\"\n                    class=\"form-control\"\n                    formControlName=\"email\"\n                    required\n                  />\n                </div>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-md-8\">\n                <div class=\"form-group bmd-form-group\">\n                  <label class=\"\">Password</label>\n                  <input\n                    type=\"text\"\n                    class=\"form-control\"\n                    formControlName=\"password\"\n                    required\n                  />\n                </div>\n              </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-md-8 center\">\n                    <button type=\"submit\" class=\"btn btn-primary \">Login</button>\n                </div>\n            </div>\n          </div>\n        </div>\n\n        <!--</form>-->\n      </div>\n    </form>\n    </div>\n  </div>\n</div>\n\n<div class=\"modal fade \" id=\"confirmModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Confirmation</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <span>Records:</span>\n                <span>{{source.record}}</span>\n              </div>\n              <div class=\"col-md-12 center confirmText\">\n                <span>Do you want to procced?</span>\n              </div>\n            </div>\n        </div>\n        <div class=\"modal-footer center\">\n          <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Yes</button>          \n        </div>\n      </div>\n    </div>\n  </div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/org-to-org/org-to-org.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/org-to-org/org-to-org.component.ts ***!
+  \***************************************************************/
+/*! exports provided: OrgToOrgComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrgToOrgComponent", function() { return OrgToOrgComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../rest/rest.service */ "./src/app/rest/rest.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var OrgToOrgComponent = /** @class */ (function () {
+    function OrgToOrgComponent(fb, authService, rest) {
+        this.fb = fb;
+        this.authService = authService;
+        this.rest = rest;
+        this.source = {};
+    }
+    OrgToOrgComponent.prototype.ngOnInit = function () {
+        this.form = this.fb.group({
+            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            env: ['Environment', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
+        });
+        this.getSourceDetails();
+    };
+    OrgToOrgComponent.prototype.getSourceDetails = function () {
+        var selected = sessionStorage.getItem("selected");
+        var sourceObj = JSON.parse(sessionStorage.getItem(selected));
+        this.source = {
+            srcBaseUrl: sourceObj.baseURL,
+            srcUsername: sourceObj.userName
+        };
+        console.log("this.this.source", this.source);
+    };
+    OrgToOrgComponent.prototype.loginToOrg = function () {
+        var _this = this;
+        var formData = this.form.value;
+        if (formData.email !== '' && formData.password !== '') {
+            this.rest.login(formData).subscribe(function (result) {
+                console.log("result", result);
+                _this.source['record'] = 20;
+                $('#confirmModal').modal('show');
+            }, function (err) {
+                console.log(err);
+            });
+        }
+    };
+    OrgToOrgComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-org-to-org',
+            template: __webpack_require__(/*! ./org-to-org.component.html */ "./src/app/components/org-to-org/org-to-org.component.html"),
+            styles: [__webpack_require__(/*! ./org-to-org.component.css */ "./src/app/components/org-to-org/org-to-org.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_3__["RestService"]])
+    ], OrgToOrgComponent);
+    return OrgToOrgComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/sidenavbar/sidenavbar.component.css":
 /*!****************************************************************!*\
   !*** ./src/app/components/sidenavbar/sidenavbar.component.css ***!
@@ -774,7 +890,7 @@ module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n  <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n  <div class=\"logo\">\r\n    <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n      ForceLoader\r\n    </a>\r\n  </div>\r\n  <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n    <ul class=\"nav\">\r\n      <li class=\"nav-item \" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n          <i class=\"material-icons\">dashboard</i>\r\n          <p>Dashboard</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/user-profile']\">\r\n          <i class=\"material-icons\">person</i>\r\n          <p>User Profile</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" routerLinkActive=\"active\" (click)=\"isHidden = !isHidden\">\r\n        <a class=\"nav-link\" data-toggle=\"collapse\">\r\n          <i class=\"material-icons\">library_books</i>\r\n          <p>Data Manipulations </p>\r\n        </a>\r\n        <div class=\"collapse show\" id=\"mapsExamples\" [hidden]=\"isHidden\">\r\n          <ul class=\"nav\">\r\n            <li class=\"nav-item\" *ngFor=\"let query of queries\" (click)=\"onSelectLink(query)\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n              <a class=\"nav-link\" [routerLink]=\"[query.url]\">\r\n                <span class=\"sidebar-mini\">{{query.shortName}}</span>\r\n                <span class=\"sidebar-normal\">{{query.name}}</span>\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link textTransform\" data-toggle=\"collapse\">\r\n          <i class=\"material-icons\">arrow_right_alt</i>\r\n          <p>Org to Org Transfer</p>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n  <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n  <div class=\"logo\">\r\n    <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n      ForceLoader\r\n    </a>\r\n  </div>\r\n  <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n    <ul class=\"nav\">\r\n      <li class=\"nav-item \" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n          <i class=\"material-icons\">dashboard</i>\r\n          <p>Dashboard</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/user-profile']\">\r\n          <i class=\"material-icons\">person</i>\r\n          <p>User Profile</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" routerLinkActive=\"active\" (click)=\"isHidden = !isHidden\">\r\n        <a class=\"nav-link\" data-toggle=\"collapse\">\r\n          <i class=\"material-icons\">library_books</i>\r\n          <p>Data Manipulations </p>\r\n        </a>\r\n        <div class=\"collapse show\" id=\"mapsExamples\" [hidden]=\"isHidden\">\r\n          <ul class=\"nav\">\r\n            <li class=\"nav-item\" *ngFor=\"let query of queries\" (click)=\"onSelectLink(query)\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n              <a class=\"nav-link\" [routerLink]=\"[query.url]\">\r\n                <span class=\"sidebar-mini\">{{query.shortName}}</span>\r\n                <span class=\"sidebar-normal\">{{query.name}}</span>\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link textTransform\" data-toggle=\"collapse\" [routerLink]=\"['/org-to-org']\">\r\n          <i class=\"material-icons\">arrow_right_alt</i>\r\n          <p>Org to Org Transfer</p>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -854,7 +970,7 @@ module.exports = ".mar-btm-8{\r\n    margin-bottom: 8px;\r\n}\r\n.multiple-field
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-accordion\r\n  [title]=\"['Export']\"\r\n  [desc]=\"\"\r\n  *ngFor=\"let query of queryForm.get('queryArr').controls; let i = index\"\r\n>\r\n  <div class=\"cardBody\">\r\n    <section>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label class=\"bmd-label-floating\" for=\"object\">Object</label>\r\n            <select\r\n              class=\"form-control\"\r\n              id=\"object\"\r\n              (change)=\"objectChangeHandler($event)\"\r\n            >\r\n              <option\r\n                *ngFor=\"let item of objects; index as i\"\r\n                [ngValue]=\"objects[i].value\"\r\n                >{{ item.viewValue }}</option\r\n              >\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label class=\"bmd-label-floating\" for=\"fields\">Fields</label>\r\n            <select\r\n              class=\"form-control multiple-fields custom-select\"\r\n              id=\"fields\"\r\n              multiple\r\n              (change)=\"fieldsChangeHandler($event.target.options)\"\r\n            >\r\n              <option *ngFor=\"let item of fields; let i = index\" [value]=\"item.viewValue\">{{\r\n                item.viewValue\r\n              }}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-md-9\">\r\n          <div class=\"row align-items-end\">\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"sortByFields\"\r\n                  >Sorts results by</label\r\n                >\r\n                <select class=\"form-control\" id=\"sortByFields\">\r\n                  <option *ngFor=\"let item of sortBy; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-2\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"sortOrder\">Sort</label>\r\n                <select class=\"form-control\" id=\"sortOrder\">\r\n                  <option>A to Z</option>\r\n                  <option>Z to A</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-2\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"nullPosition\">Null</label>\r\n                <select class=\"form-control\" id=\"nullPosition\">\r\n                  <option *ngFor=\"let item of nulls; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"maxRecords\"\r\n                  >Max Records</label\r\n                >\r\n                <input type=\"text\" class=\"form-control\" id=\"maxRecords\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row align-items-end\">\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"filterByFields\"\r\n                  >Filter results by</label\r\n                >\r\n                <select class=\"form-control\" id=\"filterByFields\">\r\n                  <option *ngFor=\"let item of filterBy; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-2\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"operator\">Operator</label>\r\n                <select class=\"form-control\" id=\"operator\">\r\n                  <option *ngFor=\"let item of operators; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"fieldValue\"\r\n                  >Field Value</label\r\n                >\r\n                <input type=\"text\" class=\"form-control\" id=\"fieldValue\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"form-group\">\r\n            <label class=\"bmd-label-floating\" for=\"queryEditor\"\r\n              >Enter or modify a SOQL query below:</label\r\n            >\r\n            <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\">\r\n              {{ query_string }}</textarea\r\n            >\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <button\r\n            type=\"button\"\r\n            (click)=\"querySOQL()\"\r\n            class=\"btn btn-primary pull-left\"\r\n          >\r\n            Query\r\n          </button>\r\n          \r\n        </div>\r\n      </div>\r\n      <div class=\"clearfix\"></div>\r\n    </section>\r\n    <section\r\n    class=\"result-section\"\r\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n    >\r\n    <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"res-header\">\r\n          <h4 class=\"res-title\">Results</h4>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"res-body\">\r\n              <div class=\"table-responsive\">\r\n                  <table class=\"table\">\r\n                    <thead class=\"text-primary\">\r\n                      <tr>\r\n                        <th *ngFor=\"let item of resultsFields; let i = index\">\r\n                          {{ item.viewValue }}\r\n                        </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        \r\n                      <tr>                      \r\n                        <td>1</td>\r\n                        <td>Aman</td>\r\n                        <td>9876543210</td>\r\n                        <td>Bangalore</td>\r\n                      </tr>\r\n                      <tr>                      \r\n                        <td>2</td>\r\n                        <td>Ashutosh</td>\r\n                        <td>7795338870</td>\r\n                        <td>Bangalore</td>\r\n                      </tr>\r\n                      <tr>                     \r\n                        <td>3</td>\r\n                        <td>Harsh</td>\r\n                        <td>7878656543</td>\r\n                        <td>Bangalore</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n          </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" class=\"btn btn-primary pull-left\">\r\n                  Export to CSV\r\n                </button>\r\n              <button\r\n                type=\"button\"\r\n                data-toggle=\"modal\" \r\n                data-target=\"#exampleModal\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Related Record\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </section>\r\n  </div>\r\n  <div class=\"cardFooter\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <button\r\n          type=\"button\"\r\n          (click)=\"addAnotherQuery()\"\r\n          class=\"btn btn-success pull-left\"\r\n        >\r\n        <i class=\"material-icons\">add</i>\r\n        </button>\r\n        <button\r\n          type=\"button\"\r\n          (click)=\"removeQuery(i)\"\r\n          class=\"btn btn-danger pull-left\"\r\n        >\r\n        <i class=\"material-icons\">remove</i>\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-primary pull-right\">\r\n          Export to CSV\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</app-accordion>\r\n\r\n<!-- Modal -->\r\n<div class=\"modal fade bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{this.query_object[\"object\"]}} - Related Record</h5>\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n          <app-accordion\r\n            title=\"Individual Details\"\r\n            [desc]=\"\"            \r\n          >\r\n          <div class=\"cardBody\">\r\n            <div class=\"table-responsive\">\r\n              <table class=\"table\">\r\n                <thead class=\"text-primary\">\r\n                  <tr>\r\n                    <th>First Name</th>\r\n                    <th>Last Name</th>\r\n                    <th>Created Date</th>\r\n                    <th>Last Modified Date</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n        </app-accordion>\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n        \r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n<!--\r\n  <div class=\"swal2-container swal2-center swal2-fade swal2-shown\" style=\"overflow-y: auto;\"\r\n  [ngClass]=\"show_DetailModal == true ? 'show' : 'hide'\">\r\n      <div aria-labelledby=\"swal2-title\" aria-describedby=\"swal2-content\" class=\"swal2-popup swal2-modal swal2-show\" tabindex=\"-1\" role=\"dialog\" aria-live=\"assertive\" aria-modal=\"true\" style=\"display: flex;\">\r\n        <div class=\"swal2-header\">\r\n            <h2 class=\"swal2-title\" id=\"swal2-title\">Detail Record</h2>\r\n            </div>\r\n        <div class=\"swal2-content\"></div>\r\n        <div class=\"swal2-actions\" style=\"display: flex;\">\r\n            <button type=\"button\" (click)=\"toggleModal()\" class=\"swal2-confirm btn btn-info\" aria-label=\"\">Close</button>\r\n        </div>\r\n        <div class=\"swal2-footer\">\r\n        </div>\r\n      </div>\r\n\r\n  </div>\r\n-->\r\n"
+module.exports = "<app-accordion\r\n  [title]=\"['Export']\"\r\n  [desc]=\"\"\r\n  *ngFor=\"let query of queryForm.get('queryArr').controls; let i = index\"\r\n>\r\n  <div class=\"cardBody\">\r\n    <section>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label class=\"bmd-label-floating\" for=\"object\">Object</label>\r\n            <select\r\n              class=\"form-control\"\r\n              id=\"object\"\r\n              (change)=\"objectChangeHandler($event)\"\r\n            >\r\n              <option\r\n                *ngFor=\"let item of objects; index as i\"\r\n                [ngValue]=\"objects[i]\"\r\n                >{{item}}</option\r\n              >\r\n            </select>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-3\">\r\n          <div class=\"form-group\">\r\n            <label class=\"bmd-label-floating\" for=\"fields\">Fields</label>\r\n            <select\r\n              class=\"form-control multiple-fields custom-select\"\r\n              id=\"fields\"\r\n              multiple\r\n              (change)=\"fieldsChangeHandler($event.target.options)\"\r\n            >\r\n              <option *ngFor=\"let item of fields; let i = index\" [value]=\"item.value\">{{\r\n                item.viewValue\r\n              }}</option>\r\n            </select>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-md-9\">\r\n          <div class=\"row align-items-end\">\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"sortByFields\"\r\n                  >Sorts results by</label\r\n                >\r\n                <select class=\"form-control\" id=\"sortByFields\">\r\n                  <option *ngFor=\"let item of sortBy; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-2\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"sortOrder\">Sort</label>\r\n                <select class=\"form-control\" id=\"sortOrder\">\r\n                  <option>A to Z</option>\r\n                  <option>Z to A</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-2\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"nullPosition\">Null</label>\r\n                <select class=\"form-control\" id=\"nullPosition\">\r\n                  <option *ngFor=\"let item of nulls; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"maxRecords\"\r\n                  >Max Records</label\r\n                >\r\n                <input type=\"text\" class=\"form-control\" id=\"maxRecords\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row align-items-end\">\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"filterByFields\"\r\n                  >Filter results by</label\r\n                >\r\n                <select class=\"form-control\" id=\"filterByFields\">\r\n                  <option *ngFor=\"let item of filterBy; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-2\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"operator\">Operator</label>\r\n                <select class=\"form-control\" id=\"operator\">\r\n                  <option *ngFor=\"let item of operators; let i = index\">{{\r\n                    item.viewValue\r\n                  }}</option>\r\n                </select>\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-4\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"fieldValue\"\r\n                  >Field Value</label\r\n                >\r\n                <input type=\"text\" class=\"form-control\" id=\"fieldValue\" />\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"form-group\">\r\n            <label class=\"bmd-label-floating\" for=\"queryEditor\"\r\n              >Enter or modify a SOQL query below:</label\r\n            >\r\n            <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\">\r\n              {{ query_string }}</textarea\r\n            >\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <button\r\n            type=\"button\"\r\n            (click)=\"querySOQL()\"\r\n            class=\"btn btn-primary pull-left\"\r\n          >\r\n            Query\r\n          </button>\r\n          \r\n        </div>\r\n      </div>\r\n      <div class=\"clearfix\"></div>\r\n    </section>\r\n    <section\r\n    class=\"result-section\"\r\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n    >\r\n    <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"res-header\">\r\n          <h4 class=\"res-title\">Results</h4>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"res-body\">\r\n              <div class=\"table-responsive\">\r\n                  <table class=\"table\">\r\n                    <thead class=\"text-primary\">\r\n                      <tr>\r\n                        <th *ngFor=\"let item of columns\">\r\n                          {{item}}\r\n                        </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        \r\n                      <tr  *ngFor=\"let result of resultsFields ! async\">                      \r\n                        <td *ngFor=\"let column of columns\">{{result[column]}}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n          </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" (click)=\"downloadButtonPush()\" class=\"btn btn-primary pull-left\">\r\n                  Export to CSV\r\n                </button>\r\n              <button\r\n                type=\"button\"\r\n                data-toggle=\"modal\" \r\n                data-target=\"#exampleModal\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Related Record\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </section>\r\n  </div>\r\n  <div class=\"cardFooter\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <button\r\n          type=\"button\"\r\n          (click)=\"addAnotherQuery()\"\r\n          class=\"btn btn-success pull-left\"\r\n        >\r\n        <i class=\"material-icons\">add</i>\r\n        </button>\r\n        <button\r\n          type=\"button\"\r\n          (click)=\"removeQuery(i)\"\r\n          class=\"btn btn-danger pull-left\"\r\n        >\r\n        <i class=\"material-icons\">remove</i>\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-primary pull-right\">\r\n          Export to CSV\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</app-accordion>\r\n\r\n<!-- Modal -->\r\n<div class=\"modal fade bd-example-modal-lg\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n  <div class=\"modal-dialog modal-lg\" role=\"document\">\r\n    <div class=\"modal-content\">\r\n      <div class=\"modal-header\">\r\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{this.query_object[\"object\"]}} - Related Record</h5>\r\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n      <div class=\"modal-body\">\r\n          <app-accordion\r\n            title=\"Individual Details\"\r\n            [desc]=\"\"            \r\n          >\r\n          <div class=\"cardBody\">\r\n            <div class=\"table-responsive\">\r\n              <table class=\"table\">\r\n                <thead class=\"text-primary\">\r\n                  <tr>\r\n                    <th>First Name</th>\r\n                    <th>Last Name</th>\r\n                    <th>Created Date</th>\r\n                    <th>Last Modified Date</th>\r\n                  </tr>\r\n                </thead>\r\n                <tbody>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n\r\n          </div>\r\n        </app-accordion>\r\n      </div>\r\n      <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n        \r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n<!--\r\n  <div class=\"swal2-container swal2-center swal2-fade swal2-shown\" style=\"overflow-y: auto;\"\r\n  [ngClass]=\"show_DetailModal == true ? 'show' : 'hide'\">\r\n      <div aria-labelledby=\"swal2-title\" aria-describedby=\"swal2-content\" class=\"swal2-popup swal2-modal swal2-show\" tabindex=\"-1\" role=\"dialog\" aria-live=\"assertive\" aria-modal=\"true\" style=\"display: flex;\">\r\n        <div class=\"swal2-header\">\r\n            <h2 class=\"swal2-title\" id=\"swal2-title\">Detail Record</h2>\r\n            </div>\r\n        <div class=\"swal2-content\"></div>\r\n        <div class=\"swal2-actions\" style=\"display: flex;\">\r\n            <button type=\"button\" (click)=\"toggleModal()\" class=\"swal2-confirm btn btn-info\" aria-label=\"\">Close</button>\r\n        </div>\r\n        <div class=\"swal2-footer\">\r\n        </div>\r\n      </div>\r\n\r\n  </div>\r\n-->\r\n"
 
 /***/ }),
 
@@ -895,19 +1011,17 @@ var SoqlQueryComponent = /** @class */ (function () {
     function SoqlQueryComponent(fb, restService) {
         this.fb = fb;
         this.restService = restService;
+        this.listOfAllObjects = [];
         this.soql_query = "SELECT Id FROM Account";
         this.show_result = false;
         this.result = [];
+        this.columns = [];
         this.resultsFields = [];
         this.show_DetailModal = false;
         this.query_string = "";
         this.query_object = {};
         this.objects = [
-            { value: "", viewValue: "Select an Object" },
-            { value: "AcceptedEventRelation", viewValue: "AcceptedEventRelation" },
-            { value: "Account", viewValue: "Account" },
-            { value: "AccountBrand", viewValue: "AccountBrand" },
-            { value: "AccountBrandShare", viewValue: "AccountBrandShare" }
+            'Select an Object',
         ];
         this.nulls = [
             { value: "nulls-first", viewValue: "Nulls First" },
@@ -917,32 +1031,13 @@ var SoqlQueryComponent = /** @class */ (function () {
             { value: "=", viewValue: "=" },
             { value: "!=", viewValue: "!=" }
         ];
-        this.fields = [
-            { value: "count()", viewValue: "count()" },
-            { value: "AccountNumber", viewValue: "AccountNumber" },
-            { value: "AccountSource", viewValue: "AccountSource" },
-            { value: "AccountType__c", viewValue: "AccountType__c" },
-            { value: "Account__ID", viewValue: "Id" },
-            { value: "Name", viewValue: "Name" },
-            { value: "Home Phone", viewValue: "HomePhone" },
-            { value: "Cellphone", viewValue: "Cellphone" },
-            { value: "City", viewValue: "City" }
-        ];
-        this.sortBy = [
-            { value: "AccountNumber", viewValue: "AccountNumber" },
-            { value: "AccountSource", viewValue: "AccountSource" },
-            { value: "AccountType__c", viewValue: "AccountType__c" },
-            { value: "Account__ID__c", viewValue: "Account__ID__c" }
-        ];
-        this.filterBy = [
-            { value: "AccountNumber", viewValue: "AccountNumber" },
-            { value: "AccountSource", viewValue: "AccountSource" },
-            { value: "AccountType__c", viewValue: "AccountType__c" },
-            { value: "Account__ID__c", viewValue: "Account__ID__c" }
-        ];
+        this.fields = [];
+        this.sortBy = [];
+        this.filterBy = [];
         this.queryForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             fields: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null)
         });
+        this.getAllObjects();
     }
     SoqlQueryComponent.prototype.ngOnInit = function () {
         this.queryForm = this.fb.group({
@@ -956,7 +1051,7 @@ var SoqlQueryComponent = /** @class */ (function () {
         var retrievedData;
         var queryString = this.query_string + ' limit 10';
         console.log("queryString", queryString);
-        this.restService.soql_query("select id, name from account limit 10").subscribe(function (data) {
+        this.restService.soql_query(queryString).subscribe(function (data) {
             retrievedData = data.body;
             console.log('aman', JSON.parse(JSON.stringify(retrievedData)));
             _this.updateResultsTable(JSON.parse(retrievedData));
@@ -966,15 +1061,41 @@ var SoqlQueryComponent = /** @class */ (function () {
         this.show_result = true;
         var columns = this.query_object["fields"].split(", ");
         var records = data.records;
-        this.resultsFields = columns;
+        this.columns = columns;
+        this.resultsFields = records;
+        console.log("columns" + this.columns);
+        console.log("records" + JSON.parse(JSON.stringify(data)));
         records.forEach(function (rec) {
-            var availableKeys = Object.keys(rec);
-            columns.forEach(function (col) {
-                if (availableKeys.indexOf(col) > -1) {
-                    console.log("col", col, rec[col]);
-                }
-            });
+            // console.log("rec"+ rec.Id);   
+            // columns.forEach(col => {
+            //   if(availableKeys.indexOf(col)> -1){
+            //     console.log("col", col, rec[col]);
+            //   }
+            // });
         });
+    };
+    //get the list of all objects to show in dropdown
+    SoqlQueryComponent.prototype.getAllObjects = function () {
+        var _this = this;
+        this.restService.getAllOrgObjects().subscribe(function (data) {
+            data.sobjects.forEach(function (element) {
+                _this.objects.push(element.name);
+            });
+            console.log('aman1', JSON.parse(JSON.stringify(_this.objects)));
+            //this.getFieldsObj();
+        }, function (error) { return console.log(error); });
+    };
+    SoqlQueryComponent.prototype.getFieldsObj = function (objectName) {
+        var _this = this;
+        this.restService.getFieldsOfObject(objectName).subscribe(function (data) {
+            _this.fields = [];
+            data.fields.forEach(function (element) {
+                _this.fields.push({ value: element.name, viewValue: element.label });
+            });
+            _this.filterBy = _this.fields;
+            _this.sortBy = _this.fields;
+            console.log('aman3', JSON.parse(JSON.stringify(data)));
+        }, function (error) { return console.log(error); });
     };
     SoqlQueryComponent.prototype.toggleModal = function () {
         //this.show_DetailModal =  !this.show_DetailModal;
@@ -985,6 +1106,10 @@ var SoqlQueryComponent = /** @class */ (function () {
         });
     };
     SoqlQueryComponent.prototype.objectChangeHandler = function (event) {
+        //added by aman for fetching fields for particular objects
+        if (event.target.value !== 'Select an Object') {
+            this.getFieldsObj(event.target.value);
+        }
         this.query_object["object"] = '';
         if (event.target.value !== 'Select an Object') {
             this.query_string = "SELECT * FROM " + event.target.value;
@@ -1014,6 +1139,65 @@ var SoqlQueryComponent = /** @class */ (function () {
         if (this.queryArr.length > 1)
             this.queryArr.removeAt(index);
     };
+    ////converting to csv 
+    SoqlQueryComponent.prototype.downloadButtonPush = function () {
+        var csvData = this.convertToCSV(this.columns, this.resultsFields);
+        var blob = new Blob([csvData], { type: 'text/csv' });
+        var url = window.URL.createObjectURL(blob);
+        if (navigator.msSaveOrOpenBlob) {
+            navigator.msSaveBlob(blob, "example");
+        }
+        else {
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = 'ETPHoldReview.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+        window.URL.revokeObjectURL(url);
+    };
+    SoqlQueryComponent.prototype.convertToCSV = function (columnRecord, resultData) {
+        var finalData = [];
+        columnRecord.forEach(function (j) {
+            finalData.push(j);
+        });
+        resultData.forEach(function (i) {
+            columnRecord.forEach(function (j) {
+                finalData.push(i[j]);
+            });
+        });
+        //finalData.push(resultData);
+        console.log("export1 " + resultData);
+        console.log("export " + finalData);
+        var array = typeof finalData != 'object' ? JSON.parse(finalData) : finalData;
+        var str = '';
+        // var row = "";
+        // for (var index in finalData) {
+        //     //Now convert each value to string and comma-separated
+        //     row += index + ',';
+        // }
+        // row = row.slice(0, -1);
+        // //append Label row with line break
+        // str += row + '\r\n';
+        // for (var i = 0; i < array.length; i++) {
+        //     var line = '';
+        //     for (var index in array[i]) {
+        //         if (line != '') line += ','
+        //         line += array[i][index];
+        //     }
+        //     str += line + '\r\n';
+        // }
+        console.log("columnRecord" + columnRecord.length);
+        for (var i = 0; i < array.length; i++) {
+            if ((i + 1) % (columnRecord.length) == 0)
+                str += '"' + array[i] + '"' + '\r\n';
+            else
+                str += '"' + array[i] + '"' + ',';
+        }
+        console.log(str);
+        return str;
+    };
     SoqlQueryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-soql-query",
@@ -1025,6 +1209,7 @@ var SoqlQueryComponent = /** @class */ (function () {
     return SoqlQueryComponent;
 }());
 
+////converting to csv 
 
 
 /***/ }),
@@ -1349,6 +1534,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var endpoint = 'http://localhost:8080/';
 var login_endpoint = 'login_request';
 var soql_endpoint = 'soql_request';
+var getAllObjects_endpoint = 'describe_all';
+var getFields_endpoint = 'describe_obj';
 var RestService = /** @class */ (function () {
     function RestService(http) {
         this.http = http;
@@ -1382,6 +1569,38 @@ var RestService = /** @class */ (function () {
             })
         };
         return this.http.post(endpoint + soql_endpoint, '', headerOptions);
+    };
+    RestService.prototype.getAllOrgObjects = function () {
+        var sessionData = JSON.parse(sessionStorage.getItem('env1'));
+        console.log(sessionData.baseURL);
+        var headerOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'baseURL': sessionData.baseURL,
+                'version': sessionData.version + '.0',
+                'sessionId': sessionData.sessionId,
+                "Access-Control-Allow-Credentials": "true",
+                "Access-Control-Allow-Origin": '*'
+            })
+        };
+        return this.http.post(endpoint + getAllObjects_endpoint, '', headerOptions);
+    };
+    //get details of field from Objects 
+    RestService.prototype.getFieldsOfObject = function (objectName) {
+        var sessionData = JSON.parse(sessionStorage.getItem('env1'));
+        console.log(sessionData.baseURL);
+        var headerOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'baseURL': sessionData.baseURL,
+                'version': sessionData.version + '.0',
+                'sessionId': sessionData.sessionId,
+                "Access-Control-Allow-Credentials": "true",
+                "Access-Control-Allow-Origin": '*'
+            }),
+            params: { 'objectName': objectName }
+        };
+        return this.http.post(endpoint + getFields_endpoint, '', headerOptions);
     };
     RestService.prototype.handleError = function (operation, result) {
         if (operation === void 0) { operation = 'operation'; }
