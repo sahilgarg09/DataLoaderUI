@@ -13,6 +13,7 @@ const soql_endpoint = 'soql_request';
 const getAllObjects_endpoint='describe_all';
 const getFields_endpoint='describe_obj';
 const orgToOrg_endpoint='upload_records';
+const getChildRecords_endpoint='child_records';
 
 @Injectable({
   providedIn: 'root'
@@ -121,6 +122,29 @@ orgtoOrgTransfer (nameOfObject: any, data: any): Observable<any> {
 				})
 	};
   return this.http.post(endpoint + orgToOrg_endpoint, '' ,headerOptions);
+}
+
+
+
+// child records .
+getChildData (nameOfObject: any, id: any, relationName: any): Observable<any> {
+  var sessionData = JSON.parse(sessionStorage.getItem('env1'));
+				
+				console.log(sessionData.baseURL);
+	var headerOptions = {
+	  headers: new HttpHeaders({
+          'Content-Type' : 'application/json',
+					'baseURL' : sessionData.baseURL,
+					'version' : sessionData.version+'.0',
+					'sessionId' : sessionData.sessionId,
+					'objectName': nameOfObject,
+					 'recordIds' : id,
+					 'relationShipName': relationName,
+					"Access-Control-Allow-Credentials" : "true",
+            		"Access-Control-Allow-Origin" : '*'
+				})
+	};
+  return this.http.post(endpoint + getChildRecords_endpoint, '' ,headerOptions);
 }
 
 
