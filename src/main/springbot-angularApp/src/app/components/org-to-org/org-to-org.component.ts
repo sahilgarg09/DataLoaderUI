@@ -13,9 +13,12 @@ declare var $:any;
 })
 export class OrgToOrgComponent implements OnInit {
   form: FormGroup;
-  source: Object = {}
+  source: Object = {};
+  isConfirmModalOpen = false;
   constructor(private fb: FormBuilder, private authService: AuthService, private rest: RestService) { 
-    
+    $('#exportToOrgModal').on('hidden.bs.modal', function (e) {
+      this.isConfirmModalOpen = false;
+    })
   }
 
   ngOnInit() {
@@ -39,16 +42,21 @@ export class OrgToOrgComponent implements OnInit {
   }
 
   loginToOrg(){    
-    let formData = this.form.value;
+    let formData = this.form.value;    
     if (formData.email !== '' && formData.password !== '' ) {
       this.rest.login(formData).subscribe((result) => {
       console.log("result", result);
-      this.source['record'] = 20;
-		  $('#confirmModal').modal('show');
+      this.source['record'] = 20;      
+		  this.isConfirmModalOpen = true;
 	    }, (err) => {
 	      console.log(err);
 	    });
     }
+  }
+
+  closeModal(){
+    this.isConfirmModalOpen = false;
+    $('#exportToOrgModal').modal('hide');
   }
 
 }

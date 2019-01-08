@@ -50,7 +50,9 @@ export class SoqlQueryComponent implements OnInit {
       fields: new FormControl(null)
     })
    this.getAllObjects();
-
+   this.setClickedRow = function(index){
+    this.selectedRow = index;
+    }
 
   }
   
@@ -80,6 +82,8 @@ export class SoqlQueryComponent implements OnInit {
   fields: Fields[] = [];
   sortBy: SortBy[] = [];
   filterBy: FilterBy[] = []; 
+  selectedRow : Number;
+  setClickedRow : Function;
 
   ngOnInit() {
     this.queryForm = this.fb.group({
@@ -87,6 +91,9 @@ export class SoqlQueryComponent implements OnInit {
       email: "",
       queryArr: this.fb.array([this.createQuery()])
     });
+    var data = '{"totalSize":10,"done":true,"records":[{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSggAAG"},"Id":"00128000006XSggAAG","Type":"Customer - Channel","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSghAAG"},"Id":"00128000006XSghAAG","Type":"Customer - Direct","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSgiAAG"},"Id":"00128000006XSgiAAG","Type":"Customer - Direct","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSgjAAG"},"Id":"00128000006XSgjAAG","Type":"Customer - Direct","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSgkAAG"},"Id":"00128000006XSgkAAG","Type":"Customer - Direct","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSgnAAG"},"Id":"00128000006XSgnAAG","Type":"Customer - Direct","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSgoAAG"},"Id":"00128000006XSgoAAG","Type":"Customer - Channel","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSgpAAG"},"Id":"00128000006XSgpAAG","Type":"Customer - Direct","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000006XSgqAAG"},"Id":"00128000006XSgqAAG","Type":"Customer - Direct","CreatedDate":"2015-08-26T09:21:07.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"},{"attributes":{"type":"Account","url":"/services/data/v44.0/sobjects/Account/00128000008j0IxAAI"},"Id":"00128000008j0IxAAI","Type":null,"CreatedDate":"2015-10-16T09:17:40.000+0000","LastModifiedDate":"2017-09-23T09:15:57.000+0000"}]}';
+    this.query_object["fields"]="Id, Type, CreatedDate, LastModifiedDate";
+    this.updateResultsTable(JSON.parse(data));
   }
 
   querySOQL() {

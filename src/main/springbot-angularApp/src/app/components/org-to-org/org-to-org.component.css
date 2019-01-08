@@ -15,3 +15,8 @@
     font-size: 20px;
     font-weight: bold;
 }
+.modal-content{
+    background-color: transparent;
+    border: none;
+    box-shadow: unset;
+}

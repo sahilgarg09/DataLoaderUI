@@ -43,3 +43,17 @@ input.form-control{
 .res-header{
     background-color: #9c27b0;
 }
+
+.table tr.active td {
+    background-color: rgba(0,0,0,.075);
+    color: #212529;
+  }
+
+#exportToOrgModal .modal-content{
+    background-color: transparent;
+    border: none;
+    box-shadow: unset;
+}
+.margin-left-10{
+    margin-left: 10px;
+}
