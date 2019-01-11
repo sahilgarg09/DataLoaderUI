@@ -44,6 +44,7 @@ export interface FilterBy {
 export class SoqlQueryComponent implements OnInit {
   queryForm: FormGroup;
   queryArr: FormArray;
+  selectedRecord: {};
 
   constructor(private fb: FormBuilder, private restService: RestService) {
     this.queryForm = new FormGroup({
@@ -52,6 +53,8 @@ export class SoqlQueryComponent implements OnInit {
    this.getAllObjects();
    this.setClickedRow = function(index){
     this.selectedRow = index;
+    this.selectedRecord = this.resultsFields[index];
+    console.log("this.resultsFields[index]", this.resultsFields[index]);
     }
 
   }
@@ -84,6 +87,7 @@ export class SoqlQueryComponent implements OnInit {
   filterBy: FilterBy[] = []; 
   selectedRow : Number;
   setClickedRow : Function;
+  childRlnMapping: {};
 
   ngOnInit() {
     this.queryForm = this.fb.group({
@@ -154,10 +158,18 @@ getAllObjects(){
        data.fields.forEach(element => {
          this.fields.push({ value: element.name, viewValue: element.label })
        });
+       let rln = {}
+      data.childRelationships.forEach(element => {
+        
+        if(!rln[element.childSObject])
+          rln[element.childSObject] = "";
+          rln[element.childSObject] = element.relationshipName;   
+      });
+        this.childRlnMapping = rln;
+        console.log("rln", rln);
          this.filterBy=this.fields;
          this.sortBy= this.fields;
-        console.log('aman3', JSON.parse(JSON.stringify(data)));
-            
+        console.log('aman3', JSON.parse(JSON.stringify(data)));            
       },
       error => console.log(error));
 
@@ -281,6 +293,17 @@ getAllObjects(){
     return str;
 }
 
+viewRelatedRecord(){
+  //(nameOfObject: any, id: any, relationName: any
+  let nameOfObject = this.query_object["object"];
+  let id = this.selectedRecord['Id'];
+  let relationName = this.childRlnMapping[nameOfObject];
+  this.restService.getChildData(nameOfObject, id, relationName).subscribe(
+    data => {       
+      console.log('childData record', JSON.parse(JSON.stringify(data)));      
+    },
+    error => console.log(error));
+}
 
 
 
