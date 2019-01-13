@@ -32,6 +32,7 @@ export class ExportComponent implements OnInit {
   selectedRow: Number;
   selectedRecord: {};
   queryIndex = '';
+  queryString="";
 
   constructor(private fb: FormBuilder, private restService: RestService, private dialog: MatDialog) {
     this.getAllObjects();
@@ -46,7 +47,7 @@ export class ExportComponent implements OnInit {
     this.exportForm = this.fb.group({
       queries: this.fb.array([])
     });
-    this.addquery();
+    this.addquery();       
   }
 
   get queryForms() {
@@ -55,6 +56,10 @@ export class ExportComponent implements OnInit {
 
   get filterByForm() {
     return this.queryForms.get("filterBy") as FormArray;
+  }
+
+  get exportFormValue() {
+    return this.exportForm.value.queries;
   }
 
   addquery() {
@@ -125,21 +130,18 @@ export class ExportComponent implements OnInit {
     );
   }
 
-  objectChangeHandler(event: any) {
-    console.log("does it reach here", event.target.value);
+  objectChangeHandler(event: any, index) {
+    console.log("does it reach here", index);
+    this.queryIndex = index.toString();
+    let exportForm = this.exportForm.value.queries;
     //added by aman for fetching fields for particular objects
     if (event.target.value !== "Select an Object") {
       this.getFieldsObj(event.target.value);
     }
+    this.queryStringBuilder();
+    //this.queryString = `SELECT * FROM ${exportForm[index].object}`;
   }
-
-  fieldsChangeHandler(options) {
-    var selectedOptionsArr = Array.apply(null, options)
-      .filter(option => option.selected)
-      .map(option => option.value);
-    console.log("form values", this.exportForm.value);
-  }
-
+  
   querySOQL(index) {
     this.queryIndex = index;
     var retrievedData;
@@ -253,6 +255,30 @@ export class ExportComponent implements OnInit {
         });   
       },
       error => console.log(error));*/
+  }
+
+  queryStringBuilder() {
+    let exportForm = this.exportFormValue[this.queryIndex];
+    let object = exportForm.object;
+    let field = exportForm.field;
+    let sortBy = exportForm.sortBy;  
+    let maxRecord =  exportForm.maxRecord;
+
+    let queryString = '';
+    if(object.length > 0){
+      queryString = `SELECT * FROM ${object}`;
+    }
+    if(field.length > 0){
+      queryString = `SELECT ${field.join(', ')} FROM ${object}`;
+    }
+    if(sortBy.length > 0){
+      queryString = `${queryString} ORDER BY ${sortBy}`;
+    }
+    
+    if(maxRecord.length > 0){
+      queryString = `${queryString} LIMIT ${maxRecord}`;
+    }
+    this.queryString = queryString;
   }
 }
 

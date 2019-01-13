@@ -20,7 +20,7 @@
                 class="form-control "
                 formControlName="object"
                 id="objects"
-                (change)="objectChangeHandler($event)"
+                (change)="objectChangeHandler($event, i)"
               >
               <option
                 *ngFor="let item of objects; index as i"
@@ -35,7 +35,7 @@
             <div class="form-group">
               <label class="" for="field">Fields</label>
               <select class="form-control multiple-fields" formControlName="field" id="field" multiple 
-              (change)="fieldsChangeHandler($event.target.options)">
+              (change)="queryStringBuilder()">
                   <option *ngFor="let item of fields; let i = index" [ngValue]="item.value">{{
                       item.viewValue
                     }}</option>
@@ -51,9 +51,11 @@
                     class="form-control "
                     formControlName="sortBy"
                     id="sortBy"
+                    (change)="queryStringBuilder()"
                   >
-                    <option>Asc</option>
-                    <option>Desc</option>
+                  <option *ngFor="let item of fields; let i = index" [ngValue]="item.value">{{
+                      item.viewValue
+                    }}</option>
                   </select>
                 </div>
               </div>
@@ -65,8 +67,8 @@
                     formControlName="sortDir"
                     id="sortDir"
                   >
-                    <option>Asc</option>
-                    <option>Desc</option>
+                    <option value="asc">A to Z</option>
+                    <option value="desc">Z to A</option>
                   </select>
                 </div>
               </div>
@@ -91,6 +93,7 @@
                     class="form-control"
                     id="maxRecord"
                     formControlName="maxRecord"
+                    (keyup)="queryStringBuilder()"
                   />
                 </div>
               </div>
@@ -101,9 +104,9 @@
                     <div class="form-group">
                         <label class="" for="fieldName">Filter Result By</label>
                         <select class="form-control " formControlName="filterBy" id="filterBy">
-                          <option>filterBy 1</option>
-                          <option>filterBy 2</option>
-                          <option>filterBy 3</option>
+                            <option *ngFor="let item of fields; let i = index" [ngValue]="item.value">{{
+                                item.viewValue
+                              }}</option>
                         </select>
                       </div>
                 </div>
@@ -111,9 +114,8 @@
                     <div class="form-group">
                         <label class="" for="operator">Operator</label>
                         <select class="form-control " formControlName="operator" id="operator">
-                          <option>operator 1</option>
-                          <option>operator 2</option>
-                          <option>operator 3</option>
+                          <option value="=">Equal</option>
+                          <option value="!=">Not Equal</option>
                         </select>
                       </div>
                 </div>
@@ -139,9 +141,7 @@
                 <label class="bmd-label-floating" for="queryEditor"
                   >Enter or modify a SOQL query below:</label
                 >
-                <textarea class="form-control" id="queryEditor" rows="3" formControlName="queryString">
-                  </textarea
-                >
+                <textarea class="form-control" id="queryEditor" rows="3"> {{queryString}}</textarea>
               </div>
             </div>
           </div>
