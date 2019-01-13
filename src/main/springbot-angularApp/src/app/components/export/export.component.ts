@@ -31,6 +31,7 @@ export class ExportComponent implements OnInit {
   setClickedRow: Function;
   selectedRow: Number;
   selectedRecord: {};
+  queryIndex = '';
 
   constructor(private fb: FormBuilder, private restService: RestService, private dialog: MatDialog) {
     this.getAllObjects();
@@ -139,7 +140,8 @@ export class ExportComponent implements OnInit {
     console.log("form values", this.exportForm.value);
   }
 
-  querySOQL() {
+  querySOQL(index) {
+    this.queryIndex = index;
     var retrievedData;
     //var queryString = this.query_string + ' limit 10';
     let queryString = "SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
@@ -156,9 +158,10 @@ export class ExportComponent implements OnInit {
 
   updateResultsTable(data) {
     this.show_result = true;
+    let index = this.queryIndex;
     let exportForm = this.exportForm.value.queries;
     console.log("exportForm", exportForm, this.exportForm.value);
-    this.columns = exportForm[0].field;
+    this.columns = exportForm[index].field;
     this.resultsFields = data.records;
 
     console.log("columns", this.columns);
@@ -234,4 +237,35 @@ export class ExportComponent implements OnInit {
       data: { description }
     });
   }
+  viewRelatedRecord(){
+    this.dialog.open(ViewRelatedRecord, {
+      data: {}
+    });  
+    //(nameOfObject: any, id: any, relationName: any  
+    /*(let nameOfObject = this.query_object["object"];
+    (let id = this.selectedRecord['Id'];
+    let relationName = this.childRlnMapping[nameOfObject];
+    this.restService.getChildData(nameOfObject, id, relationName).subscribe(
+      data => {       
+        console.log('childData record', JSON.parse(JSON.stringify(data)));   
+        this.dialog.open(ViewRelatedRecord, {
+          data: {}
+        });   
+      },
+      error => console.log(error));*/
+  }
+}
+
+@Component({
+  selector: 'view-related-record',
+  templateUrl: 'viewRelatedRecord.html',
+})
+export class ViewRelatedRecord {
+
+  constructor(public dialogConfRef: MatDialogRef<ViewRelatedRecord>) {}
+
+  onNoClick(): void {
+    this.dialogConfRef.close();
+  }
+
 }

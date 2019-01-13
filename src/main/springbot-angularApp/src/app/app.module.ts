@@ -12,7 +12,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
-import { SoqlQueryComponent, ViewRelatedRecord } from './components/soql-query/soql-query.component';
+import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
 import { DeleteQueryComponent } from './components/delete-query/delete-query.component';
 import { InsertComponentComponent } from './components/insert-component/insert-component.component';
 import { UpsertComponentComponent } from './components/upsert-component/upsert-component.component';
@@ -34,7 +34,7 @@ import {
   MatToolbarModule
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { ExportComponent } from './components/export/export.component';
+import { ExportComponent, ViewRelatedRecord } from './components/export/export.component';
 
 
 @NgModule({
