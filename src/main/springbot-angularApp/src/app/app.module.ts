@@ -12,7 +12,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
-import { SoqlQueryComponent } from './components/soql-query/soql-query.component';
+import { SoqlQueryComponent, ViewRelatedRecord } from './components/soql-query/soql-query.component';
 import { DeleteQueryComponent } from './components/delete-query/delete-query.component';
 import { InsertComponentComponent } from './components/insert-component/insert-component.component';
 import { UpsertComponentComponent } from './components/upsert-component/upsert-component.component';
@@ -23,6 +23,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RestService } from './rest/rest.service';
 import { AccordionComponent } from './shared/accordion/accordion.component';
+import { ExportToOrgComponent, ConfirmationDialog } from './components/export-to-org/export-to-org.component';
+import {
+  MatDatepickerModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ExportComponent } from './components/export/export.component';
 
 
 @NgModule({
@@ -39,16 +51,24 @@ import { AccordionComponent } from './shared/accordion/accordion.component';
     UpsertComponentComponent,
     UserProfileComponent,
     AccordionComponent,
-    OrgToOrgComponent,    
+    OrgToOrgComponent,
+    ExportToOrgComponent,
+    ConfirmationDialog,
+    ViewRelatedRecord,
+    ExportComponent   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule
   ],
   providers: [AuthService, AuthGuard, RestService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ExportToOrgComponent, ConfirmationDialog, ViewRelatedRecord]
 })
 export class AppModule { }

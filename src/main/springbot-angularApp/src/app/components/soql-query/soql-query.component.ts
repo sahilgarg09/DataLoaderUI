@@ -3,8 +3,10 @@ import {RestService} from "../../rest/rest.service";
 
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 //import {MatSelect, MatFormField, MatOption} from '@angular/material';
+import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import Swal from "sweetalert2";
 import { restoreView } from "@angular/core/src/render3";
+import { ExportToOrgComponent } from "../export-to-org/export-to-org.component";
 
 export interface Objects {
   value: string;
@@ -46,7 +48,7 @@ export class SoqlQueryComponent implements OnInit {
   queryArr: FormArray;
   selectedRecord: {};
 
-  constructor(private fb: FormBuilder, private restService: RestService) {
+  constructor(private fb: FormBuilder, private restService: RestService, private dialog: MatDialog) {
     this.queryForm = new FormGroup({
       fields: new FormControl(null)
     })
@@ -186,6 +188,7 @@ getAllObjects(){
     });
   }
   objectChangeHandler(event: any) {
+    console.log("event.target.value", event.target.value);
     //added by aman for fetching fields for particular objects
     if(event.target.value !== 'Select an Object')
      {
@@ -294,22 +297,41 @@ getAllObjects(){
 }
 
 viewRelatedRecord(){
-  //(nameOfObject: any, id: any, relationName: any
+  //(nameOfObject: any, id: any, relationName: any  
   let nameOfObject = this.query_object["object"];
   let id = this.selectedRecord['Id'];
   let relationName = this.childRlnMapping[nameOfObject];
   this.restService.getChildData(nameOfObject, id, relationName).subscribe(
     data => {       
-      console.log('childData record', JSON.parse(JSON.stringify(data)));      
+      console.log('childData record', JSON.parse(JSON.stringify(data)));   
+      this.dialog.open(ViewRelatedRecord, {
+        data: {}
+      });   
     },
     error => console.log(error));
 }
 
-
-
+openDialog({description}: any) {
+  this.dialog.open(ExportToOrgComponent, {
+    data: {description}
+  });
 }
 
 
 
-////converting to csv 
+}
+
+@Component({
+  selector: 'view-related-record',
+  templateUrl: 'viewRelatedRecord.html',
+})
+export class ViewRelatedRecord {
+
+  constructor(public dialogConfRef: MatDialogRef<ViewRelatedRecord>) {}
+
+  onNoClick(): void {
+    this.dialogConfRef.close();
+  }
+
+}
 

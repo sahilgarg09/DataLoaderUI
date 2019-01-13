@@ -1,0 +1,35 @@
+.multiple-fields{
+    min-height: 150px;
+}
+.res-title{
+    padding: 15px;
+    color: white;
+}
+.result-section{
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+}
+.res-header{
+    background-color: #9c27b0;
+}
+
+.table tr.active td {
+    background-color: rgba(0,0,0,.075);
+    color: #212529;
+  }
+
+#exportToOrgModal .modal-content{
+    background-color: transparent;
+    border: none;
+    box-shadow: unset;
+}
+.margin-left-10{
+    margin-left: 10px;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}

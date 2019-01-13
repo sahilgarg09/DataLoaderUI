@@ -18,6 +18,7 @@ import {UserProfileComponent} from './components/user-profile/user-profile.compo
 import {OrgToOrgComponent} from './components/org-to-org/org-to-org.component';
 
 import { AuthGuard } from './auth/auth.guard';
+import { ExportComponent } from './components/export/export.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -97,6 +98,16 @@ const routes: Routes = [
 			{
 				path: 'org-to-org',
 				component: OrgToOrgComponent
+			}
+		]
+	}, { 
+		path: '', 
+		component: HomeLayoutComponent, 
+		//canActivate: [AuthGuard],
+		children: [
+			{
+				path: 'export',
+				component: ExportComponent
 			}
 		]
 	}
