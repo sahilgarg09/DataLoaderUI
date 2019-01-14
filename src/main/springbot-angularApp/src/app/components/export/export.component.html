@@ -66,9 +66,10 @@
                     class="form-control "
                     formControlName="sortDir"
                     id="sortDir"
+                    (change)="queryStringBuilder()"
                   >
-                    <option value="asc">A to Z</option>
-                    <option value="desc">Z to A</option>
+                    <option value="ASC">A to Z</option>
+                    <option value="DESC">Z to A</option>
                   </select>
                 </div>
               </div>
@@ -79,9 +80,10 @@
                     class="form-control "
                     formControlName="null"
                     id="null"
+                    (change)="queryStringBuilder()"
                   >
-                    <option>Nulls First</option>
-                    <option>Nulls Last</option>
+                    <option value="NULLS FIRST">Nulls First</option>
+                    <option value="NULLS LAST">Nulls Last</option>
                   </select>
                 </div>
               </div>
@@ -103,7 +105,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label class="" for="fieldName">Filter Result By</label>
-                        <select class="form-control " formControlName="filterBy" id="filterBy">
+                        <select class="form-control " formControlName="filterBy" id="filterBy" (change)="queryStringBuilder()">
                             <option *ngFor="let item of fields; let i = index" [ngValue]="item.value">{{
                                 item.viewValue
                               }}</option>
@@ -113,7 +115,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label class="" for="operator">Operator</label>
-                        <select class="form-control " formControlName="operator" id="operator">
+                        <select class="form-control " formControlName="operator" id="operator" (change)="queryStringBuilder()">
                           <option value="=">Equal</option>
                           <option value="!=">Not Equal</option>
                         </select>
@@ -127,6 +129,7 @@
                           class="form-control"
                           id="fieldValue"
                           formControlName="fieldValue"
+                          (change)="queryStringBuilder()"
                         />
                       </div>
                 </div>

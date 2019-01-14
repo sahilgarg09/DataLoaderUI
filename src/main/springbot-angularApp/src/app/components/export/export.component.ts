@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RestService } from "../../rest/rest.service";
-import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
 import { ExportToOrgComponent } from "../export-to-org/export-to-org.component";
@@ -141,7 +141,7 @@ export class ExportComponent implements OnInit {
     this.queryStringBuilder();
     //this.queryString = `SELECT * FROM ${exportForm[index].object}`;
   }
-  
+
   querySOQL(index) {
     this.queryIndex = index;
     var retrievedData;
@@ -263,6 +263,11 @@ export class ExportComponent implements OnInit {
     let field = exportForm.field;
     let sortBy = exportForm.sortBy;  
     let maxRecord =  exportForm.maxRecord;
+    let sortDir =  exportForm.sortDir;
+    let nulls = exportForm.null;
+    let filterBy = exportForm.filterBy;
+    let operator = exportForm.operator;
+    let fieldValue = exportForm.fieldValue;
 
     let queryString = '';
     if(object.length > 0){
@@ -271,8 +276,21 @@ export class ExportComponent implements OnInit {
     if(field.length > 0){
       queryString = `SELECT ${field.join(', ')} FROM ${object}`;
     }
+
+    if(filterBy && operator && fieldValue){
+      queryString = `${queryString} WHERE ${filterBy} ${operator} '${fieldValue}'`;
+    }
+
     if(sortBy.length > 0){
       queryString = `${queryString} ORDER BY ${sortBy}`;
+    }
+
+    if(sortDir.length > 0){
+      queryString = `${queryString} ${sortDir}`;
+    }
+
+    if(nulls.length > 0){
+      queryString = `${queryString} ${nulls}`;
     }
     
     if(maxRecord.length > 0){

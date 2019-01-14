@@ -3,4 +3,6 @@
 .mat-dialog-container{
     background: transparent;
     box-shadow: unset;
+    max-width: 800px;
+    min-width: 800px;
 }
