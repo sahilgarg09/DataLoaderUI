@@ -25,7 +25,7 @@ export class ExportComponent implements OnInit {
   objects: String[] = ["Select an Object"];
   fields: Fields[] = [];
   childRlnMapping: {};
-  show_result = true;
+  show_result = false;
   columns = [];
   resultsFields = [];
   setClickedRow: Function;
@@ -130,8 +130,7 @@ export class ExportComponent implements OnInit {
     );
   }
 
-  objectChangeHandler(event: any, index) {
-    console.log("does it reach here", index);
+  objectChangeHandler(event: any, index) {    
     this.queryIndex = index.toString();
     let exportForm = this.exportForm.value.queries;
     //added by aman for fetching fields for particular objects
@@ -146,7 +145,7 @@ export class ExportComponent implements OnInit {
     this.queryIndex = index;
     var retrievedData;
     //var queryString = this.query_string + ' limit 10';
-    let queryString = "SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
+    let queryString = this.queryString;//"SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
     console.log("queryString", queryString);
     this.restService.soql_query(queryString).subscribe(
       data => {
