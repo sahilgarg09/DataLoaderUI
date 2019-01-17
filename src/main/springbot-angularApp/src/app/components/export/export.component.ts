@@ -5,12 +5,13 @@ import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef} from "@angula
 
 import { ExportToOrgComponent } from "../export-to-org/export-to-org.component";
 
-export interface Objects {
+
+export interface Fields {
   value: string;
   viewValue: string;
 }
 
-export interface Fields {
+export interface Food {
   value: string;
   viewValue: string;
 }
@@ -22,7 +23,7 @@ export interface Fields {
 })
 export class ExportComponent implements OnInit {
   exportForm: FormGroup;
-  objects: String[] = ["Select an Object"];
+  objects: [{value: "", viewValue: "Select an Object"}];
   fields: Fields[] = [];
   childRlnMapping: {};
   show_result = false;
@@ -33,6 +34,11 @@ export class ExportComponent implements OnInit {
   selectedRecord: {};
   queryIndex = '';
   queryString="";
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
   constructor(private fb: FormBuilder, private restService: RestService, private dialog: MatDialog) {
     this.getAllObjects();
@@ -100,7 +106,12 @@ export class ExportComponent implements OnInit {
     this.restService.getAllOrgObjects().subscribe(
       data => {
         data.sobjects.forEach(element => {
-          this.objects.push(element.name);
+          let object = {
+            value: element.name,
+            viewValue: element.name
+          }
+          
+          this.objects.push(object);
         });
 
         console.log("aman1", JSON.parse(JSON.stringify(this.objects)));

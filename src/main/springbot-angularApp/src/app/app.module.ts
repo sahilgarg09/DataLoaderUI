@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {DemoMaterialModule} from './material-module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
@@ -65,6 +65,7 @@ import { ExportComponent, ViewRelatedRecord } from './components/export/export.c
     HttpModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    DemoMaterialModule,
     MatFormFieldModule
   ],
   providers: [AuthService, AuthGuard, RestService],
