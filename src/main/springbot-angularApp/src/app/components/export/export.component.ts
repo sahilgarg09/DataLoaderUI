@@ -23,7 +23,7 @@ export interface Food {
 })
 export class ExportComponent implements OnInit {
   exportForm: FormGroup;
-  objects: [{value: "", viewValue: "Select an Object"}];
+  objects = [{value: "", viewValue: "Select an Object"}];
   fields: Fields[] = [];
   childRlnMapping: {};
   show_result = false;
@@ -144,9 +144,11 @@ export class ExportComponent implements OnInit {
   objectChangeHandler(event: any, index) {    
     this.queryIndex = index.toString();
     let exportForm = this.exportForm.value.queries;
+    let objectName = exportForm[index].object;
+    console.log("let exportForm", exportForm, index);
     //added by aman for fetching fields for particular objects
-    if (event.target.value !== "Select an Object") {
-      this.getFieldsObj(event.target.value);
+    if (objectName !== "Select an Object") {
+      this.getFieldsObj(objectName);
     }
     this.queryStringBuilder();
     //this.queryString = `SELECT * FROM ${exportForm[index].object}`;
