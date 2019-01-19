@@ -198,7 +198,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n        "
+module.exports = "<router-outlet>\r\n        <ng4-loading-spinner> </ng4-loading-spinner>\r\n</router-outlet>\r\n        "
 
 /***/ }),
 
@@ -251,29 +251,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
-/* harmony import */ var _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dashboard/dashboard.component */ "./src/app/components/dashboard/dashboard.component.ts");
-/* harmony import */ var _components_sidenavbar_sidenavbar_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/sidenavbar/sidenavbar.component */ "./src/app/components/sidenavbar/sidenavbar.component.ts");
-/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
-/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./auth/auth.service */ "./src/app/auth/auth.service.ts");
-/* harmony import */ var _layouts_home_layout_home_layout_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./layouts/home-layout/home-layout.component */ "./src/app/layouts/home-layout/home-layout.component.ts");
-/* harmony import */ var _layouts_login_layout_login_layout_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./layouts/login-layout/login-layout.component */ "./src/app/layouts/login-layout/login-layout.component.ts");
-/* harmony import */ var _components_soql_query_soql_query_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/soql-query/soql-query.component */ "./src/app/components/soql-query/soql-query.component.ts");
-/* harmony import */ var _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/delete-query/delete-query.component */ "./src/app/components/delete-query/delete-query.component.ts");
-/* harmony import */ var _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/insert-component/insert-component.component */ "./src/app/components/insert-component/insert-component.component.ts");
-/* harmony import */ var _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/upsert-component/upsert-component.component */ "./src/app/components/upsert-component/upsert-component.component.ts");
-/* harmony import */ var _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/user-profile/user-profile.component */ "./src/app/components/user-profile/user-profile.component.ts");
-/* harmony import */ var _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/org-to-org/org-to-org.component */ "./src/app/components/org-to-org/org-to-org.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./rest/rest.service */ "./src/app/rest/rest.service.ts");
-/* harmony import */ var _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./shared/accordion/accordion.component */ "./src/app/shared/accordion/accordion.component.ts");
-/* harmony import */ var _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/export-to-org/export-to-org.component */ "./src/app/components/export-to-org/export-to-org.component.ts");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _components_export_export_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/export/export.component */ "./src/app/components/export/export.component.ts");
+/* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./material-module */ "./src/app/material-module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
+/* harmony import */ var _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/dashboard/dashboard.component */ "./src/app/components/dashboard/dashboard.component.ts");
+/* harmony import */ var _components_sidenavbar_sidenavbar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/sidenavbar/sidenavbar.component */ "./src/app/components/sidenavbar/sidenavbar.component.ts");
+/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _layouts_home_layout_home_layout_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./layouts/home-layout/home-layout.component */ "./src/app/layouts/home-layout/home-layout.component.ts");
+/* harmony import */ var _layouts_login_layout_login_layout_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./layouts/login-layout/login-layout.component */ "./src/app/layouts/login-layout/login-layout.component.ts");
+/* harmony import */ var _components_soql_query_soql_query_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/soql-query/soql-query.component */ "./src/app/components/soql-query/soql-query.component.ts");
+/* harmony import */ var _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/delete-query/delete-query.component */ "./src/app/components/delete-query/delete-query.component.ts");
+/* harmony import */ var _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/insert-component/insert-component.component */ "./src/app/components/insert-component/insert-component.component.ts");
+/* harmony import */ var _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/upsert-component/upsert-component.component */ "./src/app/components/upsert-component/upsert-component.component.ts");
+/* harmony import */ var _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/user-profile/user-profile.component */ "./src/app/components/user-profile/user-profile.component.ts");
+/* harmony import */ var _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/org-to-org/org-to-org.component */ "./src/app/components/org-to-org/org-to-org.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./rest/rest.service */ "./src/app/rest/rest.service.ts");
+/* harmony import */ var _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./shared/accordion/accordion.component */ "./src/app/shared/accordion/accordion.component.ts");
+/* harmony import */ var _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/export-to-org/export-to-org.component */ "./src/app/components/export-to-org/export-to-org.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/export/export.component */ "./src/app/components/export/export.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -306,43 +309,47 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-                _components_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"],
-                _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["DashboardComponent"],
-                _components_sidenavbar_sidenavbar_component__WEBPACK_IMPORTED_MODULE_7__["SidenavbarComponent"],
-                _layouts_home_layout_home_layout_component__WEBPACK_IMPORTED_MODULE_10__["HomeLayoutComponent"],
-                _layouts_login_layout_login_layout_component__WEBPACK_IMPORTED_MODULE_11__["LoginLayoutComponent"],
-                _components_soql_query_soql_query_component__WEBPACK_IMPORTED_MODULE_12__["SoqlQueryComponent"],
-                _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_13__["DeleteQueryComponent"],
-                _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_14__["InsertComponentComponent"],
-                _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_15__["UpsertComponentComponent"],
-                _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_16__["UserProfileComponent"],
-                _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_21__["AccordionComponent"],
-                _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_17__["OrgToOrgComponent"],
-                _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_22__["ExportToOrgComponent"],
-                _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_22__["ConfirmationDialog"],
-                _components_export_export_component__WEBPACK_IMPORTED_MODULE_25__["ViewRelatedRecord"],
-                _components_export_export_component__WEBPACK_IMPORTED_MODULE_25__["ExportComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
+                _components_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
+                _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["DashboardComponent"],
+                _components_sidenavbar_sidenavbar_component__WEBPACK_IMPORTED_MODULE_9__["SidenavbarComponent"],
+                _layouts_home_layout_home_layout_component__WEBPACK_IMPORTED_MODULE_12__["HomeLayoutComponent"],
+                _layouts_login_layout_login_layout_component__WEBPACK_IMPORTED_MODULE_13__["LoginLayoutComponent"],
+                _components_soql_query_soql_query_component__WEBPACK_IMPORTED_MODULE_14__["SoqlQueryComponent"],
+                _components_delete_query_delete_query_component__WEBPACK_IMPORTED_MODULE_15__["DeleteQueryComponent"],
+                _components_insert_component_insert_component_component__WEBPACK_IMPORTED_MODULE_16__["InsertComponentComponent"],
+                _components_upsert_component_upsert_component_component__WEBPACK_IMPORTED_MODULE_17__["UpsertComponentComponent"],
+                _components_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_18__["UserProfileComponent"],
+                _shared_accordion_accordion_component__WEBPACK_IMPORTED_MODULE_23__["AccordionComponent"],
+                _components_org_to_org_org_to_org_component__WEBPACK_IMPORTED_MODULE_19__["OrgToOrgComponent"],
+                _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ExportToOrgComponent"],
+                _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ConfirmationDialog"],
+                _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ViewRelatedRecord"],
+                _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ExportComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_18__["HttpClientModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_19__["HttpModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_23__["MatDialogModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_24__["BrowserAnimationsModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_23__["MatFormFieldModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_20__["HttpClientModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_21__["HttpModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatDialogModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_26__["BrowserAnimationsModule"],
+                _material_module__WEBPACK_IMPORTED_MODULE_3__["DemoMaterialModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_25__["MatFormFieldModule"],
+                ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_6__["Ng4LoadingSpinnerModule"].forRoot()
             ],
-            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_20__["RestService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-            entryComponents: [_components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_22__["ExportToOrgComponent"], _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_22__["ConfirmationDialog"], _components_export_export_component__WEBPACK_IMPORTED_MODULE_25__["ViewRelatedRecord"]]
+            providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_22__["RestService"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
+            entryComponents: [_components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ExportToOrgComponent"], _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ConfirmationDialog"], _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ViewRelatedRecord"]]
         })
     ], AppModule);
     return AppModule;
@@ -635,7 +642,7 @@ module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".big-icon{\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.big-icon i{\r\n    font-size: 100px;\r\n}\r\n\r\n.center{\r\n    text-align: center;\r\n}\r\n\r\n.confirmText{\r\n    margin-top: 10px;\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQtdG8tb3JnL2V4cG9ydC10by1vcmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCx3QkFBd0I7SUFDeEIsb0JBQW9CO0NBQ3ZCOztBQUVEO0lBQ0ksaUJBQWlCO0NBQ3BCOztBQUNEO0lBQ0ksbUJBQW1CO0NBQ3RCOztBQUNEO0lBQ0ksaUJBQWlCO0lBQ2pCLGdCQUFnQjtJQUNoQixrQkFBa0I7Q0FDckIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2V4cG9ydC10by1vcmcvZXhwb3J0LXRvLW9yZy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJpZy1pY29ue1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLmJpZy1pY29uIGl7XHJcbiAgICBmb250LXNpemU6IDEwMHB4O1xyXG59XHJcbi5jZW50ZXJ7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuLmNvbmZpcm1UZXh0e1xyXG4gICAgbWFyZ2luLXRvcDogMTBweDtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59Il19 */"
+module.exports = ".big-icon{\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.big-icon i{\r\n    font-size: 100px;\r\n}\r\n\r\n.center{\r\n    text-align: center;\r\n}\r\n\r\n.confirmText{\r\n    margin-top: 10px;\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n}\r\n\r\n.mat-form-field {\r\n    width: 100%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQtdG8tb3JnL2V4cG9ydC10by1vcmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCx3QkFBd0I7SUFDeEIsb0JBQW9CO0NBQ3ZCOztBQUVEO0lBQ0ksaUJBQWlCO0NBQ3BCOztBQUNEO0lBQ0ksbUJBQW1CO0NBQ3RCOztBQUNEO0lBQ0ksaUJBQWlCO0lBQ2pCLGdCQUFnQjtJQUNoQixrQkFBa0I7Q0FDckI7O0FBQ0Q7SUFDSSxZQUFZO0NBQ2YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2V4cG9ydC10by1vcmcvZXhwb3J0LXRvLW9yZy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJpZy1pY29ue1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLmJpZy1pY29uIGl7XHJcbiAgICBmb250LXNpemU6IDEwMHB4O1xyXG59XHJcbi5jZW50ZXJ7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuLmNvbmZpcm1UZXh0e1xyXG4gICAgbWFyZ2luLXRvcDogMTBweDtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcbi5tYXQtZm9ybS1maWVsZCB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -646,7 +653,7 @@ module.exports = ".big-icon{\r\n    display: flex;\r\n    justify-content: cente
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">Export to Org\r\n            </h4>\r\n        </div>\r\n        <div *ngIf=\"!isConfirmModalOpen; else confirmModal\">\r\n            <form [formGroup]=\"form\" (ngSubmit)=\"loginToOrg()\">\r\n                <div class=\"card-body\">\r\n                  <!--<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">-->\r\n                  <div class=\"row\">\r\n                    <div class=\"col-md-4\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-md-12\">\r\n                              <h3>Source:</h3>\r\n                            </div>\r\n                          <div class=\"col-md-12\">\r\n                            <div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">URL</label>\r\n                              <input\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                [value]=\"[this.source.srcBaseUrl]\"\r\n                                disabled=\"true\"\r\n                              />\r\n                            </div>\r\n                          </div>\r\n                          <div class=\"col-md-12\">\r\n                            <div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">Username</label>\r\n                              <input\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                [value]=\"[this.source.srcUsername]\"\r\n                                disabled=\"true\"\r\n                              />\r\n                            </div>\r\n                          </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-2 big-icon\">\r\n                      <span ><i class=\"material-icons\">arrow_right_alt</i></span>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                      \r\n                      <div class=\"row\">\r\n                        <div class=\"col-md-12\">\r\n                            <h3>Destination:</h3>\r\n                          </div>\r\n                        <div class=\"col-md-10\">\r\n                          <div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">Environment</label>\r\n                              <select class=\"form-control\" formControlName=\"env\" data-style=\"select-with-transition\" title=\"Environment\" data-size=\"7\" >                        \r\n                                  <option value=\"production\">Production </option>\r\n                                  <option value=\"sandbox\">Sandbox</option>\r\n                                </select>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"col-md-10\">\r\n                          <div class=\"form-group bmd-form-group\">\r\n                            <label class=\"\">Username</label>\r\n                            <input\r\n                              type=\"text\"\r\n                              class=\"form-control\"\r\n                              formControlName=\"email\"\r\n                              required\r\n                            />\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"col-md-10\">\r\n                            <div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">Password</label>\r\n                              <input\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                formControlName=\"password\"\r\n                                required\r\n                              />\r\n                            </div>\r\n                          </div>\r\n                      </div>\r\n                      \r\n                      <div class=\"row\">\r\n                          <div class=\"col-md-8 center\">\r\n                              <button type=\"submit\" class=\"btn btn-primary \">Login</button>\r\n                          </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  <!--</form>-->\r\n                </div>\r\n              </form>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  "
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">Export to Org\r\n            </h4>\r\n        </div>\r\n        <div *ngIf=\"!isConfirmModalOpen; else confirmModal\">\r\n            <form [formGroup]=\"form\" (ngSubmit)=\"loginToOrg()\">\r\n                <div class=\"card-body\">\r\n                  <!--<form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">-->\r\n                  <div class=\"row\">\r\n                    <div class=\"col-md-4\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-md-12\">\r\n                              <h3>Source:</h3>\r\n                            </div>\r\n                          <div class=\"col-md-12\">\r\n                            <mat-form-field class=\"example-full-width\">\r\n                                <input matInput placeholder=\"URL\" [value]=\"[this.source.srcBaseUrl]\" (change)=\"queryStringBuilder()\" disabled=\"true\">\r\n                              </mat-form-field>\r\n                              <!--\r\n                            <div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">URL</label>\r\n                              <input\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                [value]=\"[this.source.srcBaseUrl]\"\r\n                                disabled=\"true\"\r\n                              />\r\n                            </div>-->\r\n                          </div>\r\n                          <div class=\"col-md-12\">\r\n                            <mat-form-field class=\"example-full-width\">\r\n                                <input matInput placeholder=\"Username\" [value]=\"[this.source.srcUsername]\" disabled=\"true\">\r\n                              </mat-form-field>\r\n                              <!--\r\n                            <div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">Username</label>\r\n                              <input\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                [value]=\"[this.source.srcUsername]\"\r\n                                disabled=\"true\"\r\n                              />\r\n                            </div>-->\r\n                          </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-md-2 big-icon\">\r\n                      <span ><i class=\"material-icons\">arrow_right_alt</i></span>\r\n                    </div>\r\n                    <div class=\"col-md-6\">\r\n                      \r\n                      <div class=\"row\">\r\n                        <div class=\"col-md-12\">\r\n                            <h3>Destination:</h3>\r\n                          </div>\r\n                        <div class=\"col-md-10\">\r\n                          <mat-form-field>\r\n                              <mat-select placeholder=\"Environment\" formControlName=\"env\" >\r\n                                  <mat-option value=\"production\">Production </mat-option>\r\n                                  <mat-option value=\"sandbox\">Sandbox</mat-option>\r\n                              </mat-select>\r\n                            </mat-form-field>\r\n                            <!--\r\n                          <div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">Environment</label>\r\n                              <select class=\"form-control\" formControlName=\"env\" data-style=\"select-with-transition\" title=\"Environment\" data-size=\"7\" >                        \r\n                                  <option value=\"production\">Production </option>\r\n                                  <option value=\"sandbox\">Sandbox</option>\r\n                                </select>\r\n                          </div>-->\r\n                        </div>\r\n                        <div class=\"col-md-10\">\r\n                            <mat-form-field class=\"example-full-width\">\r\n                                <input matInput placeholder=\"Username\" formControlName=\"email\">\r\n                              </mat-form-field>\r\n                          <!--<div class=\"form-group bmd-form-group\">\r\n                            <label class=\"\">Username</label>\r\n                            <input\r\n                              type=\"text\"\r\n                              class=\"form-control\"\r\n                              formControlName=\"email\"\r\n                              required\r\n                            />\r\n                          </div>-->\r\n                        </div>\r\n                        <div class=\"col-md-10\">\r\n                            <mat-form-field class=\"example-full-width\">\r\n                                <input matInput placeholder=\"Password\" formControlName=\"password\" type=\"password\">\r\n                              </mat-form-field>\r\n                            <!--<div class=\"form-group bmd-form-group\">\r\n                              <label class=\"\">Password</label>\r\n                              <input\r\n                                type=\"text\"\r\n                                class=\"form-control\"\r\n                                formControlName=\"password\"\r\n                                required\r\n                              />\r\n                            </div>-->\r\n                          </div>\r\n                      </div>\r\n                      \r\n                      <div class=\"row\">\r\n                          <div class=\"col-md-8 center\">\r\n                              <button type=\"submit\" class=\"btn btn-primary \">Login</button>\r\n                          </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                  <!--</form>-->\r\n                </div>\r\n              </form>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  "
 
 /***/ }),
 
@@ -713,11 +720,20 @@ var ExportToOrgComponent = /** @class */ (function () {
         console.log("this.this.source", this.source);
     };
     ExportToOrgComponent.prototype.loginToOrg = function () {
+        var _this = this;
         var formData = this.form.value;
         this.dialogRef.close();
-        this.confDialog.open(ConfirmationDialog, {
-            data: {}
-        });
+        if (formData.email !== '' && formData.password !== '') {
+            this.rest.login(formData).subscribe(function (result) {
+                console.log("result", result);
+                _this.source['record'] = 20;
+                _this.confDialog.open(ConfirmationDialog, {
+                    data: {}
+                });
+            }, function (err) {
+                console.log(err);
+            });
+        }
     };
     ExportToOrgComponent.prototype.save = function () {
         this.dialogRef.close(this.form.value);
@@ -771,7 +787,7 @@ var ConfirmationDialog = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n.result-section{\r\n    margin-top: 15px;\r\n    padding: 15px;\r\n    border: 1px solid #e5e5e5;\r\n}\r\n.res-header{\r\n    background-color: #9c27b0;\r\n}\r\n.table tr.active td {\r\n    background-color: rgba(0,0,0,.075);\r\n    color: #212529;\r\n  }\r\n#exportToOrgModal .modal-content{\r\n    background-color: transparent;\r\n    border: none;\r\n    box-shadow: unset;\r\n}\r\n.margin-left-10{\r\n    margin-left: 10px;\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGNBQWM7SUFDZCxhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSxpQkFBaUI7SUFDakIsY0FBYztJQUNkLDBCQUEwQjtDQUM3QjtBQUNEO0lBQ0ksMEJBQTBCO0NBQzdCO0FBRUQ7SUFDSSxtQ0FBbUM7SUFDbkMsZUFBZTtHQUNoQjtBQUVIO0lBQ0ksOEJBQThCO0lBQzlCLGFBQWE7SUFDYixrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGtCQUFrQjtDQUNyQjtBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksOEJBQThCO0NBQ2pDIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubXVsdGlwbGUtZmllbGRze1xyXG4gICAgbWluLWhlaWdodDogMTUwcHg7XHJcbn1cclxuLnJlcy10aXRsZXtcclxuICAgIHBhZGRpbmc6IDE1cHg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuLnJlc3VsdC1zZWN0aW9ue1xyXG4gICAgbWFyZ2luLXRvcDogMTVweDtcclxuICAgIHBhZGRpbmc6IDE1cHg7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjZTVlNWU1O1xyXG59XHJcbi5yZXMtaGVhZGVye1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzljMjdiMDtcclxufVxyXG5cclxuLnRhYmxlIHRyLmFjdGl2ZSB0ZCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLC4wNzUpO1xyXG4gICAgY29sb3I6ICMyMTI1Mjk7XHJcbiAgfVxyXG5cclxuI2V4cG9ydFRvT3JnTW9kYWwgLm1vZGFsLWNvbnRlbnR7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGJveC1zaGFkb3c6IHVuc2V0O1xyXG59XHJcbi5tYXJnaW4tbGVmdC0xMHtcclxuICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG59XHJcbi5oaWRle1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG4uc2hvd3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbmlucHV0LmZvcm0tY29udHJvbHtcclxuICAgIGhlaWdodDogY2FsYygyLjQzNzVyZW0gKyAycHgpO1xyXG59Il19 */"
+module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n.result-section{\r\n    margin-top: 15px;\r\n    padding: 15px;\r\n    border: 1px solid #e5e5e5;\r\n}\r\n.res-header{\r\n    background-color: #9c27b0;\r\n}\r\n.table tr.active td {\r\n    background-color: rgba(0,0,0,.075);\r\n    color: #212529;\r\n  }\r\n#exportToOrgModal .modal-content{\r\n    background-color: transparent;\r\n    border: none;\r\n    box-shadow: unset;\r\n}\r\n.margin-left-10{\r\n    margin-left: 10px;\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.cardFooter{\r\n    width: 100%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGNBQWM7SUFDZCxhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSxpQkFBaUI7SUFDakIsY0FBYztJQUNkLDBCQUEwQjtDQUM3QjtBQUNEO0lBQ0ksMEJBQTBCO0NBQzdCO0FBRUQ7SUFDSSxtQ0FBbUM7SUFDbkMsZUFBZTtHQUNoQjtBQUVIO0lBQ0ksOEJBQThCO0lBQzlCLGFBQWE7SUFDYixrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGtCQUFrQjtDQUNyQjtBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksOEJBQThCO0NBQ2pDO0FBRUQ7SUFDSSxZQUFZO0NBQ2YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2V4cG9ydC9leHBvcnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tdWx0aXBsZS1maWVsZHN7XHJcbiAgICBtaW4taGVpZ2h0OiAxNTBweDtcclxufVxyXG4ucmVzLXRpdGxle1xyXG4gICAgcGFkZGluZzogMTVweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4ucmVzdWx0LXNlY3Rpb257XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG4gICAgcGFkZGluZzogMTVweDtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICNlNWU1ZTU7XHJcbn1cclxuLnJlcy1oZWFkZXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOWMyN2IwO1xyXG59XHJcblxyXG4udGFibGUgdHIuYWN0aXZlIHRkIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsLjA3NSk7XHJcbiAgICBjb2xvcjogIzIxMjUyOTtcclxuICB9XHJcblxyXG4jZXhwb3J0VG9PcmdNb2RhbCAubW9kYWwtY29udGVudHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgYm94LXNoYWRvdzogdW5zZXQ7XHJcbn1cclxuLm1hcmdpbi1sZWZ0LTEwe1xyXG4gICAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbn1cclxuLmhpZGV7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbi5zaG93e1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuaW5wdXQuZm9ybS1jb250cm9se1xyXG4gICAgaGVpZ2h0OiBjYWxjKDIuNDM3NXJlbSArIDJweCk7XHJcbn1cclxuXHJcbi5jYXJkRm9vdGVye1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -782,7 +798,7 @@ module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"exportForm\">\n  Value: {{ exportForm.value | json }}\n\n  <hr />\n\n  <div formArrayName=\"queries\">\n    <app-accordion\n      [title]=\"['Export']\"\n      [desc]=\"\"\n      *ngFor=\"let query of queryForms.controls; let i = index\"\n      [formGroupName]=\"i\"\n    >\n      <div class=\"cardBody\">\n        <section>\n        <div class=\"row\">\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label class=\"\" for=\"objects\">Object</label>\n              <select\n                class=\"form-control \"\n                formControlName=\"object\"\n                id=\"objects\"\n                (change)=\"objectChangeHandler($event, i)\"\n              >\n              <option\n                *ngFor=\"let item of objects; index as i\"\n                [ngValue]=\"objects[i]\"\n                >{{item}}</option>\n              </select>\n            </div>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-3\">\n            <div class=\"form-group\">\n              <label class=\"\" for=\"field\">Fields</label>\n              <select class=\"form-control multiple-fields\" formControlName=\"field\" id=\"field\" multiple \n              (change)=\"queryStringBuilder()\">\n                  <option *ngFor=\"let item of fields; let i = index\" [ngValue]=\"item.value\">{{\n                      item.viewValue\n                    }}</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"col-md-9\">\n            <div class=\"row\">\n              <div class=\"col-md-3\">\n                <div class=\"form-group\">\n                  <label class=\"\" for=\"sortBy\">SortBy</label>\n                  <select\n                    class=\"form-control \"\n                    formControlName=\"sortBy\"\n                    id=\"sortBy\"\n                    (change)=\"queryStringBuilder()\"\n                  >\n                  <option *ngFor=\"let item of fields; let i = index\" [ngValue]=\"item.value\">{{\n                      item.viewValue\n                    }}</option>\n                  </select>\n                </div>\n              </div>\n              <div class=\"col-md-3\">\n                <div class=\"form-group\">\n                  <label class=\"\" for=\"sortDir\">Sort Direction</label>\n                  <select\n                    class=\"form-control \"\n                    formControlName=\"sortDir\"\n                    id=\"sortDir\"\n                    (change)=\"queryStringBuilder()\"\n                  >\n                    <option value=\"ASC\">A to Z</option>\n                    <option value=\"DESC\">Z to A</option>\n                  </select>\n                </div>\n              </div>\n              <div class=\"col-md-3\">\n                <div class=\"form-group\">\n                  <label class=\"\" for=\"null\">Null</label>\n                  <select\n                    class=\"form-control \"\n                    formControlName=\"null\"\n                    id=\"null\"\n                    (change)=\"queryStringBuilder()\"\n                  >\n                    <option value=\"NULLS FIRST\">Nulls First</option>\n                    <option value=\"NULLS LAST\">Nulls Last</option>\n                  </select>\n                </div>\n              </div>\n              <div class=\"col-md-3\">\n                <div class=\"form-group\">\n                  <label class=\"\" for=\"maxRecord\">Max Record</label>\n                  <input\n                    type=\"text\"\n                    class=\"form-control\"\n                    id=\"maxRecord\"\n                    formControlName=\"maxRecord\"\n                    (keyup)=\"queryStringBuilder()\"\n                  />\n                </div>\n              </div>\n            </div>      \n               \n              <div class=\"row\">\n                <div class=\"col-md-3\">\n                    <div class=\"form-group\">\n                        <label class=\"\" for=\"fieldName\">Filter Result By</label>\n                        <select class=\"form-control \" formControlName=\"filterBy\" id=\"filterBy\" (change)=\"queryStringBuilder()\">\n                            <option *ngFor=\"let item of fields; let i = index\" [ngValue]=\"item.value\">{{\n                                item.viewValue\n                              }}</option>\n                        </select>\n                      </div>\n                </div>\n                <div class=\"col-md-3\">\n                    <div class=\"form-group\">\n                        <label class=\"\" for=\"operator\">Operator</label>\n                        <select class=\"form-control \" formControlName=\"operator\" id=\"operator\" (change)=\"queryStringBuilder()\">\n                          <option value=\"=\">Equal</option>\n                          <option value=\"!=\">Not Equal</option>\n                        </select>\n                      </div>\n                </div>\n                <div class=\"col-md-3\">\n                    <div class=\"form-group\">\n                        <label class=\"\" for=\"fieldValue\">Field Value</label>\n                        <input\n                          type=\"text\"\n                          class=\"form-control\"\n                          id=\"fieldValue\"\n                          formControlName=\"fieldValue\"\n                          (change)=\"queryStringBuilder()\"\n                        />\n                      </div>\n                </div>\n                \n\n              </div>            \n          </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n              <div class=\"form-group\">\n                <label class=\"bmd-label-floating\" for=\"queryEditor\"\n                  >Enter or modify a SOQL query below:</label\n                >\n                <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\"> {{queryString}}</textarea>\n              </div>\n            </div>\n          </div>\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              <button\n                type=\"button\"                \n                class=\"btn btn-primary pull-left\"\n                (click)=\"querySOQL(i)\"\n              >\n                Query\n              </button>\n              \n            </div>\n          </div>\n          <div class=\"clearfix\"></div>\n        </section>\n        <section\n    class=\"result-section\"\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\n    >\n    <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"res-header\">\n          <h4 class=\"res-title\">Results</h4>\n        </div>\n      </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"res-body\">\n              <div class=\"table-responsive\">\n                  <table class=\"table table-hover\">\n                    <thead class=\"text-primary\">\n                      <tr>\n                        <th *ngFor=\"let item of columns\">\n                          {{item}}\n                        </th>\n                      </tr>\n                    </thead>\n                    <tbody>\n                        \n                      <tr  *ngFor=\"let result of resultsFields; let rInd = index\" (click)=\"setClickedRow(rInd)\" [class.active]=\"rInd == selectedRow\">                      \n                        <td *ngFor=\"let column of columns\">{{result[column]}}</td>\n                      </tr>\n                    </tbody>\n                  </table>\n                </div>\n          </div>\n          </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n              <button type=\"button\" (click)=\"downloadButtonPush()\" class=\"btn btn-primary pull-left\">\n                  Export to CSV\n                </button>\n                <!-- data-toggle=\"modal\" data-target=\"#exportToOrgModal\" -->\n                <button type=\"button\" class=\"btn btn-normal pull-left margin-left-10\" (click)=\"openDialog('desc')\">\n                    Export to Org\n                  </button>\n              <button\n                type=\"button\"\n                (click)=\"viewRelatedRecord()\"\n                class=\"btn btn-primary pull-right\"\n              >\n                View Related Record\n              </button>\n            </div>\n          </div>\n    </section>\n      </div>\n      <div class=\"cardFooter\">\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <button\n              type=\"button\"\n              (click)=\"addquery()\"\n              class=\"btn btn-success pull-left\"\n            >\n              <i class=\"material-icons\">add</i>\n            </button>\n            <button\n              type=\"button\"\n              (click)=\"deletequery(i)\"\n              class=\"btn btn-danger pull-left\"\n            >\n              <i class=\"material-icons\">remove</i>\n            </button>\n            <button type=\"button\" class=\"btn btn-primary pull-right\">\n              Export to CSV\n            </button>\n          </div>\n        </div>\n      </div>\n    </app-accordion>\n  </div>  \n</form>\n"
+module.exports = "<form [formGroup]=\"exportForm\">\r\n  Value: {{ exportForm.value | json }}\r\n\r\n  <hr />\r\n\r\n  <div formArrayName=\"queries\">\r\n    <app-accordion\r\n      [title]=\"['Export']\"\r\n      [desc]=\"\"\r\n      *ngFor=\"let query of queryForms.controls; let i = index\"\r\n      [formGroupName]=\"i\"\r\n    >\r\n      <div class=\"cardBody\">\r\n        <section>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Object\" formControlName=\"object\" (selectionChange)=\"objectChangeHandler($event, i)\">\r\n                    <mat-option *ngFor=\"let object of objects\" [value]=\"object.value\">\r\n                      {{object.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Fields\" formControlName=\"field\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                    <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                      {{item.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n          <div class=\"col-md-9\">\r\n            <div class=\"row\">\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"SortBy\" formControlName=\"sortBy\" (selectionChange)=\"queryStringBuilder()\" >\r\n                        <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                          {{item.viewValue}}\r\n                        </mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Sort Direction\" formControlName=\"sortDir\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"ASC\">A to Z</mat-option>\r\n                          <mat-option value=\"DESC\">Z to A</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Nulls\" formControlName=\"null\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"NULLS FIRST\">Nulls First</mat-option>\r\n                          <mat-option value=\"NULLS LAST\">Nulls Last</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field class=\"example-full-width\">\r\n                      <input matInput placeholder=\"Max Record\" formControlName=\"maxRecord\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                    </mat-form-field>\r\n              </div>\r\n            </div>      \r\n               \r\n              <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Filter Result By\" formControlName=\"filterBy\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                          <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                            {{item.viewValue}}\r\n                          </mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Operator\" formControlName=\"operator\" (selectionChange)=\"queryStringBuilder()\" >\r\n                            <mat-option value=\"=\">Equal</mat-option>\r\n                            <mat-option value=\"!=\">Not Equal</mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Field Value\" formControlName=\"fieldValue\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                      </mat-form-field>\r\n                </div>\r\n                \r\n\r\n              </div>            \r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"queryEditor\"\r\n                  >Enter or modify a SOQL query below:</label\r\n                >\r\n                <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\"> {{queryString}}</textarea>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button\r\n                type=\"button\"                \r\n                class=\"btn btn-primary pull-left\"\r\n                (click)=\"querySOQL(i)\"\r\n              >\r\n                Query\r\n              </button>\r\n              \r\n            </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        </section>\r\n        <section\r\n    class=\"result-section\"\r\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n    >\r\n    <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"res-header\">\r\n          <h4 class=\"res-title\">Results</h4>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"res-body\">\r\n              <div class=\"table-responsive\">\r\n                  <table class=\"table table-hover\">\r\n                    <thead class=\"text-primary\">\r\n                      <tr>\r\n                        <th *ngFor=\"let item of columns\">\r\n                          {{item}}\r\n                        </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        \r\n                      <tr  *ngFor=\"let result of resultsFields; let rInd = index\" (click)=\"setClickedRow(rInd)\" [class.active]=\"rInd == selectedRow\">                      \r\n                        <td *ngFor=\"let column of columns\">{{result[column]}}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n          </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" (click)=\"downloadButtonPush()\" class=\"btn btn-primary pull-left\">\r\n                  Export to CSV\r\n                </button>\r\n                <!-- data-toggle=\"modal\" data-target=\"#exportToOrgModal\" -->\r\n                <button type=\"button\" class=\"btn btn-normal pull-left margin-left-10\" (click)=\"openDialog('desc')\">\r\n                    Export to Org\r\n                  </button>\r\n              <button\r\n                type=\"button\"\r\n                (click)=\"viewRelatedRecord()\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Related Record\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </section>\r\n      </div>\r\n      <div class=\"cardFooter\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-1\"> \r\n              <button\r\n              type=\"button\"\r\n              (click)=\"addquery()\"\r\n              class=\"btn btn-success pull-left\"\r\n            >\r\n              <i class=\"material-icons\">add</i>\r\n            </button></div>\r\n            <div class=\"col-md-1\">\r\n                <button\r\n                type=\"button\"\r\n                (click)=\"deletequery(i)\"\r\n                class=\"btn btn-danger pull-left\"\r\n              >\r\n                <i class=\"material-icons\">remove</i>\r\n              </button>\r\n            </div>\r\n            <div class=\"col-md-10\">\r\n                <button type=\"button\" class=\"btn btn-primary pull-right\">\r\n                    Export to CSV\r\n                  </button>\r\n            </div>          \r\n        </div>\r\n      </div>\r\n    </app-accordion>\r\n  </div>  \r\n</form>\r\n"
 
 /***/ }),
 
@@ -800,8 +816,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../rest/rest.service */ "./src/app/rest/rest.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../export-to-org/export-to-org.component */ "./src/app/components/export-to-org/export-to-org.component.ts");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../export-to-org/export-to-org.component */ "./src/app/components/export-to-org/export-to-org.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -816,18 +834,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ExportComponent = /** @class */ (function () {
-    function ExportComponent(fb, restService, dialog) {
+    function ExportComponent(fb, restService, dialog, spinnerService) {
         this.fb = fb;
         this.restService = restService;
         this.dialog = dialog;
-        this.objects = ["Select an Object"];
+        this.spinnerService = spinnerService;
+        this.objects = [{ value: "", viewValue: "Select an Object" }];
         this.fields = [];
-        this.show_result = false;
+        this.show_result = true;
         this.columns = [];
         this.resultsFields = [];
         this.queryIndex = '';
         this.queryString = "";
+        this.foods = [
+            { value: 'steak-0', viewValue: 'Steak' },
+            { value: 'pizza-1', viewValue: 'Pizza' },
+            { value: 'tacos-2', viewValue: 'Tacos' }
+        ];
         this.getAllObjects();
         this.setClickedRow = function (index) {
             this.selectedRow = index;
@@ -893,17 +918,23 @@ var ExportComponent = /** @class */ (function () {
     //get the list of all objects to show in dropdown
     ExportComponent.prototype.getAllObjects = function () {
         var _this = this;
+        this.spinnerService.show();
         this.restService.getAllOrgObjects().subscribe(function (data) {
             data.sobjects.forEach(function (element) {
-                _this.objects.push(element.name);
+                var object = {
+                    value: element.name,
+                    viewValue: element.name
+                };
+                _this.objects.push(object);
             });
             console.log("aman1", JSON.parse(JSON.stringify(_this.objects)));
             //this.getFieldsObj();
-        }, function (error) { return console.log(error); });
+        }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
     };
     //get the list of all fields to show in dropdown
     ExportComponent.prototype.getFieldsObj = function (objectName) {
         var _this = this;
+        this.spinnerService.show();
         this.restService.getFieldsOfObject("Account").subscribe(function (data) {
             _this.fields = [];
             data.fields.forEach(function (element) {
@@ -917,14 +948,16 @@ var ExportComponent = /** @class */ (function () {
             });
             _this.childRlnMapping = rln;
             console.log("aman3", JSON.parse(JSON.stringify(data)));
-        }, function (error) { return console.log(error); });
+        }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
     };
     ExportComponent.prototype.objectChangeHandler = function (event, index) {
         this.queryIndex = index.toString();
         var exportForm = this.exportForm.value.queries;
+        var objectName = exportForm[index].object;
+        console.log("let exportForm", exportForm, index);
         //added by aman for fetching fields for particular objects
-        if (event.target.value !== "Select an Object") {
-            this.getFieldsObj(event.target.value);
+        if (objectName !== "Select an Object") {
+            this.getFieldsObj(objectName);
         }
         this.queryStringBuilder();
         //this.queryString = `SELECT * FROM ${exportForm[index].object}`;
@@ -936,11 +969,12 @@ var ExportComponent = /** @class */ (function () {
         //var queryString = this.query_string + ' limit 10';
         var queryString = this.queryString; //"SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
         console.log("queryString", queryString);
+        this.spinnerService.show();
         this.restService.soql_query(queryString).subscribe(function (data) {
             retrievedData = data.body;
             console.log("aman", JSON.parse(JSON.stringify(retrievedData)));
             _this.updateResultsTable(JSON.parse(retrievedData));
-        }, function (error) { return console.log(error); });
+        }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
     };
     ExportComponent.prototype.updateResultsTable = function (data) {
         this.show_result = true;
@@ -1012,7 +1046,7 @@ var ExportComponent = /** @class */ (function () {
     };
     ExportComponent.prototype.openDialog = function (_a) {
         var description = _a.description;
-        this.dialog.open(_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_4__["ExportToOrgComponent"], {
+        this.dialog.open(_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_5__["ExportToOrgComponent"], {
             data: { description: description }
         });
     };
@@ -1074,7 +1108,7 @@ var ExportComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./export.component.html */ "./src/app/components/export/export.component.html"),
             styles: [__webpack_require__(/*! ./export.component.css */ "./src/app/components/export/export.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"], ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__["Ng4LoadingSpinnerService"]])
     ], ExportComponent);
     return ExportComponent;
 }());
@@ -1091,7 +1125,7 @@ var ViewRelatedRecord = /** @class */ (function () {
             selector: 'view-related-record',
             template: __webpack_require__(/*! ./viewRelatedRecord.html */ "./src/app/components/export/viewRelatedRecord.html"),
         }),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"]])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"]])
     ], ViewRelatedRecord);
     return ViewRelatedRecord;
 }());
@@ -1420,7 +1454,7 @@ module.exports = ".nav-link.selected{\r\n    background-color: #ab47bc;\r\n    c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n  <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n  <div class=\"logo\">\r\n    <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n      ForceLoader\r\n    </a>\r\n  </div>\r\n  <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n    <ul class=\"nav\">\r\n      <li class=\"nav-item \" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n          <i class=\"material-icons\">dashboard</i>\r\n          <p>Dashboard</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/user-profile']\">\r\n          <i class=\"material-icons\">person</i>\r\n          <p>User Profile</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" routerLinkActive=\"active\" (click)=\"isHidden = !isHidden\">\r\n        <a class=\"nav-link\" data-toggle=\"collapse\">\r\n          <i class=\"material-icons\">library_books</i>\r\n          <p>Data Manipulations </p>\r\n        </a>\r\n        <div class=\"collapse show\" id=\"mapsExamples\" [hidden]=\"isHidden\">\r\n          <ul class=\"nav\">\r\n            <li class=\"nav-item\" *ngFor=\"let query of queries\" (click)=\"onSelectLink(query)\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n              <a class=\"nav-link\" [routerLink]=\"[query.url]\">\r\n                <span class=\"sidebar-mini\">{{query.shortName}}</span>\r\n                <span class=\"sidebar-normal\">{{query.name}}</span>\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link textTransform\" data-toggle=\"collapse\" [routerLink]=\"['/org-to-org']\">\r\n          <i class=\"material-icons\">arrow_right_alt</i>\r\n          <p>Org to Org Transfer</p>\r\n        </a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"sidebar\" data-color=\"purple\" data-background-color=\"white\" data-image=\"../assets/img/sidebar-1.jpg\">\r\n  <!--\r\n        Tip 1: You can change the color of the sidebar using: data-color=\"purple | azure | green | orange | danger\"\r\n\r\n        Tip 2: you can also add an image using data-image tag\r\n             -->\r\n  <div class=\"logo\">\r\n    <a href=\"javascript: void(0)\" class=\"simple-text logo-normal\">\r\n      ForceLoader\r\n    </a>\r\n  </div>\r\n  <div class=\"sidebar-wrapper ps-container ps-theme-default\">\r\n    <ul class=\"nav\">\r\n      <li class=\"nav-item \" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">\r\n          <i class=\"material-icons\">dashboard</i>\r\n          <p>Dashboard</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/user-profile']\">\r\n          <i class=\"material-icons\">person</i>\r\n          <p>User Profile</p>\r\n        </a>\r\n      </li>\r\n      <li class=\"nav-item\" routerLinkActive=\"active\" (click)=\"isHidden = !isHidden\">\r\n        <a class=\"nav-link\" data-toggle=\"collapse\">\r\n          <i class=\"material-icons\">library_books</i>\r\n          <p>Data Manipulations </p>\r\n        </a>\r\n        <div class=\"collapse show\" id=\"mapsExamples\" [hidden]=\"isHidden\">\r\n          <ul class=\"nav\">\r\n            <li class=\"nav-item\" *ngFor=\"let query of queries\" (click)=\"onSelectLink(query)\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n              <a class=\"nav-link\" [routerLink]=\"[query.url]\">\r\n                <span class=\"sidebar-mini\">{{query.shortName}}</span>\r\n                <span class=\"sidebar-normal\">{{query.name}}</span>\r\n              </a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1455,11 +1489,13 @@ var SidenavbarComponent = /** @class */ (function () {
             { id: 4, name: 'Delete', shortName: 'DE', url: '/delete-query', class: 'nav-item' }
         ];
         this.isHidden = false;
+        this.panelOpenState = false;
     }
     SidenavbarComponent.prototype.ngOnInit = function () {
     };
     SidenavbarComponent.prototype.onSelectLink = function (query) {
         this.selectedQuery = query;
+        this.panelOpenState = true;
     };
     SidenavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -2103,6 +2139,92 @@ var LoginLayoutComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/material-module.ts":
+/*!************************************!*\
+  !*** ./src/app/material-module.ts ***!
+  \************************************/
+/*! exports provided: DemoMaterialModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DemoMaterialModule", function() { return DemoMaterialModule; });
+/* harmony import */ var _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/cdk/drag-drop */ "./node_modules/@angular/cdk/esm5/drag-drop.es5.js");
+/* harmony import */ var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/scrolling */ "./node_modules/@angular/cdk/esm5/scrolling.es5.js");
+/* harmony import */ var _angular_cdk_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/table */ "./node_modules/@angular/cdk/esm5/table.es5.js");
+/* harmony import */ var _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/tree */ "./node_modules/@angular/cdk/esm5/tree.es5.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+var DemoMaterialModule = /** @class */ (function () {
+    function DemoMaterialModule() {
+    }
+    DemoMaterialModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
+            exports: [
+                _angular_cdk_table__WEBPACK_IMPORTED_MODULE_2__["CdkTableModule"],
+                _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_3__["CdkTreeModule"],
+                _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_0__["DragDropModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatAutocompleteModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatBadgeModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatBottomSheetModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonToggleModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCheckboxModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatChipsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatStepperModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDividerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatExpansionModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatGridListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatMenuModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatNativeDateModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatProgressBarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatProgressSpinnerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatRadioModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatRippleModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSelectModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSidenavModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSliderModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSlideToggleModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSortModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTabsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatToolbarModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTooltipModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTreeModule"],
+                _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_1__["ScrollingModule"],
+            ]
+        })
+    ], DemoMaterialModule);
+    return DemoMaterialModule;
+}());
+
+/**  Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */ 
+
+
+/***/ }),
+
 /***/ "./src/app/rest/rest.service.ts":
 /*!**************************************!*\
   !*** ./src/app/rest/rest.service.ts ***!
@@ -2271,7 +2393,7 @@ var RestService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".pointerClass{\r\n    cursor: pointer;\r\n}\r\n.material-icons{\r\n    font-weight: bold;\r\n    font-size: 36px;\r\n    margin-right: 20px;\r\n}\r\n.card-header {\r\n    display: flex;\r\n    justify-content: flex-start;\r\n    align-items: center;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2FjY29yZGlvbi9hY2NvcmRpb24uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtDQUNuQjtBQUNEO0lBQ0ksa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixtQkFBbUI7Q0FDdEI7QUFDRDtJQUNJLGNBQWM7SUFDZCw0QkFBNEI7SUFDNUIsb0JBQW9CO0NBQ3ZCIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL2FjY29yZGlvbi9hY2NvcmRpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wb2ludGVyQ2xhc3N7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuLm1hdGVyaWFsLWljb25ze1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDM2cHg7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XHJcbn1cclxuLmNhcmQtaGVhZGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcbiJdfQ== */"
+module.exports = ".pointerClass{\r\n    cursor: pointer;\r\n}\r\n.material-icons{\r\n    font-weight: bold;\r\n    font-size: 36px;\r\n    margin-right: 20px;\r\n}\r\n.card-header {\r\n    display: flex;\r\n    justify-content: flex-start;\r\n    align-items: center;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2FjY29yZGlvbi9hY2NvcmRpb24uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtDQUNuQjtBQUNEO0lBQ0ksa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixtQkFBbUI7Q0FDdEI7QUFDRDtJQUNJLGNBQWM7SUFDZCw0QkFBNEI7SUFDNUIsb0JBQW9CO0NBQ3ZCIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL2FjY29yZGlvbi9hY2NvcmRpb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wb2ludGVyQ2xhc3N7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuLm1hdGVyaWFsLWljb25ze1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDM2cHg7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XHJcbn1cclxuLmNhcmQtaGVhZGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcblxyXG4iXX0= */"
 
 /***/ }),
 
