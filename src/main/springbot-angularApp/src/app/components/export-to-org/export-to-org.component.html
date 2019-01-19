@@ -16,6 +16,10 @@
                               <h3>Source:</h3>
                             </div>
                           <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="URL" [value]="[this.source.srcBaseUrl]" (change)="queryStringBuilder()" disabled="true">
+                              </mat-form-field>
+                              <!--
                             <div class="form-group bmd-form-group">
                               <label class="">URL</label>
                               <input
@@ -24,9 +28,13 @@
                                 [value]="[this.source.srcBaseUrl]"
                                 disabled="true"
                               />
-                            </div>
+                            </div>-->
                           </div>
                           <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Username" [value]="[this.source.srcUsername]" disabled="true">
+                              </mat-form-field>
+                              <!--
                             <div class="form-group bmd-form-group">
                               <label class="">Username</label>
                               <input
@@ -35,7 +43,7 @@
                                 [value]="[this.source.srcUsername]"
                                 disabled="true"
                               />
-                            </div>
+                            </div>-->
                           </div>
                         </div>
                     </div>
@@ -49,16 +57,26 @@
                             <h3>Destination:</h3>
                           </div>
                         <div class="col-md-10">
+                          <mat-form-field>
+                              <mat-select placeholder="Environment" formControlName="env" >
+                                  <mat-option value="production">Production </mat-option>
+                                  <mat-option value="sandbox">Sandbox</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <!--
                           <div class="form-group bmd-form-group">
                               <label class="">Environment</label>
                               <select class="form-control" formControlName="env" data-style="select-with-transition" title="Environment" data-size="7" >                        
                                   <option value="production">Production </option>
                                   <option value="sandbox">Sandbox</option>
                                 </select>
-                          </div>
+                          </div>-->
                         </div>
                         <div class="col-md-10">
-                          <div class="form-group bmd-form-group">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Username" formControlName="email">
+                              </mat-form-field>
+                          <!--<div class="form-group bmd-form-group">
                             <label class="">Username</label>
                             <input
                               type="text"
@@ -66,10 +84,13 @@
                               formControlName="email"
                               required
                             />
-                          </div>
+                          </div>-->
                         </div>
                         <div class="col-md-10">
-                            <div class="form-group bmd-form-group">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Password" formControlName="password" type="password">
+                              </mat-form-field>
+                            <!--<div class="form-group bmd-form-group">
                               <label class="">Password</label>
                               <input
                                 type="text"
@@ -77,7 +98,7 @@
                                 formControlName="password"
                                 required
                               />
-                            </div>
+                            </div>-->
                           </div>
                       </div>
                       

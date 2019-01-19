@@ -17,6 +17,7 @@ export class SidenavbarComponent implements OnInit {
   ];
   selectedQuery: Query;
   isHidden= false;
+  panelOpenState = false;
   constructor() { }
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class SidenavbarComponent implements OnInit {
 
   onSelectLink(query: Query): void {
     this.selectedQuery = query;
+    this.panelOpenState = true;
   }
 
 }

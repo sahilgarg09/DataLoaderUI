@@ -14,113 +14,81 @@
         <section>
         <div class="row">
           <div class="col-md-3">
-            <div class="form-group">
-                <mat-form-field>
-                    <mat-select placeholder="Object" formControlName="object" (selectionChange)="objectChangeHandler($event, i)">
-                      <mat-option *ngFor="let object of objects" [value]="object.value">
-                        {{object.viewValue}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-              <!--
-              <label class="" for="objects">Object</label>
-              <select
-                class="form-control "
-                formControlName="object"
-                id="objects"
-                (change)="objectChangeHandler($event, i)"
-              >
-              <option
-                *ngFor="let item of objects; index as i"
-                [ngValue]="objects[i]"
-                >{{item}}</option>
-              </select>
-            -->
-            </div>
+              <mat-form-field>
+                  <mat-select placeholder="Object" formControlName="object" (selectionChange)="objectChangeHandler($event, i)">
+                    <mat-option *ngFor="let object of objects" [value]="object.value">
+                      {{object.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col-md-3">
-            <div class="form-group">
               <mat-form-field>
-                <mat-select placeholder="Fields" formControlName="field" (selectionChange)="queryStringBuilder()" multiple>
-                  <mat-option *ngFor="let item of fields" [value]="item.value">
-                    {{item.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+                  <mat-select placeholder="Fields" formControlName="field" (selectionChange)="queryStringBuilder()" multiple>
+                    <mat-option *ngFor="let item of fields" [value]="item.value">
+                      {{item.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
           </div>
           <div class="col-md-9">
             <div class="row">
               <div class="col-md-3">
-                <div class="form-group">
+                  <mat-form-field>
+                      <mat-select placeholder="SortBy" formControlName="sortBy" (selectionChange)="queryStringBuilder()" >
+                        <mat-option *ngFor="let item of fields" [value]="item.value">
+                          {{item.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                  <mat-form-field>
+                      <mat-select placeholder="Sort Direction" formControlName="sortDir" (selectionChange)="queryStringBuilder()" >
+                          <mat-option value="ASC">A to Z</mat-option>
+                          <mat-option value="DESC">Z to A</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                  <mat-form-field>
+                      <mat-select placeholder="Nulls" formControlName="null" (selectionChange)="queryStringBuilder()" >
+                          <mat-option value="NULLS FIRST">Nulls First</mat-option>
+                          <mat-option value="NULLS LAST">Nulls Last</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Max Record" formControlName="maxRecord" value=""  (change)="queryStringBuilder()">
+                    </mat-form-field>
+              </div>
+            </div>      
+               
+              <div class="row">
+                <div class="col-md-3">
                     <mat-form-field>
-                        <mat-select placeholder="SortBy" formControlName="sortBy" (selectionChange)="queryStringBuilder()" >
+                        <mat-select placeholder="Filter Result By" formControlName="filterBy" (selectionChange)="queryStringBuilder()" multiple>
                           <mat-option *ngFor="let item of fields" [value]="item.value">
                             {{item.viewValue}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
                 </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                    <mat-form-field>
-                        <mat-select placeholder="Sort Direction" formControlName="sortDir" (selectionChange)="queryStringBuilder()" >
-                            <mat-option value="ASC">A to Z</mat-option>
-                            <mat-option value="DESC">Z to A</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                    <mat-form-field>
-                        <mat-select placeholder="Nulls" formControlName="null" (selectionChange)="queryStringBuilder()" >
-                            <mat-option value="NULLS FIRST">Nulls First</mat-option>
-                            <mat-option value="NULLS LAST">Nulls Last</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Max Record" formControlName="maxRecord" value=""  (change)="queryStringBuilder()">
-                      </mat-form-field>
-                </div>
-              </div>
-            </div>      
-               
-              <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
-                        <mat-form-field>
-                            <mat-select placeholder="Filter Result By" formControlName="filterBy" (selectionChange)="queryStringBuilder()" multiple>
-                              <mat-option *ngFor="let item of fields" [value]="item.value">
-                                {{item.viewValue}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                      </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <mat-form-field>
+                    <mat-form-field>
                         <mat-select placeholder="Operator" formControlName="operator" (selectionChange)="queryStringBuilder()" >
                             <mat-option value="=">Equal</mat-option>
                             <mat-option value="!=">Not Equal</mat-option>
                         </mat-select>
                       </mat-form-field>
-                      </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="form-group">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Field Value" formControlName="fieldValue" value=""  (change)="queryStringBuilder()">
-                          </mat-form-field>
-                      </div>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Field Value" formControlName="fieldValue" value=""  (change)="queryStringBuilder()">
+                      </mat-form-field>
                 </div>
                 
 
@@ -128,7 +96,7 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
                 <label class="bmd-label-floating" for="queryEditor"
                   >Enter or modify a SOQL query below:</label
@@ -207,25 +175,28 @@
       </div>
       <div class="cardFooter">
         <div class="row">
-          <div class="col-md-12">
-            <button
+            <div class="col-md-1"> 
+              <button
               type="button"
               (click)="addquery()"
               class="btn btn-success pull-left"
             >
               <i class="material-icons">add</i>
-            </button>
-            <button
-              type="button"
-              (click)="deletequery(i)"
-              class="btn btn-danger pull-left"
-            >
-              <i class="material-icons">remove</i>
-            </button>
-            <button type="button" class="btn btn-primary pull-right">
-              Export to CSV
-            </button>
-          </div>
+            </button></div>
+            <div class="col-md-1">
+                <button
+                type="button"
+                (click)="deletequery(i)"
+                class="btn btn-danger pull-left"
+              >
+                <i class="material-icons">remove</i>
+              </button>
+            </div>
+            <div class="col-md-10">
+                <button type="button" class="btn btn-primary pull-right">
+                    Export to CSV
+                  </button>
+            </div>          
         </div>
       </div>
     </app-accordion>

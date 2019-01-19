@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { RestService } from "../../rest/rest.service";
 import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
 import { ExportToOrgComponent } from "../export-to-org/export-to-org.component";
@@ -26,7 +27,7 @@ export class ExportComponent implements OnInit {
   objects = [{value: "", viewValue: "Select an Object"}];
   fields: Fields[] = [];
   childRlnMapping: {};
-  show_result = false;
+  show_result = true;
   columns = [];
   resultsFields = [];
   setClickedRow: Function;
@@ -40,7 +41,7 @@ export class ExportComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
 
-  constructor(private fb: FormBuilder, private restService: RestService, private dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private restService: RestService, private dialog: MatDialog,  private spinnerService: Ng4LoadingSpinnerService) {
     this.getAllObjects();
     this.setClickedRow = function(index) {
       this.selectedRow = index;
@@ -103,6 +104,7 @@ export class ExportComponent implements OnInit {
 
   //get the list of all objects to show in dropdown
   getAllObjects() {
+    this.spinnerService.show();
     this.restService.getAllOrgObjects().subscribe(
       data => {
         data.sobjects.forEach(element => {
@@ -117,12 +119,14 @@ export class ExportComponent implements OnInit {
         console.log("aman1", JSON.parse(JSON.stringify(this.objects)));
         //this.getFieldsObj();
       },
-      error => console.log(error)
+      error => console.log(error),
+      () => this.spinnerService.hide()
     );
   }
 
   //get the list of all fields to show in dropdown
   getFieldsObj(objectName: string) {
+    this.spinnerService.show();
     this.restService.getFieldsOfObject("Account").subscribe(
       data => {
         this.fields = [];
@@ -137,7 +141,8 @@ export class ExportComponent implements OnInit {
         this.childRlnMapping = rln;
         console.log("aman3", JSON.parse(JSON.stringify(data)));
       },
-      error => console.log(error)
+      error => console.log(error),
+      () => this.spinnerService.hide()
     );
   }
 
@@ -160,13 +165,15 @@ export class ExportComponent implements OnInit {
     //var queryString = this.query_string + ' limit 10';
     let queryString = this.queryString;//"SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
     console.log("queryString", queryString);
+    this.spinnerService.show();
     this.restService.soql_query(queryString).subscribe(
       data => {
         retrievedData = data.body;
         console.log("aman", JSON.parse(JSON.stringify(retrievedData)));
         this.updateResultsTable(JSON.parse(retrievedData));
       },
-      error => console.log(error)
+      error => console.log(error),
+      () => this.spinnerService.hide()
     );
   }
 

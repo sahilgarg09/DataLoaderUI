@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {DemoMaterialModule} from './material-module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
@@ -66,7 +67,8 @@ import { ExportComponent, ViewRelatedRecord } from './components/export/export.c
     MatDialogModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [AuthService, AuthGuard, RestService],
   bootstrap: [AppComponent],

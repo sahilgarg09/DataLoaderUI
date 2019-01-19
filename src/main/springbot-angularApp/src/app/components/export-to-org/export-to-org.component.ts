@@ -49,9 +49,18 @@ export class ExportToOrgComponent implements OnInit {
   loginToOrg() {
     let formData = this.form.value;
     this.dialogRef.close();
-    this.confDialog.open(ConfirmationDialog, {
-      data: {}
-    });
+    if (formData.email !== '' && formData.password !== '' ) {
+      this.rest.login(formData).subscribe((result) => {
+        console.log("result", result);
+        this.source['record'] = 20;      
+        this.confDialog.open(ConfirmationDialog, {
+          data: {}
+        });
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    
   }
 
   save() {
