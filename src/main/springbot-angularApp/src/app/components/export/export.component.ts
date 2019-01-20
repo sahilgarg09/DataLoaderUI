@@ -27,7 +27,7 @@ export class ExportComponent implements OnInit {
   objects = [{value: "", viewValue: "Select an Object"}];
   fields: Fields[] = [];
   childRlnMapping: {};
-  show_result = true;
+  show_result = false;
   columns = [];
   resultsFields = [];
   setClickedRow: Function;

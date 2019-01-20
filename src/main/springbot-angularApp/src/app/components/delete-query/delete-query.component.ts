@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './../../auth/auth.service';
+import { RestService } from '../../rest/rest.service';
 
-export interface Objects {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-delete-query',
@@ -11,18 +10,22 @@ export interface Objects {
   styleUrls: ['./delete-query.component.css']
 })
 export class DeleteQueryComponent implements OnInit {
-
-  objects: Objects[] = [
-    {value: '', viewValue: 'Select an Object'},
-    {value: 'AcceptedEventRelation', viewValue: 'AcceptedEventRelation'},
-    {value: 'Account', viewValue: 'Account'},
-    {value: 'AccountBrand', viewValue: 'AccountBrand'},
-    {value: 'AccountBrandShare', viewValue: 'AccountBrandShare'}
-  ];
-
-  constructor() { }
+  form: FormGroup;
+  constructor(private fb: FormBuilder, private authService: AuthService, private rest: RestService) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      object: "",
+      where: "",
+      orderBy: "",
+      bulkApi: false,
+      hardDelete: false,
+      serialCode: false
+    });
+  }
+
+  onSubmit(){
+    console.log("this.form", this.form.value);
   }
 
 }
