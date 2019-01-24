@@ -30,7 +30,7 @@ login (user: User): Observable<any> {
 					'Content-Type' : 'application/json',
 					'username' : user.email,
 					'password' : user.password,
-					'version' : user.api+'.0',
+					'version' : '44.0',//user.api+'.0',
 					'orgtype' : user.env.toUpperCase(),
 					"Access-Control-Allow-Credentials" : "true",
             		"Access-Control-Allow-Origin" : '*'
@@ -51,7 +51,7 @@ soql_query (query: any): Observable<any> {
 	  headers: new HttpHeaders({
           'Content-Type' : 'application/json',
 					'baseURL' : sessionData.baseURL,
-					'version' : sessionData.version+'.0',
+					'version' : '44.0',//sessionData.version+'.0',
 					'sessionId' : sessionData.sessionId,
 					'query' :  query,
 					"Access-Control-Allow-Credentials" : "true",
@@ -72,7 +72,7 @@ getAllOrgObjects (): Observable<any> {
 	  headers: new HttpHeaders({
           'Content-Type' : 'application/json',
 					'baseURL' : sessionData.baseURL,
-					'version' : sessionData.version+'.0',
+					'version' : '44.0',//sessionData.version+'.0',
 					'sessionId' : sessionData.sessionId,
 					"Access-Control-Allow-Credentials" : "true",
             		"Access-Control-Allow-Origin" : '*'
@@ -92,7 +92,7 @@ getFieldsOfObject (objectName: any): Observable<any> {
 	  headers: new HttpHeaders({
           'Content-Type' : 'application/json',
 					'baseURL' : sessionData.baseURL,
-					'version' : sessionData.version+'.0',
+					'version' : '44.0', //sessionData.version+'.0',
 					'sessionId' : sessionData.sessionId,
 					"Access-Control-Allow-Credentials" : "true",
             		"Access-Control-Allow-Origin" : '*'
@@ -113,7 +113,7 @@ orgtoOrgTransfer (nameOfObject: any, data: any): Observable<any> {
 	  headers: new HttpHeaders({
           'Content-Type' : 'application/json',
 					'baseURL' : sessionData.baseURL,
-					'version' : sessionData.version+'.0',
+					'version' : '44.0',//sessionData.version+'.0',
 					'sessionId' : sessionData.sessionId,
 					'objectName': nameOfObject,
 					 'dataBody' : data,
@@ -135,7 +135,7 @@ getChildData (nameOfObject: any, id: any, relationName: any): Observable<any> {
 	  headers: new HttpHeaders({
           'Content-Type' : 'application/json',
 					'baseURL' : sessionData.baseURL,
-					'version' : sessionData.version+'.0',
+					'version' : '44.0',//sessionData.version+'.0',
 					'sessionId' : sessionData.sessionId,
 					'objectName': nameOfObject,
 					 'recordIds' : id,

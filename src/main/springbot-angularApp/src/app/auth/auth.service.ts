@@ -23,7 +23,7 @@ export class AuthService {
   login(user: User){
     console.log(user);
     console.log('----------------------------------------------')
-    if (user.email !== '' && user.password !== '' && user.env !== 'Environment' && user.api !== 'Api Version' ) {
+    if (user.email !== '' && user.password !== '' && user.env !== 'Environment' ) {
       this.rest.login(user).subscribe((result) => {
       
 		  var pathArray = result.metadataServerUrl.split('/');

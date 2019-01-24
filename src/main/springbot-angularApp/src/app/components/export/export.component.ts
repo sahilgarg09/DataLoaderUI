@@ -80,7 +80,8 @@ export class ExportComponent implements OnInit {
       queryString: "",
       filterBy: "",
       operator: "",
-      fieldValue: ""
+      fieldValue: "",
+      exportResult: {}
     });
 
     this.queryForms.push(query);
@@ -147,29 +148,37 @@ export class ExportComponent implements OnInit {
   }
 
   objectChangeHandler(event: any, index) {    
-    this.queryIndex = index.toString();
+    this.queryIndex = index.toString();    
     let exportForm = this.exportForm.value.queries;
-    let objectName = exportForm[index].object;
-    console.log("let exportForm", exportForm, index);
+    let objectName = exportForm[index].object;    
     //added by aman for fetching fields for particular objects
     if (objectName !== "Select an Object") {
       this.getFieldsObj(objectName);
     }
+    let obj = {}
+    obj[index] = objectName;
+    sessionStorage.setItem("curObjSelected", JSON.stringify(obj));
     this.queryStringBuilder();
     //this.queryString = `SELECT * FROM ${exportForm[index].object}`;
   }
 
   querySOQL(index) {
     this.queryIndex = index;
-    var retrievedData;
+    var retrievedData;      
     //var queryString = this.query_string + ' limit 10';
     let queryString = this.queryString;//"SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
     console.log("queryString", queryString);
     this.spinnerService.show();
     this.restService.soql_query(queryString).subscribe(
       data => {
-        retrievedData = data.body;
-        console.log("aman", JSON.parse(JSON.stringify(retrievedData)));
+        retrievedData = data.body;   
+        let sessionExportResults = JSON.parse(sessionStorage.getItem("exportResults"));
+        if(!sessionExportResults)  
+          sessionExportResults = {}  
+        
+        sessionExportResults[index] = data.body;
+        sessionStorage.setItem("exportResults", JSON.stringify(sessionExportResults));
+        console.log("aman", JSON.parse(JSON.stringify(retrievedData)), sessionExportResults);
         this.updateResultsTable(JSON.parse(retrievedData));
       },
       error => console.log(error),
@@ -254,18 +263,25 @@ export class ExportComponent implements OnInit {
   }
 
   openDialog({ description }: any) {
+    sessionStorage.setItem("curQueryIndex", this.queryIndex);
     this.dialog.open(ExportToOrgComponent, {
       data: { description }
     });
   }
-  viewRelatedRecord(){
-    this.dialog.open(ViewRelatedRecord, {
+  viewRelatedRecord(index){
+    /*this.dialog.open(ViewRelatedRecord, {
       data: {}
-    });  
+    });  */
+    
+    this.queryIndex = index.toString();
+    let exportForm = this.exportForm.value.queries;
+    let nameOfObject = exportForm[index].object;
+
     //(nameOfObject: any, id: any, relationName: any  
-    /*(let nameOfObject = this.query_object["object"];
-    (let id = this.selectedRecord['Id'];
+    //let nameOfObject = this.query_object["object"];
+    let id = this.selectedRecord['Id'];
     let relationName = this.childRlnMapping[nameOfObject];
+    console.log("reaches here", nameOfObject, id, relationName);
     this.restService.getChildData(nameOfObject, id, relationName).subscribe(
       data => {       
         console.log('childData record', JSON.parse(JSON.stringify(data)));   
@@ -273,7 +289,7 @@ export class ExportComponent implements OnInit {
           data: {}
         });   
       },
-      error => console.log(error));*/
+      error => console.log(error));
   }
 
   queryStringBuilder() {

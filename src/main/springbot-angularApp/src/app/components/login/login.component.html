@@ -9,9 +9,9 @@
         </div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="card-body ">
-
+            <!--
             <div class="form-group bmd-form-group">
-                <!--<label for="exampleEmail" class="bmd-label-floating">Email Address</label>-->
+                <!- -<label for="exampleEmail" class="bmd-label-floating">Email Address</label>- ->
                 <select class="form-control" formControlName="api" data-style="select-with-transition" title="API Version" data-size="7" >
                     <option disabled selected hidden> Api Version </option>
                     <option value="44">44 </option>
@@ -19,24 +19,48 @@
                     <option value="42">42</option>
                   </select>
             </div>
-
-            <div class="form-group bmd-form-group">
-                <!--<label for="exampleEmail" class="bmd-label-floating">Email Address</label>-->
+          <div class="form-group bmd-form-group">
+                
                 <select class="form-control" formControlName="env" data-style="select-with-transition" title="Environment" data-size="7" >
                     <option disabled selected hidden> Environment</option>
                     <option value="production">Production </option>
                     <option value="sandbox">Sandbox</option>
                   </select>
+            </div>-->
+
+            <div class="row">
+              <div class="col-md-12">
+                  <mat-form-field>
+                    <mat-select placeholder="Environment" formControlName="env" >
+                        <mat-option disabled selected hidden>Environment</mat-option>
+                        <mat-option value="production">Production </mat-option>
+                        <mat-option value="sandbox">Sandbox</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Email Address" formControlName="email" required>
+                    </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Password" formControlName="password" type="password" required>
+                    </mat-form-field>
+              </div>
             </div>
+            
           
-            <div class="form-group bmd-form-group">
+            
+           
+           <!-- <div class="form-group bmd-form-group">
               <label for="exampleEmail" class="bmd-label-floating">Email Address</label>
               <input type="email" class="form-control" formControlName="email" required>
             </div>
             <div class="form-group bmd-form-group">
               <label for="examplePass" class="bmd-label-floating">Password</label>
               <input type="password" class="form-control"  formControlName="password" required="true">
-            </div>
+            </div>-->
             
           
         </div>

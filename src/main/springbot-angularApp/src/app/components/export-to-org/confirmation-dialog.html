@@ -9,13 +9,13 @@
 <div class="card-body">
     <div class="row">        
         <div class="col-md-12 center confirmText">
-          <span>Do you want to procced with 10 records?</span>
+          <span>Do you want to procced with {{totalRecord}} records?</span>
         </div>
       </div>
       <div class="row">
           <div class="col-md-12 center">
               <button type="button" class="btn btn-normal pull-left" (click)="onNoClick()">No</button>  
-              <button type="button" class="btn btn-primary pull-right" >Yes</button>   
+              <button type="button" class="btn btn-primary pull-right" (click)="onYesClick()">Yes</button>   
           </div>
       </div>
     </div>
