@@ -459,7 +459,7 @@ var AuthService = /** @class */ (function () {
         var _this = this;
         console.log(user);
         console.log('----------------------------------------------');
-        if (user.email !== '' && user.password !== '' && user.env !== 'Environment' && user.api !== 'Api Version') {
+        if (user.email !== '' && user.password !== '' && user.env !== 'Environment') {
             this.rest.login(user).subscribe(function (result) {
                 var pathArray = result.metadataServerUrl.split('/');
                 var protocol = pathArray[0];
@@ -587,6 +587,9 @@ module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeleteQueryComponent", function() { return DeleteQueryComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../auth/auth.service */ "./src/app/auth/auth.service.ts");
+/* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../rest/rest.service */ "./src/app/rest/rest.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -597,17 +600,27 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var DeleteQueryComponent = /** @class */ (function () {
-    function DeleteQueryComponent() {
-        this.objects = [
-            { value: '', viewValue: 'Select an Object' },
-            { value: 'AcceptedEventRelation', viewValue: 'AcceptedEventRelation' },
-            { value: 'Account', viewValue: 'Account' },
-            { value: 'AccountBrand', viewValue: 'AccountBrand' },
-            { value: 'AccountBrandShare', viewValue: 'AccountBrandShare' }
-        ];
+    function DeleteQueryComponent(fb, authService, rest) {
+        this.fb = fb;
+        this.authService = authService;
+        this.rest = rest;
     }
     DeleteQueryComponent.prototype.ngOnInit = function () {
+        this.form = this.fb.group({
+            object: "",
+            where: "",
+            orderBy: "",
+            bulkApi: false,
+            hardDelete: false,
+            serialCode: false
+        });
+    };
+    DeleteQueryComponent.prototype.onSubmit = function () {
+        console.log("this.form", this.form.value);
     };
     DeleteQueryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -615,7 +628,7 @@ var DeleteQueryComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./delete-query.component.html */ "./src/app/components/delete-query/delete-query.component.html"),
             styles: [__webpack_require__(/*! ./delete-query.component.css */ "./src/app/components/delete-query/delete-query.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_3__["RestService"]])
     ], DeleteQueryComponent);
     return DeleteQueryComponent;
 }());
@@ -631,7 +644,7 @@ var DeleteQueryComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">\r\n            Confirmation\r\n            </h4>\r\n        </div>\r\n<div class=\"card-body\">\r\n    <div class=\"row\">        \r\n        <div class=\"col-md-12 center confirmText\">\r\n          <span>Do you want to procced with 10 records?</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n          <div class=\"col-md-12 center\">\r\n              <button type=\"button\" class=\"btn btn-normal pull-left\" (click)=\"onNoClick()\">No</button>  \r\n              <button type=\"button\" class=\"btn btn-primary pull-right\" >Yes</button>   \r\n          </div>\r\n      </div>\r\n    </div>\r\n\r\n</div>\r\n</div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-header card-header-primary\">\r\n          <h4 class=\"card-title\">\r\n            Confirmation\r\n            </h4>\r\n        </div>\r\n<div class=\"card-body\">\r\n    <div class=\"row\">        \r\n        <div class=\"col-md-12 center confirmText\">\r\n          <span>Do you want to procced with {{totalRecord}} records?</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n          <div class=\"col-md-12 center\">\r\n              <button type=\"button\" class=\"btn btn-normal pull-left\" (click)=\"onNoClick()\">No</button>  \r\n              <button type=\"button\" class=\"btn btn-primary pull-right\" (click)=\"onYesClick()\">Yes</button>   \r\n          </div>\r\n      </div>\r\n    </div>\r\n\r\n</div>\r\n</div>\r\n</div>"
 
 /***/ }),
 
@@ -673,6 +686,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../auth/auth.service */ "./src/app/auth/auth.service.ts");
 /* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../rest/rest.service */ "./src/app/rest/rest.service.ts");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
+/* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -685,6 +700,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+
 
 
 
@@ -713,9 +729,14 @@ var ExportToOrgComponent = /** @class */ (function () {
     ExportToOrgComponent.prototype.getSourceDetails = function () {
         var selected = sessionStorage.getItem("selected");
         var sourceObj = JSON.parse(sessionStorage.getItem(selected));
+        var queryIndex = sessionStorage.getItem("curQueryIndex");
+        var exportResults = JSON.parse(sessionStorage.getItem("exportResults"));
+        var curObjSelected = JSON.parse(sessionStorage.getItem("curObjSelected"));
         this.source = {
             srcBaseUrl: sourceObj.baseURL,
-            srcUsername: sourceObj.userName
+            srcUsername: sourceObj.userName,
+            exportResults: exportResults[queryIndex],
+            curObjName: curObjSelected[queryIndex]
         };
         console.log("this.this.source", this.source);
     };
@@ -726,9 +747,10 @@ var ExportToOrgComponent = /** @class */ (function () {
         if (formData.email !== '' && formData.password !== '') {
             this.rest.login(formData).subscribe(function (result) {
                 console.log("result", result);
-                _this.source['record'] = 20;
+                sessionStorage.setItem('env2', JSON.stringify(result));
+                var source = _this.source;
                 _this.confDialog.open(ConfirmationDialog, {
-                    data: {}
+                    data: { source: source }
                 });
             }, function (err) {
                 console.log(err);
@@ -758,20 +780,50 @@ var ExportToOrgComponent = /** @class */ (function () {
 }());
 
 var ConfirmationDialog = /** @class */ (function () {
-    function ConfirmationDialog(dialogConfRef, data) {
+    function ConfirmationDialog(dialogConfRef, restService, spinnerService, data) {
         this.dialogConfRef = dialogConfRef;
+        this.restService = restService;
+        this.spinnerService = spinnerService;
         this.data = data;
+        this.totalRecord = "";
+        this.records = [];
+        this.objectName = "";
+        var exportResults = JSON.parse(data.source.exportResults);
+        this.totalRecord = exportResults.totalSize;
+        this.records = exportResults.records;
+        this.objectName = data.source.curObjName;
     }
     ConfirmationDialog.prototype.onNoClick = function () {
         this.dialogConfRef.close();
+    };
+    ConfirmationDialog.prototype.formatData = function () {
+        var recordArr = [];
+        this.records.forEach(function (rec) {
+            var recordObj = rec;
+            var urlArr = rec.attributes.url.split("/");
+            recordObj.attributes['referenceId'] = urlArr[urlArr.length - 1];
+            delete recordObj.attributes.url;
+            recordArr.push(recordObj);
+        });
+        return recordArr;
+    };
+    ConfirmationDialog.prototype.onYesClick = function () {
+        var _this = this;
+        var objectName = this.objectName;
+        var recordData = this.formatData();
+        this.spinnerService.show();
+        console.log("request object", objectName, recordData);
+        this.restService.orgtoOrgTransfer(objectName, recordData).subscribe(function (data) {
+            console.log("records confirmation data", data.body);
+        }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
     };
     ConfirmationDialog = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "confirmation-dialog",
             template: __webpack_require__(/*! ./confirmation-dialog.html */ "./src/app/components/export-to-org/confirmation-dialog.html")
         }),
-        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], Object])
+        __param(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"], ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"], Object])
     ], ConfirmationDialog);
     return ConfirmationDialog;
 }());
@@ -798,7 +850,7 @@ module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"exportForm\">\r\n  Value: {{ exportForm.value | json }}\r\n\r\n  <hr />\r\n\r\n  <div formArrayName=\"queries\">\r\n    <app-accordion\r\n      [title]=\"['Export']\"\r\n      [desc]=\"\"\r\n      *ngFor=\"let query of queryForms.controls; let i = index\"\r\n      [formGroupName]=\"i\"\r\n    >\r\n      <div class=\"cardBody\">\r\n        <section>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Object\" formControlName=\"object\" (selectionChange)=\"objectChangeHandler($event, i)\">\r\n                    <mat-option *ngFor=\"let object of objects\" [value]=\"object.value\">\r\n                      {{object.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Fields\" formControlName=\"field\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                    <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                      {{item.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n          <div class=\"col-md-9\">\r\n            <div class=\"row\">\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"SortBy\" formControlName=\"sortBy\" (selectionChange)=\"queryStringBuilder()\" >\r\n                        <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                          {{item.viewValue}}\r\n                        </mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Sort Direction\" formControlName=\"sortDir\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"ASC\">A to Z</mat-option>\r\n                          <mat-option value=\"DESC\">Z to A</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Nulls\" formControlName=\"null\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"NULLS FIRST\">Nulls First</mat-option>\r\n                          <mat-option value=\"NULLS LAST\">Nulls Last</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field class=\"example-full-width\">\r\n                      <input matInput placeholder=\"Max Record\" formControlName=\"maxRecord\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                    </mat-form-field>\r\n              </div>\r\n            </div>      \r\n               \r\n              <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Filter Result By\" formControlName=\"filterBy\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                          <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                            {{item.viewValue}}\r\n                          </mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Operator\" formControlName=\"operator\" (selectionChange)=\"queryStringBuilder()\" >\r\n                            <mat-option value=\"=\">Equal</mat-option>\r\n                            <mat-option value=\"!=\">Not Equal</mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Field Value\" formControlName=\"fieldValue\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                      </mat-form-field>\r\n                </div>\r\n                \r\n\r\n              </div>            \r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-6\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"queryEditor\"\r\n                  >Enter or modify a SOQL query below:</label\r\n                >\r\n                <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\"> {{queryString}}</textarea>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button\r\n                type=\"button\"                \r\n                class=\"btn btn-primary pull-left\"\r\n                (click)=\"querySOQL(i)\"\r\n              >\r\n                Query\r\n              </button>\r\n              \r\n            </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        </section>\r\n        <section\r\n    class=\"result-section\"\r\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n    >\r\n    <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"res-header\">\r\n          <h4 class=\"res-title\">Results</h4>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"res-body\">\r\n              <div class=\"table-responsive\">\r\n                  <table class=\"table table-hover\">\r\n                    <thead class=\"text-primary\">\r\n                      <tr>\r\n                        <th *ngFor=\"let item of columns\">\r\n                          {{item}}\r\n                        </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        \r\n                      <tr  *ngFor=\"let result of resultsFields; let rInd = index\" (click)=\"setClickedRow(rInd)\" [class.active]=\"rInd == selectedRow\">                      \r\n                        <td *ngFor=\"let column of columns\">{{result[column]}}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n          </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" (click)=\"downloadButtonPush()\" class=\"btn btn-primary pull-left\">\r\n                  Export to CSV\r\n                </button>\r\n                <!-- data-toggle=\"modal\" data-target=\"#exportToOrgModal\" -->\r\n                <button type=\"button\" class=\"btn btn-normal pull-left margin-left-10\" (click)=\"openDialog('desc')\">\r\n                    Export to Org\r\n                  </button>\r\n              <button\r\n                type=\"button\"\r\n                (click)=\"viewRelatedRecord()\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Related Record\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </section>\r\n      </div>\r\n      <div class=\"cardFooter\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-1\"> \r\n              <button\r\n              type=\"button\"\r\n              (click)=\"addquery()\"\r\n              class=\"btn btn-success pull-left\"\r\n            >\r\n              <i class=\"material-icons\">add</i>\r\n            </button></div>\r\n            <div class=\"col-md-1\">\r\n                <button\r\n                type=\"button\"\r\n                (click)=\"deletequery(i)\"\r\n                class=\"btn btn-danger pull-left\"\r\n              >\r\n                <i class=\"material-icons\">remove</i>\r\n              </button>\r\n            </div>\r\n            <div class=\"col-md-10\">\r\n                <button type=\"button\" class=\"btn btn-primary pull-right\">\r\n                    Export to CSV\r\n                  </button>\r\n            </div>          \r\n        </div>\r\n      </div>\r\n    </app-accordion>\r\n  </div>  \r\n</form>\r\n"
+module.exports = "<form [formGroup]=\"exportForm\">\r\n <!-- Value: {{ exportForm.value | json }}\r\n\r\n  <hr />\r\n -->\r\n  <div formArrayName=\"queries\">\r\n    <app-accordion\r\n      [title]=\"['Export']\"\r\n      [desc]=\"\"\r\n      *ngFor=\"let query of queryForms.controls; let i = index\"\r\n      [formGroupName]=\"i\"\r\n    >\r\n      <div class=\"cardBody\">\r\n        <section>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Object\" formControlName=\"object\" (selectionChange)=\"objectChangeHandler($event, i)\">\r\n                    <mat-option *ngFor=\"let object of objects\" [value]=\"object.value\">\r\n                      {{object.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Fields\" formControlName=\"field\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                    <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                      {{item.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n          <div class=\"col-md-9\">\r\n            <div class=\"row\">\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"SortBy\" formControlName=\"sortBy\" (selectionChange)=\"queryStringBuilder()\" >\r\n                        <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                          {{item.viewValue}}\r\n                        </mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Sort Direction\" formControlName=\"sortDir\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"ASC\">A to Z</mat-option>\r\n                          <mat-option value=\"DESC\">Z to A</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Nulls\" formControlName=\"null\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"NULLS FIRST\">Nulls First</mat-option>\r\n                          <mat-option value=\"NULLS LAST\">Nulls Last</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field class=\"example-full-width\">\r\n                      <input matInput placeholder=\"Max Record\" formControlName=\"maxRecord\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                    </mat-form-field>\r\n              </div>\r\n            </div>      \r\n               \r\n              <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Filter Result By\" formControlName=\"filterBy\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                          <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                            {{item.viewValue}}\r\n                          </mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Operator\" formControlName=\"operator\" (selectionChange)=\"queryStringBuilder()\" >\r\n                            <mat-option value=\"=\">Equal</mat-option>\r\n                            <mat-option value=\"!=\">Not Equal</mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Field Value\" formControlName=\"fieldValue\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                      </mat-form-field>\r\n                </div>\r\n                \r\n\r\n              </div>            \r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <div class=\"form-group\">\r\n                <label class=\"bmd-label-floating\" for=\"queryEditor\"\r\n                  >Enter or modify a SOQL query below:</label\r\n                >\r\n                <textarea class=\"form-control\" id=\"queryEditor\" rows=\"3\"> {{queryString}}</textarea>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button\r\n                type=\"button\"                \r\n                class=\"btn btn-primary pull-left\"\r\n                (click)=\"querySOQL(i)\"\r\n              >\r\n                Query\r\n              </button>\r\n              \r\n            </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        </section>\r\n        <section\r\n    class=\"result-section\"\r\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n    >\r\n    <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"res-header\">\r\n          <h4 class=\"res-title\">Results</h4>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"res-body\">\r\n              <div class=\"table-responsive\">\r\n                  <table class=\"table table-hover\">\r\n                    <thead class=\"text-primary\">\r\n                      <tr>\r\n                        <th *ngFor=\"let item of columns\">\r\n                          {{item}}\r\n                        </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        \r\n                      <tr  *ngFor=\"let result of resultsFields; let rInd = index\" (click)=\"setClickedRow(rInd)\" [class.active]=\"rInd == selectedRow\">                      \r\n                        <td *ngFor=\"let column of columns\">{{result[column]}}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n          </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" (click)=\"downloadButtonPush()\" class=\"btn btn-primary pull-left\">\r\n                  Export to CSV\r\n                </button>\r\n                <!-- data-toggle=\"modal\" data-target=\"#exportToOrgModal\" -->\r\n                <button type=\"button\" class=\"btn btn-normal pull-left margin-left-10\" (click)=\"openDialog('desc')\">\r\n                    Export to Org\r\n                  </button>\r\n              <button\r\n                type=\"button\"\r\n                (click)=\"viewRelatedRecord(i)\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Related Record\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </section>\r\n      </div>\r\n      <div class=\"cardFooter\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-1\"> \r\n              <button\r\n              type=\"button\"\r\n              (click)=\"addquery()\"\r\n              class=\"btn btn-success pull-left\"\r\n            >\r\n              <i class=\"material-icons\">add</i>\r\n            </button></div>\r\n            <div class=\"col-md-1\">\r\n                <button\r\n                type=\"button\"\r\n                (click)=\"deletequery(i)\"\r\n                class=\"btn btn-danger pull-left\"\r\n              >\r\n                <i class=\"material-icons\">remove</i>\r\n              </button>\r\n            </div>\r\n            <div class=\"col-md-10\">\r\n                <button type=\"button\" class=\"btn btn-primary pull-right\">\r\n                    Export to CSV\r\n                  </button>\r\n            </div>          \r\n        </div>\r\n      </div>\r\n    </app-accordion>\r\n  </div>  \r\n</form>\r\n"
 
 /***/ }),
 
@@ -843,7 +895,7 @@ var ExportComponent = /** @class */ (function () {
         this.spinnerService = spinnerService;
         this.objects = [{ value: "", viewValue: "Select an Object" }];
         this.fields = [];
-        this.show_result = true;
+        this.show_result = false;
         this.columns = [];
         this.resultsFields = [];
         this.queryIndex = '';
@@ -898,7 +950,8 @@ var ExportComponent = /** @class */ (function () {
             queryString: "",
             filterBy: "",
             operator: "",
-            fieldValue: ""
+            fieldValue: "",
+            exportResult: {}
         });
         this.queryForms.push(query);
         this.addFilterBy();
@@ -954,11 +1007,13 @@ var ExportComponent = /** @class */ (function () {
         this.queryIndex = index.toString();
         var exportForm = this.exportForm.value.queries;
         var objectName = exportForm[index].object;
-        console.log("let exportForm", exportForm, index);
         //added by aman for fetching fields for particular objects
         if (objectName !== "Select an Object") {
             this.getFieldsObj(objectName);
         }
+        var obj = {};
+        obj[index] = objectName;
+        sessionStorage.setItem("curObjSelected", JSON.stringify(obj));
         this.queryStringBuilder();
         //this.queryString = `SELECT * FROM ${exportForm[index].object}`;
     };
@@ -972,7 +1027,12 @@ var ExportComponent = /** @class */ (function () {
         this.spinnerService.show();
         this.restService.soql_query(queryString).subscribe(function (data) {
             retrievedData = data.body;
-            console.log("aman", JSON.parse(JSON.stringify(retrievedData)));
+            var sessionExportResults = JSON.parse(sessionStorage.getItem("exportResults"));
+            if (!sessionExportResults)
+                sessionExportResults = {};
+            sessionExportResults[index] = data.body;
+            sessionStorage.setItem("exportResults", JSON.stringify(sessionExportResults));
+            console.log("aman", JSON.parse(JSON.stringify(retrievedData)), sessionExportResults);
             _this.updateResultsTable(JSON.parse(retrievedData));
         }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
     };
@@ -1046,26 +1106,30 @@ var ExportComponent = /** @class */ (function () {
     };
     ExportComponent.prototype.openDialog = function (_a) {
         var description = _a.description;
+        sessionStorage.setItem("curQueryIndex", this.queryIndex);
         this.dialog.open(_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_5__["ExportToOrgComponent"], {
             data: { description: description }
         });
     };
-    ExportComponent.prototype.viewRelatedRecord = function () {
-        this.dialog.open(ViewRelatedRecord, {
-            data: {}
-        });
+    ExportComponent.prototype.viewRelatedRecord = function (index) {
+        /*this.dialog.open(ViewRelatedRecord, {
+          data: {}
+        });  */
+        var _this = this;
+        this.queryIndex = index.toString();
+        var exportForm = this.exportForm.value.queries;
+        var nameOfObject = exportForm[index].object;
         //(nameOfObject: any, id: any, relationName: any  
-        /*(let nameOfObject = this.query_object["object"];
-        (let id = this.selectedRecord['Id'];
-        let relationName = this.childRlnMapping[nameOfObject];
-        this.restService.getChildData(nameOfObject, id, relationName).subscribe(
-          data => {
+        //let nameOfObject = this.query_object["object"];
+        var id = this.selectedRecord['Id'];
+        var relationName = this.childRlnMapping[nameOfObject];
+        console.log("reaches here", nameOfObject, id, relationName);
+        this.restService.getChildData(nameOfObject, id, relationName).subscribe(function (data) {
             console.log('childData record', JSON.parse(JSON.stringify(data)));
-            this.dialog.open(ViewRelatedRecord, {
-              data: {}
+            _this.dialog.open(ViewRelatedRecord, {
+                data: {}
             });
-          },
-          error => console.log(error));*/
+        }, function (error) { return console.log(error); });
     };
     ExportComponent.prototype.queryStringBuilder = function () {
         var exportForm = this.exportFormValue[this.queryIndex];
@@ -1251,7 +1315,7 @@ module.exports = "select.form-control {\r\n    -webkit-appearance: menulist;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container login-container\">\r\n<div class=\"col-md-6\">\r\n      <div class=\"card \">\r\n        <div class=\"card-header card-header-rose card-header-icon\">\r\n          <div class=\"card-icon\">\r\n            <i class=\"material-icons\">contacts</i>\r\n          </div>\r\n          <h4 class=\"card-title\">Please Login to continue.</h4>\r\n        </div>\r\n        <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"card-body \">\r\n\r\n            <div class=\"form-group bmd-form-group\">\r\n                <!--<label for=\"exampleEmail\" class=\"bmd-label-floating\">Email Address</label>-->\r\n                <select class=\"form-control\" formControlName=\"api\" data-style=\"select-with-transition\" title=\"API Version\" data-size=\"7\" >\r\n                    <option disabled selected hidden> Api Version </option>\r\n                    <option value=\"44\">44 </option>\r\n                    <option value=\"43\">43</option>\r\n                    <option value=\"42\">42</option>\r\n                  </select>\r\n            </div>\r\n\r\n            <div class=\"form-group bmd-form-group\">\r\n                <!--<label for=\"exampleEmail\" class=\"bmd-label-floating\">Email Address</label>-->\r\n                <select class=\"form-control\" formControlName=\"env\" data-style=\"select-with-transition\" title=\"Environment\" data-size=\"7\" >\r\n                    <option disabled selected hidden> Environment</option>\r\n                    <option value=\"production\">Production </option>\r\n                    <option value=\"sandbox\">Sandbox</option>\r\n                  </select>\r\n            </div>\r\n          \r\n            <div class=\"form-group bmd-form-group\">\r\n              <label for=\"exampleEmail\" class=\"bmd-label-floating\">Email Address</label>\r\n              <input type=\"email\" class=\"form-control\" formControlName=\"email\" required>\r\n            </div>\r\n            <div class=\"form-group bmd-form-group\">\r\n              <label for=\"examplePass\" class=\"bmd-label-floating\">Password</label>\r\n              <input type=\"password\" class=\"form-control\"  formControlName=\"password\" required=\"true\">\r\n            </div>\r\n            \r\n          \r\n        </div>\r\n        <div class=\"card-footer submit-login-btn\">\r\n          <button type=\"submit\" class=\"btn btn-fill btn-rose \">Submit</button>\r\n        </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>"
+module.exports = "<div class=\"container login-container\">\r\n<div class=\"col-md-6\">\r\n      <div class=\"card \">\r\n        <div class=\"card-header card-header-rose card-header-icon\">\r\n          <div class=\"card-icon\">\r\n            <i class=\"material-icons\">contacts</i>\r\n          </div>\r\n          <h4 class=\"card-title\">Please Login to continue.</h4>\r\n        </div>\r\n        <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"card-body \">\r\n            <!--\r\n            <div class=\"form-group bmd-form-group\">\r\n                <!- -<label for=\"exampleEmail\" class=\"bmd-label-floating\">Email Address</label>- ->\r\n                <select class=\"form-control\" formControlName=\"api\" data-style=\"select-with-transition\" title=\"API Version\" data-size=\"7\" >\r\n                    <option disabled selected hidden> Api Version </option>\r\n                    <option value=\"44\">44 </option>\r\n                    <option value=\"43\">43</option>\r\n                    <option value=\"42\">42</option>\r\n                  </select>\r\n            </div>\r\n          <div class=\"form-group bmd-form-group\">\r\n                \r\n                <select class=\"form-control\" formControlName=\"env\" data-style=\"select-with-transition\" title=\"Environment\" data-size=\"7\" >\r\n                    <option disabled selected hidden> Environment</option>\r\n                    <option value=\"production\">Production </option>\r\n                    <option value=\"sandbox\">Sandbox</option>\r\n                  </select>\r\n            </div>-->\r\n\r\n            <div class=\"row\">\r\n              <div class=\"col-md-12\">\r\n                  <mat-form-field>\r\n                    <mat-select placeholder=\"Environment\" formControlName=\"env\" >\r\n                        <mat-option disabled selected hidden>Environment</mat-option>\r\n                        <mat-option value=\"production\">Production </mat-option>\r\n                        <mat-option value=\"sandbox\">Sandbox</mat-option>\r\n                    </mat-select>\r\n                  </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-12\">\r\n                  <mat-form-field class=\"example-full-width\">\r\n                      <input matInput placeholder=\"Email Address\" formControlName=\"email\" required>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-12\">\r\n                  <mat-form-field class=\"example-full-width\">\r\n                      <input matInput placeholder=\"Password\" formControlName=\"password\" type=\"password\" required>\r\n                    </mat-form-field>\r\n              </div>\r\n            </div>\r\n            \r\n          \r\n            \r\n           \r\n           <!-- <div class=\"form-group bmd-form-group\">\r\n              <label for=\"exampleEmail\" class=\"bmd-label-floating\">Email Address</label>\r\n              <input type=\"email\" class=\"form-control\" formControlName=\"email\" required>\r\n            </div>\r\n            <div class=\"form-group bmd-form-group\">\r\n              <label for=\"examplePass\" class=\"bmd-label-floating\">Password</label>\r\n              <input type=\"password\" class=\"form-control\"  formControlName=\"password\" required=\"true\">\r\n            </div>-->\r\n            \r\n          \r\n        </div>\r\n        <div class=\"card-footer submit-login-btn\">\r\n          <button type=\"submit\" class=\"btn btn-fill btn-rose \">Submit</button>\r\n        </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -2269,7 +2333,7 @@ var RestService = /** @class */ (function () {
                 'Content-Type': 'application/json',
                 'username': user.email,
                 'password': user.password,
-                'version': user.api + '.0',
+                'version': '44.0',
                 'orgtype': user.env.toUpperCase(),
                 "Access-Control-Allow-Credentials": "true",
                 "Access-Control-Allow-Origin": '*'
@@ -2284,7 +2348,7 @@ var RestService = /** @class */ (function () {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
                 'baseURL': sessionData.baseURL,
-                'version': sessionData.version + '.0',
+                'version': '44.0',
                 'sessionId': sessionData.sessionId,
                 'query': query,
                 "Access-Control-Allow-Credentials": "true",
@@ -2300,7 +2364,7 @@ var RestService = /** @class */ (function () {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
                 'baseURL': sessionData.baseURL,
-                'version': sessionData.version + '.0',
+                'version': '44.0',
                 'sessionId': sessionData.sessionId,
                 "Access-Control-Allow-Credentials": "true",
                 "Access-Control-Allow-Origin": '*'
@@ -2316,7 +2380,7 @@ var RestService = /** @class */ (function () {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
                 'baseURL': sessionData.baseURL,
-                'version': sessionData.version + '.0',
+                'version': '44.0',
                 'sessionId': sessionData.sessionId,
                 "Access-Control-Allow-Credentials": "true",
                 "Access-Control-Allow-Origin": '*'
@@ -2333,7 +2397,7 @@ var RestService = /** @class */ (function () {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
                 'baseURL': sessionData.baseURL,
-                'version': sessionData.version + '.0',
+                'version': '44.0',
                 'sessionId': sessionData.sessionId,
                 'objectName': nameOfObject,
                 'dataBody': data,
@@ -2351,7 +2415,7 @@ var RestService = /** @class */ (function () {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
                 'baseURL': sessionData.baseURL,
-                'version': sessionData.version + '.0',
+                'version': '44.0',
                 'sessionId': sessionData.sessionId,
                 'objectName': nameOfObject,
                 'recordIds': id,
