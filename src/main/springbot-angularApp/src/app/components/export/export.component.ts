@@ -40,6 +40,7 @@ export class ExportComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
+  creatableFields=[];
 
   constructor(private fb: FormBuilder, private restService: RestService, private dialog: MatDialog,  private spinnerService: Ng4LoadingSpinnerService) {
     this.getAllObjects();
@@ -128,13 +129,19 @@ export class ExportComponent implements OnInit {
   //get the list of all fields to show in dropdown
   getFieldsObj(objectName: string) {
     this.spinnerService.show();
+    this.fields = [];
     this.restService.getFieldsOfObject("Account").subscribe(
       data => {
         this.fields = [];
+        this.creatableFields = [];
         data.fields.forEach(element => {
-          this.fields.push({ value: element.name, viewValue: element.label });
+          if(element.createable)
+            this.creatableFields.push(element.name);
+          this.fields.push({ value: element.name, viewValue: element.label});
         });
         let rln = {};
+
+        sessionStorage.setItem("creatableFields", JSON.stringify(this.creatableFields));
         data.childRelationships.forEach(element => {
           if (!rln[element.childSObject]) rln[element.childSObject] = "";
           rln[element.childSObject] = element.relationshipName;

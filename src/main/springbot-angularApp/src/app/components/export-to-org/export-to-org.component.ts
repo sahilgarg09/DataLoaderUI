@@ -4,7 +4,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { AuthService } from "./../../auth/auth.service";
 import { RestService } from "../../rest/rest.service";
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 
 @Component({
   selector: "app-export-to-org",
@@ -55,19 +55,26 @@ export class ExportToOrgComponent implements OnInit {
   loginToOrg() {
     let formData = this.form.value;
     this.dialogRef.close();
-    if (formData.email !== '' && formData.password !== '' ) {
-      this.rest.login(formData).subscribe((result) => {
-        console.log("result", result);
-        sessionStorage.setItem('env2',JSON.stringify(result));
-        let source = this.source;
-        this.confDialog.open(ConfirmationDialog, {
-          data: {source}
-        });
-        }, (err) => {
+    if (formData.email !== "" && formData.password !== "") {
+      this.rest.login(formData).subscribe(
+        result => {
+          console.log("result", result);
+          var pathArray = result.metadataServerUrl.split("/");
+          var protocol = pathArray[0];
+          var host = pathArray[2];
+
+          result.baseURL = protocol + "//" + host;
+          sessionStorage.setItem("env2", JSON.stringify(result));
+          let source = this.source;
+          this.confDialog.open(ConfirmationDialog, {
+            data: { source }
+          });
+        },
+        err => {
           console.log(err);
-        });
-      }
-    
+        }
+      );
+    }
   }
 
   save() {
@@ -88,10 +95,11 @@ export class ConfirmationDialog {
   records = [];
   objectName = "";
   constructor(
-    public dialogConfRef: MatDialogRef<ConfirmationDialog>, private restService: RestService, private spinnerService: Ng4LoadingSpinnerService,
+    public dialogConfRef: MatDialogRef<ConfirmationDialog>,
+    private restService: RestService,
+    private spinnerService: Ng4LoadingSpinnerService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    
     let exportResults = JSON.parse(data.source.exportResults);
     this.totalRecord = exportResults.totalSize;
     this.records = exportResults.records;
@@ -102,30 +110,49 @@ export class ConfirmationDialog {
     this.dialogConfRef.close();
   }
 
-  formatData(){   
-    let recordArr = [];    
+  formatData() {
+    let recordArr = [];
+    let creatableFields = JSON.parse(sessionStorage.getItem("creatableFields"));
     this.records.forEach(rec => {
       let recordObj = rec;
-      let urlArr = rec.attributes.url.split("/");
-      recordObj.attributes['referenceId'] = urlArr[urlArr.length -1];
-      delete recordObj.attributes.url;      
+      let objKeys = Object.keys(recordObj);
+      let uniquekeyArr = this.compareArr(creatableFields, objKeys);
+      console.log("objKeys", objKeys, creatableFields, uniquekeyArr);
+      let refId = recordObj.Id.substring(3);
+      recordObj.attributes["referenceId"] = refId;
+      objKeys.forEach(function(ele){
+        if(creatableFields.indexOf(ele) == -1 && ele != "attributes")
+          delete recordObj[ele];
+      })
+      delete recordObj.attributes.url;
       recordArr.push(recordObj);
     });
     return recordArr;
   }
 
-  onYesClick(): void {  
+  onYesClick(): void {
     let objectName = this.objectName;
     let recordData = this.formatData();
     this.spinnerService.show();
     console.log("request object", objectName, recordData);
-    this.restService.orgtoOrgTransfer(objectName, recordData).subscribe(
+    this.restService.orgtoOrgTransfer(objectName, JSON.stringify(recordData)).subscribe(
       data => {
         console.log("records confirmation data", data.body);
       },
       error => console.log(error),
       () => this.spinnerService.hide()
     );
+  }
 
+  compareArr(arr1, arr2){
+    const finalArr = [];
+    arr1.forEach((e1) => arr2.forEach((e2)=>
+      {
+        if(e1===e2){
+          finalArr.push(e1);
+        }
+      }
+    ));
+    return finalArr;
   }
 }

@@ -744,10 +744,14 @@ var ExportToOrgComponent = /** @class */ (function () {
         var _this = this;
         var formData = this.form.value;
         this.dialogRef.close();
-        if (formData.email !== '' && formData.password !== '') {
+        if (formData.email !== "" && formData.password !== "") {
             this.rest.login(formData).subscribe(function (result) {
                 console.log("result", result);
-                sessionStorage.setItem('env2', JSON.stringify(result));
+                var pathArray = result.metadataServerUrl.split("/");
+                var protocol = pathArray[0];
+                var host = pathArray[2];
+                result.baseURL = protocol + "//" + host;
+                sessionStorage.setItem("env2", JSON.stringify(result));
                 var source = _this.source;
                 _this.confDialog.open(ConfirmationDialog, {
                     data: { source: source }
@@ -797,11 +801,20 @@ var ConfirmationDialog = /** @class */ (function () {
         this.dialogConfRef.close();
     };
     ConfirmationDialog.prototype.formatData = function () {
+        var _this = this;
         var recordArr = [];
+        var creatableFields = JSON.parse(sessionStorage.getItem("creatableFields"));
         this.records.forEach(function (rec) {
             var recordObj = rec;
-            var urlArr = rec.attributes.url.split("/");
-            recordObj.attributes['referenceId'] = urlArr[urlArr.length - 1];
+            var objKeys = Object.keys(recordObj);
+            var uniquekeyArr = _this.compareArr(creatableFields, objKeys);
+            console.log("objKeys", objKeys, creatableFields, uniquekeyArr);
+            var refId = recordObj.Id.substring(3);
+            recordObj.attributes["referenceId"] = refId;
+            objKeys.forEach(function (ele) {
+                if (creatableFields.indexOf(ele) == -1 && ele != "attributes")
+                    delete recordObj[ele];
+            });
             delete recordObj.attributes.url;
             recordArr.push(recordObj);
         });
@@ -813,9 +826,18 @@ var ConfirmationDialog = /** @class */ (function () {
         var recordData = this.formatData();
         this.spinnerService.show();
         console.log("request object", objectName, recordData);
-        this.restService.orgtoOrgTransfer(objectName, recordData).subscribe(function (data) {
+        this.restService.orgtoOrgTransfer(objectName, JSON.stringify(recordData)).subscribe(function (data) {
             console.log("records confirmation data", data.body);
         }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
+    };
+    ConfirmationDialog.prototype.compareArr = function (arr1, arr2) {
+        var finalArr = [];
+        arr1.forEach(function (e1) { return arr2.forEach(function (e2) {
+            if (e1 === e2) {
+                finalArr.push(e1);
+            }
+        }); });
+        return finalArr;
     };
     ConfirmationDialog = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -823,7 +845,9 @@ var ConfirmationDialog = /** @class */ (function () {
             template: __webpack_require__(/*! ./confirmation-dialog.html */ "./src/app/components/export-to-org/confirmation-dialog.html")
         }),
         __param(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"], ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"], Object])
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"],
+            _rest_rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"],
+            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"], Object])
     ], ConfirmationDialog);
     return ConfirmationDialog;
 }());
@@ -905,6 +929,7 @@ var ExportComponent = /** @class */ (function () {
             { value: 'pizza-1', viewValue: 'Pizza' },
             { value: 'tacos-2', viewValue: 'Tacos' }
         ];
+        this.creatableFields = [];
         this.getAllObjects();
         this.setClickedRow = function (index) {
             this.selectedRow = index;
@@ -988,12 +1013,17 @@ var ExportComponent = /** @class */ (function () {
     ExportComponent.prototype.getFieldsObj = function (objectName) {
         var _this = this;
         this.spinnerService.show();
+        this.fields = [];
         this.restService.getFieldsOfObject("Account").subscribe(function (data) {
             _this.fields = [];
+            _this.creatableFields = [];
             data.fields.forEach(function (element) {
+                if (element.createable)
+                    _this.creatableFields.push(element.name);
                 _this.fields.push({ value: element.name, viewValue: element.label });
             });
             var rln = {};
+            sessionStorage.setItem("creatableFields", JSON.stringify(_this.creatableFields));
             data.childRelationships.forEach(function (element) {
                 if (!rln[element.childSObject])
                     rln[element.childSObject] = "";
@@ -2392,7 +2422,7 @@ var RestService = /** @class */ (function () {
     // upload or org to org objects.
     RestService.prototype.orgtoOrgTransfer = function (nameOfObject, data) {
         var sessionData = JSON.parse(sessionStorage.getItem('env2'));
-        console.log(sessionData.baseURL);
+        console.log("baseURL", sessionData.baseURL, data);
         var headerOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',

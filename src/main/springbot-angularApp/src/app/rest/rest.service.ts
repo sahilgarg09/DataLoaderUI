@@ -108,7 +108,7 @@ getFieldsOfObject (objectName: any): Observable<any> {
 orgtoOrgTransfer (nameOfObject: any, data: any): Observable<any> {
   var sessionData = JSON.parse(sessionStorage.getItem('env2'));
 				
-				console.log(sessionData.baseURL);
+				console.log("baseURL", sessionData.baseURL, data);
 	var headerOptions = {
 	  headers: new HttpHeaders({
           'Content-Type' : 'application/json',
