@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig, MatSnackBar } from "@angular/material";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { AuthService } from "./../../auth/auth.service";
 import { RestService } from "../../rest/rest.service";
@@ -98,6 +98,7 @@ export class ConfirmationDialog {
     public dialogConfRef: MatDialogRef<ConfirmationDialog>,
     private restService: RestService,
     private spinnerService: Ng4LoadingSpinnerService,
+    private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     let exportResults = JSON.parse(data.source.exportResults);
@@ -108,6 +109,12 @@ export class ConfirmationDialog {
 
   onNoClick(): void {
     this.dialogConfRef.close();
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
   formatData() {
@@ -139,13 +146,20 @@ export class ConfirmationDialog {
     var reqDataString = JSON.stringify(reqData)
       .split("null")
       .join('""');
-
+    var that = this;
     this.restService.orgtoOrgTransfer(objectName, reqDataString).subscribe(
       data => {
-        console.log("records confirmation data", data.body);
+        console.log("records confirmation data", data.results);
+        that.openSnackBar("Records exported to destination org.");
       },
-      error => console.log(error),
-      () => this.spinnerService.hide()
+      error => {
+        console.log(error);
+        that.openSnackBar("Something went wrong! Please try again.");
+      },
+      () => {
+        this.spinnerService.hide();
+        this.onNoClick();
+      }
     );
   }
 
