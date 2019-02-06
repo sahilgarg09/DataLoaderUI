@@ -784,10 +784,11 @@ var ExportToOrgComponent = /** @class */ (function () {
 }());
 
 var ConfirmationDialog = /** @class */ (function () {
-    function ConfirmationDialog(dialogConfRef, restService, spinnerService, data) {
+    function ConfirmationDialog(dialogConfRef, restService, spinnerService, snackBar, data) {
         this.dialogConfRef = dialogConfRef;
         this.restService = restService;
         this.spinnerService = spinnerService;
+        this.snackBar = snackBar;
         this.data = data;
         this.totalRecord = "";
         this.records = [];
@@ -799,6 +800,11 @@ var ConfirmationDialog = /** @class */ (function () {
     }
     ConfirmationDialog.prototype.onNoClick = function () {
         this.dialogConfRef.close();
+    };
+    ConfirmationDialog.prototype.openSnackBar = function (message) {
+        this.snackBar.open(message, '', {
+            duration: 2000,
+        });
     };
     ConfirmationDialog.prototype.formatData = function () {
         var _this = this;
@@ -826,17 +832,31 @@ var ConfirmationDialog = /** @class */ (function () {
         var recordData = this.formatData();
         this.spinnerService.show();
         console.log("request object", objectName, recordData);
-        this.restService.orgtoOrgTransfer(objectName, JSON.stringify(recordData)).subscribe(function (data) {
-            console.log("records confirmation data", data.body);
-        }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
+        var reqData = { records: recordData };
+        var reqDataString = JSON.stringify(reqData)
+            .split("null")
+            .join('""');
+        var that = this;
+        this.restService.orgtoOrgTransfer(objectName, reqDataString).subscribe(function (data) {
+            console.log("records confirmation data", data.results);
+            that.openSnackBar("Records exported to destination org.");
+        }, function (error) {
+            console.log(error);
+            that.openSnackBar("Something went wrong! Please try again.");
+        }, function () {
+            _this.spinnerService.hide();
+            _this.onNoClick();
+        });
     };
     ConfirmationDialog.prototype.compareArr = function (arr1, arr2) {
         var finalArr = [];
-        arr1.forEach(function (e1) { return arr2.forEach(function (e2) {
-            if (e1 === e2) {
-                finalArr.push(e1);
-            }
-        }); });
+        arr1.forEach(function (e1) {
+            return arr2.forEach(function (e2) {
+                if (e1 === e2) {
+                    finalArr.push(e1);
+                }
+            });
+        });
         return finalArr;
     };
     ConfirmationDialog = __decorate([
@@ -844,10 +864,11 @@ var ConfirmationDialog = /** @class */ (function () {
             selector: "confirmation-dialog",
             template: __webpack_require__(/*! ./confirmation-dialog.html */ "./src/app/components/export-to-org/confirmation-dialog.html")
         }),
-        __param(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
+        __param(4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
         __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"],
             _rest_rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"],
-            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"], Object])
+            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_5__["Ng4LoadingSpinnerService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSnackBar"], Object])
     ], ConfirmationDialog);
     return ConfirmationDialog;
 }());
@@ -863,7 +884,7 @@ var ConfirmationDialog = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n.result-section{\r\n    margin-top: 15px;\r\n    padding: 15px;\r\n    border: 1px solid #e5e5e5;\r\n}\r\n.res-header{\r\n    background-color: #9c27b0;\r\n}\r\n.table tr.active td {\r\n    background-color: rgba(0,0,0,.075);\r\n    color: #212529;\r\n  }\r\n#exportToOrgModal .modal-content{\r\n    background-color: transparent;\r\n    border: none;\r\n    box-shadow: unset;\r\n}\r\n.margin-left-10{\r\n    margin-left: 10px;\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.cardFooter{\r\n    width: 100%;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGNBQWM7SUFDZCxhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSxpQkFBaUI7SUFDakIsY0FBYztJQUNkLDBCQUEwQjtDQUM3QjtBQUNEO0lBQ0ksMEJBQTBCO0NBQzdCO0FBRUQ7SUFDSSxtQ0FBbUM7SUFDbkMsZUFBZTtHQUNoQjtBQUVIO0lBQ0ksOEJBQThCO0lBQzlCLGFBQWE7SUFDYixrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGtCQUFrQjtDQUNyQjtBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksOEJBQThCO0NBQ2pDO0FBRUQ7SUFDSSxZQUFZO0NBQ2YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2V4cG9ydC9leHBvcnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tdWx0aXBsZS1maWVsZHN7XHJcbiAgICBtaW4taGVpZ2h0OiAxNTBweDtcclxufVxyXG4ucmVzLXRpdGxle1xyXG4gICAgcGFkZGluZzogMTVweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxufVxyXG4ucmVzdWx0LXNlY3Rpb257XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG4gICAgcGFkZGluZzogMTVweDtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICNlNWU1ZTU7XHJcbn1cclxuLnJlcy1oZWFkZXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOWMyN2IwO1xyXG59XHJcblxyXG4udGFibGUgdHIuYWN0aXZlIHRkIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwwLDAsLjA3NSk7XHJcbiAgICBjb2xvcjogIzIxMjUyOTtcclxuICB9XHJcblxyXG4jZXhwb3J0VG9PcmdNb2RhbCAubW9kYWwtY29udGVudHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgYm94LXNoYWRvdzogdW5zZXQ7XHJcbn1cclxuLm1hcmdpbi1sZWZ0LTEwe1xyXG4gICAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbn1cclxuLmhpZGV7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbi5zaG93e1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuaW5wdXQuZm9ybS1jb250cm9se1xyXG4gICAgaGVpZ2h0OiBjYWxjKDIuNDM3NXJlbSArIDJweCk7XHJcbn1cclxuXHJcbi5jYXJkRm9vdGVye1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn0iXX0= */"
+module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n.result-section{\r\n    margin-top: 15px;\r\n    padding: 15px;\r\n    border: 1px solid #e5e5e5;\r\n}\r\n.res-header{\r\n    background-color: #9c27b0;\r\n}\r\n.table tr.active td {\r\n    background-color: rgba(0,0,0,.075);\r\n    color: #212529;\r\n  }\r\n#exportToOrgModal .modal-content{\r\n    background-color: transparent;\r\n    border: none;\r\n    box-shadow: unset;\r\n}\r\n.margin-left-10{\r\n    margin-left: 10px;\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.cardFooter{\r\n    width: 100%;\r\n}\r\n/*\r\n    View Related records CSS\r\n*/\r\n.example-container {\r\n    position: absolute;\r\n    top: 60px;\r\n    bottom: 60px;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.example-sidenav {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    width: 200px;\r\n    background: rgba(255, 0, 0, 0.5);\r\n  }\r\n.example-header {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.example-footer {\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.view-related-rec .list-group{\r\n    max-height: 400px;\r\n    overflow-y: scroll;\r\n  }\r\n.list-group-item.active{\r\n    background: linear-gradient(60deg, #ab47bc, #8e24aa)\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGNBQWM7SUFDZCxhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSxpQkFBaUI7SUFDakIsY0FBYztJQUNkLDBCQUEwQjtDQUM3QjtBQUNEO0lBQ0ksMEJBQTBCO0NBQzdCO0FBRUQ7SUFDSSxtQ0FBbUM7SUFDbkMsZUFBZTtHQUNoQjtBQUVIO0lBQ0ksOEJBQThCO0lBQzlCLGFBQWE7SUFDYixrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGtCQUFrQjtDQUNyQjtBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksOEJBQThCO0NBQ2pDO0FBRUQ7SUFDSSxZQUFZO0NBQ2Y7QUFFRDs7RUFFRTtBQUVGO0lBQ0ksbUJBQW1CO0lBQ25CLFVBQVU7SUFDVixhQUFhO0lBQ2IsUUFBUTtJQUNSLFNBQVM7R0FDVjtBQUVEO0lBQ0UsY0FBYztJQUNkLG9CQUFvQjtJQUNwQix3QkFBd0I7SUFDeEIsYUFBYTtJQUNiLGlDQUFpQztHQUNsQztBQUVEO0lBQ0UsZ0JBQWdCO0lBQ2hCLE9BQU87SUFDUCxRQUFRO0lBQ1IsU0FBUztHQUNWO0FBRUQ7SUFDRSxnQkFBZ0I7SUFDaEIsVUFBVTtJQUNWLFFBQVE7SUFDUixTQUFTO0dBQ1Y7QUFFRDtJQUNFLGtCQUFrQjtJQUNsQixtQkFBbUI7R0FDcEI7QUFDRDtJQUNFLG9EQUFvRDtHQUNyRCIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZXhwb3J0L2V4cG9ydC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm11bHRpcGxlLWZpZWxkc3tcclxuICAgIG1pbi1oZWlnaHQ6IDE1MHB4O1xyXG59XHJcbi5yZXMtdGl0bGV7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcbi5yZXN1bHQtc2VjdGlvbntcclxuICAgIG1hcmdpbi10b3A6IDE1cHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgI2U1ZTVlNTtcclxufVxyXG4ucmVzLWhlYWRlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM5YzI3YjA7XHJcbn1cclxuXHJcbi50YWJsZSB0ci5hY3RpdmUgdGQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwuMDc1KTtcclxuICAgIGNvbG9yOiAjMjEyNTI5O1xyXG4gIH1cclxuXHJcbiNleHBvcnRUb09yZ01vZGFsIC5tb2RhbC1jb250ZW50e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBib3gtc2hhZG93OiB1bnNldDtcclxufVxyXG4ubWFyZ2luLWxlZnQtMTB7XHJcbiAgICBtYXJnaW4tbGVmdDogMTBweDtcclxufVxyXG4uaGlkZXtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuLnNob3d7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxufVxyXG5pbnB1dC5mb3JtLWNvbnRyb2x7XHJcbiAgICBoZWlnaHQ6IGNhbGMoMi40Mzc1cmVtICsgMnB4KTtcclxufVxyXG5cclxuLmNhcmRGb290ZXJ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLypcclxuICAgIFZpZXcgUmVsYXRlZCByZWNvcmRzIENTU1xyXG4qL1xyXG5cclxuLmV4YW1wbGUtY29udGFpbmVyIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogNjBweDtcclxuICAgIGJvdHRvbTogNjBweDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5leGFtcGxlLXNpZGVuYXYge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIHdpZHRoOiAyMDBweDtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAwLCAwLCAwLjUpO1xyXG4gIH1cclxuXHJcbiAgLmV4YW1wbGUtaGVhZGVyIHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5leGFtcGxlLWZvb3RlciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgfVxyXG5cclxuICAudmlldy1yZWxhdGVkLXJlYyAubGlzdC1ncm91cHtcclxuICAgIG1heC1oZWlnaHQ6IDQwMHB4O1xyXG4gICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG4gIH1cclxuICAubGlzdC1ncm91cC1pdGVtLmFjdGl2ZXtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgI2FiNDdiYywgIzhlMjRhYSlcclxuICB9Il19 */"
 
 /***/ }),
 
@@ -905,6 +926,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
 
 
 
@@ -919,15 +944,16 @@ var ExportComponent = /** @class */ (function () {
         this.spinnerService = spinnerService;
         this.objects = [{ value: "", viewValue: "Select an Object" }];
         this.fields = [];
+        this.childRlnMapping = [];
         this.show_result = false;
         this.columns = [];
         this.resultsFields = [];
-        this.queryIndex = '';
+        this.queryIndex = "";
         this.queryString = "";
         this.foods = [
-            { value: 'steak-0', viewValue: 'Steak' },
-            { value: 'pizza-1', viewValue: 'Pizza' },
-            { value: 'tacos-2', viewValue: 'Tacos' }
+            { value: "steak-0", viewValue: "Steak" },
+            { value: "pizza-1", viewValue: "Pizza" },
+            { value: "tacos-2", viewValue: "Tacos" }
         ];
         this.creatableFields = [];
         this.getAllObjects();
@@ -1023,13 +1049,16 @@ var ExportComponent = /** @class */ (function () {
                 _this.fields.push({ value: element.name, viewValue: element.label });
             });
             var rln = {};
-            sessionStorage.setItem("creatableFields", JSON.stringify(_this.creatableFields));
             data.childRelationships.forEach(function (element) {
-                if (!rln[element.childSObject])
-                    rln[element.childSObject] = "";
-                rln[element.childSObject] = element.relationshipName;
+                var obj = {};
+                obj = {
+                    value: element.relationshipName,
+                    viewValue: element.childSObject
+                };
+                _this.childRlnMapping.push(obj);
             });
-            _this.childRlnMapping = rln;
+            sessionStorage.setItem("creatableFields", JSON.stringify(_this.creatableFields));
+            sessionStorage.setItem("childRlnMapping", JSON.stringify(_this.childRlnMapping));
             console.log("aman3", JSON.parse(JSON.stringify(data)));
         }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
     };
@@ -1142,24 +1171,33 @@ var ExportComponent = /** @class */ (function () {
         });
     };
     ExportComponent.prototype.viewRelatedRecord = function (index) {
-        /*this.dialog.open(ViewRelatedRecord, {
-          data: {}
-        });  */
-        var _this = this;
-        this.queryIndex = index.toString();
+        /*this.queryIndex = index.toString();
+        let exportForm = this.exportForm.value.queries;
+        let nameOfObject = exportForm[index].object;
+    
+        let id = this.selectedRecord["Id"];
+        let relationName = this.childRlnMapping[nameOfObject];
+        var relNames = Object.values("");*/
+        /*this.restService.getChildData(nameOfObject, id, "Contacts").subscribe(
+          data => {
+            console.log("childData record", JSON.parse(JSON.stringify(data)));
+            this.dialog.open(ViewRelatedRecord, {
+              data: {}
+            });
+          },
+          error => console.log(error)
+        );*/
+        var id = this.selectedRecord["Id"];
         var exportForm = this.exportForm.value.queries;
         var nameOfObject = exportForm[index].object;
-        //(nameOfObject: any, id: any, relationName: any  
-        //let nameOfObject = this.query_object["object"];
-        var id = this.selectedRecord['Id'];
-        var relationName = this.childRlnMapping[nameOfObject];
-        console.log("reaches here", nameOfObject, id, relationName);
-        this.restService.getChildData(nameOfObject, id, relationName).subscribe(function (data) {
-            console.log('childData record', JSON.parse(JSON.stringify(data)));
-            _this.dialog.open(ViewRelatedRecord, {
-                data: {}
+        if (nameOfObject) {
+            this.dialog.open(ViewRelatedRecord, {
+                data: {
+                    recId: id,
+                    objectName: nameOfObject
+                }
             });
-        }, function (error) { return console.log(error); });
+        }
     };
     ExportComponent.prototype.queryStringBuilder = function () {
         var exportForm = this.exportFormValue[this.queryIndex];
@@ -1172,12 +1210,12 @@ var ExportComponent = /** @class */ (function () {
         var filterBy = exportForm.filterBy;
         var operator = exportForm.operator;
         var fieldValue = exportForm.fieldValue;
-        var queryString = '';
+        var queryString = "";
         if (object.length > 0) {
             queryString = "SELECT * FROM " + object;
         }
         if (field.length > 0) {
-            queryString = "SELECT " + field.join(', ') + " FROM " + object;
+            queryString = "SELECT " + field.join(", ") + " FROM " + object;
         }
         if (filterBy && operator && fieldValue) {
             queryString = queryString + " WHERE " + filterBy + " " + operator + " '" + fieldValue + "'";
@@ -1202,24 +1240,83 @@ var ExportComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./export.component.html */ "./src/app/components/export/export.component.html"),
             styles: [__webpack_require__(/*! ./export.component.css */ "./src/app/components/export/export.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"], ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__["Ng4LoadingSpinnerService"]])
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"],
+            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__["Ng4LoadingSpinnerService"]])
     ], ExportComponent);
     return ExportComponent;
 }());
 
 var ViewRelatedRecord = /** @class */ (function () {
-    function ViewRelatedRecord(dialogConfRef) {
+    function ViewRelatedRecord(dialogConfRef, fb, restService, dialog, spinnerService, data) {
         this.dialogConfRef = dialogConfRef;
+        this.restService = restService;
+        this.dialog = dialog;
+        this.spinnerService = spinnerService;
+        this.data = data;
+        this.childRecords = [];
+        this.recordId = '';
+        this.childRecResults = [];
+        this.title = '';
+        this.objectName = '';
+        this.recordForm = fb.group({
+            bottom: 0,
+            fixed: false,
+            top: 60,
+            results: {}
+        });
+        this.recordId = data.recId;
+        this.objectName = data.objectName;
+        this.title = data.objectName + " - Related Records";
     }
+    ViewRelatedRecord.prototype.ngOnInit = function () {
+        this.childRecords = JSON.parse(sessionStorage.getItem("childRlnMapping"));
+        console.log("Loaded succesfully", this.childRecords);
+    };
     ViewRelatedRecord.prototype.onNoClick = function () {
         this.dialogConfRef.close();
     };
+    ViewRelatedRecord.prototype.onChildRecSelect = function (child) {
+        var _this = this;
+        var curIndex = sessionStorage.getItem("curQueryIndex");
+        var curObjSelected = JSON.parse(sessionStorage.getItem("curObjSelected"));
+        var nameOfObject = curObjSelected[curIndex];
+        var results = this.recordForm.value.results;
+        var that = this;
+        console.log("getChildData", nameOfObject, this.recordId, child);
+        this.childRecResults = [];
+        if (results[child.value]) {
+            this.childRecResults = results[child.value];
+        }
+        else {
+            this.spinnerService.show();
+            this.restService.getChildData(nameOfObject, this.recordId, child.value).subscribe(function (data) {
+                if (!results[child.value])
+                    results[child.value] = [];
+                console.log("");
+                data.records.forEach(function (rec) {
+                    var obj = {
+                        name: rec.Name || 'N/A',
+                        createdDate: new Date(rec.CreatedDate).toLocaleDateString("en-US"),
+                        LastModifiedDate: new Date(rec.LastModifiedDate).toLocaleDateString("en-US"),
+                    };
+                    results[child.value].push(obj);
+                    that.childRecResults.push(obj);
+                });
+                console.log("childData record", results);
+            }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
+        }
+    };
     ViewRelatedRecord = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'view-related-record',
-            template: __webpack_require__(/*! ./viewRelatedRecord.html */ "./src/app/components/export/viewRelatedRecord.html"),
+            selector: "view-related-record",
+            template: __webpack_require__(/*! ./viewRelatedRecord.html */ "./src/app/components/export/viewRelatedRecord.html")
         }),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"]])
+        __param(5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"],
+            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__["Ng4LoadingSpinnerService"], Object])
     ], ViewRelatedRecord);
     return ViewRelatedRecord;
 }());
@@ -1235,7 +1332,7 @@ var ViewRelatedRecord = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">Related Records</h4>\r\n      </div>\r\n      <app-accordion title=\"Individual Details\" [desc]=\"\">\r\n        <div class=\"cardBody\">\r\n          <div class=\"table-responsive\">\r\n            <table class=\"table\">\r\n              <thead class=\"text-primary\">\r\n                <tr>\r\n                  <th>First Name</th>\r\n                  <th>Last Name</th>\r\n                  <th>Created Date</th>\r\n                  <th>Last Modified Date</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody></tbody>\r\n            </table>\r\n          </div>\r\n        </div>\r\n      </app-accordion>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card view-related-rec\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">{{title}}</h4>\r\n      </div>\r\n      <div class=\"card-body\">\r\n          <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"list-group\" id=\"list-tab\" role=\"tablist\" style=\"max-height: 400px;overflow-y: scroll;\">\r\n                    <a  *ngFor=\"let rec of childRecords\" class=\"list-group-item list-group-item-action\" id=\"{{rec.value}}-list\" data-toggle=\"list\" href=\"#{{rec.value}}\" role=\"tab\" (click)=\"onChildRecSelect(rec)\">{{rec.viewValue}}</a>\r\n\r\n                </div>\r\n              </div>\r\n              <div class=\"col-8\">\r\n                <div class=\"tab-content\" id=\"nav-tabContent\" >\r\n                  <div class=\"tab-pane fade \" *ngFor=\"let rec of childRecords\" id=\"{{rec.value}}\" role=\"tabpanel\" >\r\n                      <table class=\"table table-striped\">\r\n                          <thead>\r\n                            <tr>\r\n                              <th scope=\"col\">Name</th>\r\n                              <th scope=\"col\">Created Date</th>\r\n                              <th scope=\"col\">Last Modified Date</th>\r\n                            </tr>\r\n                          </thead>\r\n                          <tbody>\r\n                            <tr *ngFor=\"let res of childRecResults\">\r\n                              <td>{{res.name}}</td>\r\n                              <td>{{res.createdDate}}</td>\r\n                              <td>{{res.LastModifiedDate}}</td>\r\n                            </tr>\r\n                          </tbody>\r\n                        </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12 center\">\r\n                    <button type=\"button\" class=\"btn btn-normal pull-right\" (click)=\"onNoClick()\">Close</button>\r\n\r\n                </div>\r\n            </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
