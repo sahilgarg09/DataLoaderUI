@@ -120,10 +120,10 @@ export class ConfirmationDialog {
       console.log("objKeys", objKeys, creatableFields, uniquekeyArr);
       let refId = recordObj.Id.substring(3);
       recordObj.attributes["referenceId"] = refId;
-      objKeys.forEach(function(ele){
-        if(creatableFields.indexOf(ele) == -1 && ele != "attributes")
+      objKeys.forEach(function(ele) {
+        if (creatableFields.indexOf(ele) == -1 && ele != "attributes")
           delete recordObj[ele];
-      })
+      });
       delete recordObj.attributes.url;
       recordArr.push(recordObj);
     });
@@ -135,7 +135,12 @@ export class ConfirmationDialog {
     let recordData = this.formatData();
     this.spinnerService.show();
     console.log("request object", objectName, recordData);
-    this.restService.orgtoOrgTransfer(objectName, JSON.stringify(recordData)).subscribe(
+    var reqData = { records: recordData };
+    var reqDataString = JSON.stringify(reqData)
+      .split("null")
+      .join('""');
+
+    this.restService.orgtoOrgTransfer(objectName, reqDataString).subscribe(
       data => {
         console.log("records confirmation data", data.body);
       },
@@ -144,15 +149,15 @@ export class ConfirmationDialog {
     );
   }
 
-  compareArr(arr1, arr2){
+  compareArr(arr1, arr2) {
     const finalArr = [];
-    arr1.forEach((e1) => arr2.forEach((e2)=>
-      {
-        if(e1===e2){
+    arr1.forEach(e1 =>
+      arr2.forEach(e2 => {
+        if (e1 === e2) {
           finalArr.push(e1);
         }
-      }
-    ));
+      })
+    );
     return finalArr;
   }
 }

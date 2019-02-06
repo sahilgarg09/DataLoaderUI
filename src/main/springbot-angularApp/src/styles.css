@@ -10,3 +10,11 @@
 * mat-form-field{
     width: 100%;
 }
+
+.view-related-rec .list-group{
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+.list-group-item.active{
+background: linear-gradient(60deg, #ab47bc, #8e24aa)
+}

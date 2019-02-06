@@ -1,26 +1,47 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="card">
+    <div class="card view-related-rec">
       <div class="card-header card-header-primary">
-        <h4 class="card-title">Related Records</h4>
+        <h4 class="card-title">{{title}}</h4>
       </div>
-      <app-accordion title="Individual Details" [desc]="">
-        <div class="cardBody">
-          <div class="table-responsive">
-            <table class="table">
-              <thead class="text-primary">
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Created Date</th>
-                  <th>Last Modified Date</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </div>
-      </app-accordion>
+      <div class="card-body">
+          <div class="row">
+              <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist" style="max-height: 400px;overflow-y: scroll;">
+                    <a  *ngFor="let rec of childRecords" class="list-group-item list-group-item-action" id="{{rec.value}}-list" data-toggle="list" href="#{{rec.value}}" role="tab" (click)="onChildRecSelect(rec)">{{rec.viewValue}}</a>
+
+                </div>
+              </div>
+              <div class="col-8">
+                <div class="tab-content" id="nav-tabContent" >
+                  <div class="tab-pane fade " *ngFor="let rec of childRecords" id="{{rec.value}}" role="tabpanel" >
+                      <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">Name</th>
+                              <th scope="col">Created Date</th>
+                              <th scope="col">Last Modified Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let res of childRecResults">
+                              <td>{{res.name}}</td>
+                              <td>{{res.createdDate}}</td>
+                              <td>{{res.LastModifiedDate}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 center">
+                    <button type="button" class="btn btn-normal pull-right" (click)="onNoClick()">Close</button>
+
+                </div>
+            </div>
+      </div>
     </div>
   </div>
 </div>
