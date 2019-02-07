@@ -100,7 +100,6 @@
                 <mat-form-field class="example-full-width">
                     <textarea matInput placeholder="Enter or modify a SOQL query below:">{{exportObj[i].queryString }}</textarea>
                   </mat-form-field>
-
             </div>
           </div>
           <div class="row">
@@ -135,15 +134,15 @@
                   <table class="table table-hover">
                     <thead class="text-primary">
                       <tr>
-                        <th *ngFor="let item of columns">
+                        <th *ngFor="let item of exportObj[i].columns">
                           {{item}}
                         </th>
                       </tr>
                     </thead>
                     <tbody>
 
-                      <tr  *ngFor="let result of resultsFields; let rInd = index" (click)="setClickedRow(rInd)" [class.active]="rInd == selectedRow">
-                        <td *ngFor="let column of columns">{{result[column]}}</td>
+                      <tr  *ngFor="let result of exportObj[i].exportResult; let rInd = index" (click)="setClickedRow(rInd)" [class.active]="rInd == selectedRow">
+                        <td *ngFor="let column of exportObj[i].columns">{{result[column]}}</td>
                       </tr>
                     </tbody>
                   </table>

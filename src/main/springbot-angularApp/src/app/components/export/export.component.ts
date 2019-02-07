@@ -96,7 +96,9 @@ export class ExportComponent implements OnInit {
     this.addFilterBy();
     let obj = {
       fields: [],
-      queryString: ""
+      queryString: "",
+      columns: [],
+      exportResult: []
     }
     this.exportObj[this.queryForms.length - 1] = obj;
   }
@@ -142,10 +144,7 @@ export class ExportComponent implements OnInit {
   //get the list of all fields to show in dropdown
   getFieldsObj(objectName: string) {
     this.spinnerService.show();
-    this.fields = [];
     var that = this;
-
-
 
     this.restService.getFieldsOfObject(objectName).subscribe(
       data => {
@@ -154,11 +153,10 @@ export class ExportComponent implements OnInit {
         let fields = [];
         data.fields.forEach(element => {
           if (element.createable) this.creatableFields.push(element.name);
-          this.fields.push({ value: element.name, viewValue: element.label });
           fields.push({ value: element.name, viewValue: element.label });
         });
         that.exportObj[this.queryIndex].fields = fields;
-        console.log("that.exportObj[this.queryIndex]", that.exportObj);
+
         let rln = {};
         data.childRelationships.forEach(element => {
           var obj = {};
@@ -218,11 +216,7 @@ export class ExportComponent implements OnInit {
           "exportResults",
           JSON.stringify(sessionExportResults)
         );
-        console.log(
-          "aman",
-          JSON.parse(JSON.stringify(retrievedData)),
-          sessionExportResults
-        );
+
         this.updateResultsTable(JSON.parse(retrievedData));
       },
       error => console.log(error),
@@ -234,6 +228,9 @@ export class ExportComponent implements OnInit {
     this.show_result = true;
     let index = this.queryIndex;
     let exportForm = this.exportForm.value.queries;
+
+    this.exportObj[this.queryIndex].columns = exportForm[index].field;
+    this.exportObj[this.queryIndex].exportResult = data.records;
 
     this.columns = exportForm[index].field;
     this.resultsFields = data.records;
