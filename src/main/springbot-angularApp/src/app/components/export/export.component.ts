@@ -40,11 +40,7 @@ export class ExportComponent implements OnInit {
   selectedRecord: {};
   queryIndex = "";
   queryString = "";
-  foods: Food[] = [
-    { value: "steak-0", viewValue: "Steak" },
-    { value: "pizza-1", viewValue: "Pizza" },
-    { value: "tacos-2", viewValue: "Tacos" }
-  ];
+  exportObj = {};
   creatableFields = [];
 
   constructor(
@@ -66,6 +62,7 @@ export class ExportComponent implements OnInit {
       queries: this.fb.array([])
     });
     this.addquery();
+
   }
 
   get queryForms() {
@@ -97,10 +94,16 @@ export class ExportComponent implements OnInit {
 
     this.queryForms.push(query);
     this.addFilterBy();
+    let obj = {
+      fields: [],
+      queryString: ""
+    }
+    this.exportObj[this.queryForms.length - 1] = obj;
   }
 
   deletequery(i) {
     this.queryForms.removeAt(i);
+    delete this.exportObj[i];
   }
 
   addFilterBy() {
@@ -140,14 +143,22 @@ export class ExportComponent implements OnInit {
   getFieldsObj(objectName: string) {
     this.spinnerService.show();
     this.fields = [];
-    this.restService.getFieldsOfObject("Account").subscribe(
+    var that = this;
+
+
+
+    this.restService.getFieldsOfObject(objectName).subscribe(
       data => {
         this.fields = [];
         this.creatableFields = [];
+        let fields = [];
         data.fields.forEach(element => {
           if (element.createable) this.creatableFields.push(element.name);
           this.fields.push({ value: element.name, viewValue: element.label });
+          fields.push({ value: element.name, viewValue: element.label });
         });
+        that.exportObj[this.queryIndex].fields = fields;
+        console.log("that.exportObj[this.queryIndex]", that.exportObj);
         let rln = {};
         data.childRelationships.forEach(element => {
           var obj = {};
@@ -223,12 +234,9 @@ export class ExportComponent implements OnInit {
     this.show_result = true;
     let index = this.queryIndex;
     let exportForm = this.exportForm.value.queries;
-    console.log("exportForm", exportForm, this.exportForm.value);
+
     this.columns = exportForm[index].field;
     this.resultsFields = data.records;
-
-    console.log("columns", this.columns);
-    console.log("records", data.records);
   }
 
   downloadButtonPush() {
@@ -372,6 +380,9 @@ export class ExportComponent implements OnInit {
       queryString = `${queryString} LIMIT ${maxRecord}`;
     }
     this.queryString = queryString;
+    if(!this.exportObj[this.queryIndex])
+      this.exportObj[this.queryIndex].queryString = "";
+    this.exportObj[this.queryIndex].queryString = queryString;
   }
 }
 
