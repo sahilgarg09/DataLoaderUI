@@ -6,7 +6,8 @@ import {
   MatDialog,
   MatDialogConfig,
   MAT_DIALOG_DATA,
-  MatDialogRef
+  MatDialogRef,
+  MatSnackBar
 } from "@angular/material";
 import { Inject } from '@angular/core';
 
@@ -397,6 +398,7 @@ export class ViewRelatedRecord {
 
   constructor(public dialogConfRef: MatDialogRef<ViewRelatedRecord>, fb: FormBuilder, private restService: RestService,
     private dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private spinnerService: Ng4LoadingSpinnerService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.recordForm = fb.group({
@@ -411,13 +413,21 @@ export class ViewRelatedRecord {
   }
 
   ngOnInit() {
-    this.childRecords = JSON.parse(sessionStorage.getItem("childRlnMapping"));
+    let childRecords = [];
+    childRecords = JSON.parse(sessionStorage.getItem("childRlnMapping"));
+    this.childRecords = childRecords;
     console.log("Loaded succesfully", this.childRecords);
   }
 
 
   onNoClick(): void {
     this.dialogConfRef.close();
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
   onChildRecSelect(child){
@@ -427,26 +437,33 @@ export class ViewRelatedRecord {
     var results = this.recordForm.value.results;
     var that = this;
 
-    console.log("getChildData", nameOfObject, this.recordId, child);
+    if(child.value == null){
+      this.openSnackBar("Please use a different record");
+      return false;
+    }
+    console.log("getChildData", this.objectName, this.recordId, child);
     this.childRecResults = [];
     if(results[child.value]){
       this.childRecResults = results[child.value];
     } else {
       this.spinnerService.show();
-      this.restService.getChildData(nameOfObject, this.recordId, child.value).subscribe(
+      this.restService.getChildData(this.objectName, this.recordId, child.value).subscribe(
         data => {
           if(!results[child.value])
             results[child.value] = []
-          console.log("")
-          data.records.forEach(function(rec){
-            var obj = {
-              name: rec.Name || 'N/A',
-              createdDate: new Date(rec.CreatedDate).toLocaleDateString("en-US"),
-              LastModifiedDate: new Date(rec.LastModifiedDate).toLocaleDateString("en-US"),
-            }
-            results[child.value].push(obj);
-            that.childRecResults.push(obj);
-          })
+          console.log("data", data);
+          if(data.done) {
+            data.records.forEach(function(rec){
+              var obj = {
+                name: rec.Name || 'N/A',
+                createdDate: new Date(rec.CreatedDate).toLocaleDateString("en-US"),
+                LastModifiedDate: new Date(rec.LastModifiedDate).toLocaleDateString("en-US"),
+              }
+              results[child.value].push(obj);
+              that.childRecResults.push(obj);
+            });
+          } else
+            that.openSnackBar("Something went wrong")
           console.log("childData record", results);
 
         },
