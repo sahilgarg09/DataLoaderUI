@@ -33,7 +33,7 @@ export class ExportComponent implements OnInit {
   objects = [{ value: "", viewValue: "Select an Object" }];
   fields: Fields[] = [];
   childRlnMapping = [];
-  show_result = false;
+  show_result = true;
   columns = [];
   resultsFields = [];
   setClickedRow: Function;
@@ -90,7 +90,8 @@ export class ExportComponent implements OnInit {
       filterBy: "",
       operator: "",
       fieldValue: "",
-      exportResult: {}
+      exportResult: {},
+      expRelRecords: false
     });
 
     this.queryForms.push(query);

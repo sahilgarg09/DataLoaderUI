@@ -40,6 +40,11 @@ input.form-control{
 .cardFooter{
     width: 100%;
 }
+.alignResButtons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 /*
     View Related records CSS

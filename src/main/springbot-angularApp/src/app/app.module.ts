@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DemoMaterialModule} from './material-module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -56,11 +56,12 @@ import { ExportComponent, ViewRelatedRecord } from './components/export/export.c
     ExportToOrgComponent,
     ConfirmationDialog,
     ViewRelatedRecord,
-    ExportComponent   
+    ExportComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
