@@ -87,3 +87,24 @@ input.form-control{
   .list-group-item.active{
     background: linear-gradient(60deg, #ab47bc, #8e24aa)
   }
+
+  /*
+    Export Related records CSS
+*/
+
+  .sub-header{
+      font-weight: bold;
+      text-align: center;
+  }
+  .mat-divider-horizontal{
+      margin-bottom: 1rem;
+  }
+  .expRelRecord .chips-container{
+      max-height: 400px;
+      overflow-y: scroll;
+  }
+
+  .expRelRecord .btn_wrapper{
+      display: flex;
+      justify-content: space-around;
+  }

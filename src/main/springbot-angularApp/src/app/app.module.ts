@@ -35,7 +35,7 @@ import {
   MatToolbarModule
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { ExportComponent, ViewRelatedRecord } from './components/export/export.component';
+import { ExportComponent, ViewRelatedRecord, ExportRelatedRecord } from './components/export/export.component';
 
 
 @NgModule({
@@ -56,7 +56,8 @@ import { ExportComponent, ViewRelatedRecord } from './components/export/export.c
     ExportToOrgComponent,
     ConfirmationDialog,
     ViewRelatedRecord,
-    ExportComponent
+    ExportComponent,
+    ExportRelatedRecord
   ],
   imports: [
     BrowserModule,
@@ -73,6 +74,6 @@ import { ExportComponent, ViewRelatedRecord } from './components/export/export.c
   ],
   providers: [AuthService, AuthGuard, RestService],
   bootstrap: [AppComponent],
-  entryComponents: [ExportToOrgComponent, ConfirmationDialog, ViewRelatedRecord]
+  entryComponents: [ExportToOrgComponent, ConfirmationDialog, ViewRelatedRecord, ExportRelatedRecord]
 })
 export class AppModule { }

@@ -1,7 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { RestService } from "../../rest/rest.service";
-import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from "@angular/forms";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatAutocompleteSelectedEvent, MatChipInputEvent, MatAutocomplete} from '@angular/material';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+
 import {
   MatDialog,
   MatDialogConfig,
@@ -33,7 +38,7 @@ export class ExportComponent implements OnInit {
   objects = [{ value: "", viewValue: "Select an Object" }];
   fields: Fields[] = [];
   childRlnMapping = [];
-  show_result = true;
+  show_result = false;
   columns = [];
   resultsFields = [];
   setClickedRow: Function;
@@ -339,6 +344,22 @@ export class ExportComponent implements OnInit {
 
   }
 
+  exportRelatedRecord(index) {
+    //let id = this.selectedRecord["Id"];
+    let exportForm = this.exportForm.value.queries;
+    let nameOfObject = exportForm[index].object;
+    if (nameOfObject) {
+
+    }
+    this.dialog.open(ExportRelatedRecord, {
+      data: {
+        recId: "id",
+        objectName: nameOfObject
+      }
+    });
+
+  }
+
   queryStringBuilder() {
     let exportForm = this.exportFormValue[this.queryIndex];
     let object = exportForm.object;
@@ -475,5 +496,121 @@ export class ViewRelatedRecord {
 
   }
 
+
+}
+
+@Component({
+  selector: "export-related-record",
+  templateUrl: "exportRelatedRecord.html",
+  styleUrls: ["./export.component.css"]
+})
+export class ExportRelatedRecord {
+  @ViewChild('chips') chips;
+
+  recordForm: FormGroup;
+  title = '';
+  objectName = '';
+  recordId = "";
+  visible = true;
+  selectable: boolean = true;
+  removable = true;
+  addOnBlur = true;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  childRecCtrl = new FormControl();
+  filteredChildRec: Observable<string[]>;
+  selChildRecords = [];
+  childRecords = [];
+
+  @ViewChild('childRecInput') childRecInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+
+  constructor(public dialogConfRef: MatDialogRef<ExportRelatedRecord>, fb: FormBuilder, private restService: RestService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private spinnerService: Ng4LoadingSpinnerService,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.recordForm = fb.group({
+      bottom: 0,
+      fixed: false,
+      top: 60,
+      results: {}
+    });
+    this.recordId = data.recId;
+    this.objectName = data.objectName;
+    this.title = `${data.objectName} - Related Records`;
+
+    this.filteredChildRec = this.childRecCtrl.valueChanges.pipe(
+      startWith(null),
+      map((record: string | null) => record ? this._filter(record) : this.childRecords.slice()));
+  }
+
+  ngOnInit() {
+    let childRecords = [];
+    childRecords = JSON.parse(sessionStorage.getItem("childRlnMapping"));
+    let childRecArr = [];
+    childRecords.forEach(function(cr) {
+      childRecArr.push(cr.viewValue);
+    });
+    this.childRecords = childRecArr;
+    console.log("Loaded succesfully", this.childRecords);
+  }
+
+  onChildRecSelect() {
+
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+    });
+  }
+
+  add(event: MatChipInputEvent): void {
+    // Add fruit only when MatAutocomplete is not open
+    // To make sure this does not conflict with OptionSelected Event
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value;
+
+      // Add our fruit
+      if ((value || '').trim()) {
+        this.selChildRecords.push(value.trim());
+      }
+
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+
+      this.childRecCtrl.setValue(null);
+    }
+  }
+
+  remove(record): void {
+    const index = this.selChildRecords.indexOf(record);
+    console.log("this.selChildRecords", this.selChildRecords);
+    console.log("Does it reaches here?", index, record);
+    if (index >= 0) {
+      this.selChildRecords.splice(index, 1);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    if(this.selChildRecords.length < 5)
+      this.selChildRecords.push(event.option.viewValue);
+    else
+      this.openSnackBar("Please select a maximum of 5 child records!");
+    this.childRecInput.nativeElement.value = '';
+    this.childRecCtrl.setValue(null);
+
+  }
+
+  private _filter(value): string[] {
+
+    const filterValue = value.toLowerCase();
+
+    return this.childRecords.filter(cr => {
+      cr.toLowerCase().indexOf(filterValue) === 0});
+  }
 
 }

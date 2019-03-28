@@ -333,11 +333,13 @@ var AppModule = /** @class */ (function () {
                 _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ExportToOrgComponent"],
                 _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ConfirmationDialog"],
                 _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ViewRelatedRecord"],
-                _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ExportComponent"]
+                _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ExportComponent"],
+                _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ExportRelatedRecord"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_20__["HttpClientModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_21__["HttpModule"],
@@ -349,7 +351,7 @@ var AppModule = /** @class */ (function () {
             ],
             providers: [_auth_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], _auth_auth_guard__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_22__["RestService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
-            entryComponents: [_components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ExportToOrgComponent"], _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ConfirmationDialog"], _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ViewRelatedRecord"]]
+            entryComponents: [_components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ExportToOrgComponent"], _components_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_24__["ConfirmationDialog"], _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ViewRelatedRecord"], _components_export_export_component__WEBPACK_IMPORTED_MODULE_27__["ExportRelatedRecord"]]
         })
     ], AppModule);
     return AppModule;
@@ -884,7 +886,7 @@ var ConfirmationDialog = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n.result-section{\r\n    margin-top: 15px;\r\n    padding: 15px;\r\n    border: 1px solid #e5e5e5;\r\n}\r\n.res-header{\r\n    background-color: #9c27b0;\r\n}\r\n.table tr.active td {\r\n    background-color: rgba(0,0,0,.075);\r\n    color: #212529;\r\n  }\r\n#exportToOrgModal .modal-content{\r\n    background-color: transparent;\r\n    border: none;\r\n    box-shadow: unset;\r\n}\r\n.margin-left-10{\r\n    margin-left: 10px;\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.cardFooter{\r\n    width: 100%;\r\n}\r\n/*\r\n    View Related records CSS\r\n*/\r\n.example-container {\r\n    position: absolute;\r\n    top: 60px;\r\n    bottom: 60px;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.example-sidenav {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    width: 200px;\r\n    background: rgba(255, 0, 0, 0.5);\r\n  }\r\n.example-header {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.example-footer {\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.view-related-rec .list-group{\r\n    max-height: 400px;\r\n    overflow-y: scroll;\r\n  }\r\n.list-group-item.active{\r\n    background: linear-gradient(60deg, #ab47bc, #8e24aa)\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGNBQWM7SUFDZCxhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSxpQkFBaUI7SUFDakIsY0FBYztJQUNkLDBCQUEwQjtDQUM3QjtBQUNEO0lBQ0ksMEJBQTBCO0NBQzdCO0FBRUQ7SUFDSSxtQ0FBbUM7SUFDbkMsZUFBZTtHQUNoQjtBQUVIO0lBQ0ksOEJBQThCO0lBQzlCLGFBQWE7SUFDYixrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGtCQUFrQjtDQUNyQjtBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksOEJBQThCO0NBQ2pDO0FBRUQ7SUFDSSxZQUFZO0NBQ2Y7QUFFRDs7RUFFRTtBQUVGO0lBQ0ksbUJBQW1CO0lBQ25CLFVBQVU7SUFDVixhQUFhO0lBQ2IsUUFBUTtJQUNSLFNBQVM7R0FDVjtBQUVEO0lBQ0UsY0FBYztJQUNkLG9CQUFvQjtJQUNwQix3QkFBd0I7SUFDeEIsYUFBYTtJQUNiLGlDQUFpQztHQUNsQztBQUVEO0lBQ0UsZ0JBQWdCO0lBQ2hCLE9BQU87SUFDUCxRQUFRO0lBQ1IsU0FBUztHQUNWO0FBRUQ7SUFDRSxnQkFBZ0I7SUFDaEIsVUFBVTtJQUNWLFFBQVE7SUFDUixTQUFTO0dBQ1Y7QUFFRDtJQUNFLGtCQUFrQjtJQUNsQixtQkFBbUI7R0FDcEI7QUFDRDtJQUNFLG9EQUFvRDtHQUNyRCIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZXhwb3J0L2V4cG9ydC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm11bHRpcGxlLWZpZWxkc3tcclxuICAgIG1pbi1oZWlnaHQ6IDE1MHB4O1xyXG59XHJcbi5yZXMtdGl0bGV7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcbi5yZXN1bHQtc2VjdGlvbntcclxuICAgIG1hcmdpbi10b3A6IDE1cHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgI2U1ZTVlNTtcclxufVxyXG4ucmVzLWhlYWRlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM5YzI3YjA7XHJcbn1cclxuXHJcbi50YWJsZSB0ci5hY3RpdmUgdGQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLDAsMCwuMDc1KTtcclxuICAgIGNvbG9yOiAjMjEyNTI5O1xyXG4gIH1cclxuXHJcbiNleHBvcnRUb09yZ01vZGFsIC5tb2RhbC1jb250ZW50e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBib3gtc2hhZG93OiB1bnNldDtcclxufVxyXG4ubWFyZ2luLWxlZnQtMTB7XHJcbiAgICBtYXJnaW4tbGVmdDogMTBweDtcclxufVxyXG4uaGlkZXtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuLnNob3d7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxufVxyXG5pbnB1dC5mb3JtLWNvbnRyb2x7XHJcbiAgICBoZWlnaHQ6IGNhbGMoMi40Mzc1cmVtICsgMnB4KTtcclxufVxyXG5cclxuLmNhcmRGb290ZXJ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLypcclxuICAgIFZpZXcgUmVsYXRlZCByZWNvcmRzIENTU1xyXG4qL1xyXG5cclxuLmV4YW1wbGUtY29udGFpbmVyIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogNjBweDtcclxuICAgIGJvdHRvbTogNjBweDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5leGFtcGxlLXNpZGVuYXYge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIHdpZHRoOiAyMDBweDtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAwLCAwLCAwLjUpO1xyXG4gIH1cclxuXHJcbiAgLmV4YW1wbGUtaGVhZGVyIHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5leGFtcGxlLWZvb3RlciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgfVxyXG5cclxuICAudmlldy1yZWxhdGVkLXJlYyAubGlzdC1ncm91cHtcclxuICAgIG1heC1oZWlnaHQ6IDQwMHB4O1xyXG4gICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG4gIH1cclxuICAubGlzdC1ncm91cC1pdGVtLmFjdGl2ZXtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgI2FiNDdiYywgIzhlMjRhYSlcclxuICB9Il19 */"
+module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n.result-section{\r\n    margin-top: 15px;\r\n    padding: 15px;\r\n    border: 1px solid #e5e5e5;\r\n}\r\n.res-header{\r\n    background-color: #9c27b0;\r\n}\r\n.table tr.active td {\r\n    background-color: rgba(0,0,0,.075);\r\n    color: #212529;\r\n  }\r\n#exportToOrgModal .modal-content{\r\n    background-color: transparent;\r\n    border: none;\r\n    box-shadow: unset;\r\n}\r\n.margin-left-10{\r\n    margin-left: 10px;\r\n}\r\n.hide{\r\n    display: none;\r\n}\r\n.show{\r\n    display: block;\r\n}\r\ninput.form-control{\r\n    height: calc(2.4375rem + 2px);\r\n}\r\n.cardFooter{\r\n    width: 100%;\r\n}\r\n.alignResButtons{\r\n    display: flex;\r\n    justify-content: flex-start;\r\n    align-items: center;\r\n}\r\n/*\r\n    View Related records CSS\r\n*/\r\n.example-container {\r\n    position: absolute;\r\n    top: 60px;\r\n    bottom: 60px;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.example-sidenav {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    width: 200px;\r\n    background: rgba(255, 0, 0, 0.5);\r\n  }\r\n.example-header {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.example-footer {\r\n    position: fixed;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n  }\r\n.view-related-rec .list-group{\r\n    max-height: 400px;\r\n    overflow-y: scroll;\r\n  }\r\n.list-group-item.active{\r\n    background: linear-gradient(60deg, #ab47bc, #8e24aa)\r\n  }\r\n/*\r\n    Export Related records CSS\r\n*/\r\n.sub-header{\r\n      font-weight: bold;\r\n      text-align: center;\r\n  }\r\n.mat-divider-horizontal{\r\n      margin-bottom: 1rem;\r\n  }\r\n.expRelRecord .chips-container{\r\n      max-height: 400px;\r\n      overflow-y: scroll;\r\n  }\r\n.expRelRecord .btn_wrapper{\r\n      display: flex;\r\n      justify-content: space-around;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGNBQWM7SUFDZCxhQUFhO0NBQ2hCO0FBQ0Q7SUFDSSxpQkFBaUI7SUFDakIsY0FBYztJQUNkLDBCQUEwQjtDQUM3QjtBQUNEO0lBQ0ksMEJBQTBCO0NBQzdCO0FBRUQ7SUFDSSxtQ0FBbUM7SUFDbkMsZUFBZTtHQUNoQjtBQUVIO0lBQ0ksOEJBQThCO0lBQzlCLGFBQWE7SUFDYixrQkFBa0I7Q0FDckI7QUFDRDtJQUNJLGtCQUFrQjtDQUNyQjtBQUNEO0lBQ0ksY0FBYztDQUNqQjtBQUNEO0lBQ0ksZUFBZTtDQUNsQjtBQUNEO0lBQ0ksOEJBQThCO0NBQ2pDO0FBRUQ7SUFDSSxZQUFZO0NBQ2Y7QUFDRDtJQUNJLGNBQWM7SUFDZCw0QkFBNEI7SUFDNUIsb0JBQW9CO0NBQ3ZCO0FBRUQ7O0VBRUU7QUFFRjtJQUNJLG1CQUFtQjtJQUNuQixVQUFVO0lBQ1YsYUFBYTtJQUNiLFFBQVE7SUFDUixTQUFTO0dBQ1Y7QUFFRDtJQUNFLGNBQWM7SUFDZCxvQkFBb0I7SUFDcEIsd0JBQXdCO0lBQ3hCLGFBQWE7SUFDYixpQ0FBaUM7R0FDbEM7QUFFRDtJQUNFLGdCQUFnQjtJQUNoQixPQUFPO0lBQ1AsUUFBUTtJQUNSLFNBQVM7R0FDVjtBQUVEO0lBQ0UsZ0JBQWdCO0lBQ2hCLFVBQVU7SUFDVixRQUFRO0lBQ1IsU0FBUztHQUNWO0FBRUQ7SUFDRSxrQkFBa0I7SUFDbEIsbUJBQW1CO0dBQ3BCO0FBQ0Q7SUFDRSxvREFBb0Q7R0FDckQ7QUFFRDs7RUFFQTtBQUVBO01BQ0ksa0JBQWtCO01BQ2xCLG1CQUFtQjtHQUN0QjtBQUNEO01BQ0ksb0JBQW9CO0dBQ3ZCO0FBQ0Q7TUFDSSxrQkFBa0I7TUFDbEIsbUJBQW1CO0dBQ3RCO0FBRUQ7TUFDSSxjQUFjO01BQ2QsOEJBQThCO0dBQ2pDIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9leHBvcnQvZXhwb3J0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubXVsdGlwbGUtZmllbGRze1xyXG4gICAgbWluLWhlaWdodDogMTUwcHg7XHJcbn1cclxuLnJlcy10aXRsZXtcclxuICAgIHBhZGRpbmc6IDE1cHg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuLnJlc3VsdC1zZWN0aW9ue1xyXG4gICAgbWFyZ2luLXRvcDogMTVweDtcclxuICAgIHBhZGRpbmc6IDE1cHg7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjZTVlNWU1O1xyXG59XHJcbi5yZXMtaGVhZGVye1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzljMjdiMDtcclxufVxyXG5cclxuLnRhYmxlIHRyLmFjdGl2ZSB0ZCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsMCwwLC4wNzUpO1xyXG4gICAgY29sb3I6ICMyMTI1Mjk7XHJcbiAgfVxyXG5cclxuI2V4cG9ydFRvT3JnTW9kYWwgLm1vZGFsLWNvbnRlbnR7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGJveC1zaGFkb3c6IHVuc2V0O1xyXG59XHJcbi5tYXJnaW4tbGVmdC0xMHtcclxuICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG59XHJcbi5oaWRle1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG4uc2hvd3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcbmlucHV0LmZvcm0tY29udHJvbHtcclxuICAgIGhlaWdodDogY2FsYygyLjQzNzVyZW0gKyAycHgpO1xyXG59XHJcblxyXG4uY2FyZEZvb3RlcntcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcbi5hbGlnblJlc0J1dHRvbnN7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLypcclxuICAgIFZpZXcgUmVsYXRlZCByZWNvcmRzIENTU1xyXG4qL1xyXG5cclxuLmV4YW1wbGUtY29udGFpbmVyIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogNjBweDtcclxuICAgIGJvdHRvbTogNjBweDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5leGFtcGxlLXNpZGVuYXYge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIHdpZHRoOiAyMDBweDtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAwLCAwLCAwLjUpO1xyXG4gIH1cclxuXHJcbiAgLmV4YW1wbGUtaGVhZGVyIHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5leGFtcGxlLWZvb3RlciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgfVxyXG5cclxuICAudmlldy1yZWxhdGVkLXJlYyAubGlzdC1ncm91cHtcclxuICAgIG1heC1oZWlnaHQ6IDQwMHB4O1xyXG4gICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG4gIH1cclxuICAubGlzdC1ncm91cC1pdGVtLmFjdGl2ZXtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgI2FiNDdiYywgIzhlMjRhYSlcclxuICB9XHJcblxyXG4gIC8qXHJcbiAgICBFeHBvcnQgUmVsYXRlZCByZWNvcmRzIENTU1xyXG4qL1xyXG5cclxuICAuc3ViLWhlYWRlcntcclxuICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICB9XHJcbiAgLm1hdC1kaXZpZGVyLWhvcml6b250YWx7XHJcbiAgICAgIG1hcmdpbi1ib3R0b206IDFyZW07XHJcbiAgfVxyXG4gIC5leHBSZWxSZWNvcmQgLmNoaXBzLWNvbnRhaW5lcntcclxuICAgICAgbWF4LWhlaWdodDogNDAwcHg7XHJcbiAgICAgIG92ZXJmbG93LXk6IHNjcm9sbDtcclxuICB9XHJcblxyXG4gIC5leHBSZWxSZWNvcmQgLmJ0bl93cmFwcGVye1xyXG4gICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICB9Il19 */"
 
 /***/ }),
 
@@ -895,7 +897,7 @@ module.exports = ".multiple-fields{\r\n    min-height: 150px;\r\n}\r\n.res-title
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form [formGroup]=\"exportForm\">\r\n <!-- Value: {{ exportForm.value | json }}\r\n\r\n  <hr />\r\n -->\r\n  <div formArrayName=\"queries\">\r\n    <app-accordion\r\n      [title]=\"['Export']\"\r\n      [desc]=\"\"\r\n      *ngFor=\"let query of queryForms.controls; let i = index\"\r\n      [formGroupName]=\"i\"\r\n    >\r\n      <div class=\"cardBody\">\r\n        <section>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Object\" formControlName=\"object\" (selectionChange)=\"objectChangeHandler($event, i)\">\r\n                    <mat-option *ngFor=\"let object of objects\" [value]=\"object.value\">\r\n                      {{object.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Fields\" formControlName=\"field\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                    <mat-option *ngFor=\"let item of exportObj[i].fields\" [value]=\"item.value\">\r\n                      {{item.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n          <div class=\"col-md-9\">\r\n            <div class=\"row\">\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"SortBy\" formControlName=\"sortBy\" (selectionChange)=\"queryStringBuilder()\" >\r\n                        <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                          {{item.viewValue}}\r\n                        </mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Sort Direction\" formControlName=\"sortDir\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"ASC\">A to Z</mat-option>\r\n                          <mat-option value=\"DESC\">Z to A</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Nulls\" formControlName=\"null\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"NULLS FIRST\">Nulls First</mat-option>\r\n                          <mat-option value=\"NULLS LAST\">Nulls Last</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field class=\"example-full-width\">\r\n                      <input matInput placeholder=\"Max Record\" formControlName=\"maxRecord\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                    </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n              <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Filter Result By\" formControlName=\"filterBy\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                          <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                            {{item.viewValue}}\r\n                          </mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Operator\" formControlName=\"operator\" (selectionChange)=\"queryStringBuilder()\" >\r\n                            <mat-option value=\"=\">Equal</mat-option>\r\n                            <mat-option value=\"!=\">Not Equal</mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Field Value\" formControlName=\"fieldValue\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                      </mat-form-field>\r\n                </div>\r\n\r\n\r\n              </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <mat-form-field class=\"example-full-width\">\r\n                    <textarea matInput placeholder=\"Enter or modify a SOQL query below:\">{{exportObj[i].queryString }}</textarea>\r\n                  </mat-form-field>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button\r\n                type=\"button\"\r\n                class=\"btn btn-primary pull-left\"\r\n                (click)=\"querySOQL(i)\"\r\n              >\r\n                Query\r\n              </button>\r\n\r\n            </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        </section>\r\n        <section\r\n    class=\"result-section\"\r\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n    >\r\n    <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"res-header\">\r\n          <h4 class=\"res-title\">Results</h4>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"res-body\">\r\n              <div class=\"table-responsive\">\r\n                  <table class=\"table table-hover\">\r\n                    <thead class=\"text-primary\">\r\n                      <tr>\r\n                        <th *ngFor=\"let item of exportObj[i].columns\">\r\n                          {{item}}\r\n                        </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n\r\n                      <tr  *ngFor=\"let result of exportObj[i].exportResult; let rInd = index\" (click)=\"setClickedRow(rInd)\" [class.active]=\"rInd == selectedRow\">\r\n                        <td *ngFor=\"let column of exportObj[i].columns\">{{result[column]}}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n          </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button type=\"button\" (click)=\"downloadButtonPush()\" class=\"btn btn-primary pull-left\">\r\n                  Export to CSV\r\n                </button>\r\n                <!-- data-toggle=\"modal\" data-target=\"#exportToOrgModal\" -->\r\n                <button type=\"button\" class=\"btn btn-normal pull-left margin-left-10\" (click)=\"openDialog('desc')\">\r\n                    Export to Org\r\n                  </button>\r\n              <button\r\n                type=\"button\"\r\n                (click)=\"viewRelatedRecord(i)\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Related Record\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </section>\r\n      </div>\r\n      <div class=\"cardFooter\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-1\">\r\n              <button\r\n              type=\"button\"\r\n              (click)=\"addquery()\"\r\n              class=\"btn btn-success pull-left\"\r\n            >\r\n              <i class=\"material-icons\">add</i>\r\n            </button></div>\r\n            <div class=\"col-md-1\">\r\n                <button\r\n                type=\"button\"\r\n                (click)=\"deletequery(i)\"\r\n                class=\"btn btn-danger pull-left\"\r\n              >\r\n                <i class=\"material-icons\">remove</i>\r\n              </button>\r\n            </div>\r\n            <div class=\"col-md-10\">\r\n                <button type=\"button\" class=\"btn btn-primary pull-right\">\r\n                    Export to CSV\r\n                  </button>\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </app-accordion>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form [formGroup]=\"exportForm\">\r\n <!-- Value: {{ exportForm.value | json }}\r\n\r\n  <hr />\r\n -->\r\n  <div formArrayName=\"queries\">\r\n    <app-accordion\r\n      [title]=\"['Export']\"\r\n      [desc]=\"\"\r\n      *ngFor=\"let query of queryForms.controls; let i = index\"\r\n      [formGroupName]=\"i\"\r\n    >\r\n      <div class=\"cardBody\">\r\n        <section>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Object\" formControlName=\"object\" (selectionChange)=\"objectChangeHandler($event, i)\">\r\n                    <mat-option *ngFor=\"let object of objects\" [value]=\"object.value\">\r\n                      {{object.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-3\">\r\n              <mat-form-field>\r\n                  <mat-select placeholder=\"Fields\" formControlName=\"field\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                    <mat-option *ngFor=\"let item of exportObj[i].fields\" [value]=\"item.value\">\r\n                      {{item.viewValue}}\r\n                    </mat-option>\r\n                  </mat-select>\r\n                </mat-form-field>\r\n          </div>\r\n          <div class=\"col-md-9\">\r\n            <div class=\"row\">\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"SortBy\" formControlName=\"sortBy\" (selectionChange)=\"queryStringBuilder()\" >\r\n                        <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                          {{item.viewValue}}\r\n                        </mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Sort Direction\" formControlName=\"sortDir\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"ASC\">A to Z</mat-option>\r\n                          <mat-option value=\"DESC\">Z to A</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field>\r\n                      <mat-select placeholder=\"Nulls\" formControlName=\"null\" (selectionChange)=\"queryStringBuilder()\" >\r\n                          <mat-option value=\"NULLS FIRST\">Nulls First</mat-option>\r\n                          <mat-option value=\"NULLS LAST\">Nulls Last</mat-option>\r\n                      </mat-select>\r\n                    </mat-form-field>\r\n              </div>\r\n              <div class=\"col-md-3\">\r\n                  <mat-form-field class=\"example-full-width\">\r\n                      <input matInput placeholder=\"Max Record\" formControlName=\"maxRecord\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                    </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n              <div class=\"row\">\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Filter Result By\" formControlName=\"filterBy\" (selectionChange)=\"queryStringBuilder()\" multiple>\r\n                          <mat-option *ngFor=\"let item of fields\" [value]=\"item.value\">\r\n                            {{item.viewValue}}\r\n                          </mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field>\r\n                        <mat-select placeholder=\"Operator\" formControlName=\"operator\" (selectionChange)=\"queryStringBuilder()\" >\r\n                            <mat-option value=\"=\">Equal</mat-option>\r\n                            <mat-option value=\"!=\">Not Equal</mat-option>\r\n                        </mat-select>\r\n                      </mat-form-field>\r\n                </div>\r\n                <div class=\"col-md-3\">\r\n                    <mat-form-field class=\"example-full-width\">\r\n                        <input matInput placeholder=\"Field Value\" formControlName=\"fieldValue\" value=\"\"  (change)=\"queryStringBuilder()\">\r\n                      </mat-form-field>\r\n                </div>\r\n\r\n\r\n              </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <mat-form-field class=\"example-full-width\">\r\n                    <textarea matInput placeholder=\"Enter or modify a SOQL query below:\">{{exportObj[i].queryString }}</textarea>\r\n                  </mat-form-field>\r\n            </div>\r\n          </div>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n              <button\r\n                type=\"button\"\r\n                class=\"btn btn-primary pull-left\"\r\n                (click)=\"querySOQL(i)\"\r\n              >\r\n                Query\r\n              </button>\r\n\r\n            </div>\r\n          </div>\r\n          <div class=\"clearfix\"></div>\r\n        </section>\r\n        <section\r\n    class=\"result-section\"\r\n    [ngClass]=\"show_result == true ? 'show' : 'hide'\"\r\n    >\r\n    <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <div class=\"res-header\">\r\n          <h4 class=\"res-title\">Results</h4>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n          <div class=\"res-body\">\r\n              <div class=\"table-responsive\">\r\n                  <table class=\"table table-hover\">\r\n                    <thead class=\"text-primary\">\r\n                      <tr>\r\n                        <th *ngFor=\"let item of exportObj[i].columns\">\r\n                          {{item}}\r\n                        </th>\r\n                      </tr>\r\n                    </thead>\r\n                    <tbody>\r\n\r\n                      <tr  *ngFor=\"let result of exportObj[i].exportResult; let rInd = index\" (click)=\"setClickedRow(rInd)\" [class.active]=\"rInd == selectedRow\">\r\n                        <td *ngFor=\"let column of exportObj[i].columns\">{{result[column]}}</td>\r\n                      </tr>\r\n                    </tbody>\r\n                  </table>\r\n                </div>\r\n          </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n              <div class=\"alignResButtons\">\r\n                  <button type=\"button\" (click)=\"downloadButtonPush()\" class=\"btn btn-primary\">\r\n                      Export to CSV\r\n                    </button>\r\n                    <!-- data-toggle=\"modal\" data-target=\"#exportToOrgModal\" -->\r\n              </div>\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n              <mat-checkbox class=\"example-margin\" formControlName=\"expRelRecords\" ></mat-checkbox>\r\n                    <button type=\"button\" class=\"btn btn-normal\" (click)=\"openDialog('desc')\">\r\n                        Export to Org\r\n                      </button>\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n              <button\r\n                type=\"button\"\r\n                (click)=\"exportRelatedRecord(i)\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                Export Related Record\r\n              </button>\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n              <button\r\n                type=\"button\"\r\n                (click)=\"viewRelatedRecord(i)\"\r\n                class=\"btn btn-primary pull-right\"\r\n              >\r\n                View Related Record\r\n              </button>\r\n            </div>\r\n            </div>\r\n    </section>\r\n      </div>\r\n      <div class=\"cardFooter\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-1\">\r\n              <button\r\n              type=\"button\"\r\n              (click)=\"addquery()\"\r\n              class=\"btn btn-success pull-left\"\r\n            >\r\n              <i class=\"material-icons\">add</i>\r\n            </button></div>\r\n            <div class=\"col-md-1\">\r\n                <button\r\n                type=\"button\"\r\n                (click)=\"deletequery(i)\"\r\n                class=\"btn btn-danger pull-left\"\r\n              >\r\n                <i class=\"material-icons\">remove</i>\r\n              </button>\r\n            </div>\r\n            <div class=\"col-md-10\">\r\n                <button type=\"button\" class=\"btn btn-primary pull-right\">\r\n                    Export to CSV\r\n                  </button>\r\n            </div>\r\n        </div>\r\n      </div>\r\n    </app-accordion>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -903,20 +905,23 @@ module.exports = "<form [formGroup]=\"exportForm\">\r\n <!-- Value: {{ exportFor
 /*!*******************************************************!*\
   !*** ./src/app/components/export/export.component.ts ***!
   \*******************************************************/
-/*! exports provided: ExportComponent, ViewRelatedRecord */
+/*! exports provided: ExportComponent, ViewRelatedRecord, ExportRelatedRecord */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExportComponent", function() { return ExportComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewRelatedRecord", function() { return ViewRelatedRecord; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExportRelatedRecord", function() { return ExportRelatedRecord; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../rest/rest.service */ "./src/app/rest/rest.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ng4-loading-spinner */ "./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
 /* harmony import */ var ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../export-to-org/export-to-org.component */ "./src/app/components/export-to-org/export-to-org.component.ts");
+/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/keycodes */ "./node_modules/@angular/cdk/esm5/keycodes.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../export-to-org/export-to-org.component */ "./src/app/components/export-to-org/export-to-org.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -929,6 +934,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+
+
+
 
 
 
@@ -998,7 +1006,8 @@ var ExportComponent = /** @class */ (function () {
             filterBy: "",
             operator: "",
             fieldValue: "",
-            exportResult: {}
+            exportResult: {},
+            expRelRecords: false
         });
         this.queryForms.push(query);
         this.addFilterBy();
@@ -1170,7 +1179,7 @@ var ExportComponent = /** @class */ (function () {
     ExportComponent.prototype.openDialog = function (_a) {
         var description = _a.description;
         sessionStorage.setItem("curQueryIndex", this.queryIndex);
-        this.dialog.open(_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_5__["ExportToOrgComponent"], {
+        this.dialog.open(_export_to_org_export_to_org_component__WEBPACK_IMPORTED_MODULE_7__["ExportToOrgComponent"], {
             data: { description: description }
         });
     };
@@ -1202,6 +1211,19 @@ var ExportComponent = /** @class */ (function () {
                 }
             });
         }
+    };
+    ExportComponent.prototype.exportRelatedRecord = function (index) {
+        //let id = this.selectedRecord["Id"];
+        var exportForm = this.exportForm.value.queries;
+        var nameOfObject = exportForm[index].object;
+        if (nameOfObject) {
+        }
+        this.dialog.open(ExportRelatedRecord, {
+            data: {
+                recId: "id",
+                objectName: nameOfObject
+            }
+        });
     };
     ExportComponent.prototype.queryStringBuilder = function () {
         var exportForm = this.exportFormValue[this.queryIndex];
@@ -1249,7 +1271,7 @@ var ExportComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
             _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialog"],
             ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__["Ng4LoadingSpinnerService"]])
     ], ExportComponent);
     return ExportComponent;
@@ -1336,16 +1358,141 @@ var ViewRelatedRecord = /** @class */ (function () {
             selector: "view-related-record",
             template: __webpack_require__(/*! ./viewRelatedRecord.html */ "./src/app/components/export/viewRelatedRecord.html")
         }),
-        __param(6, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MAT_DIALOG_DATA"])),
-        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogRef"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"],
+        __param(6, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialog"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"],
             ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__["Ng4LoadingSpinnerService"], Object])
     ], ViewRelatedRecord);
     return ViewRelatedRecord;
 }());
 
+var ExportRelatedRecord = /** @class */ (function () {
+    function ExportRelatedRecord(dialogConfRef, fb, restService, dialog, snackBar, spinnerService, data) {
+        var _this = this;
+        this.dialogConfRef = dialogConfRef;
+        this.restService = restService;
+        this.dialog = dialog;
+        this.snackBar = snackBar;
+        this.spinnerService = spinnerService;
+        this.data = data;
+        this.title = '';
+        this.objectName = '';
+        this.recordId = "";
+        this.visible = true;
+        this.selectable = true;
+        this.removable = true;
+        this.addOnBlur = true;
+        this.separatorKeysCodes = [_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["ENTER"], _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["COMMA"]];
+        this.childRecCtrl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
+        this.selChildRecords = [];
+        this.childRecords = [];
+        this.recordForm = fb.group({
+            bottom: 0,
+            fixed: false,
+            top: 60,
+            results: {}
+        });
+        this.recordId = data.recId;
+        this.objectName = data.objectName;
+        this.title = data.objectName + " - Related Records";
+        this.filteredChildRec = this.childRecCtrl.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["startWith"])(null), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (record) { return record ? _this._filter(record) : _this.childRecords.slice(); }));
+    }
+    ExportRelatedRecord.prototype.ngOnInit = function () {
+        var childRecords = [];
+        childRecords = JSON.parse(sessionStorage.getItem("childRlnMapping"));
+        var childRecArr = [];
+        childRecords.forEach(function (cr) {
+            childRecArr.push(cr.viewValue);
+        });
+        this.childRecords = childRecArr;
+        console.log("Loaded succesfully", this.childRecords);
+    };
+    ExportRelatedRecord.prototype.onChildRecSelect = function () {
+    };
+    ExportRelatedRecord.prototype.openSnackBar = function (message) {
+        this.snackBar.open(message, '', {
+            duration: 2000,
+        });
+    };
+    ExportRelatedRecord.prototype.add = function (event) {
+        // Add fruit only when MatAutocomplete is not open
+        // To make sure this does not conflict with OptionSelected Event
+        if (!this.matAutocomplete.isOpen) {
+            var input = event.input;
+            var value = event.value;
+            // Add our fruit
+            if ((value || '').trim()) {
+                this.selChildRecords.push(value.trim());
+            }
+            // Reset the input value
+            if (input) {
+                input.value = '';
+            }
+            this.childRecCtrl.setValue(null);
+        }
+    };
+    ExportRelatedRecord.prototype.remove = function (record) {
+        var index = this.selChildRecords.indexOf(record);
+        console.log("this.selChildRecords", this.selChildRecords);
+        console.log("Does it reaches here?", index, record);
+        if (index >= 0) {
+            this.selChildRecords.splice(index, 1);
+        }
+    };
+    ExportRelatedRecord.prototype.selected = function (event) {
+        if (this.selChildRecords.length < 5)
+            this.selChildRecords.push(event.option.viewValue);
+        else
+            this.openSnackBar("Please select a maximum of 5 child records!");
+        this.childRecInput.nativeElement.value = '';
+        this.childRecCtrl.setValue(null);
+    };
+    ExportRelatedRecord.prototype._filter = function (value) {
+        var filterValue = value.toLowerCase();
+        return this.childRecords.filter(function (cr) {
+            cr.toLowerCase().indexOf(filterValue) === 0;
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('chips'),
+        __metadata("design:type", Object)
+    ], ExportRelatedRecord.prototype, "chips", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('childRecInput'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], ExportRelatedRecord.prototype, "childRecInput", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('auto'),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatAutocomplete"])
+    ], ExportRelatedRecord.prototype, "matAutocomplete", void 0);
+    ExportRelatedRecord = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "export-related-record",
+            template: __webpack_require__(/*! ./exportRelatedRecord.html */ "./src/app/components/export/exportRelatedRecord.html"),
+            styles: [__webpack_require__(/*! ./export.component.css */ "./src/app/components/export/export.component.css")]
+        }),
+        __param(6, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _rest_rest_service__WEBPACK_IMPORTED_MODULE_1__["RestService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialog"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"],
+            ng4_loading_spinner__WEBPACK_IMPORTED_MODULE_3__["Ng4LoadingSpinnerService"], Object])
+    ], ExportRelatedRecord);
+    return ExportRelatedRecord;
+}());
 
+
+
+/***/ }),
+
+/***/ "./src/app/components/export/exportRelatedRecord.html":
+/*!************************************************************!*\
+  !*** ./src/app/components/export/exportRelatedRecord.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row expRelRecord\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">{{ title }}</h4>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <p class=\"sub-header\">Please select a maximum of 5 child records</p>\r\n                    <mat-divider></mat-divider>\r\n                </div>\r\n          <div class=\"col-md-12 chips-container\">\r\n                <mat-form-field class=\"example-chip-list\">\r\n                        <mat-chip-list #chipList aria-label=\"Child record selection\">\r\n                          <mat-chip\r\n                            *ngFor=\"let record of selChildRecords\"\r\n                            [selectable]=\"selectable\"\r\n                            [removable]=\"removable\"\r\n                            (removed)=\"remove(record)\">\r\n                            {{record}}\r\n                            <mat-icon matChipRemove *ngIf=\"removable\">cancel</mat-icon>\r\n                          </mat-chip>\r\n                          <input\r\n                            placeholder=\"Child records\"\r\n                            #childRecInput\r\n                            [formControl]=\"childRecCtrl\"\r\n                            [matAutocomplete]=\"auto\"\r\n                            [matChipInputFor]=\"chipList\"\r\n                            [matChipInputSeparatorKeyCodes]=\"separatorKeysCodes\"\r\n                            [matChipInputAddOnBlur]=\"addOnBlur\"\r\n                            (matChipInputTokenEnd)=\"add($event)\">\r\n                        </mat-chip-list>\r\n                        <mat-autocomplete #auto=\"matAutocomplete\" (optionSelected)=\"selected($event)\">\r\n                          <mat-option *ngFor=\"let record of filteredChildRec | async\" [value]=\"record\">\r\n                            {{record}}\r\n                          </mat-option>\r\n                        </mat-autocomplete>\r\n                      </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-12 btn_wrapper\">\r\n            <button\r\n              type=\"button\"\r\n              class=\"btn btn-normal pull-right\"\r\n              (click)=\"onNoClick()\"\r\n            >\r\n              Close\r\n            </button>\r\n            <button\r\n                  type=\"button\"\r\n                  class=\"btn btn-primary pull-right\"\r\n                  (click)=\"onNoClick()\"\r\n                >\r\n                  Export\r\n                </button>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2393,8 +2540,7 @@ var DemoMaterialModule = /** @class */ (function () {
                 _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_0__["DragDropModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatAutocompleteModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatBadgeModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatBottomSheetModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatBottomSheetModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonToggleModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatCheckboxModule"],
@@ -2426,7 +2572,7 @@ var DemoMaterialModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatToolbarModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTooltipModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatTreeModule"],
-                _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_1__["ScrollingModule"],
+                _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_1__["ScrollingModule"]
             ]
         })
     ], DemoMaterialModule);

@@ -1,0 +1,64 @@
+<div class="row expRelRecord">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">{{ title }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+                <div class="col-md-12">
+                    <p class="sub-header">Please select a maximum of 5 child records</p>
+                    <mat-divider></mat-divider>
+                </div>
+          <div class="col-md-12 chips-container">
+                <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipList aria-label="Child record selection">
+                          <mat-chip
+                            *ngFor="let record of selChildRecords"
+                            [selectable]="selectable"
+                            [removable]="removable"
+                            (removed)="remove(record)">
+                            {{record}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                          </mat-chip>
+                          <input
+                            placeholder="Child records"
+                            #childRecInput
+                            [formControl]="childRecCtrl"
+                            [matAutocomplete]="auto"
+                            [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                          <mat-option *ngFor="let record of filteredChildRec | async" [value]="record">
+                            {{record}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 btn_wrapper">
+            <button
+              type="button"
+              class="btn btn-normal pull-right"
+              (click)="onNoClick()"
+            >
+              Close
+            </button>
+            <button
+                  type="button"
+                  class="btn btn-primary pull-right"
+                  (click)="onNoClick()"
+                >
+                  Export
+                </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

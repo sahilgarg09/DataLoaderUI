@@ -39,6 +39,9 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  MatAutocompleteSelectedEvent,
+  MatChipInputEvent,
+  MatAutocomplete
 } from '@angular/material';
 
 @NgModule({
@@ -48,8 +51,7 @@ import {
     DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
-    MatBottomSheetModule,
-    MatButtonModule,
+    MatBottomSheetModule,   MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
@@ -81,7 +83,7 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    ScrollingModule,
+    ScrollingModule
   ]
 })
 export class DemoMaterialModule {}
