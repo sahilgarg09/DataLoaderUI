@@ -150,6 +150,10 @@ export class ConfirmationDialog {
     this.restService.orgtoOrgTransfer(objectName, reqDataString).subscribe(
       data => {
         console.log("records confirmation data", data.results);
+        sessionStorage.setItem(
+          "refIdMapping",
+          JSON.stringify(data.results)
+        );
         that.openSnackBar("Records exported to destination org.");
       },
       error => {

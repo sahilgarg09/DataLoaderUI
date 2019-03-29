@@ -841,6 +841,7 @@ var ConfirmationDialog = /** @class */ (function () {
         var that = this;
         this.restService.orgtoOrgTransfer(objectName, reqDataString).subscribe(function (data) {
             console.log("records confirmation data", data.results);
+            sessionStorage.setItem("refIdMapping", JSON.stringify(data.results));
             that.openSnackBar("Records exported to destination org.");
         }, function (error) {
             console.log(error);
