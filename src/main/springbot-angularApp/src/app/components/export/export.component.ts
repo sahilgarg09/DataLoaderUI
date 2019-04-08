@@ -520,6 +520,7 @@ export class ExportRelatedRecord {
   filteredChildRec: Observable<string[]>;
   selChildRecords = [];
   childRecords = [];
+  recordIds = [];
 
   @ViewChild('childRecInput') childRecInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -545,6 +546,7 @@ export class ExportRelatedRecord {
   }
 
   ngOnInit() {
+    //TODO: Optimize below code
     let childRecords = [];
     childRecords = JSON.parse(sessionStorage.getItem("childRlnMapping"));
     let childRecArr = [];
@@ -552,7 +554,13 @@ export class ExportRelatedRecord {
       childRecArr.push(cr.viewValue);
     });
     this.childRecords = childRecArr;
-    console.log("Loaded succesfully", this.childRecords);
+
+    let refIdMapping = JSON.parse(sessionStorage.getItem("refIdMapping"));
+    let that = this;
+    refIdMapping.forEach(function(cri) {
+      that.recordIds.push(cri.referenceId);
+    });
+    console.log("Loaded succesfully", this.recordIds);
   }
 
   onChildRecSelect() {
@@ -606,11 +614,154 @@ export class ExportRelatedRecord {
   }
 
   private _filter(value): string[] {
-
     const filterValue = value.toLowerCase();
-
     return this.childRecords.filter(cr => {
       cr.toLowerCase().indexOf(filterValue) === 0});
+  }
+
+  onNoClick() {
+    this.dialogConfRef.close();
+  }
+
+  onYesClick() {
+    let childRlnMapping = JSON.parse(sessionStorage.getItem("childRlnMapping"));
+    let objNameMap = {};
+    if(this.selChildRecords.length < 1) {
+      this.openSnackBar("Please select atleast one child record.");
+      return false;
+    }
+
+    if(this.objectName.length < 1) {
+      this.openSnackBar("Please select a parent object.");
+      return false;
+    }
+
+    if(this.recordIds.length < 1) {
+      this.openSnackBar("Please export parents records first.");
+      return false;
+    }
+    
+    childRlnMapping.map(crm => {
+      if(this.selChildRecords.indexOf(crm.viewValue) > -1) {
+        objNameMap[crm.viewValue] = crm.value;
+      }
+    })
+    
+    console.log("child records push", this.objectName, objNameMap, this.recordIds);
+    this.child_record_transfer(this.objectName, objNameMap, this.recordIds);
+  }
+
+  child_record_transfer(parent_object, objectNames, record_ids) {
+    var result_map = this.get_response_map();
+    for (var object in objectNames) {
+      //Get Object Information
+      this.restService.getFieldsOfObject(object).subscribe(
+        data => {
+          let creatableFields = [];
+          //let fields = [];
+          data.fields.forEach(element => {
+            if (element.createable) creatableFields.push(element.name);
+            /*fields.push({
+              value: element.name,
+              viewValue: element.label
+            });*/
+          });
+         // that.exportObj[this.queryIndex].fields = fields;
+          for (var i = 0; i < record_ids.length; i++) {
+            //Get Child Records
+            this.restService.getChildData(parent_object, record_ids[i], objectNames[object]).subscribe(
+              data => {
+                /*if (!results[child.value])
+                  results[child.value] = []
+                */
+                console.log("data", data);
+                if (data.done) {
+                  this.transfer_data(object, this.formatData(creatableFields, data.records, record_ids[i], result_map[record_ids[i].substring(3)]));
+                } else
+                  this.openSnackBar("Something went wrong");                  
+              },
+              error => console.log(error),
+              () => this.spinnerService.hide()
+            );
+          }
+  
+        },
+        error => console.log(error),
+        () => this.spinnerService.hide()
+      );
+    }
+  } 
+
+  formatData(creatableFields, records, record_id, replacement_id) {
+    let recordArr = [];
+    records.forEach(rec => {
+      let recordObj = rec;
+      let objKeys = Object.keys(recordObj);
+      let uniquekeyArr = this.compareArr(creatableFields, objKeys);
+      let refId = recordObj.Id.substring(3);
+      recordObj.attributes["referenceId"] = refId;
+      objKeys.forEach(function (ele) {
+        if (creatableFields.indexOf(ele) == -1 && ele != "attributes")
+          delete recordObj[ele];
+        if (recordObj[ele] == record_id) {
+          recordObj[ele] = replacement_id;
+        }
+      });
+      delete recordObj.attributes.url;
+      recordArr.push(recordObj);
+    });
+    return recordArr;
+  }
+
+  compareArr(arr1, arr2) {
+    const finalArr = [];
+    arr1.forEach(e1 =>
+      arr2.forEach(e2 => {
+        if (e1 === e2) {
+          finalArr.push(e1);
+        }
+      })
+    );
+    return finalArr;
+  }
+
+  transfer_data(objectName, recordData) {
+    this.spinnerService.show();
+    console.log("request object", objectName, recordData);
+    var reqData = {
+      records: recordData
+    };
+    var reqDataString = JSON.stringify(reqData)
+      .split("null")
+      .join('""');
+    var that = this;
+    this.restService.orgtoOrgTransfer(objectName, reqDataString).subscribe(
+      data => {
+        console.log("records confirmation data", data.results);
+        /*sessionStorage.setItem(
+          "refIdMapping",
+          JSON.stringify(data.results)
+        );*/
+        that.openSnackBar(objectName + "Records exported to destination org.");
+      },
+      error => {
+        console.log(error);
+        that.openSnackBar("Something went wrong! Please try again.");
+      },
+      () => {
+        this.spinnerService.hide();
+        this.onNoClick();
+      }
+    );
+  }
+
+  get_response_map() {
+    var response_map = {};
+    var resposne = JSON.parse(sessionStorage.getItem("refIdMapping"));
+    for (var i = 0; i < resposne.length; i++) {
+      response_map[resposne[i].referenceId] = resposne[i].id;
+    }
+    return response_map;
   }
 
 }

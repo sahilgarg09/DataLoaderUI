@@ -1388,6 +1388,7 @@ var ExportRelatedRecord = /** @class */ (function () {
         this.childRecCtrl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
         this.selChildRecords = [];
         this.childRecords = [];
+        this.recordIds = [];
         this.recordForm = fb.group({
             bottom: 0,
             fixed: false,
@@ -1400,6 +1401,7 @@ var ExportRelatedRecord = /** @class */ (function () {
         this.filteredChildRec = this.childRecCtrl.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["startWith"])(null), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (record) { return record ? _this._filter(record) : _this.childRecords.slice(); }));
     }
     ExportRelatedRecord.prototype.ngOnInit = function () {
+        //TODO: Optimize below code
         var childRecords = [];
         childRecords = JSON.parse(sessionStorage.getItem("childRlnMapping"));
         var childRecArr = [];
@@ -1407,7 +1409,12 @@ var ExportRelatedRecord = /** @class */ (function () {
             childRecArr.push(cr.viewValue);
         });
         this.childRecords = childRecArr;
-        console.log("Loaded succesfully", this.childRecords);
+        var refIdMapping = JSON.parse(sessionStorage.getItem("refIdMapping"));
+        var that = this;
+        refIdMapping.forEach(function (cri) {
+            that.recordIds.push(cri.referenceId);
+        });
+        console.log("Loaded succesfully", this.recordIds);
     };
     ExportRelatedRecord.prototype.onChildRecSelect = function () {
     };
@@ -1455,6 +1462,133 @@ var ExportRelatedRecord = /** @class */ (function () {
             cr.toLowerCase().indexOf(filterValue) === 0;
         });
     };
+    ExportRelatedRecord.prototype.onNoClick = function () {
+        this.dialogConfRef.close();
+    };
+    ExportRelatedRecord.prototype.onYesClick = function () {
+        var _this = this;
+        var childRlnMapping = JSON.parse(sessionStorage.getItem("childRlnMapping"));
+        var objNameMap = {};
+        if (this.selChildRecords.length < 1) {
+            this.openSnackBar("Please select atleast one child record.");
+            return false;
+        }
+        if (this.objectName.length < 1) {
+            this.openSnackBar("Please select a parent object.");
+            return false;
+        }
+        if (this.recordIds.length < 1) {
+            this.openSnackBar("Please export parents records first.");
+            return false;
+        }
+        childRlnMapping.map(function (crm) {
+            if (_this.selChildRecords.indexOf(crm.viewValue) > -1) {
+                objNameMap[crm.viewValue] = crm.value;
+            }
+        });
+        console.log("child records push", this.objectName, objNameMap, this.recordIds);
+        this.child_record_transfer(this.objectName, objNameMap, this.recordIds);
+    };
+    ExportRelatedRecord.prototype.child_record_transfer = function (parent_object, objectNames, record_ids) {
+        var _this = this;
+        var result_map = this.get_response_map();
+        for (var object in objectNames) {
+            //Get Object Information
+            this.restService.getFieldsOfObject(object).subscribe(function (data) {
+                var creatableFields = [];
+                //let fields = [];
+                data.fields.forEach(function (element) {
+                    if (element.createable)
+                        creatableFields.push(element.name);
+                    /*fields.push({
+                      value: element.name,
+                      viewValue: element.label
+                    });*/
+                });
+                // that.exportObj[this.queryIndex].fields = fields;
+                for (var i = 0; i < record_ids.length; i++) {
+                    //Get Child Records
+                    _this.restService.getChildData(parent_object, record_ids[i], objectNames[object]).subscribe(function (data) {
+                        /*if (!results[child.value])
+                          results[child.value] = []
+                        */
+                        console.log("data", data);
+                        if (data.done) {
+                            _this.transfer_data(object, _this.formatData(creatableFields, data.records, record_ids[i], result_map[record_ids[i].substring(3)]));
+                        }
+                        else
+                            _this.openSnackBar("Something went wrong");
+                    }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
+                }
+            }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
+        }
+    };
+    ExportRelatedRecord.prototype.formatData = function (creatableFields, records, record_id, replacement_id) {
+        var _this = this;
+        var recordArr = [];
+        records.forEach(function (rec) {
+            var recordObj = rec;
+            var objKeys = Object.keys(recordObj);
+            var uniquekeyArr = _this.compareArr(creatableFields, objKeys);
+            var refId = recordObj.Id.substring(3);
+            recordObj.attributes["referenceId"] = refId;
+            objKeys.forEach(function (ele) {
+                if (creatableFields.indexOf(ele) == -1 && ele != "attributes")
+                    delete recordObj[ele];
+                if (recordObj[ele] == record_id) {
+                    recordObj[ele] = replacement_id;
+                }
+            });
+            delete recordObj.attributes.url;
+            recordArr.push(recordObj);
+        });
+        return recordArr;
+    };
+    ExportRelatedRecord.prototype.compareArr = function (arr1, arr2) {
+        var finalArr = [];
+        arr1.forEach(function (e1) {
+            return arr2.forEach(function (e2) {
+                if (e1 === e2) {
+                    finalArr.push(e1);
+                }
+            });
+        });
+        return finalArr;
+    };
+    ExportRelatedRecord.prototype.transfer_data = function (objectName, recordData) {
+        var _this = this;
+        this.spinnerService.show();
+        console.log("request object", objectName, recordData);
+        var reqData = {
+            records: recordData
+        };
+        var reqDataString = JSON.stringify(reqData)
+            .split("null")
+            .join('""');
+        var that = this;
+        this.restService.orgtoOrgTransfer(objectName, reqDataString).subscribe(function (data) {
+            console.log("records confirmation data", data.results);
+            /*sessionStorage.setItem(
+              "refIdMapping",
+              JSON.stringify(data.results)
+            );*/
+            that.openSnackBar(objectName + "Records exported to destination org.");
+        }, function (error) {
+            console.log(error);
+            that.openSnackBar("Something went wrong! Please try again.");
+        }, function () {
+            _this.spinnerService.hide();
+            _this.onNoClick();
+        });
+    };
+    ExportRelatedRecord.prototype.get_response_map = function () {
+        var response_map = {};
+        var resposne = JSON.parse(sessionStorage.getItem("refIdMapping"));
+        for (var i = 0; i < resposne.length; i++) {
+            response_map[resposne[i].referenceId] = resposne[i].id;
+        }
+        return response_map;
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('chips'),
         __metadata("design:type", Object)
@@ -1493,7 +1627,7 @@ var ExportRelatedRecord = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row expRelRecord\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">{{ title }}</h4>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <p class=\"sub-header\">Please select a maximum of 5 child records</p>\r\n                    <mat-divider></mat-divider>\r\n                </div>\r\n          <div class=\"col-md-12 chips-container\">\r\n                <mat-form-field class=\"example-chip-list\">\r\n                        <mat-chip-list #chipList aria-label=\"Child record selection\">\r\n                          <mat-chip\r\n                            *ngFor=\"let record of selChildRecords\"\r\n                            [selectable]=\"selectable\"\r\n                            [removable]=\"removable\"\r\n                            (removed)=\"remove(record)\">\r\n                            {{record}}\r\n                            <mat-icon matChipRemove *ngIf=\"removable\">cancel</mat-icon>\r\n                          </mat-chip>\r\n                          <input\r\n                            placeholder=\"Child records\"\r\n                            #childRecInput\r\n                            [formControl]=\"childRecCtrl\"\r\n                            [matAutocomplete]=\"auto\"\r\n                            [matChipInputFor]=\"chipList\"\r\n                            [matChipInputSeparatorKeyCodes]=\"separatorKeysCodes\"\r\n                            [matChipInputAddOnBlur]=\"addOnBlur\"\r\n                            (matChipInputTokenEnd)=\"add($event)\">\r\n                        </mat-chip-list>\r\n                        <mat-autocomplete #auto=\"matAutocomplete\" (optionSelected)=\"selected($event)\">\r\n                          <mat-option *ngFor=\"let record of filteredChildRec | async\" [value]=\"record\">\r\n                            {{record}}\r\n                          </mat-option>\r\n                        </mat-autocomplete>\r\n                      </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-12 btn_wrapper\">\r\n            <button\r\n              type=\"button\"\r\n              class=\"btn btn-normal pull-right\"\r\n              (click)=\"onNoClick()\"\r\n            >\r\n              Close\r\n            </button>\r\n            <button\r\n                  type=\"button\"\r\n                  class=\"btn btn-primary pull-right\"\r\n                  (click)=\"onNoClick()\"\r\n                >\r\n                  Export\r\n                </button>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row expRelRecord\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">{{ title }}</h4>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <div class=\"row\">\r\n                <div class=\"col-md-12\">\r\n                    <p class=\"sub-header\">Please select a maximum of 5 child records</p>\r\n                    <mat-divider></mat-divider>\r\n                </div>\r\n          <div class=\"col-md-12 chips-container\">\r\n                <mat-form-field class=\"example-chip-list\">\r\n                        <mat-chip-list #chipList aria-label=\"Child record selection\">\r\n                          <mat-chip\r\n                            *ngFor=\"let record of selChildRecords\"\r\n                            [selectable]=\"selectable\"\r\n                            [removable]=\"removable\"\r\n                            (removed)=\"remove(record)\">\r\n                            {{record}}\r\n                            <mat-icon matChipRemove *ngIf=\"removable\">cancel</mat-icon>\r\n                          </mat-chip>\r\n                          <input\r\n                            placeholder=\"Child records\"\r\n                            #childRecInput\r\n                            [formControl]=\"childRecCtrl\"\r\n                            [matAutocomplete]=\"auto\"\r\n                            [matChipInputFor]=\"chipList\"\r\n                            [matChipInputSeparatorKeyCodes]=\"separatorKeysCodes\"\r\n                            [matChipInputAddOnBlur]=\"addOnBlur\"\r\n                            (matChipInputTokenEnd)=\"add($event)\">\r\n                        </mat-chip-list>\r\n                        <mat-autocomplete #auto=\"matAutocomplete\" (optionSelected)=\"selected($event)\">\r\n                          <mat-option *ngFor=\"let record of filteredChildRec | async\" [value]=\"record\">\r\n                            {{record}}\r\n                          </mat-option>\r\n                        </mat-autocomplete>\r\n                      </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-md-12 btn_wrapper\">\r\n            <button\r\n              type=\"button\"\r\n              class=\"btn btn-normal pull-right\"\r\n              (click)=\"onNoClick()\"\r\n            >\r\n              Close\r\n            </button>\r\n            <button\r\n                  type=\"button\"\r\n                  class=\"btn btn-primary pull-right\"\r\n                  (click)=\"onYesClick()\"\r\n                >\r\n                  Export\r\n                </button>\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
