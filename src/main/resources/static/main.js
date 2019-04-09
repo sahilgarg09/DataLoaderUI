@@ -1217,12 +1217,14 @@ var ExportComponent = /** @class */ (function () {
         //let id = this.selectedRecord["Id"];
         var exportForm = this.exportForm.value.queries;
         var nameOfObject = exportForm[index].object;
+        var queryResult = this.exportObj[index].exportResult;
         if (nameOfObject) {
         }
         this.dialog.open(ExportRelatedRecord, {
             data: {
                 recId: "id",
-                objectName: nameOfObject
+                objectName: nameOfObject,
+                queryResult: queryResult
             }
         });
     };
@@ -1389,6 +1391,7 @@ var ExportRelatedRecord = /** @class */ (function () {
         this.selChildRecords = [];
         this.childRecords = [];
         this.recordIds = [];
+        this.queryResult = [];
         this.recordForm = fb.group({
             bottom: 0,
             fixed: false,
@@ -1398,6 +1401,10 @@ var ExportRelatedRecord = /** @class */ (function () {
         this.recordId = data.recId;
         this.objectName = data.objectName;
         this.title = data.objectName + " - Related Records";
+        data.queryResult.map(function (qr) {
+            _this.recordIds.push(qr.Id);
+        });
+        console.log("this.queryResult", this.recordIds);
         this.filteredChildRec = this.childRecCtrl.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["startWith"])(null), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (record) { return record ? _this._filter(record) : _this.childRecords.slice(); }));
     }
     ExportRelatedRecord.prototype.ngOnInit = function () {
@@ -1409,12 +1416,11 @@ var ExportRelatedRecord = /** @class */ (function () {
             childRecArr.push(cr.viewValue);
         });
         this.childRecords = childRecArr;
-        var refIdMapping = JSON.parse(sessionStorage.getItem("refIdMapping"));
-        var that = this;
-        refIdMapping.forEach(function (cri) {
-            that.recordIds.push(cri.referenceId);
-        });
-        console.log("Loaded succesfully", this.recordIds);
+        /*let refIdMapping = JSON.parse(sessionStorage.getItem("refIdMapping"));
+        let that = this;
+        refIdMapping.forEach(function(cri) {
+          that.recordIds.push(cri.referenceId);
+        });*/
     };
     ExportRelatedRecord.prototype.onChildRecSelect = function () {
     };
@@ -1496,34 +1502,38 @@ var ExportRelatedRecord = /** @class */ (function () {
             //Get Object Information
             this.restService.getFieldsOfObject(object).subscribe(function (data) {
                 var creatableFields = [];
+                var referenceFields = {};
                 //let fields = [];
                 data.fields.forEach(function (element) {
                     if (element.createable)
                         creatableFields.push(element.name);
+                    if (element.createable && element.type == 'reference')
+                        referenceFields[element.name] = '';
                     /*fields.push({
                       value: element.name,
                       viewValue: element.label
                     });*/
                 });
-                // that.exportObj[this.queryIndex].fields = fields;
-                for (var i = 0; i < record_ids.length; i++) {
+                var _loop_1 = function () {
                     //Get Child Records
-                    _this.restService.getChildData(parent_object, record_ids[i], objectNames[object]).subscribe(function (data) {
-                        /*if (!results[child.value])
-                          results[child.value] = []
-                        */
-                        console.log("data", data);
+                    console.log("records ids", record_ids[i], record_ids);
+                    var recordId = record_ids[i];
+                    _this.restService.getChildData(parent_object, recordId, objectNames[object]).subscribe(function (data) {
                         if (data.done) {
-                            _this.transfer_data(object, _this.formatData(creatableFields, data.records, record_ids[i], result_map[record_ids[i].substring(3)]));
+                            _this.transfer_data(object, _this.formatData(creatableFields, data.records, recordId, result_map[recordId.substring(3)], referenceFields));
                         }
                         else
                             _this.openSnackBar("Something went wrong");
                     }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
+                };
+                // that.exportObj[this.queryIndex].fields = fields;
+                for (var i = 0; i < record_ids.length; i++) {
+                    _loop_1();
                 }
             }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
         }
     };
-    ExportRelatedRecord.prototype.formatData = function (creatableFields, records, record_id, replacement_id) {
+    ExportRelatedRecord.prototype.formatData = function (creatableFields, records, record_id, replacement_id, referenceFields) {
         var _this = this;
         var recordArr = [];
         records.forEach(function (rec) {
@@ -1537,6 +1547,9 @@ var ExportRelatedRecord = /** @class */ (function () {
                     delete recordObj[ele];
                 if (recordObj[ele] == record_id) {
                     recordObj[ele] = replacement_id;
+                }
+                else if (referenceFields.hasOwnProperty(ele)) {
+                    delete recordObj[ele];
                 }
             });
             delete recordObj.attributes.url;

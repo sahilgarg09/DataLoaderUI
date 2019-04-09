@@ -348,13 +348,15 @@ export class ExportComponent implements OnInit {
     //let id = this.selectedRecord["Id"];
     let exportForm = this.exportForm.value.queries;
     let nameOfObject = exportForm[index].object;
+    let queryResult = this.exportObj[index].exportResult;
     if (nameOfObject) {
 
     }
     this.dialog.open(ExportRelatedRecord, {
       data: {
         recId: "id",
-        objectName: nameOfObject
+        objectName: nameOfObject,
+        queryResult: queryResult
       }
     });
 
@@ -521,6 +523,7 @@ export class ExportRelatedRecord {
   selChildRecords = [];
   childRecords = [];
   recordIds = [];
+  queryResult = [];
 
   @ViewChild('childRecInput') childRecInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -539,6 +542,11 @@ export class ExportRelatedRecord {
     this.recordId = data.recId;
     this.objectName = data.objectName;
     this.title = `${data.objectName} - Related Records`;
+    
+    data.queryResult.map((qr) => {
+      this.recordIds.push(qr.Id);
+    });
+    console.log("this.queryResult", this.recordIds);
 
     this.filteredChildRec = this.childRecCtrl.valueChanges.pipe(
       startWith(null),
@@ -555,12 +563,11 @@ export class ExportRelatedRecord {
     });
     this.childRecords = childRecArr;
 
-    let refIdMapping = JSON.parse(sessionStorage.getItem("refIdMapping"));
+    /*let refIdMapping = JSON.parse(sessionStorage.getItem("refIdMapping"));
     let that = this;
     refIdMapping.forEach(function(cri) {
       that.recordIds.push(cri.referenceId);
-    });
-    console.log("Loaded succesfully", this.recordIds);
+    });*/    
   }
 
   onChildRecSelect() {
@@ -658,9 +665,11 @@ export class ExportRelatedRecord {
       this.restService.getFieldsOfObject(object).subscribe(
         data => {
           let creatableFields = [];
+          let referenceFields = {};
           //let fields = [];
           data.fields.forEach(element => {
             if (element.createable) creatableFields.push(element.name);
+            if (element.createable && element.type == 'reference') referenceFields[element.name] = '';
             /*fields.push({
               value: element.name,
               viewValue: element.label
@@ -669,14 +678,12 @@ export class ExportRelatedRecord {
          // that.exportObj[this.queryIndex].fields = fields;
           for (var i = 0; i < record_ids.length; i++) {
             //Get Child Records
-            this.restService.getChildData(parent_object, record_ids[i], objectNames[object]).subscribe(
-              data => {
-                /*if (!results[child.value])
-                  results[child.value] = []
-                */
-                console.log("data", data);
+            console.log("records ids", record_ids[i], record_ids);
+            let recordId = record_ids[i];
+            this.restService.getChildData(parent_object, recordId, objectNames[object]).subscribe(
+              data => {               
                 if (data.done) {
-                  this.transfer_data(object, this.formatData(creatableFields, data.records, record_ids[i], result_map[record_ids[i].substring(3)]));
+                 this.transfer_data(object, this.formatData(creatableFields, data.records, recordId, result_map[recordId.substring(3)],referenceFields ));
                 } else
                   this.openSnackBar("Something went wrong");                  
               },
@@ -692,7 +699,7 @@ export class ExportRelatedRecord {
     }
   } 
 
-  formatData(creatableFields, records, record_id, replacement_id) {
+  formatData(creatableFields, records, record_id, replacement_id,referenceFields) {
     let recordArr = [];
     records.forEach(rec => {
       let recordObj = rec;
@@ -705,6 +712,8 @@ export class ExportRelatedRecord {
           delete recordObj[ele];
         if (recordObj[ele] == record_id) {
           recordObj[ele] = replacement_id;
+        }else if(referenceFields.hasOwnProperty(ele)){
+          delete recordObj[ele];
         }
       });
       delete recordObj.attributes.url;
