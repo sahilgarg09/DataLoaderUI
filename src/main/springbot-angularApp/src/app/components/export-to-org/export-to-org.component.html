@@ -2,10 +2,24 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Export to Org
+          <h4 class="card-title">Export to Target Org
             </h4>
         </div>
-        <div *ngIf="!isConfirmModalOpen; else confirmModal">
+
+        <div *ngIf="isEnv2DataAvailable; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <div class="btn-container min-height-200">
+            <button type="button" class="btn btn-primary" (click)="exportParentRec()">
+              Export Parent Record
+            </button>
+            <button type="button" class="btn btn-primary" (click)="exportRelRec()">
+              Export {{source.curObjName}} related record
+            </button> 
+          </div>
+
+        </ng-template>
+        <ng-template #elseBlock>
+          <div *ngIf="!isConfirmModalOpen; else confirmModal">
             <form [formGroup]="form" (ngSubmit)="loginToOrg()">
                 <div class="card-body">
                   <!--<form [formGroup]="form" (ngSubmit)="onSubmit()">-->
@@ -113,7 +127,8 @@
                 </div>
               </form>
         </div>
-        
+
+        </ng-template>
       </div>
     </div>
   </div>

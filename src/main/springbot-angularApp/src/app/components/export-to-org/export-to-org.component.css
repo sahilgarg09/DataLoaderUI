@@ -13,8 +13,24 @@
 .confirmText{
     margin-top: 10px;
     font-size: 20px;
-    font-weight: bold;
 }
 .mat-form-field {
     width: 100%;
+}
+.btn-container, .card-body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.min-height-200 {    
+    min-height: 200px;
+}
+.bold {
+    font-weight: bold;
+}
+.card-body .btn-container{
+    width: 100%;
+}
+.card-body.min-height-200{
+    flex-direction: column;
 }

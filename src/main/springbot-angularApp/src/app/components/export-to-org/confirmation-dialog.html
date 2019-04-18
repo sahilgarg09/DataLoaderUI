@@ -6,19 +6,15 @@
             Confirmation
             </h4>
         </div>
-<div class="card-body">
-    <div class="row">        
-        <div class="col-md-12 center confirmText">
-          <span>Do you want to procced with {{totalRecord}} records?</span>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-md-12 center">
-              <button type="button" class="btn btn-normal pull-left" (click)="onNoClick()">No</button>  
-              <button type="button" class="btn btn-primary pull-right" (click)="onYesClick()">Yes</button>   
-          </div>
-      </div>
+<div class="card-body min-height-200">
+  <div class="confirmText">
+      <span>Do you want to procced with <span class="bold">{{totalRecord}} records</span>  to be inserted in <span class="bold">{{targetOrgName}} </span> org?</span>
     </div>
+    <div class="btn-container">
+        <button type="button" class="btn btn-normal pull-left" (click)="onNoClick()">No</button>  
+        <button type="button" class="btn btn-primary pull-right" (click)="onYesClick()">Yes</button>   
+    </div>
+  </div>
 
 </div>
 </div>

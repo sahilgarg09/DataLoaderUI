@@ -38,7 +38,7 @@ export class ExportComponent implements OnInit {
   objects = [{ value: "", viewValue: "Select an Object" }];
   fields: Fields[] = [];
   childRlnMapping = [];
-  show_result = false;
+  show_result = true;
   columns = [];
   resultsFields = [];
   setClickedRow: Function;
@@ -546,7 +546,7 @@ export class ExportRelatedRecord {
     data.queryResult.map((qr) => {
       this.recordIds.push(qr.Id);
     });
-    console.log("this.queryResult", this.recordIds);
+    console.log("this.queryResult", data.queryResult);
 
     this.filteredChildRec = this.childRecCtrl.valueChanges.pipe(
       startWith(null),

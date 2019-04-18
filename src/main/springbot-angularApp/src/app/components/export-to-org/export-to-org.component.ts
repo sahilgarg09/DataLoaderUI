@@ -5,6 +5,7 @@ import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { AuthService } from "./../../auth/auth.service";
 import { RestService } from "../../rest/rest.service";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
+import { ExportRelatedRecord } from "../export/export.component";
 
 @Component({
   selector: "app-export-to-org",
@@ -14,7 +15,11 @@ import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 export class ExportToOrgComponent implements OnInit {
   form: FormGroup;
   env: string;
-  source: Object = {};
+  source: Object = {
+    exportResults: [],
+    curObjName: ""
+  };
+  isEnv2DataAvailable: Boolean =  false;
 
   constructor(
     private fb: FormBuilder,
@@ -43,13 +48,16 @@ export class ExportToOrgComponent implements OnInit {
     let queryIndex = sessionStorage.getItem("curQueryIndex");
     let exportResults = JSON.parse(sessionStorage.getItem("exportResults"));
     let curObjSelected = JSON.parse(sessionStorage.getItem("curObjSelected"));
+    let env2 = sessionStorage.getItem("env2");
+    this.isEnv2DataAvailable = (env2 != null) ? true : false;
+
     this.source = {
       srcBaseUrl: sourceObj.baseURL,
       srcUsername: sourceObj.userName,
-      exportResults: exportResults[queryIndex],
+      exportResults: JSON.parse(exportResults[queryIndex]).records,
       curObjName: curObjSelected[queryIndex]
-    };
-    console.log("this.this.source", this.source);
+    };  
+    console.log("this.source init", this.source);  
   }
 
   loginToOrg() {
@@ -84,16 +92,40 @@ export class ExportToOrgComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+  exportParentRec() {
+    let source = this.source;
+    this.dialogRef.close();
+    this.confDialog.open(ConfirmationDialog, {
+      data: { source }
+    });
+  }
+
+  exportRelRec() {
+    let curObjName = this.source['curObjName'];
+    let exportResults = this.source['exportResults'];
+    
+    console.log("this.source on clicl", curObjName, typeof exportResults, exportResults, this.source);
+    this.dialogRef.close();
+    this.confDialog.open(ExportRelatedRecord, {
+      data: {
+        recId: "id",
+        objectName: curObjName,
+        queryResult: exportResults
+      }
+    });
+  }
 }
 
 @Component({
   selector: "confirmation-dialog",
-  templateUrl: "confirmation-dialog.html"
+  templateUrl: "confirmation-dialog.html",
+  styleUrls: ["./export-to-org.component.css"]
 })
 export class ConfirmationDialog {
   totalRecord = "";
   records = [];
   objectName = "";
+  targetOrgName = "";
   constructor(
     public dialogConfRef: MatDialogRef<ConfirmationDialog>,
     private restService: RestService,
@@ -101,10 +133,12 @@ export class ConfirmationDialog {
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    let exportResults = JSON.parse(data.source.exportResults);
-    this.totalRecord = exportResults.totalSize;
-    this.records = exportResults.records;
+    let exportResults = data.source.exportResults;
+    this.totalRecord = exportResults.length;
+    this.records = exportResults;
     this.objectName = data.source.curObjName;
+    let env2 = JSON.parse(sessionStorage.getItem("env2"));
+    this.targetOrgName = env2.organizationName;
   }
 
   onNoClick(): void {
