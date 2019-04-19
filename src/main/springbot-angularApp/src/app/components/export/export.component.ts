@@ -48,6 +48,7 @@ export class ExportComponent implements OnInit {
   queryString = "";
   exportObj = {};
   creatableFields = [];
+  sObjectsNameLabelMap = {};
 
   constructor(
     private fb: FormBuilder,
@@ -96,7 +97,7 @@ export class ExportComponent implements OnInit {
       operator: "",
       fieldValue: "",
       exportResult: {},
-      expRelRecords: false
+      expRelRecords: false      
     });
 
     this.queryForms.push(query);
@@ -129,17 +130,20 @@ export class ExportComponent implements OnInit {
   //get the list of all objects to show in dropdown
   getAllObjects() {
     this.spinnerService.show();
+    let  sObjMap = {}; 
     this.restService.getAllOrgObjects().subscribe(
       data => {
         data.sobjects.forEach(element => {
+          sObjMap[element.name] = element.label;
           let object = {
             value: element.name,
             viewValue: element.name
           };
 
           this.objects.push(object);
+         
         });
-
+        this.sObjectsNameLabelMap = sObjMap;
         console.log("aman1", JSON.parse(JSON.stringify(this.objects)));
         //this.getFieldsObj();
       },
@@ -167,10 +171,12 @@ export class ExportComponent implements OnInit {
         let rln = {};
         data.childRelationships.forEach(element => {
           var obj = {};
+         let nameLableMap =  this.sObjectsNameLabelMap;
           if (element.relationshipName != null) {
+            let viewVal = nameLableMap[element.childSObject];
             obj = {
               value: element.relationshipName,
-              viewValue: element.childSObject
+              viewValue: viewVal//element.childSObject
             }
             this.childRlnMapping.push(obj);
           }
@@ -184,7 +190,7 @@ export class ExportComponent implements OnInit {
           "childRlnMapping",
           JSON.stringify(this.childRlnMapping)
         );
-        console.log("aman3", JSON.parse(JSON.stringify(data)));
+        console.log("aman3", JSON.parse(JSON.stringify(this.childRlnMapping)));
       },
       error => console.log(error),
       () => this.spinnerService.hide()
