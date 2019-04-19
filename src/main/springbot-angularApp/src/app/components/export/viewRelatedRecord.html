@@ -8,7 +8,7 @@
           <div class="row">
               <div class="col-4">
                 <div class="list-group" id="list-tab" role="tablist" style="max-height: 400px;overflow-y: scroll;">
-                    <a  *ngFor="let rec of childRecords" class="list-group-item list-group-item-action" id="{{rec.value}}-list" data-toggle="list" href="#{{rec.value}}" role="tab" (click)="onChildRecSelect(rec)">{{rec.viewValue}}</a>
+                    <a  *ngFor="let rec of childRecords" class="list-group-item list-group-item-action" id="{{rec.value}}-list" data-toggle="list" href="#{{rec.value}}" role="tab" (click)="onChildRecSelect(rec)">{{rec.value}}</a>
 
                 </div>
               </div>

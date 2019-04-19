@@ -38,7 +38,7 @@ export class ExportComponent implements OnInit {
   objects = [{ value: "", viewValue: "Select an Object" }];
   fields: Fields[] = [];
   childRlnMapping = [];
-  show_result = true;
+  show_result = false;
   columns = [];
   resultsFields = [];
   setClickedRow: Function;
@@ -167,11 +167,14 @@ export class ExportComponent implements OnInit {
         let rln = {};
         data.childRelationships.forEach(element => {
           var obj = {};
-          obj = {
-            value: element.relationshipName,
-            viewValue: element.childSObject
+          if (element.relationshipName != null) {
+            obj = {
+              value: element.relationshipName,
+              viewValue: element.childSObject
+            }
+            this.childRlnMapping.push(obj);
           }
-          this.childRlnMapping.push(obj);
+          
         });
         sessionStorage.setItem(
           "creatableFields",
@@ -207,7 +210,7 @@ export class ExportComponent implements OnInit {
     this.queryIndex = index;
     var retrievedData;
     //var queryString = this.query_string + ' limit 10';
-    let queryString = this.queryString; //"SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
+    let queryString = this.exportObj[this.queryIndex].queryString;//this.queryString; //"SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
     console.log("queryString", queryString);
     this.spinnerService.show();
     this.restService.soql_query(queryString).subscribe(

@@ -38,7 +38,7 @@
               <div class="col-md-3">
                   <mat-form-field>
                       <mat-select placeholder="SortBy" formControlName="sortBy" (selectionChange)="queryStringBuilder()" >
-                        <mat-option *ngFor="let item of fields" [value]="item.value">
+                        <mat-option *ngFor="let item of exportObj[i].fields" [value]="item.value">
                           {{item.viewValue}}
                         </mat-option>
                       </mat-select>
@@ -71,7 +71,7 @@
                 <div class="col-md-3">
                     <mat-form-field>
                         <mat-select placeholder="Filter Result By" formControlName="filterBy" (selectionChange)="queryStringBuilder()" multiple>
-                          <mat-option *ngFor="let item of fields" [value]="item.value">
+                          <mat-option *ngFor="let item of exportObj[i].fields" [value]="item.value">
                             {{item.viewValue}}
                           </mat-option>
                         </mat-select>
