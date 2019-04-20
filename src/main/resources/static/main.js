@@ -993,6 +993,7 @@ var ExportComponent = /** @class */ (function () {
         this.queryString = "";
         this.exportObj = {};
         this.creatableFields = [];
+        this.sObjectsNameLabelMap = {};
         this.getAllObjects();
         this.setClickedRow = function (index) {
             this.selectedRow = index;
@@ -1069,14 +1070,17 @@ var ExportComponent = /** @class */ (function () {
     ExportComponent.prototype.getAllObjects = function () {
         var _this = this;
         this.spinnerService.show();
+        var sObjMap = {};
         this.restService.getAllOrgObjects().subscribe(function (data) {
             data.sobjects.forEach(function (element) {
+                sObjMap[element.name] = element.label;
                 var object = {
                     value: element.name,
                     viewValue: element.name
                 };
                 _this.objects.push(object);
             });
+            _this.sObjectsNameLabelMap = sObjMap;
             console.log("aman1", JSON.parse(JSON.stringify(_this.objects)));
             //this.getFieldsObj();
         }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
@@ -1099,15 +1103,19 @@ var ExportComponent = /** @class */ (function () {
             var rln = {};
             data.childRelationships.forEach(function (element) {
                 var obj = {};
-                obj = {
-                    value: element.relationshipName,
-                    viewValue: element.childSObject
-                };
-                _this.childRlnMapping.push(obj);
+                var nameLableMap = _this.sObjectsNameLabelMap;
+                if (element.relationshipName != null) {
+                    var viewVal = nameLableMap[element.childSObject];
+                    obj = {
+                        value: element.relationshipName,
+                        viewValue: viewVal //element.childSObject
+                    };
+                    _this.childRlnMapping.push(obj);
+                }
             });
             sessionStorage.setItem("creatableFields", JSON.stringify(_this.creatableFields));
             sessionStorage.setItem("childRlnMapping", JSON.stringify(_this.childRlnMapping));
-            console.log("aman3", JSON.parse(JSON.stringify(data)));
+            console.log("aman3", JSON.parse(JSON.stringify(_this.childRlnMapping)));
         }, function (error) { return console.log(error); }, function () { return _this.spinnerService.hide(); });
     };
     ExportComponent.prototype.objectChangeHandler = function (event, index) {
@@ -1683,7 +1691,7 @@ module.exports = "<div class=\"row expRelRecord\">\r\n  <div class=\"col-md-12\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card view-related-rec\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">{{title}}</h4>\r\n      </div>\r\n      <div class=\"card-body\">\r\n          <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"list-group\" id=\"list-tab\" role=\"tablist\" style=\"max-height: 400px;overflow-y: scroll;\">\r\n                    <a  *ngFor=\"let rec of childRecords\" class=\"list-group-item list-group-item-action\" id=\"{{rec.value}}-list\" data-toggle=\"list\" href=\"#{{rec.value}}\" role=\"tab\" (click)=\"onChildRecSelect(rec)\">{{rec.viewValue}}</a>\r\n\r\n                </div>\r\n              </div>\r\n              <div class=\"col-8\">\r\n                <div class=\"tab-content\" id=\"nav-tabContent\" >\r\n                  <div class=\"tab-pane fade \" *ngFor=\"let rec of childRecords\" id=\"{{rec.value}}\" role=\"tabpanel\" >\r\n                      <table class=\"table table-striped\">\r\n                          <thead>\r\n                            <tr>\r\n                              <th scope=\"col\">Name</th>\r\n                              <th scope=\"col\">Created Date</th>\r\n                              <th scope=\"col\">Last Modified Date</th>\r\n                            </tr>\r\n                          </thead>\r\n                          <tbody>\r\n                            <tr *ngFor=\"let res of childRecResults\">\r\n                              <td>{{res.name}}</td>\r\n                              <td>{{res.createdDate}}</td>\r\n                              <td>{{res.LastModifiedDate}}</td>\r\n                            </tr>\r\n                          </tbody>\r\n                        </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12 center\">\r\n                    <button type=\"button\" class=\"btn btn-normal pull-right\" (click)=\"onNoClick()\">Close</button>\r\n\r\n                </div>\r\n            </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"card view-related-rec\">\r\n      <div class=\"card-header card-header-primary\">\r\n        <h4 class=\"card-title\">{{title}}</h4>\r\n      </div>\r\n      <div class=\"card-body\">\r\n          <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"list-group\" id=\"list-tab\" role=\"tablist\" style=\"max-height: 400px;overflow-y: scroll;\">\r\n                    <a  *ngFor=\"let rec of childRecords\" class=\"list-group-item list-group-item-action\" id=\"{{rec.value}}-list\" data-toggle=\"list\" href=\"#{{rec.value}}\" role=\"tab\" (click)=\"onChildRecSelect(rec)\">{{rec.value}}</a>\r\n\r\n                </div>\r\n              </div>\r\n              <div class=\"col-8\">\r\n                <div class=\"tab-content\" id=\"nav-tabContent\" >\r\n                  <div class=\"tab-pane fade \" *ngFor=\"let rec of childRecords\" id=\"{{rec.value}}\" role=\"tabpanel\" >\r\n                      <table class=\"table table-striped\">\r\n                          <thead>\r\n                            <tr>\r\n                              <th scope=\"col\">Name</th>\r\n                              <th scope=\"col\">Created Date</th>\r\n                              <th scope=\"col\">Last Modified Date</th>\r\n                            </tr>\r\n                          </thead>\r\n                          <tbody>\r\n                            <tr *ngFor=\"let res of childRecResults\">\r\n                              <td>{{res.name}}</td>\r\n                              <td>{{res.createdDate}}</td>\r\n                              <td>{{res.LastModifiedDate}}</td>\r\n                            </tr>\r\n                          </tbody>\r\n                        </table>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-md-12 center\">\r\n                    <button type=\"button\" class=\"btn btn-normal pull-right\" (click)=\"onNoClick()\">Close</button>\r\n\r\n                </div>\r\n            </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 

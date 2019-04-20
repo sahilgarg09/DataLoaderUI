@@ -56,6 +56,7 @@ export class ExportComponent implements OnInit {
     private dialog: MatDialog,
     private spinnerService: Ng4LoadingSpinnerService
   ) {
+    //this.byPassAPI();
     this.getAllObjects();
     this.setClickedRow = function(index) {
       this.selectedRow = index;
@@ -143,8 +144,7 @@ export class ExportComponent implements OnInit {
           this.objects.push(object);
          
         });
-        this.sObjectsNameLabelMap = sObjMap;
-        console.log("aman1", JSON.parse(JSON.stringify(this.objects)));
+        this.sObjectsNameLabelMap = sObjMap;        
         //this.getFieldsObj();
       },
       error => console.log(error),
@@ -167,7 +167,7 @@ export class ExportComponent implements OnInit {
           fields.push({ value: element.name, viewValue: element.label });
         });
         that.exportObj[this.queryIndex].fields = fields;
-
+        
         let rln = {};
         data.childRelationships.forEach(element => {
           var obj = {};
@@ -179,8 +179,7 @@ export class ExportComponent implements OnInit {
               viewValue: viewVal//element.childSObject
             }
             this.childRlnMapping.push(obj);
-          }
-          
+          }          
         });
         sessionStorage.setItem(
           "creatableFields",
@@ -215,11 +214,11 @@ export class ExportComponent implements OnInit {
   querySOQL(index) {
     this.queryIndex = index;
     var retrievedData;
-    //var queryString = this.query_string + ' limit 10';
-    let queryString = this.exportObj[this.queryIndex].queryString;//this.queryString; //"SELECT Id, Name, LastModifiedDate FROM Account LIMIT 10";
-    console.log("queryString", queryString);
+    
+    let exportForm = this.exportFormValue[this.queryIndex];
+    
     this.spinnerService.show();
-    this.restService.soql_query(queryString).subscribe(
+    this.restService.soql_query(exportForm.queryString).subscribe(
       data => {
         retrievedData = data.body;
         let sessionExportResults = JSON.parse(
@@ -244,8 +243,17 @@ export class ExportComponent implements OnInit {
     this.show_result = true;
     let index = this.queryIndex;
     let exportForm = this.exportForm.value.queries;
-
-    this.exportObj[this.queryIndex].columns = exportForm[index].field;
+    let sSelect = "SELECT", sFrom = "FROM";
+    let queryString = exportForm[index].queryString;
+    let columns = exportForm[index].field;
+    if (queryString) {
+      let aMatch = queryString.match(new RegExp(sSelect + "(.*)" + sFrom));
+      if (aMatch != null) {
+        columns = aMatch[1].trim().split(", ");
+      }
+    }
+    
+    this.exportObj[this.queryIndex].columns = columns;
     this.exportObj[this.queryIndex].exportResult = data.records;
 
     this.columns = exportForm[index].field;
@@ -382,7 +390,7 @@ export class ExportComponent implements OnInit {
     let filterBy = exportForm.filterBy;
     let operator = exportForm.operator;
     let fieldValue = exportForm.fieldValue;
-
+    
     let queryString = "";
     if (object.length > 0) {
       queryString = `SELECT * FROM ${object}`;
@@ -409,11 +417,32 @@ export class ExportComponent implements OnInit {
 
     if (maxRecord.length > 0) {
       queryString = `${queryString} LIMIT ${maxRecord}`;
+    } 
+
+    if (exportForm.queryString.length > 0 && queryString !== exportForm.queryString) {
+      exportForm.queryString = exportForm.queryString.replace(/\s+/g,' ').trim();
+      queryString = exportForm.queryString;
     }
+        
     this.queryString = queryString;
     if(!this.exportObj[this.queryIndex])
       this.exportObj[this.queryIndex].queryString = "";
     this.exportObj[this.queryIndex].queryString = queryString;
+    this.exportFormValue[this.queryIndex].queryString = queryString;
+  }
+
+  byPassAPI(){
+    let  sObjMap = {}; 
+    let sDelLater = sessionStorage.getItem("delLater");
+    if (!sDelLater) {
+      this.getAllObjects();
+      return false;
+    }
+    
+    console.log("don't come until here for the first time.");    
+    let oDelLater = JSON.parse(sDelLater);
+    this.objects = oDelLater.objects;
+    this.sObjectsNameLabelMap = oDelLater.sObjectsNameLabelMap;
   }
 }
 
