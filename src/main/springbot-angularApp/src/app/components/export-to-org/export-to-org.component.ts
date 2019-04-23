@@ -19,7 +19,14 @@ export class ExportToOrgComponent implements OnInit {
     exportResults: [],
     curObjName: ""
   };
+  dest: Object = {
+    env: "",
+    email: "",
+    password: ""
+  };
+  sStepper: String = "LOGIN"; //Options: LOGIN, CHANGE_TARGET_ORG, ENV2_DATA_AVAILABLE, 
   isEnv2DataAvailable: Boolean =  false;
+  isFormDisbaled: Boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -49,6 +56,17 @@ export class ExportToOrgComponent implements OnInit {
     let exportResults = JSON.parse(sessionStorage.getItem("exportResults"));
     let curObjSelected = JSON.parse(sessionStorage.getItem("curObjSelected"));
     let env2 = sessionStorage.getItem("env2");
+    if (env2 != null) {
+      this.sStepper = "CHANGE_TARGET_ORG";
+      let formData = this.form.value;
+      let oEnv2 = JSON.parse(env2);
+      this.dest = {
+        email: oEnv2.userEmail, 
+        password: "salt&pepper",
+        env: 'production'
+      }
+      this.isFormDisbaled = true;
+    }
     this.isEnv2DataAvailable = (env2 != null) ? true : false;
 
     this.source = {
@@ -60,7 +78,22 @@ export class ExportToOrgComponent implements OnInit {
     console.log("this.source init", this.source);  
   }
 
+  changeTargetOrg() {
+    this.sStepper = 'LOGIN';
+    this.isFormDisbaled = false;
+    this.dest = {
+      email: "", 
+      password: "",
+      env: ''
+    }
+  }
+
+  proceedToExport() {
+    this.sStepper = 'ENV2_DATA_AVAILABLE';
+  }
+
   loginToOrg() {
+    console.log("reaches here?");
     let formData = this.form.value;
     this.dialogRef.close();
     if (formData.email !== "" && formData.password !== "") {
@@ -72,6 +105,7 @@ export class ExportToOrgComponent implements OnInit {
           var host = pathArray[2];
 
           result.baseURL = protocol + "//" + host;
+          result.env = formData.env;
           sessionStorage.setItem("env2", JSON.stringify(result));
           let source = this.source;
           this.confDialog.open(ConfirmationDialog, {
